@@ -9,11 +9,11 @@
         <meta content="Coderthemes" name="author">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <!-- App favicon -->
-        <link rel="shortcut icon" href="..\..\public\assets\images\favicon.ico">
+        <link rel="shortcut icon" href="assets\images\favicon.ico">
         <!-- App css -->
-        <link href="..\..\public\assets\css\bootstrap.min.css" rel="stylesheet" type="text/css" id="bootstrap-stylesheet">
-        <link href="..\..\public\assets\css\icons.min.css" rel="stylesheet" type="text/css">
-        <link href="..\..\public\assets\css\app.min.css" rel="stylesheet" type="text/css" id="app-stylesheet">
+        <link href="assets\css\bootstrap.min.css" rel="stylesheet" type="text/css" id="bootstrap-stylesheet">
+        <link href="assets\css\icons.min.css" rel="stylesheet" type="text/css">
+        <link href="assets\css\app.min.css" rel="stylesheet" type="text/css" id="app-stylesheet">
 
     </head>
 
@@ -25,7 +25,7 @@
                         <div class="card">
                             <div class="card-body">
                                 <div class="text-center mb-4 mt-3">
-                                    <img src="..\..\public\assets\images\warming.svg" title="invite.svg" class="avatar-xl">
+                                    <img src="assets\images\warming.svg" title="invite.svg" class="avatar-xl">
                                     <h3 class="font-weight-normal w-75 mx-auto mt-4">Your session has expired due to inactivity</h3>
                                 </div>
                                 <form action="mt-4" class="p-2">
@@ -55,10 +55,10 @@
         <!-- end page -->
 
         <!-- Vendor js -->
-        <script src="..\..\public\assets\js\vendor.min.js"></script>
+        <script src="assets\js\vendor.min.js"></script>
 
         <!-- App js -->
-        <script src="..\..\public\assets\js\app.min.js"></script>
+        <script src="assets\js\app.min.js"></script>
 
     </body>
 

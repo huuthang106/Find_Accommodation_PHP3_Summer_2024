@@ -9,11 +9,11 @@
         <meta content="Coderthemes" name="author">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <!-- App favicon -->
-        <link rel="shortcut icon" href="..\..\public\assets\images\favicon.ico">
+        <link rel="shortcut icon" href="assets\images\favicon.ico">
         <!-- App css -->
-        <link href="..\..\public\assets\css\bootstrap.min.css" rel="stylesheet" type="text/css" id="bootstrap-stylesheet">
-        <link href="..\..\public\assets\css\icons.min.css" rel="stylesheet" type="text/css">
-        <link href="..\..\public\assets\css\app.min.css" rel="stylesheet" type="text/css" id="app-stylesheet">
+        <link href="assets\css\bootstrap.min.css" rel="stylesheet" type="text/css" id="bootstrap-stylesheet">
+        <link href="assets\css\icons.min.css" rel="stylesheet" type="text/css">
+        <link href="assets\css\app.min.css" rel="stylesheet" type="text/css" id="app-stylesheet">
 
     </head>
 
@@ -30,27 +30,27 @@
 
                     <li class="dropdown d-none d-lg-block">
                         <a class="nav-link dropdown-toggle mr-0" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
-                            <img src="..\..\public\assets\images\flags\us.jpg" alt="user-image" class="mr-2" height="12"> <span class="align-middle">English <i class="mdi mdi-chevron-down"></i> </span>
+                            <img src="assets\images\flags\us.jpg" alt="user-image" class="mr-2" height="12"> <span class="align-middle">English <i class="mdi mdi-chevron-down"></i> </span>
                         </a>
                         <div class="dropdown-menu dropdown-menu-right">
                              <!-- item-->
                              <a href="javascript:void(0);" class="dropdown-item notify-item">
-                                    <img src="..\..\public\assets\images\flags\spain.jpg" alt="user-image" class="mr-2" height="12"> <span class="align-middle">Spanish</span>
+                                    <img src="assets\images\flags\spain.jpg" alt="user-image" class="mr-2" height="12"> <span class="align-middle">Spanish</span>
                              </a>
 
                              <!-- item-->
                              <a href="javascript:void(0);" class="dropdown-item notify-item">
-                                    <img src="..\..\public\assets\images\flags\italy.jpg" alt="user-image" class="mr-2" height="12"> <span class="align-middle">Italian</span>
+                                    <img src="assets\images\flags\italy.jpg" alt="user-image" class="mr-2" height="12"> <span class="align-middle">Italian</span>
                              </a>
 
                             <!-- item-->
                             <a href="javascript:void(0);" class="dropdown-item notify-item">
-                                <img src="..\..\public\assets\images\flags\french.jpg" alt="user-image" class="mr-2" height="12"> <span class="align-middle">French</span>
+                                <img src="assets\images\flags\french.jpg" alt="user-image" class="mr-2" height="12"> <span class="align-middle">French</span>
                             </a>
 
                             <!-- item-->
                             <a href="javascript:void(0);" class="dropdown-item notify-item">
-                                <img src="..\..\public\assets\images\flags\russia.jpg" alt="user-image" class="mr-2" height="12"> <span class="align-middle">Russian</span>
+                                <img src="assets\images\flags\russia.jpg" alt="user-image" class="mr-2" height="12"> <span class="align-middle">Russian</span>
                             </a>
                         </div>
                     </li>
@@ -121,7 +121,7 @@
 
                     <li class="dropdown notification-list">
                         <a class="nav-link dropdown-toggle nav-user mr-0" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
-                            <img src="..\..\public\assets\images\users\avatar-1.jpg" alt="user-image" class="rounded-circle">
+                            <img src="assets\images\users\avatar-1.jpg" alt="user-image" class="rounded-circle">
                             <span class="pro-user-name ml-1">
                                     Maxine K  <i class="mdi mdi-chevron-down"></i> 
                             </span>
@@ -174,23 +174,23 @@
                 <div class="logo-box">
                     <a href="index.html" class="logo text-center logo-dark">
                         <span class="logo-lg">
-                            <img src="..\..\public\assets\images\logo-dark.png" alt="" height="26">
+                            <img src="assets\images\logo-dark.png" alt="" height="26">
                             <!-- <span class="logo-lg-text-dark">Simple</span> -->
                         </span>
                         <span class="logo-sm">
                             <!-- <span class="logo-lg-text-dark">S</span> -->
-                            <img src="..\..\public\assets\images\logo-sm.png" alt="" height="22">
+                            <img src="assets\images\logo-sm.png" alt="" height="22">
                         </span>
                     </a>
 
                     <a href="index.html" class="logo text-center logo-light">
                         <span class="logo-lg">
-                            <img src="..\..\public\assets\images\logo-light.png" alt="" height="26">
+                            <img src="assets\images\logo-light.png" alt="" height="26">
                             <!-- <span class="logo-lg-text-light">Simple</span> -->
                         </span>
                         <span class="logo-sm">
                             <!-- <span class="logo-lg-text-light">S</span> -->
-                            <img src="..\..\public\assets\images\logo-sm.png" alt="" height="22">
+                            <img src="assets\images\logo-sm.png" alt="" height="22">
                         </span>
                     </a>
                 </div>
@@ -224,7 +224,7 @@
 
                 <div class="user-box">
                         <div class="float-left">
-                            <img src="..\..\public\assets\images\users\avatar-1.jpg" alt="" class="avatar-md rounded-circle">
+                            <img src="assets\images\users\avatar-1.jpg" alt="" class="avatar-md rounded-circle">
                         </div>
                         <div class="user-info">
                             <a href="#">Stanley Jones</a>
@@ -466,7 +466,7 @@
                                                             <label for="checkbox2"></label>
                                                         </div>
 
-                                                        <img src="..\..\public\assets\images\users\avatar-2.jpg" alt="contact-img" title="contact-img" class="rounded-circle avatar-sm">
+                                                        <img src="assets\images\users\avatar-2.jpg" alt="contact-img" title="contact-img" class="rounded-circle avatar-sm">
                                                     </td>
 
                                                     <td>
@@ -495,7 +495,7 @@
                                                             <label for="checkbox1"></label>
                                                         </div>
 
-                                                        <img src="..\..\public\assets\images\users\avatar-1.jpg" alt="contact-img" title="contact-img" class="rounded-circle avatar-sm">
+                                                        <img src="assets\images\users\avatar-1.jpg" alt="contact-img" title="contact-img" class="rounded-circle avatar-sm">
                                                     </td>
 
                                                     <td>
@@ -524,7 +524,7 @@
                                                             <label for="checkbox3"></label>
                                                         </div>
 
-                                                        <img src="..\..\public\assets\images\users\avatar-3.jpg" alt="contact-img" title="contact-img" class="rounded-circle avatar-sm">
+                                                        <img src="assets\images\users\avatar-3.jpg" alt="contact-img" title="contact-img" class="rounded-circle avatar-sm">
                                                     </td>
 
                                                     <td>
@@ -552,7 +552,7 @@
                                                             <label for="checkbox4"></label>
                                                         </div>
 
-                                                        <img src="..\..\public\assets\images\users\avatar-4.jpg" alt="contact-img" title="contact-img" class="rounded-circle avatar-sm">
+                                                        <img src="assets\images\users\avatar-4.jpg" alt="contact-img" title="contact-img" class="rounded-circle avatar-sm">
                                                     </td>
 
                                                     <td>
@@ -581,7 +581,7 @@
                                                             <label for="checkbox5"></label>
                                                         </div>
 
-                                                        <img src="..\..\public\assets\images\users\avatar-5.jpg" alt="contact-img" title="contact-img" class="rounded-circle avatar-sm">
+                                                        <img src="assets\images\users\avatar-5.jpg" alt="contact-img" title="contact-img" class="rounded-circle avatar-sm">
                                                     </td>
 
                                                     <td>
@@ -610,7 +610,7 @@
                                                             <label for="checkbox6"></label>
                                                         </div>
 
-                                                        <img src="..\..\public\assets\images\users\avatar-6.jpg" alt="contact-img" title="contact-img" class="rounded-circle avatar-sm">
+                                                        <img src="assets\images\users\avatar-6.jpg" alt="contact-img" title="contact-img" class="rounded-circle avatar-sm">
                                                     </td>
 
                                                     <td>
@@ -682,7 +682,7 @@
                         <strong>Customize </strong> the overall color scheme, layout, etc.
                     </div>
                     <div class="mb-2">
-                        <img src="..\..\public\assets\images\layouts\light.png" class="img-fluid img-thumbnail" alt="">
+                        <img src="assets\images\layouts\light.png" class="img-fluid img-thumbnail" alt="">
                     </div>
                     <div class="custom-control custom-switch mb-3">
                         <input type="checkbox" class="custom-control-input theme-choice" id="light-mode-switch" checked="">
@@ -690,18 +690,18 @@
                     </div>
             
                     <div class="mb-2">
-                        <img src="..\..\public\assets\images\layouts\dark.png" class="img-fluid img-thumbnail" alt="">
+                        <img src="assets\images\layouts\dark.png" class="img-fluid img-thumbnail" alt="">
                     </div>
                     <div class="custom-control custom-switch mb-3">
-                        <input type="checkbox" class="custom-control-input theme-choice" id="dark-mode-switch" data-bsstyle="..\..\public\assets/css/bootstrap-dark.min.css" data-appstyle="..\..\public\assets/css/app-dark.min.css">
+                        <input type="checkbox" class="custom-control-input theme-choice" id="dark-mode-switch" data-bsstyle="assets/css/bootstrap-dark.min.css" data-appstyle="assets/css/app-dark.min.css">
                         <label class="custom-control-label" for="dark-mode-switch">Dark Mode</label>
                     </div>
             
                     <div class="mb-2">
-                        <img src="..\..\public\assets\images\layouts\rtl.png" class="img-fluid img-thumbnail" alt="">
+                        <img src="assets\images\layouts\rtl.png" class="img-fluid img-thumbnail" alt="">
                     </div>
                     <div class="custom-control custom-switch mb-5">
-                        <input type="checkbox" class="custom-control-input theme-choice" id="rtl-mode-switch" data-appstyle="..\..\public\assets/css/app-rtl.min.css">
+                        <input type="checkbox" class="custom-control-input theme-choice" id="rtl-mode-switch" data-appstyle="assets/css/app-rtl.min.css">
                         <label class="custom-control-label" for="rtl-mode-switch">RTL Mode</label>
                     </div>
 
@@ -719,15 +719,15 @@
         </a>
 
         <!-- Vendor js -->
-        <script src="..\..\public\assets\js\vendor.min.js"></script>
+        <script src="assets\js\vendor.min.js"></script>
 
-        <script src="..\..\public\assets\libs\morris-js\morris.min.js"></script>
-        <script src="..\..\public\assets\libs\raphael\raphael.min.js"></script>
+        <script src="assets\libs\morris-js\morris.min.js"></script>
+        <script src="assets\libs\raphael\raphael.min.js"></script>
 
-        <script src="..\..\public\assets\js\pages\dashboard.init.js"></script>
+        <script src="assets\js\pages\dashboard.init.js"></script>
 
         <!-- App js -->
-        <script src="..\..\public\assets\js\app.min.js"></script>
+        <script src="assets\js\app.min.js"></script>
 
     </body>
 </html>
