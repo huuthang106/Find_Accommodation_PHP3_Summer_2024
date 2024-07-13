@@ -1,4 +1,5 @@
 ﻿@extends('layouts.app')
+@section('title', 'Thông Tin Tài Khoản | TÌM TRỌ')
 @section('content')
     <div class="content">
 
@@ -17,17 +18,16 @@
                             </div>
 
                             <div class="">
-                                <h5 class="mt-3">Mark A. McKnight</h5>
+                                <h5 class="mt-3">Nguyễn Hủ Théng</h5>
                                 <p class="text-muted">@webdesigner</p>
                             </div>
 
                             <p class="text-muted mt-2">
-                                Hi I'm Johnathn Deo,has been the industry's standard dummy text ever since the 1500s, when
-                                an unknown printer took a galley of type.
+                                Xin chào tôi là Nguyễn Hủ Théng.
                             </p>
 
-                            <button type="button" class="btn btn-primary mt-2 mr-1">Follow</button>
-                            <button type="button" class="btn btn-teal mt-2">Message</button>
+                            <button type="button" class="btn btn-primary mt-2 mr-1">Theo dõi</button>
+                            <button type="button" class="btn btn-teal mt-2">Nhắn tin</button>
 
                         </div>
 
@@ -44,12 +44,12 @@
                 <ul class="nav nav-tabs tabs-bordered">
                     <li class="nav-item">
                         <a href="#home-b1" data-toggle="tab" aria-expanded="false" class="nav-link active">
-                            Profile
+                            Thông tin
                         </a>
                     </li>
                     <li class="nav-item">
                         <a href="#profile-b1" data-toggle="tab" aria-expanded="true" class="nav-link">
-                            Settings
+                            Cài đặt
                         </a>
                     </li>
                 </ul>
@@ -61,28 +61,33 @@
                                 <!-- Personal-Information -->
                                 <div class="panel card panel-fill">
                                     <div class="card-header">
-                                        <h5 class="font-16 m-1">Personal Information</h5>
+                                        <h5 class="font-16 m-1">Thông Tin Cá Nhân</h5>
                                     </div>
                                     <div class="card-body">
                                         <div class="mb-4">
-                                            <strong>Full Name</strong>
+                                            <strong>Số dư</strong>
                                             <br>
-                                            <p class="text-muted">Johnathan Deo</p>
+                                            <p class="text-muted mb-0">1.000.000đ</p>
                                         </div>
                                         <div class="mb-4">
-                                            <strong>Mobile</strong>
+                                            <strong>Họ và Tên</strong>
                                             <br>
-                                            <p class="text-muted">(123) 123 1234</p>
+                                            <p class="text-muted">Nguyễn Hủ Théng</p>
+                                        </div>
+                                        <div class="mb-4">
+                                            <strong>Số điện thoại</strong>
+                                            <br>
+                                            <p class="text-muted">0123456789</p>
                                         </div>
                                         <div class="mb-4">
                                             <strong>Email</strong>
                                             <br>
-                                            <p class="text-muted">johnath@domain.com</p>
+                                            <p class="text-muted">nguyenhutheng@gmail.com</p>
                                         </div>
                                         <div class="mb-0">
-                                            <strong>Location</strong>
+                                            <strong>Địa chỉ</strong>
                                             <br>
-                                            <p class="text-muted mb-0">USA</p>
+                                            <p class="text-muted mb-0">Việt Nam</p>
                                         </div>
                                     </div>
                                 </div>
@@ -91,7 +96,7 @@
                                 <!-- Social -->
                                 <div class="panel card panel-fill">
                                     <div class="card-header">
-                                        <h5 class="font-16 m-1">Social</h5>
+                                        <h5 class="font-16 m-1">Mạng xã hội</h5>
                                     </div>
                                     <div class="card-body">
                                         <ul class="social-links list-inline mb-0">
@@ -120,11 +125,11 @@
                                 <!-- Personal-Information -->
                                 <div class="panel card panel-fill">
                                     <div class="card-header">
-                                        <h5 class="font-16 m-1">Biography</h5>
+                                        <h5 class="font-16 m-1">Tiểu sử</h5>
                                     </div>
                                     <div class="card-body">
-                                        <h5 class="font-14 mb-3 text-uppercase">About</h5>
-                                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
+                                        {{-- <h5 class="font-14 mb-3 text-uppercase">Về tôi</h5> --}}
+                                        {{-- <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
                                             Ipsum has been the industry's standard dummy text ever since the 1500s, when an
                                             unknown printer took a galley of type and scrambled it to make a type specimen
                                             book. It has survived not only five centuries, but also the leap into electronic
@@ -135,11 +140,11 @@
 
                                         <p>It was popularised in the 1960s with the release of Letraset sheets containing
                                             Lorem Ipsum passages, and more recently with desktop publishing software like
-                                            Aldus PageMaker including versions of Lorem Ipsum.</p>
+                                            Aldus PageMaker including versions of Lorem Ipsum.</p> --}}
 
-                                        <div class="">
+                                        {{-- <div class="">
 
-                                            <h5 class="font-14 mb-3 text-uppercase mt-4 mb-3">Skills</h5>
+                                            <h5 class="font-14 mb-3 text-uppercase mt-4 mb-3">Kỹ năng</h5>
 
                                             <div class="mb-3">
                                                 <h5 class="font-14">Angular Js <span class="float-right">60%</span></h5>
@@ -186,7 +191,7 @@
                                                 </div>
                                             </div>
 
-                                        </div>
+                                        </div> --}}
                                     </div>
                                 </div>
                                 <!-- Personal-Information -->
@@ -199,39 +204,35 @@
                         <!-- Personal-Information -->
                         <div class="panel card panel-fill">
                             <div class="card-header">
-                                <h5 class="font-16 m-1">Edit Profile</h5>
+                                <h5 class="font-16 m-1">Chỉnh sửa hồ sơ</h5>
                             </div>
                             <div class="card-body">
                                 <form>
                                     <div class="form-group">
-                                        <label for="FullName">Full Name</label>
-                                        <input type="text" value="John Doe" id="FullName" class="form-control">
+                                        <label for="FullName">Họ và Tên</label>
+                                        <input type="text" value="Nguyễn Hủ Théng" id="FullName" class="form-control">
                                     </div>
                                     <div class="form-group">
                                         <label for="Email">Email</label>
-                                        <input type="email" value="first.last@example.com" id="Email"
+                                        <input type="email" value="nguyenhutheng@gmail.com" id="Email"
                                             class="form-control">
                                     </div>
                                     <div class="form-group">
-                                        <label for="Username">Username</label>
-                                        <input type="text" value="john" id="Username" class="form-control">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="Password">Password</label>
-                                        <input type="password" placeholder="6 - 15 Characters" id="Password"
+                                        <label for="Password">Mật khẩu</label>
+                                        <input type="password" placeholder="6 - 15 Ký tự" id="Password"
                                             class="form-control">
                                     </div>
                                     <div class="form-group">
-                                        <label for="RePassword">Re-Password</label>
-                                        <input type="password" placeholder="6 - 15 Characters" id="RePassword"
+                                        <label for="RePassword">Nhập lại mật khẩu</label>
+                                        <input type="password" placeholder="6 - 15 Ký tự" id="RePassword"
                                             class="form-control">
                                     </div>
                                     <div class="form-group">
-                                        <label for="AboutMe">About Me</label>
-                                        <textarea style="height: 125px" id="AboutMe" class="form-control">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.</textarea>
+                                        <label for="AboutMe">Mô tả</label>
+                                        <textarea style="height: 125px" id="AboutMe" class="form-control" placeholder="Nhập mô tả bản thân (Nếu có)."></textarea>
                                     </div>
                                     <button class="btn btn-primary waves-effect waves-light width-md"
-                                        type="submit">Save</button>
+                                        type="submit">Lưu</button>
                                 </form>
 
                             </div>
@@ -251,7 +252,7 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-md-12">
-                        2017 - 2020 &copy; Simple theme by <a href="">Coderthemes</a>
+                        2024 &copy; by <a href="">Tìm Trọ</a>
                     </div>
                 </div>
             </div>

@@ -1,57 +1,63 @@
 ﻿@extends('layouts.error')
-@section('title','Register Page | Simple - Responsive Bootstrap 4 Admin Dashboard')
+@section('title', 'Đăng Ký | TÌM TRỌ')
 @section('content')
-        <div class="account-pages my-5 pt-5">
-            <div class="container">
-                <div class="row justify-content-center">
-                    <div class="col-md-8 col-lg-6">
-                        <div class="card">
-                            <div class="card-body">
-                                <div class="text-center mb-4 mt-3">
-                                    <a href="index.html">
-                                        <span><img src="assets\images\logo-dark.png" alt="" height="30"></span>
-                                    </a>
+    <div class="account-pages my-5 pt-5">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-8 col-lg-6">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="text-center mb-4 mt-3">
+                                <a href="index.html">
+                                    <span><img src="assets\images\layouts\mainlogo.jpg" alt="" height="100"
+                                            width="150"></span>
+                                </a>
+                            </div>
+                            <form action="{{ route('home') }}" class="p-2">
+                                <div class="form-group">
+                                    <label for="username">Tên</label>
+                                    <input class="form-control" type="text" id="username" required=""
+                                        placeholder="Văn A">
                                 </div>
-                                <form action="{{route('home')}}" class="p-2">
-                                    <div class="form-group">
-                                        <label for="username">Name</label>
-                                        <input class="form-control" type="text" id="username" required="" placeholder="Michael Zenaty">
+                                <div class="form-group">
+                                    <label for="emailaddress">Email</label>
+                                    <input class="form-control" type="email" id="emailaddress" required=""
+                                        placeholder="vana@gmail.com">
+                                </div>
+                                <div class="form-group">
+                                    <label for="password">Mật khẩu</label>
+                                    <input class="form-control" type="password" required="" id="password"
+                                        placeholder="Nhập mật khẩu">
+                                </div>
+                                <div class="form-group mb-4 pb-3">
+                                    <div class="custom-control custom-checkbox checkbox-primary">
+                                        <input type="checkbox" class="custom-control-input" id="checkbox-signin">
+                                        <label class="custom-control-label" for="checkbox-signin">Tôi chấp nhận <a
+                                                href="#">Các điều khoản và dịch vụ</a></label>
                                     </div>
-                                    <div class="form-group">
-                                        <label for="emailaddress">Email address</label>
-                                        <input class="form-control" type="email" id="emailaddress" required="" placeholder="john@deo.com">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="password">Password</label>
-                                        <input class="form-control" type="password" required="" id="password" placeholder="Enter your password">
-                                    </div>
-                                    <div class="form-group mb-4 pb-3">
-                                        <div class="custom-control custom-checkbox checkbox-primary">
-                                            <input type="checkbox" class="custom-control-input" id="checkbox-signin">
-                                            <label class="custom-control-label" for="checkbox-signin">I accept <a href="#">Terms and Conditions</a></label>
-                                        </div>
-                                    </div>
-                                    <div class="mb-3 text-center">
-                                        <button class="btn btn-primary btn-block" type="submit"> Sign Up Free </button>
-                                    </div>
-                                </form>
-                            </div>
-                            <!-- end card-body -->
+                                </div>
+                                <div class="mb-3 text-center">
+                                    <button class="btn btn-primary btn-block" type="submit"> ĐĂNG KÝ </button>
+                                </div>
+                            </form>
                         </div>
-                        <!-- end card -->
-
-                        <div class="row mt-4">
-                            <div class="col-sm-12 text-center">
-                                <p class="text-muted mb-0">Already have an account? <a href="{{route('pages-login')}}" class="text-dark ml-1"><b>Sign In</b></a></p>
-                            </div>
-                        </div>
-
+                        <!-- end card-body -->
                     </div>
-                    <!-- end col -->
+                    <!-- end card -->
+
+                    <div class="row mt-4">
+                        <div class="col-sm-12 text-center">
+                            <p class="text-muted mb-0">Bạn đã có tài khoản? <a href="{{ route('pages-login') }}"
+                                    class="text-dark ml-1"><b>ĐĂNG NHẬP</b></a></p>
+                        </div>
+                    </div>
+
                 </div>
-                <!-- end row -->
+                <!-- end col -->
             </div>
-            <!-- end container -->
+            <!-- end row -->
         </div>
-        <!-- end page -->
+        <!-- end container -->
+    </div>
+    <!-- end page -->
 @endsection

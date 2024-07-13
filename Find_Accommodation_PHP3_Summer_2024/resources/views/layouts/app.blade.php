@@ -32,7 +32,7 @@
         <div class="navbar-custom">
             <ul class="list-unstyled topnav-menu float-right mb-0">
 
-                <li class="dropdown d-none d-lg-block">
+                {{-- <li class="dropdown d-none d-lg-block">
                     <a class="nav-link dropdown-toggle mr-0" data-toggle="dropdown" href="#" role="button"
                         aria-haspopup="false" aria-expanded="false">
                         <img src="assets\images\flags\us.jpg" alt="user-image" class="mr-2" height="12"> <span
@@ -63,7 +63,7 @@
                             <span class="align-middle">Russian</span>
                         </a>
                     </div>
-                </li>
+                </li> --}}
 
                 <li class="dropdown notification-list">
                     <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button"
@@ -225,7 +225,7 @@
                     <form class="app-search">
                         <div class="app-search-box">
                             <div class="input-group">
-                                <input type="text" class="form-control" placeholder="Search...">
+                                <input type="text" class="form-control" placeholder="Tìm kiếm...">
                                 <div class="input-group-append">
                                     <button class="btn" type="submit">
                                         <i class="fas fa-search"></i>
@@ -261,7 +261,13 @@
                     <li>
                         <a href="{{ route('home') }}">
                             <i class="ti-home"></i>
-                            <span> Dashboard </span>
+                            <span> Bảng điều khiển </span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ route('pages-notification') }}">
+                            <i class="mdi mdi-bell noti-icon"></i>
+                            <span> Thông báo </span>
                         </a>
                     </li>
                     <li>

@@ -15,6 +15,7 @@ use App\Http\Controllers\PricesController;
 use App\Http\Controllers\RoomController;
 use App\Http\Controllers\TransactionController;
 use App\Http\Controllers\UserController;
+
 Route::get('/', [IndexController::class, 'home'])->name('home');
 Route::get('/tables-advanced', [IndexController::class, 'tables_advanced'])->name('tables-advanced');
 Route::get('/charts', [IndexController::class, 'charts'])->name('charts');
@@ -22,7 +23,7 @@ Route::get('/componetns-widgets', [IndexController::class, 'componetns_widgets']
 Route::get('/extras-contacts', [IndexController::class, 'extras_contacts'])->name('extras-contacts');
 Route::get('/extras-pricing', [IndexController::class, 'extras_pricing'])->name('extras-pricing');
 Route::get('/extras-profile', [IndexController::class, 'extras_profile'])->name('extras-profile');
-Route::get('/layouts-dark-sidebar', [IndexController::class, 'layouts_dark_sidebar'])->name('layouts-dark-sidebar');  
+Route::get('/layouts-dark-sidebar', [IndexController::class, 'layouts_dark_sidebar'])->name('layouts-dark-sidebar');
 Route::get('/layouts-horizontal', [IndexController::class, 'layouts_horizontal'])->name('layouts-horizontal');
 Route::get('/layouts-sidebar-collapsed', [IndexController::class, 'layouts_sidebar_collapsed'])->name('layouts-sidebar-collapsed');
 Route::get('/layouts-small-sidebar', [IndexController::class, 'layouts_small_sidebar'])->name('layouts-small-sidebar');
@@ -32,3 +33,5 @@ Route::get('/pages-forget-password', [IndexController::class, 'pages_forget_pass
 Route::get('/pages-login', [IndexController::class, 'pages_login'])->name('pages-login');
 Route::get('/pages-register', [IndexController::class, 'pages_register'])->name('pages-register');
 Route::get('/pages-session-expired', [IndexController::class, 'pages_session_expired'])->name('pages-session-expired');
+Route::get('/pages-notification', [IndexController::class, 'pages_notification'])->name('pages-notification');
+Route::get('/pages-notification-detail', [IndexController::class, 'pages_notification_detail'])->name('pages-notification-detail');
