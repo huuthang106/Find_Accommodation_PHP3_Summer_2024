@@ -15,6 +15,9 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->boolean('status')->default(1);
+        
+            //thiết lập quan hệ khóa ngoại giữa parent_id và id của bảng categories, với hành động onDelete là CASCADE
+            $table->foreignId('parent_id')->nullable()->constrained('categories')->onDelete('cascade'); 
             $table->timestamps();
         });
     }

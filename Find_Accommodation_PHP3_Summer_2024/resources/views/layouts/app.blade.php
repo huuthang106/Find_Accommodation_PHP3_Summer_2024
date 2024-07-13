@@ -10,6 +10,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <!-- App favicon -->
     <link rel="shortcut icon" href="assets\images\favicon.ico">
+    <!-- third party css -->
+    <link href="assets\libs\datatables\dataTables.bootstrap4.css" rel="stylesheet" type="text/css">
+    <link href="assets\libs\datatables\buttons.bootstrap4.css" rel="stylesheet" type="text/css">
+    <link href="assets\libs\datatables\responsive.bootstrap4.css" rel="stylesheet" type="text/css">
+    <link href="assets\libs\datatables\select.bootstrap4.css" rel="stylesheet" type="text/css">
     <!-- App css -->
     <link href="assets\css\bootstrap.min.css" rel="stylesheet" type="text/css" id="bootstrap-stylesheet">
     <link href="assets\css\icons.min.css" rel="stylesheet" type="text/css">
@@ -254,7 +259,7 @@
                     <li class="menu-title">Navigation</li>
 
                     <li>
-                        <a href="{{route('home')}}">
+                        <a href="{{ route('home') }}">
                             <i class="ti-home"></i>
                             <span> Dashboard </span>
                         </a>
@@ -267,7 +272,7 @@
                         </a>
                         <ul class="nav-second-level" aria-expanded="false">
 
-                            <li><a href="{{route('componetns-widgets')}}">Widgets</a></li>
+                            <li><a href="{{ route('componetns-widgets') }}">Widgets</a></li>
                         </ul>
                     </li>
                     <li>
@@ -277,11 +282,11 @@
                             <span class="menu-arrow"></span>
                         </a>
                         <ul class="nav-second-level" aria-expanded="false">
-                            <li><a href="{{route('tables-advanced')}}">Advanced Tables</a></li>
+                            <li><a href="{{ route('tables-advanced') }}">Advanced Tables</a></li>
                         </ul>
                     </li>
                     <li>
-                        <a href="{{route('charts')}}">
+                        <a href="{{ route('charts') }}">
                             <i class="ti-pie-chart"></i>
                             <span> Charts </span>
                             <span class="badge badge-primary float-right">5</span>
@@ -294,12 +299,12 @@
                             <span class="menu-arrow"></span>
                         </a>
                         <ul class="nav-second-level" aria-expanded="false">
-                            <li><a href="{{route('pages-login')}}">Login</a></li>
-                            <li><a href="{{route('pages-register')}}">Register</a></li>
-                            <li><a href="{{route('pages-forget-password')}}">Forget Password</a></li>
-                            <li><a href="{{route('pages-404')}}">Error 404</a></li>
-                            <li><a href="{{route('pages-confirm-mail')}}">Confirm Mail</a></li>
-                            <li><a href="{{route('pages-session-expired')}}">Session Expired</a></li>
+                            <li><a href="{{ route('pages-login') }}">Login</a></li>
+                            <li><a href="{{ route('pages-register') }}">Register</a></li>
+                            <li><a href="{{ route('pages-forget-password') }}">Forget Password</a></li>
+                            <li><a href="{{ route('pages-404') }}">Error 404</a></li>
+                            <li><a href="{{ route('pages-confirm-mail') }}">Confirm Mail</a></li>
+                            <li><a href="{{ route('pages-session-expired') }}">Session Expired</a></li>
                         </ul>
                     </li>
 
@@ -310,9 +315,9 @@
                             <span class="menu-arrow"></span>
                         </a>
                         <ul class="nav-second-level" aria-expanded="false">
-                            <li><a href="{{route('extras-profile')}}">Profile</a></li>
-                            <li><a href="{{route('extras-pricing')}}">Pricing</a></li>
-                            <li><a href="{{route('extras-contacts')}}">Contacts</a></li>
+                            <li><a href="{{ route('extras-profile') }}">Profile</a></li>
+                            <li><a href="{{ route('extras-pricing') }}">Pricing</a></li>
+                            <li><a href="{{ route('extras-contacts') }}">Contacts</a></li>
                         </ul>
                     </li>
 
@@ -323,10 +328,10 @@
                             <span class="badge badge-danger badge-pill float-right">New</span>
                         </a>
                         <ul class="nav-second-level" aria-expanded="false">
-                            <li><a href="{{route('layouts-horizontal')}}">Horizontal</a></li>
-                            <li><a href="{{route('layouts-dark-sidebar')}}">Dark Sidebar</a></li>
-                            <li><a href="{{route('layouts-small-sidebar')}}">Small Sidebar</a></li>
-                            <li><a href="{{route('layouts-sidebar-collapsed')}}">Sidebar Collapsed</a></li>
+                            <li><a href="{{ route('layouts-horizontal') }}">Horizontal</a></li>
+                            <li><a href="{{ route('layouts-dark-sidebar') }}">Dark Sidebar</a></li>
+                            <li><a href="{{ route('layouts-small-sidebar') }}">Small Sidebar</a></li>
+                            <li><a href="{{ route('layouts-sidebar-collapsed') }}">Sidebar Collapsed</a></li>
                         </ul>
                     </li>
 
@@ -419,35 +424,35 @@
     <script src="assets\libs\raphael\raphael.min.js"></script>
 
     <script src="assets\js\pages\dashboard.init.js"></script>
-            <!-- Vendor js -->
-            <script src="assets\js\vendor.min.js"></script>
+    <!-- Vendor js -->
 
-            <script src="assets\libs\morris-js\morris.min.js"></script>
-            <script src="assets\libs\raphael\raphael.min.js"></script>
-    
-            <script src="assets\js\pages\morris.init.js"></script>
-    
-            <script src="assets\libs\flot-charts\jquery.flot.js"></script>
-            <script src="assets\libs\flot-charts\jquery.flot.time.js"></script>
-            <script src="assets\libs\flot-charts\jquery.flot.tooltip.min.js"></script>
-            <script src="assets\libs\flot-charts\jquery.flot.resize.js"></script>
-            <script src="assets\libs\flot-charts\jquery.flot.pie.js"></script>
-            <script src="assets\libs\flot-charts\jquery.flot.selection.js"></script>
-            <script src="assets\libs\flot-charts\jquery.flot.stack.js"></script>
-            <script src="assets\libs\flot-charts\jquery.flot.orderBars.js"></script>
-            <script src="assets\libs\flot-charts\jquery.flot.crosshair.js"></script>
-            <script src="assets\libs\flot-charts\jquery.flot.axislabels.js"></script>
-    
-            <!-- KNOB JS -->
-            <script src="assets\libs\jquery-knob\jquery.knob.min.js"></script>
-    
-            <script src="assets\js\pages\flot.init.js"></script>
-    
-            <!-- App js -->
-            <script src="assets\js\app.min.js"></script>
+
+
+
+
+    <script src="assets\js\pages\morris.init.js"></script>
+
+    <script src="assets\libs\flot-charts\jquery.flot.js"></script>
+    <script src="assets\libs\flot-charts\jquery.flot.time.js"></script>
+    <script src="assets\libs\flot-charts\jquery.flot.tooltip.min.js"></script>
+    <script src="assets\libs\flot-charts\jquery.flot.resize.js"></script>
+    <script src="assets\libs\flot-charts\jquery.flot.pie.js"></script>
+    <script src="assets\libs\flot-charts\jquery.flot.selection.js"></script>
+    <script src="assets\libs\flot-charts\jquery.flot.stack.js"></script>
+    <script src="assets\libs\flot-charts\jquery.flot.orderBars.js"></script>
+    <script src="assets\libs\flot-charts\jquery.flot.crosshair.js"></script>
+    <script src="assets\libs\flot-charts\jquery.flot.axislabels.js"></script>
+
+    <!-- KNOB JS -->
+    <script src="assets\libs\jquery-knob\jquery.knob.min.js"></script>
+
+    <script src="assets\js\pages\flot.init.js"></script>
 
     <!-- App js -->
     <script src="assets\js\app.min.js"></script>
+    <!-- Datatables init -->
+    <script src="assets\js\pages\datatables.init.js"></script>
+
 
 </body>
 

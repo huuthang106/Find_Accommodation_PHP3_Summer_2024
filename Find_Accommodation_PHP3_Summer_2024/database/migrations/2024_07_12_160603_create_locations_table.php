@@ -16,6 +16,8 @@ return new class extends Migration
             $table->string('name');
             $table->timestamp('end_at')->nullable();
             $table->boolean('status')->default(1);
+            $table->foreignId('user_id')->constrained('users')->onDelete('cascade'); // Khóa ngoại với hành động on delete cascade
+            $table->foreignId('room_id')->constrained('rooms')->onDelete('cascade'); 
             $table->timestamps();
         });
     }

@@ -13,7 +13,9 @@ return new class extends Migration
     {
         Schema::create('favourites', function (Blueprint $table) {
             $table->id();
-            
+            $table->foreignId('parent_id')->nullable()->constrained('categories')->onDelete('cascade');
+            $table->foreignId('user_id')->constrained('users')->onDelete('cascade'); // Khóa ngoại với hành động on delete cascade
+            $table->foreignId('room_id')->constrained('rooms')->onDelete('cascade'); 
             $table->timestamps();
         });
     }
