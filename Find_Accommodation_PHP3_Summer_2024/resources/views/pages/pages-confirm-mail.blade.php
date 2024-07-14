@@ -14,12 +14,11 @@
                         </div>
                         <div class="mt-4 pt-3 text-center">
                             <img src="assets\images\success.svg" title="invite.svg" class="avatar-lg">
-                            <p class="text-muted mt-4 pt-2"> A email has been send to <b>youremail@domain.com</b>.
-                                Please check for an email from company bing and click on the included link to reset your
-                                password. </p>
+                            <p class="text-muted mt-4 pt-2"> Một email đã được gửi đến youremail@domain.com .
+                                 Vui lòng kiểm tra email từ công ty bing và nhấp vào liên kết kèm theo để đặt lại mật khẩu của bạn. </p>
                         </div>
                         <div class="mb-3 mt-4 text-center">
-                            <a href="{{route('home')}}" class="btn btn-primary btn-block">Back to Home</a>
+                            <a href="{{route('home')}}" class="btn btn-primary btn-block">Quay về nhà</a>
                         </div>
                     </div>
                     <!-- end card-body -->
