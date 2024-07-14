@@ -430,11 +430,6 @@
     <script src="assets\libs\raphael\raphael.min.js"></script>
 
     <script src="assets\js\pages\dashboard.init.js"></script>
-    <!-- Vendor js -->
-
-
-
-
 
     <script src="assets\js\pages\morris.init.js"></script>
 
@@ -458,6 +453,15 @@
     <script src="assets\js\app.min.js"></script>
     <!-- Datatables init -->
     <script src="assets\js\pages\datatables.init.js"></script>
+    <!-- Responsive examples -->
+    <script src="assets\libs\datatables\dataTables.responsive.min.js"></script>
+    <script src="assets\libs\datatables\responsive.bootstrap4.min.js"></script>
+    <!-- Required datatable js -->
+    <script src="assets\libs\datatables\jquery.dataTables.min.js"></script>
+    <script src="assets\libs\datatables\dataTables.bootstrap4.min.js"></script>
+    <!-- Required datatable js -->
+    <script src="assets\libs\datatables\jquery.dataTables.min.js"></script>
+    <script src="assets\libs\datatables\dataTables.bootstrap4.min.js"></script>
 
 
 </body>
