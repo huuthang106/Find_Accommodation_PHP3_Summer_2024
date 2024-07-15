@@ -92,19 +92,19 @@ class IndexController extends Controller
 
     public function pages_commet()
     {
-        return view('pages.pages-commet');
+        return view('admincp.pages-commet');
     }
 
 
     public function pages_room()
     {
-        return view('pages.pages-room');
+        return view('admincp.pages-room');
     }
 
 
     public function pages_evaluate()
     {
-        return view('pages.pages-evaluate');
+        return view('admincp.pages-evaluate');
     }
 
     public function index()
