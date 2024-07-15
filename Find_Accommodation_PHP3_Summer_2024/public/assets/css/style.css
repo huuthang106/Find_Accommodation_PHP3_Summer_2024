@@ -86,7 +86,7 @@
 .main {
     background-color: rgb(237, 237, 237);
     border-radius: 7px;
-    height: 980px;
+    height: 1050px;
     /* margin-left: 14px; */
 }
 
@@ -99,7 +99,7 @@
     text-transform: uppercase;
     color: rgb(59, 59, 187);
     font-weight: 700;
-    margin-left: 12px;
+    margin-left: 24px;
     padding-top: 15px;
 }
 
