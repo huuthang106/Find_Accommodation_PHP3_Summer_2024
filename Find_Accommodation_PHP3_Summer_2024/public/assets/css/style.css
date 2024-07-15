@@ -86,12 +86,13 @@
 .main {
     background-color: rgb(237, 237, 237);
     border-radius: 7px;
-    height: 1050px;
+   
     /* margin-left: 14px; */
+    padding: 1%;
 }
 
 .mainRoom {
-    margin-left: 2px;
+    margin: 1%;
 }
 
 .textMain {
@@ -169,7 +170,7 @@
     border: 2px solid #030281;
     border-radius: 6px;
     margin-top: 15px;
-    margin-left: 13px;
+    margin-left: 2%;
 }
 
 .buttonView span {
