@@ -201,6 +201,11 @@
                     </div>
                 </div>
             </div>
+            <div class="buttonView">
+                <span>Xem tất cả</span>
+                <i class='bx bx-right-arrow-alt' style='color:#030281'></i>
+            </div>
+        </div>
         </header>
         <section class="sectionMain">
             <div class="container">
