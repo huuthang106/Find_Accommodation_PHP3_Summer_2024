@@ -1,5 +1,5 @@
 ﻿@extends('layouts.error')
-@section('title', 'Đăng Nhập | TÌM TRỌ')
+@section('titleAdmin', 'Đăng Nhập | TÌM TRỌ')
 @section('content')
     <div class="account-pages my-5 pt-5">
         <div class="container">
@@ -9,8 +9,8 @@
                         <div class="card-body">
                             <div class="text-center mb-4 mt-3">
                                 <a href="index.html">
-                                    <span><img src="assets\images\layouts\mainlogo.jpg" alt="" height="100"
-                                            width="150"></span>
+                                    <span><img src="{{asset('assets\images\logo3.png')}}" alt="" height="60"
+                                            width="170"></span>
                                 </a>
 
                             </div>

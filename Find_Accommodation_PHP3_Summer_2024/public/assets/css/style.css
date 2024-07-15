@@ -247,6 +247,10 @@
     height: 150px;
     border-radius: 500px;
 }
+.update-img{
+    width: 100%;
+}
+
 
 .newsTitle {
     font-weight: 700;

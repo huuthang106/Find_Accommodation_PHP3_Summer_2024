@@ -1,5 +1,5 @@
 ﻿@extends('layouts.app')
-@section('title', 'Thông Tin Tài Khoản | TÌM TRỌ')
+@section('titleAdmin', 'Thông Tin Tài Khoản | TÌM TRỌ')
 @section('content')
     <div class="content">
 

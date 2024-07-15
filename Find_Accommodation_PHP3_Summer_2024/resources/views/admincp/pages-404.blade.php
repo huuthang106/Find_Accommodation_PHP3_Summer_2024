@@ -1,5 +1,5 @@
 ﻿@extends('layouts.error')
-@section('title','404 Error | Simple - Responsive Bootstrap 4 Admin Dashboard')
+@section('titleAdmin','404 Error | Simple - Responsive Bootstrap 4 Admin Dashboard')
 @section('content')
 
 <div class="account-pages my-5 pt-5">

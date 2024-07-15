@@ -1,5 +1,5 @@
 ﻿@extends('layouts.error')
-@section('title', 'Đăng Ký | TÌM TRỌ')
+@section('titleAdmin', 'Đăng Ký | TÌM TRỌ')
 @section('content')
     <div class="account-pages my-5 pt-5">
         <div class="container">

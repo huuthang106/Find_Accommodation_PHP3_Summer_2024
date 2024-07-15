@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title', 'Thông Báo | TÌM TRỌ')
+@section('titleAdmin', 'Thông Báo | TÌM TRỌ')
 @section('content')
     <div class="content">
         <!-- Start container-fluid -->

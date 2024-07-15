@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title', 'Bảng Điều Khiển | TÌM TRỌ')
+@section('titleAdmin', 'Bảng Điều Khiển | TÌM TRỌ')
 @section('content')
     <!-- ============================================================== -->
     <!-- Start Page Content here -->

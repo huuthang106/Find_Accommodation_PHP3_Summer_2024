@@ -1,5 +1,5 @@
 ﻿@extends('layouts.error')
-@section('title','Session expired | Simple - Responsive Bootstrap 4 Admin Dashboard')
+@section('titleAdmin','Session expired | Simple - Responsive Bootstrap 4 Admin Dashboard')
 @section('content')
         <div class="account-pages my-5 pt-5">
             <div class="container">

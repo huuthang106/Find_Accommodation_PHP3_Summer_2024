@@ -34,6 +34,8 @@ use App\Http\Controllers\Admin\TransactionAdminController;
 use App\Http\Controllers\Admin\UserController as AdminUserController;
 
 Route::get('/', [IndexController::class, 'home'])->name('home');
+Route::get('/trang-quan-ly', [IndexController::class, 'homeAdmin'])->name('trang-quan-ly');
+
 Route::get('/tables-advanced', [IndexController::class, 'tables_advanced'])->name('tables-advanced');
 Route::get('/charts', [IndexController::class, 'charts'])->name('charts');
 Route::get('/componetns-widgets', [IndexController::class, 'componetns_widgets'])->name('componetns-widgets');

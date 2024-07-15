@@ -1,5 +1,5 @@
 ﻿@extends('layouts.error')
-@section('title','Forget password | Simple - Responsive Bootstrap 4 Admin Dashboard')
+@section('titleAdmin','Forget password | Simple - Responsive Bootstrap 4 Admin Dashboard')
 @section('content')
         <div class="account-pages my-5 pt-5">
             <div class="container">

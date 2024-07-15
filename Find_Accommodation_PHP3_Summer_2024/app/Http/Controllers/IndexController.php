@@ -14,6 +14,11 @@ class IndexController extends Controller
     {
         return view('index');
     }
+    public function homeAdmin()
+    {
+        return view('admincp.home');
+    }
+    
 
     public function tables_advanced()
     {

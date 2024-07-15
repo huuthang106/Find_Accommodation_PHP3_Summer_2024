@@ -3,22 +3,24 @@
 
 <head>
     <meta charset="utf-8">
-    <title>@yield('title')</title>
+    <title>@yield('titleAdmin')</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta content="Responsive bootstrap 4 admin template" name="description">
     <meta content="Coderthemes" name="author">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <!-- App favicon -->
-    <link rel="shortcut icon" href="assets\images\favicon.ico">
+    <link rel="shortcut icon" href="{{asset('assets\images\logo3.png')}}">
     <!-- third party css -->
     <link href="assets\libs\datatables\dataTables.bootstrap4.css" rel="stylesheet" type="text/css">
     <link href="assets\libs\datatables\buttons.bootstrap4.css" rel="stylesheet" type="text/css">
     <link href="assets\libs\datatables\responsive.bootstrap4.css" rel="stylesheet" type="text/css">
     <link href="assets\libs\datatables\select.bootstrap4.css" rel="stylesheet" type="text/css">
     <!-- App css -->
+<link rel="stylesheet" href="assets\css\sytle-admin.css"  type="text/css" id='styleadmin-stylesheet'>
     <link href="assets\css\bootstrap.min.css" rel="stylesheet" type="text/css" id="bootstrap-stylesheet">
     <link href="assets\css\icons.min.css" rel="stylesheet" type="text/css">
     <link href="assets\css\app.min.css" rel="stylesheet" type="text/css" id="app-stylesheet">
+
 
 </head>
 
@@ -78,9 +80,9 @@
                             <h5 class="font-16 m-0">
                                 <span class="float-right">
                                     <a href="" class="text-dark">
-                                        <small>Clear All</small>
+                                        <small>Xóa tất cả</small>
                                     </a>
-                                </span>Notification
+                                </span>Thông báo
                             </h5>
                         </div>
 
@@ -128,9 +130,9 @@
                         </div>
 
                         <!-- All-->
-                        <a href="javascript:void(0);"
+                        <a href="{{ route('pages-notification') }}"
                             class="dropdown-item text-primary text-center notify-item notify-all ">
-                            View all
+                            Xem tất cả
                             <i class="fi-arrow-right"></i>
                         </a>
 
@@ -148,27 +150,18 @@
                     <div class="dropdown-menu dropdown-menu-right profile-dropdown ">
                         <!-- item-->
                         <div class="dropdown-header noti-title">
-                            <h6 class="text-overflow m-0">Welcome !</h6>
+                            <h6 class="text-overflow m-0">Xin chào !</h6>
                         </div>
 
                         <!-- item-->
-                        <a href="javascript:void(0);" class="dropdown-item notify-item">
+                        <a href="{{ route('extras-profile') }}" class="dropdown-item notify-item">
                             <i class="mdi mdi-account-outline"></i>
-                            <span>Profile</span>
+                            <span>Hồ sơ</span>
                         </a>
 
-                        <!-- item-->
-                        <a href="javascript:void(0);" class="dropdown-item notify-item">
-                            <i class="mdi mdi-settings-outline"></i>
-                            <span>Settings</span>
-                        </a>
+                   
 
-                        <!-- item-->
-                        <a href="javascript:void(0);" class="dropdown-item notify-item">
-                            <i class="mdi mdi-lock-outline"></i>
-                            <span>Lock Screen</span>
-                        </a>
-
+                      
                         <div class="dropdown-divider"></div>
 
                         <!-- item-->
@@ -180,11 +173,7 @@
                     </div>
                 </li>
 
-                <li class="dropdown notification-list">
-                    <a href="javascript:void(0);" class="nav-link right-bar-toggle">
-                        <i class="mdi mdi-settings-outline noti-icon"></i>
-                    </a>
-                </li>
+                
 
 
             </ul>
@@ -193,7 +182,7 @@
             <div class="logo-box">
                 <a href="index.html" class="logo text-center logo-dark">
                     <span class="logo-lg">
-                        <img src="assets\images\logo-dark.png" alt="" height="26">
+                        <img src="{{asset('assets\images\logo3.png')}}" alt="" height="26">
                         <!-- <span class="logo-lg-text-dark">Simple</span> -->
                     </span>
                     <span class="logo-sm">
@@ -259,7 +248,7 @@
                     <li class="menu-title">Navigation</li>
 
                     <li>
-                        <a href="{{ route('home') }}">
+                        <a href="{{ route('trang-quan-ly') }}">
                             <i class="ti-home"></i>
                             <span> Bảng điều khiển </span>
                         </a>
@@ -271,23 +260,33 @@
                         </a>
                     </li>
                     <li>
-                        <a href="{{ route('pages-commet') }}">
-                            <i class="fas fa-comment"></i>
-                            <span>Quản lí bình luận</span>
+                        <a href="javascript: void(0);">
+                            <i class="ti-files"></i>
+                            <span> Quản lý</span>
+                            <span class="menu-arrow"></span>
                         </a>
+                        <ul class="nav-second-level" aria-expanded="false">
+                            <li>
+                                <a href="{{ route('pages-commet') }}">
+                                    <i class="fas fa-comment"></i>
+                                    <span>Quản lí bình luận</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{ route('pages-room') }}">
+                                    <i class="fas fa-newspaper"></i>
+                                    <span>Quản lí tin đăng</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{ route('pages-evaluate') }}">
+                                    <i class="fas fa-money-check"></i>
+                                    <span>Quản lí đánh giá</span>
+                                </a>
+                            </li>
+                        </ul>
                     </li>
-                    <li>
-                        <a href="{{ route('pages-room') }}">
-                            <i class="fas fa-newspaper"></i>
-                            <span>Quản lí tin đăng</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="{{ route('pages-evaluate') }}">
-                            <i class="fas fa-money-check"></i>
-                            <span>Quản lí đánh giá</span>
-                        </a>
-                    </li>
+                  
                     <li>
                         <a href="javascript: void(0);">
                             <i class="ti-menu-alt"></i>
@@ -308,16 +307,16 @@
                     <li>
                         <a href="javascript: void(0);">
                             <i class="ti-files"></i>
-                            <span> Pages </span>
+                            <span> Trang tài liệu </span>
                             <span class="menu-arrow"></span>
                         </a>
                         <ul class="nav-second-level" aria-expanded="false">
-                            <li><a href="{{ route('pages-login') }}">Login</a></li>
-                            <li><a href="{{ route('pages-register') }}">Register</a></li>
-                            <li><a href="{{ route('pages-forget-password') }}">Forget Password</a></li>
-                            <li><a href="{{ route('pages-404') }}">Error 404</a></li>
-                            <li><a href="{{ route('pages-confirm-mail') }}">Confirm Mail</a></li>
-                            <li><a href="{{ route('pages-session-expired') }}">Session Expired</a></li>
+                            <li><a href="{{ route('pages-login') }}">Đăng nhập</a></li>
+                            <li><a href="{{ route('pages-register') }}">Đăng ký</a></li>
+                            <li><a href="{{ route('pages-forget-password') }}">Quên mật khẩu</a></li>
+                            <li><a href="{{ route('pages-404') }}">Lỗi</a></li>
+                            <li><a href="{{ route('pages-confirm-mail') }}">Xác nhận Email</a></li>
+                            <li><a href="{{ route('pages-session-expired') }}">Đăng nhập hết hạng</a></li>
                         </ul>
                     </li>
 
@@ -328,9 +327,9 @@
                             <span class="menu-arrow"></span>
                         </a>
                         <ul class="nav-second-level" aria-expanded="false">
-                            <li><a href="{{ route('extras-profile') }}">Profile</a></li>
-                            <li><a href="{{ route('extras-pricing') }}">Pricing</a></li>
-                            <li><a href="{{ route('extras-contacts') }}">Contacts</a></li>
+                            <li><a href="{{ route('extras-profile') }}">Hồ sơ</a></li>
+                            <li><a href="{{ route('extras-pricing') }}">Gói đăng tin</a></li>
+                            <li><a href="{{ route('extras-contacts') }}">Liên hệ</a></li>
                         </ul>
                     </li>
 
@@ -426,9 +425,7 @@
     <!-- Right bar overlay-->
     <div class="rightbar-overlay"></div>
 
-    <a href="javascript:void(0);" class="right-bar-toggle demos-show-btn">
-        <i class="mdi mdi-settings-outline mdi-spin"></i> &nbsp;Choose Demos
-    </a>
+  
 
     <!-- Vendor js -->
     <script src="assets\js\vendor.min.js"></script>
