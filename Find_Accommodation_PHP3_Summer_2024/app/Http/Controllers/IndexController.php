@@ -12,7 +12,7 @@ class IndexController extends Controller
     //router chuyển trang mẫu 
     public function home()
     {
-        return view('admincp.home');
+        return view('index');
     }
 
     public function tables_advanced()
@@ -88,6 +88,23 @@ class IndexController extends Controller
     public function pages_notification_detail()
     {
         return view('admincp.pages-notification-detail');
+    }
+
+    public function pages_commet()
+    {
+        return view('pages.pages-commet');
+    }
+
+
+    public function pages_room()
+    {
+        return view('pages.pages-room');
+    }
+
+
+    public function pages_evaluate()
+    {
+        return view('pages.pages-evaluate');
     }
 
     public function index()

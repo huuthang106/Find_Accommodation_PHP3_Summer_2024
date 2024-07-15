@@ -1,0 +1,321 @@
+.logo img {
+    width: 85%;
+    margin-top: -30px;
+}
+
+.headerTop {
+    height: 90px;
+}
+
+.header-right {
+    float: right;
+    padding: 20px;
+    margin-top: 7px;
+}
+
+.header-right ul li a {
+    font-size: 17px;
+    color: black;
+}
+
+.headerBottom {
+    position: relative;
+}
+
+.headerTitle {
+    position: absolute;
+    top: 20%;
+    color: white;
+    /* margin-left: 45px; */
+    font-weight: 700;
+}
+
+.headerSpan {
+    position: absolute;
+    top: 50%;
+    color: white;
+    /* margin-left: 45px; */
+}
+
+.searchHeader {
+    position: absolute;
+    bottom: 110px;
+    margin-left: 100px;
+}
+
+.tab-content {
+    padding: 10px 20px 20px 20px;
+    background-color: rgb(73, 73, 220);
+    border-end-end-radius: 10px;
+    border-bottom-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.buttonSearch {
+    padding: 10px 50px 6px 50px;
+    background-color: coral;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 30px;
+    cursor: pointer;
+}
+
+.textSearch {
+    display: flex;
+    font-weight: bold;
+    color: white;
+    margin-top: -2px;
+}
+
+.buttonSearch i {
+    margin-left: 10px;
+    font-size: 20px;
+}
+
+/* Main */
+.card {
+    border: none;
+}
+
+.sectionMain {
+    margin-top: 100px;
+}
+
+.main {
+    background-color: rgb(237, 237, 237);
+    border-radius: 7px;
+    height: 980px;
+    /* margin-left: 14px; */
+}
+
+.mainRoom {
+    margin-left: 2px;
+}
+
+.textMain {
+    display: flex;
+    text-transform: uppercase;
+    color: rgb(59, 59, 187);
+    font-weight: 700;
+    margin-left: 12px;
+    padding-top: 15px;
+}
+
+.room {
+    padding: 2px 10px 7px 10px;
+    background-color: rgb(240, 240, 240);
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.room span {
+    font-size: 13px;
+}
+
+.acreage {
+    padding: 2px 10px 7px 10px;
+    background-color: rgb(240, 240, 240);
+    border-radius: 5px;
+    margin-left: 10px;
+    cursor: pointer;
+}
+
+.acreage span {
+    font-size: 13px;
+}
+
+.cardPrice {
+    color: orangered;
+}
+
+.bageVip {
+    /* margin-top: 5px; */
+    position: relative;
+}
+
+.bageVip img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    margin: 0 auto;
+}
+
+.bageVip::before {
+    background-color: #dc0000;
+    content: 'VIP';
+    /* border-radius: 550px; */
+    display: inline-block;
+    font-weight: 700;
+    width: 60px;
+    height: 30px;
+    text-align: center;
+    line-height: 30px;
+    color: #fff;
+    position: absolute;
+    top: 15%;
+    right: 198px;
+    border-top-right-radius: 7px;
+    border-bottom-right-radius: 7px;
+    transform: translate(-50%, -50%);
+    /* animation: blinker 1s linear infinite; */
+    /* Áp dụng hiệu ứng nhấp nháy */
+}
+
+.buttonView {
+    width: 130px;
+    height: 40px;
+    border: 2px solid #030281;
+    border-radius: 6px;
+    margin-top: 15px;
+    margin-left: 13px;
+}
+
+.buttonView span {
+    font-size: 16px;
+    color: #030281;
+    font-weight: 600;
+    line-height: 32px;
+    margin-left: 10px;
+}
+
+.buttonView i {
+    font-size: 20px;
+    font-weight: bolder;
+    margin-top: 10px;
+    margin-left: 5px;
+}
+
+/* Section */
+
+.mainFull {
+    height: 730px;
+}
+
+.textSectionTwo {
+    color: white;
+    line-height: 80px;
+    font-weight: 700;
+}
+
+.textAddress {
+    font-size: 14px;
+}
+
+.bageHot {
+    /* margin-top: 5px; */
+    position: relative;
+}
+
+.bageHot img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    margin: 0 auto;
+}
+
+.bageHot::before {
+    background-color: #dc0000;
+    content: 'HOT';
+    /* border-radius: 550px; */
+    display: inline-block;
+    font-weight: 700;
+    width: 60px;
+    height: 30px;
+    text-align: center;
+    line-height: 30px;
+    color: #fff;
+    position: absolute;
+    top: 15%;
+    right: 198px;
+    border-top-right-radius: 7px;
+    border-bottom-right-radius: 7px;
+    transform: translate(-50%, -50%);
+    /* animation: blinker 1s linear infinite; */
+    /* Áp dụng hiệu ứng nhấp nháy */
+}
+
+.cridImg {
+    width: 50%;
+}
+
+.cridImg img {
+    margin-left: 50%;
+    margin-top: 10%;
+    width: 150px;
+    height: 150px;
+    border-radius: 500px;
+}
+
+.newsTitle {
+    font-weight: 700;
+    text-transform: uppercase;
+    color: #030281;
+}
+
+.seeMoreSpan {
+    cursor: pointer;
+    float: right;
+    color: #030281;
+    font-weight: 500;
+    margin-right: 20px;
+}
+
+.numberNews {
+    font-size: 19px;
+    font-weight: bold;
+}
+
+.despritionNews {
+    cursor: pointer;
+    color: black;
+    font-weight: 600;
+}
+
+.despritionNews:hover {
+    color: #030281;
+}
+
+.evaluateTitle {
+    color: #030281;
+}
+
+/* footer */
+.titleFooter {
+    font-size: 20px;
+    font-weight: 600;
+    color: #030281;
+    margin-left: 15%;
+}
+
+.newsFooter h4 {
+    color: #030281;
+    font-weight: 600;
+}
+
+.newsFooter p {
+    cursor: pointer;
+    color: black;
+}
+
+.newsFooter i {
+    padding: 10px 10px 10px 10px;
+    border-radius: 40px;
+    background-color: #c1eff8;
+}
+
+.newsFooter p:hover {
+    color: #030281;
+}
+
+.endBarFooter {
+    height: 30px;
+    background-color: #030281;
+}
+
+.endBarFooter span {
+    margin-left: 45%;
+    color: white;
+    font-size: 14px;
+}

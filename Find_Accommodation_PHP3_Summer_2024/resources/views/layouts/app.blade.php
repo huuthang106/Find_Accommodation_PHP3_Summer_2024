@@ -271,15 +271,22 @@
                         </a>
                     </li>
                     <li>
-                        <a href="javascript: void(0);">
-                            <i class="ti-light-bulb"></i>
-                            <span> Components </span>
-                            <span class="menu-arrow"></span>
+                        <a href="{{ route('pages-commet') }}">
+                            <i class="fas fa-comment"></i>
+                            <span>Quản lí bình luận</span>
                         </a>
-                        <ul class="nav-second-level" aria-expanded="false">
-
-                            <li><a href="{{ route('componetns-widgets') }}">Widgets</a></li>
-                        </ul>
+                    </li>
+                    <li>
+                        <a href="{{ route('pages-room') }}">
+                            <i class="fas fa-newspaper"></i>
+                            <span>Quản lí tin đăng</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ route('pages-evaluate') }}">
+                            <i class="fas fa-money-check"></i>
+                            <span>Quản lí đánh giá</span>
+                        </a>
                     </li>
                     <li>
                         <a href="javascript: void(0);">

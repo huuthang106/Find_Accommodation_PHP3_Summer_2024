@@ -14,6 +14,7 @@ use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\PriceListController;
 use App\Http\Controllers\PricesController;
 use App\Http\Controllers\RoomController;
+use App\Http\Controllers\EvaluateController;
 use App\Http\Controllers\TransactionController;
 use App\Http\Controllers\UserController;
 // controller admin
@@ -51,3 +52,6 @@ Route::get('/pages-register', [IndexController::class, 'pages_register'])->name(
 Route::get('/pages-session-expired', [IndexController::class, 'pages_session_expired'])->name('pages-session-expired');
 Route::get('/pages-notification', [IndexController::class, 'pages_notification'])->name('pages-notification');
 Route::get('/pages-notification-detail', [IndexController::class, 'pages_notification_detail'])->name('pages-notification-detail');
+Route::get('/pages-commet', [IndexController::class, 'pages_commet'])->name('pages-commet');
+Route::get('/pages-room', [IndexController::class, 'pages_room'])->name('pages-room');
+Route::get('/pages-evaluate', [IndexController::class, 'pages_evaluate'])->name('pages-evaluate');
