@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Room;
 
 class RoomAdminController extends Controller
 {
@@ -13,6 +14,9 @@ class RoomAdminController extends Controller
     public function index()
     {
         //
+        $room = Room::all();
+        // dd($room);
+        return view('admincp.pages-room', compact('room'));
     }
 
     /**
@@ -36,7 +40,10 @@ class RoomAdminController extends Controller
      */
     public function show(string $id)
     {
-        //
+        // $room=Room::where('id', $id)->get();
+
+        // return view('admincp.pages-notification-detail',compact('room'));
+    
     }
 
     /**
@@ -61,5 +68,9 @@ class RoomAdminController extends Controller
     public function destroy(string $id)
     {
         //
+        $room = Room::find($id);
+        $room->delete();
+        return redirect()->back();
+
     }
 }

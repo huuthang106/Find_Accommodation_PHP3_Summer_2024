@@ -101,10 +101,7 @@ class IndexController extends Controller
     }
 
 
-    public function pages_room()
-    {
-        return view('admincp.pages-room');
-    }
+  
 
 
     public function pages_evaluate()

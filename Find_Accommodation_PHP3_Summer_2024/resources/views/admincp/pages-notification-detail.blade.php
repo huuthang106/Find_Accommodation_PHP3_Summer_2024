@@ -38,7 +38,7 @@
 
                             <tbody>
                                 <tr>
-                                    <td>Bài đăng</td>
+                                    <td>{{$room}}</td>
                                     <td>Data Example 01</td>
                                     <td>Trọ thường</td>
                                     <td>Đã xem</td>

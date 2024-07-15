@@ -56,7 +56,7 @@
                                     <td>Trọ thường</td>
                                     <td>Đã xem</td>
                                     <td>2024/04/25</td>
-                                    <td><a href="{{ route('pages-notification-detail') }}"><button type="button"
+                                    <td><a href=""><button type="button"
                                                 class="btn btn-primary">Xem chi tiết</button></a></td>
                                 </tr>
                                 <tr>

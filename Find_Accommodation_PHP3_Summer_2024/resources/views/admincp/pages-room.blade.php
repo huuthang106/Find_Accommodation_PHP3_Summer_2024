@@ -37,16 +37,19 @@
                             </thead>
 
                             <tbody>
-                                <tr>
-                                    <th><input type="checkbox"></th>
-                                    <th></th>
-                                    <td>Tiger Nixon</td>
-                                    <td>System Architect</td>
-                                    <td>Edinburgh</td>
-                                    <td>61</td>
-                                    <td>2011/04/25</td>
-                                    <td><button class="btn btn-primary">Xem chi tiết</button></td>
-                                </tr>
+                                @foreach ($room as $item)
+                                    <tr>
+                                        <th><input type="checkbox"></th>
+                                        <th>{{$item->id}}</th>
+                                        <td></td>
+                                        <td>System Architect</td>
+                                        <td>Edinburgh</td>
+                                        <td>61</td>
+                                        <td>2011/04/25</td>
+                                        <td><a href="pages-notification-detail/{{$item->id}}" class="btn btn-primary">Xem chi tiết</a></td>
+                                    </tr>
+                                @endforeach
+
                             </tbody>
                         </table>
 
