@@ -12,82 +12,82 @@ class IndexController extends Controller
     //router chuyển trang mẫu 
     public function home()
     {
-        return view('home');
+        return view('admincp.home');
     }
 
     public function tables_advanced()
     {
-        return view('pages.tables-advanced');
+        return view('admincp.tables-advanced');
     }
     public function charts()
     {
-        return view('pages.charts');
+        return view('admincp.charts');
     }
     public function componetns_widgets()
     {
-        return view('pages.components-widgets');
+        return view('admincp.components-widgets');
     }
     public function extras_contacts()
     {
-        return view('pages.extras-contacts');
+        return view('admincp.extras-contacts');
     }
     public function extras_pricing()
     {
-        return view('pages.extras-pricing');
+        return view('admincp.extras-pricing');
     }
     public function extras_profile()
     {
-        return view('pages.extras-profile');
+        return view('admincp.extras-profile');
     }
     public function layouts_dark_sidebar()
     {
-        return view('pages.layouts-dark-sidebar');
+        return view('admincp.layouts-dark-sidebar');
     }
     public function layouts_horizontal()
     {
-        return view('pages.layouts-horizontal');
+        return view('admincp.layouts-horizontal');
     }
     public function layouts_sidebar_collapsed()
     {
-        return view('pages.layouts-sidebar-collapsed');
+        return view('admincp.layouts-sidebar-collapsed');
     }
     public function layouts_small_sidebar()
     {
-        return view('pages.layouts-small-sidebar');
+        return view('admincp.layouts-small-sidebar');
     }
     public function pages_404()
     {
-        return view('pages.pages-404');
+        return view('admincp.pages-404');
     }
     public function pages_confirm_mail()
     {
-        return view('pages.pages-confirm-mail');
+        return view('admincp.pages-confirm-mail');
     }
     public function pages_forget_password()
     {
-        return view('pages.pages-forget-password');
+        return view('admincp.pages-forget-password');
     }
     public function pages_login()
     {
-        return view('pages.pages-login');
+        return view('admincp.pages-login');
     }
     public function pages_register()
     {
-        return view('pages.pages-register');
+        return view('admincp.pages-register');
     }
     public function pages_session_expired()
     {
-        return view('pages.pages-session-expired');
+        return view('admincp.pages-session-expired');
     }
 
     public function pages_notification()
     {
-        return view('pages.pages-notification');
+        return view('admincp.pages-notification');
     }
 
     public function pages_notification_detail()
     {
-        return view('pages.pages-notification-detail');
+        return view('admincp.pages-notification-detail');
     }
 
     public function index()

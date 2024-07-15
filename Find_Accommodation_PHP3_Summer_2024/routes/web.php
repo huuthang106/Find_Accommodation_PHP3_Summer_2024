@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+// controller user
 use App\Http\Controllers\AcreageController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CommentController;
@@ -15,6 +16,21 @@ use App\Http\Controllers\PricesController;
 use App\Http\Controllers\RoomController;
 use App\Http\Controllers\TransactionController;
 use App\Http\Controllers\UserController;
+// controller admin
+use App\Http\Controllers\Admin\AcreageAdminController;
+use App\Http\Controllers\Admin\CategoryAdminController;
+use App\Http\Controllers\Admin\CommentAdminController;
+use App\Http\Controllers\Admin\FavouriteAdminController;
+use App\Http\Controllers\Admin\HomeAdminController;
+use App\Http\Controllers\Admin\ImageAdminController;
+use App\Http\Controllers\Admin\IndexAdminController;
+use App\Http\Controllers\Admin\LocationAdminController;
+use App\Http\Controllers\Admin\NotificationAdminController;
+use App\Http\Controllers\Admin\PriceListAdminController;
+use App\Http\Controllers\Admin\PricesAdminController;
+use App\Http\Controllers\Admin\RoomAdminController;
+use App\Http\Controllers\Admin\TransactionAdminController;
+use App\Http\Controllers\Admin\UserController as AdminUserController;
 
 Route::get('/', [IndexController::class, 'home'])->name('home');
 Route::get('/tables-advanced', [IndexController::class, 'tables_advanced'])->name('tables-advanced');
