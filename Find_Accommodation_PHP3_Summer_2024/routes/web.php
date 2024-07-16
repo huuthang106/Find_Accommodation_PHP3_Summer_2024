@@ -33,7 +33,7 @@ use App\Http\Controllers\Admin\RoomAdminController;
 use App\Http\Controllers\Admin\TransactionAdminController;
 use App\Http\Controllers\Admin\UserController as AdminUserController;
 
-Route::get('/', [IndexController::class, 'home'])->name('home');
+Route::get('/', [RoomController::class, 'index'])->name('home');
 Route::get('/trang-quan-ly', [IndexController::class, 'homeAdmin'])->name('trang-quan-ly');
 
 Route::get('/tables-advanced', [IndexController::class, 'tables_advanced'])->name('tables-advanced');
@@ -57,3 +57,5 @@ Route::get('/pages-notification-detail', [IndexController::class, 'pages_notific
 Route::get('/pages-commet', [IndexController::class, 'pages_commet'])->name('pages-commet');
 Route::get('/pages-room', [IndexController::class, 'pages_room'])->name('pages-room');
 Route::get('/pages-evaluate', [IndexController::class, 'pages_evaluate'])->name('pages-evaluate');
+// route user
+Route::get('/xem-phong/{id}',[RoomController::class,'getRoomID'])->name('get-room');

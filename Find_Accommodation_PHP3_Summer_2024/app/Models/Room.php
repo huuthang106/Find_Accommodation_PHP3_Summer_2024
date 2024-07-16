@@ -8,4 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Room extends Model
 {
     use HasFactory;
+     // Định nghĩa mối quan hệ belongsTo với model User
+     public function user()
+     {
+         return $this->belongsTo(User::class, 'user_id');
+     }
 }

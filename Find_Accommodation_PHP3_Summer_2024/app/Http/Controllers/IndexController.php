@@ -10,10 +10,7 @@ class IndexController extends Controller
      * Display a listing of the resource.
      */
     //router chuyển trang mẫu 
-    public function home()
-    {
-        return view('index');
-    }
+  
     public function homeAdmin()
     {
         return view('admincp.home');

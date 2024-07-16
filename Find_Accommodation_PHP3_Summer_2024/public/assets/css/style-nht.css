@@ -1,0 +1,53 @@
+
+/* css Nguyen Huu Thang */
+.button-login{
+    font-size:17px;
+}
+.logo-img{
+    margin-left: -19%;
+}
+.background-content{
+    background: #f4f4f4;
+}
+
+.box-title {
+    font-size: 26px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 1.5;
+    text-transform: uppercase;
+    color: #0045a8;
+}
+.hostel__detail--tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 12px 0;
+}
+.hostel__detail--tags .item {
+    line-height: 1;
+    padding: 6px 8px;
+    color: #2e2a2a;
+    border-radius: 6px;
+    background: #ebecec;
+}
+.header{
+    max-width: 1190px;
+}
+.headerTop{
+    margin: 0;
+}
+.hostel__detail--tags .item.vip {
+    color: #fff;
+    background: #e01020;
+}
+
+.text-orange{
+    color: rgb(255, 92, 0);
+}
+.btn-orange{
+    background: rgb(255, 92, 0);
+}
+.margin-botton{
+    margin-bottom: 2%;
+}
