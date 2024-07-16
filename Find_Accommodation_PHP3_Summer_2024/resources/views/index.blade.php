@@ -11,8 +11,13 @@
                 </div>
                 <div class="col-9">
                     <div class="header-right">
-                        <nav class="navbar navbar-expand-lg navbar-light">
+                        <nav class="navbar navbar-expand-lg navbar-light ">
                             <div class="container-fluid">
+                                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                                    aria-expanded="false" aria-label="Toggle navigation">
+                                    <span class="navbar-toggler-icon"></span>
+                                </button>
                                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                                     <ul class="navbar-nav me-auto mb-2 mb-lg-0 fw-bold">
                                         <li class="nav-item pe-4">
@@ -27,17 +32,126 @@
                                         <li class="nav-item pe-4">
                                             <a class="nav-link" href="#">Blog</a>
                                         </li>
-                                        <li class="nav-item pe-4">
-                                            <a type="button" class="btn btn-primary button-login fw-semibold"
-                                                style="color: aliceblue" data-bs-toggle="modal"
-                                                data-bs-target="#exampleModal">
-                                                Đăng nhập/Đăng ký
-                                            </a>
-                                        </li>
                                     </ul>
+                                    <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                                        data-bs-target="#loginModal">
+                                        Đăng nhập/Đăng ký
+                                    </button>
                                 </div>
                             </div>
                         </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered"> <!-- Thêm class này -->
+                <div class="modal-content">
+                    <div class="modal-header border-0">
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="account-pages my-3 pt-2">
+                            <div class="container">
+                                <div class="row justify-content-center">
+                                    <div class="col-md-12 col-lg-12">
+                                        <div class="card">
+                                            <div class="card-body">
+                                                <div class="text-center">
+                                                    <a href="index.html">
+                                                        <span><img src="{{ asset('assets/images/logo3.png') }}"
+                                                                alt="" height="60" width="170"></span>
+                                                    </a>
+                                                </div>
+                                                <form action="{{ route('home') }}" class="p-2">
+                                                    <div class="mb-3">
+                                                        <label for="emailaddress" class="form-label">Email</label>
+                                                        <input class="form-control" type="email" id="emailaddress"
+                                                            required="" placeholder="example@gmail.com">
+                                                    </div>
+                                                    <div class="mb-3">
+                                                        <label for="password" class="form-label">Mật khẩu</label>
+                                                        <input class="form-control" type="password" required=""
+                                                            id="password" placeholder="Nhập mật khẩu">
+                                                    </div>
+                                                    <div class="mb-3 pb-3 form-check">
+                                                        <input type="checkbox" class="form-check-input"
+                                                            id="checkbox-signin">
+                                                        <label class="form-check-label" for="checkbox-signin">Ghi
+                                                            nhớ tài khoản?</label>
+                                                    </div>
+                                                    <div class="mb-3 text-center">
+                                                        <button class="btn btn-primary w-100" type="submit">ĐĂNG
+                                                            NHẬP</button>
+                                                    </div>
+                                                    <a href="page-recoverpw.html"
+                                                        class="text-muted float-end text-decoration-none">Quên mật
+                                                        khẩu?</a>
+                                                </form>
+                                            </div>
+                                        </div>
+                                        <div class="row mt-3">
+                                            <div class="col-sm-12 text-center">
+                                                <p class="text-muted mb-0">Bạn chưa có tài khoản? <a href="#"
+                                                        id="showRegisterModal" class="text-dark" data-bs-toggle="modal"
+                                                        data-bs-target="#registerModal"><b>ĐĂNG KÝ</b></a></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Modal Đăng Ký -->
+        <div class="modal fade" id="registerModal" tabindex="-1" aria-labelledby="registerModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header border-0">
+
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="text-center">
+                            <a href="index.html">
+                                <span><img src="{{ asset('assets/images/logo3.png') }}" alt="" height="60"
+                                        width="170"></span>
+                            </a>
+                        </div>
+                        <div class="account-pages my-3 pt-2">
+                            <div class="container">
+                                <form action="" class="p-2">
+                                    <div class="mb-3">
+                                        <label for="registerEmail" class="form-label">Email</label>
+                                        <input class="form-control" type="email" id="registerEmail" required
+                                            placeholder="example@gmail.com">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="registerPassword" class="form-label">Mật khẩu</label>
+                                        <input class="form-control" type="password" id="registerPassword" required
+                                            placeholder="Nhập mật khẩu">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="confirmPassword" class="form-label">Xác nhận mật khẩu</label>
+                                        <input class="form-control" type="password" id="confirmPassword" required
+                                            placeholder="Nhập lại mật khẩu">
+                                    </div>
+                                    <div class="mb-3 text-center">
+                                        <button class="btn btn-primary w-100" type="submit">ĐĂNG KÝ</button>
+                                    </div>
+                                </form>
+                                <div class="row mt-3">
+                                    <div class="col-sm-12 text-center">
+                                        <p class="text-muted mb-0">Bạn đã có tài khoản? <a href="#"
+                                                id="showLoginModal" class="text-dark" data-bs-toggle="modal"
+                                                data-bs-target="#loginModal"><b>ĐĂNG NHẬP</b></a></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -56,17 +170,17 @@
         <div class="container searchHeader">
             <ul class="nav nav-tabs" id="myTab" role="tablist">
                 <li class="nav-item" role="presentation">
-                    <button class="nav-link active" id="all" data-bs-toggle="tab" data-bs-target="#all" type="button"
-                        role="tab" aria-controls="home" aria-selected="true">Tất cả</button>
+                    <button class="nav-link active" id="all" data-bs-toggle="tab" data-bs-target="#all"
+                        type="button" role="tab" aria-controls="home" aria-selected="true">Tất cả</button>
                 </li>
                 <li class="nav-item" role="presentation">
-                    <button class="nav-link" id="homestay" data-bs-toggle="tab" data-bs-target="#homestay" type="button"
-                        role="tab" aria-controls="profile" aria-selected="false">Phòng
+                    <button class="nav-link" id="homestay" data-bs-toggle="tab" data-bs-target="#homestay"
+                        type="button" role="tab" aria-controls="profile" aria-selected="false">Phòng
                         trọ</button>
                 </li>
                 <li class="nav-item" role="presentation">
-                    <button class="nav-link" id="resort" data-bs-toggle="tab" data-bs-target="#resort" type="button"
-                        role="tab" aria-controls="contact" aria-selected="false">Nhà nguyên
+                    <button class="nav-link" id="resort" data-bs-toggle="tab" data-bs-target="#resort"
+                        type="button" role="tab" aria-controls="contact" aria-selected="false">Nhà nguyên
                         căn,
                         chung cư</button>
                 </li>
@@ -208,7 +322,7 @@
                 <div class="row mt-3 mainRoom">
                     @foreach ($rooms as $room)
                         <div class="col-3">
-                            <a href="xem-phong/{{$room->id}}" class="text-decoration-none">
+                            <a href="xem-phong/{{ $room->id }}" class="text-decoration-none">
                                 <div class="card">
                                     <div class="bageVip">
                                         <img src="{{ asset('assets\images\448469911_476143361772862_3803638986442606747_n-min.jpg') }}"
