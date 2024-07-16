@@ -44,7 +44,7 @@ class Authenticate implements AuthenticatesRequests
      */
     public static function using($guard, ...$others)
     {
-        return static::class.':'.implode(',', [$guard, ...$others]);
+        return static::class . ':' . implode(',', [$guard, ...$others]);
     }
 
     /**
@@ -102,7 +102,8 @@ class Authenticate implements AuthenticatesRequests
         throw new AuthenticationException(
             'Unauthenticated.',
             $guards,
-            $request->expectsJson() ? null : $this->redirectTo($request),
+            // $request->expectsJson() ? null : $this->redirectTo($request),
+            $request->expectsJson() ? null : route('admincp.pages-login'),
         );
     }
 

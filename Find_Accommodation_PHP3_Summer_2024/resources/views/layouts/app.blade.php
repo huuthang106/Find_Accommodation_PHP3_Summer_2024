@@ -9,17 +9,17 @@
     <meta content="Coderthemes" name="author">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <!-- App favicon -->
-    <link rel="shortcut icon" href="{{asset('assets\images\logo3.png')}}">
+    <link rel="shortcut icon" href="{{ asset('assets\images\logo3.png') }}">
     <!-- third party css -->
-    <link href="assets\libs\datatables\dataTables.bootstrap4.css" rel="stylesheet" type="text/css">
-    <link href="assets\libs\datatables\buttons.bootstrap4.css" rel="stylesheet" type="text/css">
-    <link href="assets\libs\datatables\responsive.bootstrap4.css" rel="stylesheet" type="text/css">
+    <link href="{{ asset('assets/libs/datatables/dataTables.bootstrap4.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{ asset('assets/libs/datatables/buttons.bootstrap4.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{ asset('assets/libs/datatables/responsive.bootstrap4.css') }}" rel="stylesheet" type="text/css">
     <link href="assets\libs\datatables\select.bootstrap4.css" rel="stylesheet" type="text/css">
     <!-- App css -->
-<link rel="stylesheet" href="assets\css\sytle-admin.css"  type="text/css" id='styleadmin-stylesheet'>
-    <link href="assets\css\bootstrap.min.css" rel="stylesheet" type="text/css" id="bootstrap-stylesheet">
-    <link href="assets\css\icons.min.css" rel="stylesheet" type="text/css">
-    <link href="assets\css\app.min.css" rel="stylesheet" type="text/css" id="app-stylesheet">
+    <link rel="stylesheet" href="{{ asset('assets/css/style-admin.css') }}" type="text/css" id='styleadmin-stylesheet'>
+    <link href="{{ asset('assets/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css" id="bootstrap-stylesheet">
+    <link href="{{ asset('assets/css/icons.min.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{ asset('assets/css/app.min.css') }}" rel="stylesheet" type="text/css" id="app-stylesheet">
 
 
 </head>
@@ -71,7 +71,7 @@
                     <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button"
                         aria-haspopup="false" aria-expanded="false">
                         <i class="mdi mdi-bell noti-icon"></i>
-                        <span class="badge badge-danger rounded-circle noti-icon-badge">4</span>
+                        <span class="badge badge-danger rounded-circle noti-icon-badge">{{ $notificationCount }}</span>
                     </a>
                     <div class="dropdown-menu dropdown-menu-right dropdown-lg">
 
@@ -79,7 +79,7 @@
                         <div class="dropdown-item noti-title">
                             <h5 class="font-16 m-0">
                                 <span class="float-right">
-                                    <a href="" class="text-dark">
+                                    <a href="{{ route('soft-delete-all-notifications') }}" class="text-dark">
                                         <small>Xóa tất cả</small>
                                     </a>
                                 </span>Thông báo
@@ -89,44 +89,55 @@
                         <div class="slimscroll noti-scroll">
 
                             <!-- item-->
-                            <a href="javascript:void(0);" class="dropdown-item notify-item">
+                            @foreach ($unreadNotifications as $item)
+                                <a href="trang-chi-tiet-thong-bao/{{ $item->id }}"
+                                    class="dropdown-item notify-item">
+                                    <div class="notify-icon bg-success"><i class="mdi mdi-comment-account-outline"></i>
+                                    </div>
+                                    <p class="notify-details">{{ $item->message }}<small
+                                            class="text-muted">{{ $item->created_at->diffForHumans() }}</small>
+                                    </p>
+                                </a>
+                            @endforeach
+
+                            {{-- <a href="javascript:void(0);" class="dropdown-item notify-item">
                                 <div class="notify-icon bg-success"><i class="mdi mdi-comment-account-outline"></i>
                                 </div>
                                 <p class="notify-details">Caleb Flakelar commented on Admin<small class="text-muted">1
                                         min ago</small></p>
-                            </a>
+                            </a> --}}
 
                             <!-- item-->
-                            <a href="javascript:void(0);" class="dropdown-item notify-item">
+                            {{-- <a href="javascript:void(0);" class="dropdown-item notify-item">
                                 <div class="notify-icon bg-info"><i class="mdi mdi-account-plus"></i></div>
                                 <p class="notify-details">New user registered.<small class="text-muted">5 hours
                                         ago</small></p>
-                            </a>
+                            </a> --}}
 
                             <!-- item-->
-                            <a href="javascript:void(0);" class="dropdown-item notify-item">
+                            {{-- <a href="javascript:void(0);" class="dropdown-item notify-item">
                                 <div class="notify-icon bg-danger"><i class="mdi mdi-heart"></i></div>
                                 <p class="notify-details">Carlos Crouch liked <b>Admin</b><small class="text-muted">3
                                         days ago</small></p>
-                            </a>
+                            </a> --}}
 
                             <!-- item-->
-                            <a href="javascript:void(0);" class="dropdown-item notify-item">
+                            {{-- <a href="javascript:void(0);" class="dropdown-item notify-item">
                                 <div class="notify-icon bg-warning"><i class="mdi mdi-comment-account-outline"></i>
                                 </div>
                                 <p class="notify-details">Caleb Flakelar commented on Admin<small class="text-muted">4
                                         days ago</small></p>
-                            </a>
+                            </a> --}}
 
                             <!-- item-->
-                            <a href="javascript:void(0);" class="dropdown-item notify-item">
+                            {{-- <a href="javascript:void(0);" class="dropdown-item notify-item">
                                 <div class="notify-icon bg-primary">
                                     <i class="mdi mdi-heart"></i>
                                 </div>
                                 <p class="notify-details">Carlos Crouch liked <b>Admin</b>
                                     <small class="text-muted">13 days ago</small>
                                 </p>
-                            </a>
+                            </a> --}}
                         </div>
 
                         <!-- All-->
@@ -142,7 +153,8 @@
                 <li class="dropdown notification-list">
                     <a class="nav-link dropdown-toggle nav-user mr-0" data-toggle="dropdown" href="#"
                         role="button" aria-haspopup="false" aria-expanded="false">
-                        <img src="assets\images\users\avatar-1.jpg" alt="user-image" class="rounded-circle">
+                        <img src="{{ asset('assets\images\users\avatar-1.jpg') }}" alt="user-image"
+                            class="rounded-circle">
                         <span class="pro-user-name ml-1">
                             Maxine K <i class="mdi mdi-chevron-down"></i>
                         </span>
@@ -159,21 +171,30 @@
                             <span>Hồ sơ</span>
                         </a>
 
-                   
 
-                      
+
+
                         <div class="dropdown-divider"></div>
 
                         <!-- item-->
-                        <a href="javascript:void(0);" class="dropdown-item notify-item">
+                        {{-- <a href="javascript:void(0);" class="dropdown-item notify-item">
                             <i class="mdi mdi-logout-variant"></i>
                             <span>Logout</span>
+                        </a> --}}
+                        <a href="javascript:void(0);" class="dropdown-item notify-item"
+                            onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                            <i class="mdi mdi-logout-variant"></i>
+                            <span>Đăng xuất</span>
                         </a>
+
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                            @csrf
+                        </form>
 
                     </div>
                 </li>
 
-                
+
 
 
             </ul>
@@ -182,7 +203,7 @@
             <div class="logo-box">
                 <a href="index.html" class="logo text-center logo-dark">
                     <span class="logo-lg">
-                        <img src="{{asset('assets\images\logo3.png')}}" alt="" height="26">
+                        <img src="{{ asset('assets\images\logo3.png') }}" alt="" height="26">
                         <!-- <span class="logo-lg-text-dark">Simple</span> -->
                     </span>
                     <span class="logo-sm">
@@ -232,7 +253,8 @@
 
             <div class="user-box">
                 <div class="float-left">
-                    <img src="assets\images\users\avatar-1.jpg" alt="" class="avatar-md rounded-circle">
+                    <img src="{{ asset('assets\images\users\avatar-1.jpg') }}" alt=""
+                        class="avatar-md rounded-circle">
                 </div>
                 <div class="user-info">
                     <a href="#">Stanley Jones</a>
@@ -286,7 +308,7 @@
                             </li>
                         </ul>
                     </li>
-                  
+
                     <li>
                         <a href="javascript: void(0);">
                             <i class="ti-menu-alt"></i>
@@ -425,41 +447,44 @@
     <!-- Right bar overlay-->
     <div class="rightbar-overlay"></div>
 
-  
+
 
     <!-- Vendor js -->
-    <script src="assets\js\vendor.min.js"></script>
+    <script src="{{ asset('assets/js/vendor.min.js') }}"></script>
 
-    <script src="assets\libs\morris-js\morris.min.js"></script>
-    <script src="assets\libs\raphael\raphael.min.js"></script>
+    <script src="{{ asset('assets/libs/morris-js/morris.min.js') }}"></script>
+    <script src="{{ asset('assets/libs/raphael/raphael.min.js') }}"></script>
 
-    <script src="assets\js\pages\dashboard.init.js"></script>
+    <script src="{{ asset('assets/js/pages/dashboard.init.js') }}"></script>
 
-    <script src="assets\js\pages\morris.init.js"></script>
+    <script src="{{ asset('assets/js/pages/morris.init.js') }}"></script>
 
-    <script src="assets\libs\flot-charts\jquery.flot.js"></script>
-    <script src="assets\libs\flot-charts\jquery.flot.time.js"></script>
-    <script src="assets\libs\flot-charts\jquery.flot.tooltip.min.js"></script>
-    <script src="assets\libs\flot-charts\jquery.flot.resize.js"></script>
-    <script src="assets\libs\flot-charts\jquery.flot.pie.js"></script>
-    <script src="assets\libs\flot-charts\jquery.flot.selection.js"></script>
-    <script src="assets\libs\flot-charts\jquery.flot.stack.js"></script>
-    <script src="assets\libs\flot-charts\jquery.flot.orderBars.js"></script>
-    <script src="assets\libs\flot-charts\jquery.flot.crosshair.js"></script>
-    <script src="assets\libs\flot-charts\jquery.flot.axislabels.js"></script>
+    <script src="{{ asset('assets/libs/flot-charts/jquery.flot.js') }}"></script>
+    <script src="{{ asset('assets/libs/flot-charts/jquery.flot.time.js') }}"></script>
+    <script src="{{ asset('assets/libs/flot-charts/jquery.flot.tooltip.min.js') }}"></script>
+    <script src="{{ asset('assets/libs/flot-charts/jquery.flot.resize.js') }}"></script>
+    <script src="{{ asset('assets/libs/flot-charts/jquery.flot.pie.js') }}"></script>
+    <script src="{{ asset('assets/libs/flot-charts/jquery.flot.selection.js') }}"></script>
+    <script src="{{ asset('assets/libs/flot-charts/jquery.flot.stack.js') }}"></script>
+    <script src="{{ asset('assets/libs/flot-charts/jquery.flot.orderBars.js') }}"></script>
+    <script src="{{ asset('assets/libs/flot-charts/jquery.flot.crosshair.js') }}"></script>
+    <script src="{{ asset('assets/libs/flot-charts/jquery.flot.axislabels.js') }}"></script>
 
     <!-- KNOB JS -->
-    <script src="assets\libs\jquery-knob\jquery.knob.min.js"></script>
+    <script src="{{ asset('assets/libs/jquery-knob/jquery.knob.min.js') }}"></script>
 
-    <script src="assets\js\pages\flot.init.js"></script>
+    <script src="{{ asset('assets/js/pages/flot.init.js') }}"></script>
 
     <!-- App js -->
-    <script src="assets\js\app.min.js"></script>
+    <script src="{{ asset('assets/js/app.min.js') }}"></script>
+
     <!-- Datatables init -->
-    <script src="assets\js\pages\datatables.init.js"></script>
+    <script src="{{ asset('assets/js/pages/datatables.init.js') }}"></script>
+
     <!-- Responsive examples -->
-    <script src="assets\libs\datatables\dataTables.responsive.min.js"></script>
-    <script src="assets\libs\datatables\responsive.bootstrap4.min.js"></script>
+    <script src="{{ asset('assets/libs/datatables/dataTables.responsive.min.js') }}"></script>
+    <script src="{{ asset('assets/libs/datatables/responsive.bootstrap4.min.js') }}"></script>
+
     <!-- Required datatable js -->
     <script src="assets\libs\datatables\jquery.dataTables.min.js"></script>
     <script src="assets\libs\datatables\dataTables.bootstrap4.min.js"></script>

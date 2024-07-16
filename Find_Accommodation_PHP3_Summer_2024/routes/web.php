@@ -31,6 +31,7 @@ use App\Http\Controllers\Admin\PriceListAdminController;
 use App\Http\Controllers\Admin\PricesAdminController;
 use App\Http\Controllers\Admin\RoomAdminController;
 use App\Http\Controllers\Admin\TransactionAdminController;
+use App\Http\COntrollers\Admin\LoginController;
 use App\Http\Controllers\Admin\UserController as AdminUserController;
 
 Route::get('/home', [IndexController::class, 'home'])->name('home');
@@ -64,3 +65,45 @@ Route::get('/pages-evaluate', [IndexController::class, 'pages_evaluate'])->name(
 // route user
 Route::get('/xem-phong/{id}',[RoomController::class,'getRoomID'])->name('get-room');
 route::get('/profile', [UserController::class, 'profileuser'])->name('profileus');
+Route::get('/', [IndexController::class, 'home'])->name('home');
+
+// Login trước khi vào các trang admin
+Route::get('/admin/dang-nhap', [IndexController::class, 'pages_login'])->name('admincp.pages-login');
+Route::post('/admin/dang-nhap', [IndexController::class, 'check_login']);
+// Đăng ký admin
+Route::get('/admin/dang-ky', [IndexController::class, 'pages_register'])->name('admincp.pages-register');
+Route::post('/admin/dang-ky', [IndexController::class, 'check_register']);
+// Đăng xuất admin
+Route::post('/logout', [IndexController::class, 'logout'])->name('logout');
+// Login trước khi vào trang admin
+Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
+    Route::get('/trang-quan-ly', [IndexController::class, 'homeAdmin'])->name('trang-quan-ly');
+    Route::get('/tables-advanced', [IndexController::class, 'tables_advanced'])->name('tables-advanced');
+    Route::get('/charts', [IndexController::class, 'charts'])->name('charts');
+    Route::get('/componetns-widgets', [IndexController::class, 'componetns_widgets'])->name('componetns-widgets');
+    Route::get('/extras-contacts', [IndexController::class, 'extras_contacts'])->name('extras-contacts');
+    Route::get('/extras-pricing', [IndexController::class, 'extras_pricing'])->name('extras-pricing');
+    Route::get('/extras-profile', [IndexController::class, 'extras_profile'])->name('extras-profile');
+    Route::get('/layouts-dark-sidebar', [IndexController::class, 'layouts_dark_sidebar'])->name('layouts-dark-sidebar');
+    Route::get('/layouts-horizontal', [IndexController::class, 'layouts_horizontal'])->name('layouts-horizontal');
+    Route::get('/layouts-sidebar-collapsed', [IndexController::class, 'layouts_sidebar_collapsed'])->name('layouts-sidebar-collapsed');
+    Route::get('/layouts-small-sidebar', [IndexController::class, 'layouts_small_sidebar'])->name('layouts-small-sidebar');
+    Route::get('/pages-404', [IndexController::class, 'pages_404'])->name('pages-404');
+    Route::get('/pages-confirm-mail', [IndexController::class, 'pages_confirm_mail'])->name('pages-confirm-mail');
+    Route::get('/pages-forget-password', [IndexController::class, 'pages_forget_password'])->name('pages-forget-password');
+    Route::get('/pages-login', [IndexController::class, 'pages_login'])->name('pages-login');
+    Route::get('/pages-register', [IndexController::class, 'pages_register'])->name('pages-register');
+    Route::get('/pages-session-expired', [IndexController::class, 'pages_session_expired'])->name('pages-session-expired');
+    Route::get('/pages-commet', [IndexController::class, 'pages_commet'])->name('pages-commet');
+    Route::get('/pages-room', [IndexController::class, 'pages_room'])->name('pages-room');
+    Route::get('/pages-evaluate', [IndexController::class, 'pages_evaluate'])->name('pages-evaluate');
+
+    // Router thông báo admin
+    Route::get('/trang-thong-bao', [NotificationAdminController::class, 'index'])->name('pages-notification');
+    // Router chi tiết thông báo admin
+    Route::get('/trang-chi-tiet-thong-bao/{id}', [NotificationAdminController::class, 'show'])->name('pages-notification-detail');
+    // Router Đã xem thông báo admin
+    Route::post('/trang-chi-tiet-thong-bao/cap-nhat/{id}', [NotificationAdminController::class, 'update'])->name('pages-notification-detail');
+    // Xóa mềm thông báo admin
+    Route::get('/xoa-tat-ca-thong-bao', [NotificationAdminController::class, 'softDeleteAll'])->name('soft-delete-all-notifications');
+});
