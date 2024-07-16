@@ -37,7 +37,7 @@ class IndexController extends Controller
     public function extras_pricing()
     {
        
-        return view('admincp.extras-pricing', );
+        return view('admincp.manages.extras-pricing', );
     }
     public function extras_profile()
     {
@@ -86,7 +86,7 @@ class IndexController extends Controller
     public function pages_commet()
     {
 
-        return view('admincp.pages-commet');
+        return view('admincp.manages.pages-commet');
     }
 
 

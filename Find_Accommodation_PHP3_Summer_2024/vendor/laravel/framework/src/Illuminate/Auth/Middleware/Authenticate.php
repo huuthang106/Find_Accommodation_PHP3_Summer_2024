@@ -102,8 +102,8 @@ class Authenticate implements AuthenticatesRequests
         throw new AuthenticationException(
             'Unauthenticated.',
             $guards,
-            // $request->expectsJson() ? null : $this->redirectTo($request),
-            $request->expectsJson() ? null : route('admincp.pages-login'),
+            $request->expectsJson() ? null : $this->redirectTo($request),
+            // $request->expectsJson() ? null : route('pages-login-admin'),
         );
     }
 

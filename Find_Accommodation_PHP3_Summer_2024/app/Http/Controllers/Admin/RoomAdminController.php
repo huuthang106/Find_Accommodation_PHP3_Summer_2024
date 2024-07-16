@@ -16,7 +16,7 @@ class RoomAdminController extends Controller
     {
         //
         $rooms = Room::where('status', '!=', 5)->get();
-        return view('admincp.pages-room', compact('rooms'));
+        return view('admincp.manages.pages-room', compact('rooms'));
     }
 
     /**

@@ -23,7 +23,7 @@ class NotificationAdminController extends Controller
     
 
         // Truyền dữ liệu tới view
-        return view('admincp.pages-notification', compact('notification'));
+        return view('admincp.manages.pages-notification', compact('notification'));
     }
     public function showNofi()
     {
@@ -31,7 +31,7 @@ class NotificationAdminController extends Controller
         $notification = Notification::where('status', '!=', 5)->paginate(10);
     
         // Truyền dữ liệu tới view
-        return view('admincp.pages-notification', compact('notification'));
+        return view('admincp.manages.pages-notification', compact('notification'));
     }
     
     public function destroyNofi(string $id)

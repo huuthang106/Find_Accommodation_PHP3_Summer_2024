@@ -17,7 +17,6 @@ use App\Http\Controllers\Client\RoomController;
 use App\Http\Controllers\Client\EvaluateController;
 use App\Http\Controllers\Client\TransactionController;
 use App\Http\Controllers\UserController;
-
 use App\Http\Controllers\Client\AuthController;
 use App\Http\Controllers\Client\RegisterController;
 // controller admin
@@ -86,11 +85,7 @@ Route::put('/thong-tin-tai-khoan/{id}', [UserController::class, 'update'])->name
 // route::put('/thong-tin-tai-khoan/{id}', [UserController::class, 'update'])->name('update-profile');
 // Route::get('/', [IndexController::class, 'home'])->name('home');
 
-//binh luan mhuy
 
-Route::post('/comments', [CommentController::class, 'store'])->middleware('auth')->name('comments.store');
-Route::get('/rooms/{id}/', [CommentController::class, 'index'])->name('comments.index');
-Route::get('/rooms/{id}/comments/all', [CommentController::class, 'showAll'])->name('comments.showAll');
 
 
 //Login user mhuy
@@ -130,7 +125,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
     route::put('/quan-li-ho-so/{id}', [UserController::class, 'update_profile_admin'])->name('chinh-sua-ho-so');
     // Router thông báo admin
 
-    
+
     // Router chi tiết thông báo admin
     Route::get('/trang-chi-tiet-thong-bao/{id}', [NotificationAdminController::class, 'show'])->name('pages-notification-detail');
     // Router Đã xem thông báo admin
@@ -140,12 +135,12 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
 
     //Nguyen Thai Toan 
     Route::get('/goi-dang-tin', [PriceListAdminController::class, 'ShowPriceList'])->name('goi-dang-tin');
-  
+
     Route::get('/chinh-sua-goi-tin/{id}', [PriceListAdminController::class, 'getPriceListID'])->name('post-pricelist');
     Route::put('/chinh-sua-goi-tin/{id}', [PriceListAdminController::class, 'update'])->name('put-pricelist');
     Route::get('/chi-tiet-bai-viet/{id}', [RoomAdminController::class, 'getRoomID'])->name('pages-room-detail');
     // end Thai Toan
-    
+
 
 
     Route::get('/quan-ly-binh-luan', [CommentAdminController::class, 'index'])->name('pages-commet');
@@ -162,12 +157,12 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
 
 
     // Tong Chi Nhan admin
-    Route::get('/admin/extras-pricing', [PriceListAdminController::class, 'index'])->name('goi-dang-tin'); // router quản lí giá gói admin
+    Route::get('/goi-dang-tin', [PriceListAdminController::class, 'index'])->name('goi-dang-tin'); // router quản lí giá gói admin
     Route::get('/extras-profile', [UserController::class, 'index'])->name('extras-profile')->middleware('auth');
- // router trang quan li ho so  
+    // router trang quan li ho so  
     // Route::get('/extras-profile', [IndexController::class, 'extras_profile'])->name('extras-profile');
     Route::get('/quan-ly-bai-viet', [RoomAdminController::class, 'index'])->name('pages-room'); // showw phòng ra 
-   
+
     Route::put('/rooms/{id}', [RoomAdminController::class, 'destroy'])->name('rooms.destroy'); // xóa phòng
 
     Route::get('/chi-tiet-goi-tin', [PriceListAdminController::class, 'getPriceListDetail'])->name('get-pricelist'); // showw gói tin ra
@@ -223,9 +218,19 @@ Route::post('/xu-ly-dang-bai', [RoomController::class, 'check_post_room'])->name
 // end Vo Tan Luon User
 
 // Nguyen Huu Thang user
-
-// Route::group(['prefix' => 'tai-khoang', 'middleware' => 'authus'], function () {
-Route::get('/tai-khoang', [UserController::class, 'show'])->name('profileus');
-Route::get('/chinh-sua-bai-viet/{id}', [RoomController::class, 'page_edit_posting'])->name('edit-posting');
-    // });
+Route::get('/login', [HomeController::class, 'login'])->name('login');
+Route::group(['prefix' => 'tai-khoan', 'middleware' => 'auth'], function () {
+    Route::get('/', [UserController::class, 'show'])->name('profileus');
+    Route::get('/chinh-sua-bai-viet/{id}', [RoomController::class, 'page_edit_posting'])->name('edit-posting');
+   
+});
 // end Nguyen Huu Thang user
+Route::group(['prefix' => 'bai-viet'], function () {
+    //binh luan mhuy
+    Route::post('/comments', [CommentController::class, 'store'])->middleware('auth')->name('comments.store');
+    Route::get('/Chi-tiet-bai-viet/{id}/', [CommentController::class, 'index'])->name('comments.index');
+    Route::get('/rooms/{id}/comments/all', [CommentController::class, 'showAll'])->name('comments.showAll');
+
+    // Nguyen Huu Thăng
+  
+});

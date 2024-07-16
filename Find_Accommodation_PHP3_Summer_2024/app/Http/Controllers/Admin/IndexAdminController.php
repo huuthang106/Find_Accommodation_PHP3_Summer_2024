@@ -18,7 +18,7 @@ class IndexAdminController extends Controller
 
 
         // Truyền dữ liệu tới view
-        return view('admincp.pages-notification');
+        return view('admincp.manages.pages-notification');
     }
 
     /**
@@ -68,7 +68,7 @@ class IndexAdminController extends Controller
     {
         //
     }
-    
+
     public function pages_login()
     {
         return view('admincp.pages-login');
@@ -84,7 +84,7 @@ class IndexAdminController extends Controller
             'email' => 'required|email|exists:users,email',
             'password' => 'required',
         ], [
-            'email.exists' => 'Email không tồn tại trong hệ thống.',
+            'email.exists' => 'Tài khoảng hoặc mật khẩu không đúng',
             'email.required' => 'Vui lòng nhập địa chỉ email.',
             'email.email' => 'Địa chỉ email không hợp lệ.',
             'password.required' => 'Vui lòng nhập mật khẩu.',
@@ -94,14 +94,24 @@ class IndexAdminController extends Controller
 
         if (auth()->attempt($credentials)) {
             // Authentication passed
-            return redirect()->route('trang-quan-ly');
+            $user = auth()->user();
+            switch ($user->role) {
+                case 0:
+                    // Trường hợp người dùng có status = 2, cho phép truy cập
+                    return redirect()->route('trang-quan-ly');
+                default:
+                    // Các trường hợp khác, đăng xuất và thông báo lỗi
+                    auth()->logout();
+                    return redirect()->back()->withErrors([
+                        'password' => 'Tài khoảng hoặc mật khẩu không đúng',
+                    ]);
+            }
         }
-
-        // Authentication failed
-        return redirect()->back()->withErrors([
-            'password' => 'Mật khẩu không chính xác.',
-        ]);
     }
+
+    // Authentication failed
+
+
 
     public function check_register()
     {
@@ -122,6 +132,7 @@ class IndexAdminController extends Controller
         ]);
         $data = request()->all('username', 'email');
         $data['password'] = bcrypt(request('password'));
+        $data['role'] = 0;
         User::create($data);
         return redirect()->route('pages-login-admin');
     }

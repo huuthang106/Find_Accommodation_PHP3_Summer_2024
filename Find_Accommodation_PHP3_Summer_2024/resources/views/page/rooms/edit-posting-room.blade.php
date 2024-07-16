@@ -18,7 +18,7 @@
                                     <div class="mb-3">
                                         <label for="Title" class="form-label">Tiêu đề bài đăng</label>
                                         <input type="text" class="form-control" id="Title" name="Title"
-                                            value="{{ old('Title') }}">
+                                            value="{{ $room->title }}">
                                         @error('Title')
                                             <div class="alert alert-danger">{{ $message }}</div>
                                         @enderror
@@ -26,7 +26,7 @@
                                     <div class="mb-3">
                                         <label for="Description" class="form-label">Mô tả</label>
                                         <textarea class="form-control" id="Description" name="Description" style="height: 125px;"
-                                            placeholder="Nhập mô tả bản thân (Nếu có).">{{ old('Description') }}</textarea>
+                                            placeholder="Nhập mô tả bản thân (Nếu có).">{{ $room->description }}</textarea>
                                         @error('Description')
                                             <div class="alert alert-danger">{{ $message }}</div>
                                         @enderror
@@ -34,7 +34,7 @@
                                     <div class="mb-3">
                                         <label for="Price" class="form-label">Giá</label>
                                         <input type="text" class="form-control" id="Price" name="Price"
-                                            placeholder="Nhập giá" value="{{ old('Price') }}">
+                                            placeholder="Nhập giá" value="{{ $room->price }}">
                                         @error('Price')
                                             <div class="alert alert-danger">{{ $message }}</div>
                                         @enderror
@@ -42,7 +42,7 @@
                                     <div class="mb-3">
                                         <label for="Phone" class="form-label">Số điện thoại</label>
                                         <input type="text" class="form-control" id="Phone" name="Phone"
-                                            placeholder="6 - 15 Ký tự" value="{{ old('Phone') }}">
+                                            placeholder="6 - 15 Ký tự" value="{{ $room->phone }}">
                                         @error('Phone')
                                             <div class="alert alert-danger">{{ $message }}</div>
                                         @enderror
@@ -50,7 +50,7 @@
                                     <div class="mb-3">
                                         <label for="Address" class="form-label">Địa chỉ</label>
                                         <textarea class="form-control" id="Address" name="Address" style="height: 125px;"
-                                            placeholder="Nhập địa chỉ phòng trọ.">{{ old('Address') }}</textarea>
+                                            placeholder="Nhập địa chỉ phòng trọ.">{{ $room->address }}</textarea>
                                         @error('Address')
                                             <div class="alert alert-danger">{{ $message }}</div>
                                         @enderror
@@ -66,8 +66,12 @@
                                     <div class="mb-3">
                                         <label for="Category_id" class="form-label">Loại</label>
                                         <select name="Category_id" id="Category_id" class="form-control">
+                                            
                                             @foreach ($categories as $item)
-                                                <option value="{{ $item->id }}">{{ $item->name }}</option>
+                                                <option value="{{ $item->id }}"
+                                                    {{ old('Category_id', $room->category_id) == $item->id ? 'selected' : '' }}>
+                                                    {{ $item->name }}
+                                                </option>
                                             @endforeach
                                         </select>
                                         @error('Category_id')
@@ -77,7 +81,7 @@
                                     <div class="mb-3">
                                         <label for="quantity" class="form-label">Số lượng phòng trống</label>
                                         <input type="number" class="form-control" id="quantity" name="quantity"
-                                            value="{{ old('quantity') }}">
+                                            value="{{ $room->quantity }}">
                                         @error('quantity')
                                             <div class="alert alert-danger">{{ $message }}</div>
                                         @enderror
@@ -130,4 +134,5 @@
     </script>
     <!-- jQuery -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 @endpush

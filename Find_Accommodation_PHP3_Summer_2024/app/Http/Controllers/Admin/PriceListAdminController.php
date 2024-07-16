@@ -42,7 +42,7 @@ class PriceListAdminController extends Controller
     {
        
         $price = PriceList::where('status', '!=', 5)->get();
-        return view('admincp.pages-pricing-detail', compact('price'));
+        return view('admincp.manages.pages-pricing-detail', compact('price'));
     }
 
     public function getPriceListID($id)

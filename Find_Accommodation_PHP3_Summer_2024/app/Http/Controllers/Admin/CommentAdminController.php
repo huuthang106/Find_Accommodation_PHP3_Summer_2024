@@ -14,7 +14,7 @@ class CommentAdminController extends Controller
     public function index()
     {
         $comment = Comment::where('status',1)->get();
-        return view('admincp.pages-comment', compact('comment'));
+        return view('admincp.manages.pages-comment', compact('comment'));
     }
 
     /**

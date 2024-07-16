@@ -20,9 +20,7 @@
                                     <label for="emailaddress">Email</label>
                                     <input class="form-control" type="email" name="email" id="emailaddress"
                                         required="" placeholder="example@gmail.com">
-                                    @error('email')
-                                        <small class="text-danger text-blod">{{ $message }}</small>
-                                    @enderror
+                                   
                                 </div>
                                 <div class="form-group">
                                     <a href="page-recoverpw.html" class="text-muted float-right">Quên mật khẩu?</a>
@@ -32,6 +30,9 @@
                                     @error('password')
                                         <small class="text-danger text-bold">{{ $message }}</small>
                                     @enderror
+                                    @error('email')
+                                    <small class="text-danger text-blod">{{ $message }}</small>
+                                @enderror   
                                 </div>
 
                                 <div class="form-group mb-4 pb-3">

@@ -16,7 +16,7 @@ class CustomAuthenticate
      */
     public function handle($request, Closure $next, ...$guards)
     {
-        if (Auth::guest()) {
+        if (Auth::check()) {
             return redirect('/'); // Thay đổi thành trang bạn muốn chuyển hướng khi người dùng chưa đăng nhập
         }
 

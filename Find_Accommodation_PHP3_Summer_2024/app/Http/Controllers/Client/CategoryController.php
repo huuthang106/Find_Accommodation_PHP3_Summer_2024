@@ -16,7 +16,7 @@ class CategoryController extends Controller
         // Cái này là admin 
         // $category = Category::all();
         // dd($category);
-        // return view('admincp.pages-category', compact('category'));
+     
 
         // Cái này là user
         return view('page.rooms.category-motel');

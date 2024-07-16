@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use App\Models\Room;
 use App\Models\Category;
-
+use Illuminate\Support\Facades\Auth;
 
 class RoomController extends Controller
 {
@@ -78,11 +78,11 @@ class RoomController extends Controller
     }
     public function getRoomID($id)
     {
-        $room = Room::where('id', $id)->first();;
-        return view('page.rooms.detail-room', compact('room'));
-        // $room = Room::where('id', $id)->first();
-        ;
-        // return redirect()->route('comments.index', ['id' => $id]);
+        // $room = Room::where('id', $id)->first();;
+        // return view('page.rooms.detail-room', compact('room'));
+        $room = Room::where('id', $id)->first();
+        
+        return redirect()->route('comments.index', ['id' => $id]);
     }
     public function page_posting()
     {
@@ -132,6 +132,19 @@ class RoomController extends Controller
         return redirect()->route('home');
     }
 
+        public function page_edit_posting($id){
+        
+         if(Auth::check()){
+            $user = Auth::user();
+            $room = Room::find($id);  
+            
+            $categories = Category::where('status', 1)->get();  
+                return view('page.rooms.edit-posting-room',compact('categories', 'room','user'));
+         }else{
+            return redirect()->route('login')->with('error', 'Bạn phải đăng nhập để sửa bài đăng.');
+         }
+
+        }
 
 
 }

@@ -17,7 +17,7 @@ class CommentController extends Controller
         $room = Room::findOrFail($roomId);
         $comments = $room->comments()->latest()->take(3)->get();
 
-        return view('page.detail-room', compact('room', 'comments'));
+        return view('page.rooms.detail-room', compact('room', 'comments'));
     }
 
     /**

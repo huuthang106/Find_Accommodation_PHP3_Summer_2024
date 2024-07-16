@@ -133,27 +133,34 @@
                                         style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                                         <thead>
                                             <tr>
-                                                <th>Tất cả <input type="checkbox"></th>
                                                 <th>STT</th>
+                                                <th>Xem chi tiết</th>
+                                                <th>Chỉnh sửa</th>
+                                                <th>Tất cả <input type="checkbox"></th>
+
                                                 <th>Tiêu đề</th>
                                                 <th>Số điện thoại</th>
                                                 <th>Giá</th>
                                                 <th>Nội dung</th>
                                                 <th>Tên người đăng</th>
-                                                <th>Xem chi tiết</th>
+
                                             </tr>
                                         </thead>
                                         <tbody>
 
                                             <tr>
                                                 <td><input type="checkbox"></td>
+                                                <td><a href="" class="btn btn-primary">Xem chi tiết</a></td>
+                                                <td><a href="{{ route('edit-posting', 1) }}" class="btn btn-primary">Chỉnh
+                                                        sửa</a></td>
+
                                                 <td></td>
                                                 <td></td>
                                                 <td>System Architect</td>
                                                 <td>Edinburgh</td>
                                                 <td>61</td>
                                                 <td>2011/04/25</td>
-                                                <td><a href="" class="btn btn-primary">Xem chi tiết</a></td>
+
                                             </tr>
 
                                         </tbody>
