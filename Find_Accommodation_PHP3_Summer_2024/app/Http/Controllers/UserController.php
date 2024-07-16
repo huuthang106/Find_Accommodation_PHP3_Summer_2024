@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\User; 
 
 class UserController extends Controller
 {
@@ -11,7 +12,10 @@ class UserController extends Controller
      */
     public function index()
     {
-        //
+    
+        $user = User::where('id',1)->get();
+        // dd($user);
+        return view('admincp.extras-profile', compact('user'));
     }
 
     /**

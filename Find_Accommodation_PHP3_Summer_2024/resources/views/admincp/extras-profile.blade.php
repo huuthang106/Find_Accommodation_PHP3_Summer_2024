@@ -1,6 +1,7 @@
 ﻿@extends('layouts.app')
 @section('titleAdmin', 'Thông Tin Tài Khoản | TÌM TRỌ')
 @section('content')
+
     <div class="content">
 
         <!-- Start container-fluid -->
@@ -18,7 +19,7 @@
                             </div>
 
                             <div class="">
-                                <h5 class="mt-3">Nguyễn Hủ Théng</h5>
+                                <h5 class="mt-3"></h5>
                                 <p class="text-muted">@webdesigner</p>
                             </div>
 
@@ -58,39 +59,48 @@
                     <div class="tab-pane active" id="home-b1">
                         <div class="row">
                             <div class="col-lg-4">
-                                <!-- Personal-Information -->
-                                <div class="panel card panel-fill">
-                                    <div class="card-header">
-                                        <h5 class="font-16 m-1">Thông Tin Cá Nhân</h5>
+                             
+                            
+                                @foreach($user as $item)
+                                    <div class="panel card panel-fill">
+                                        <div class="card-header">
+                                            <h5 class="font-16 m-1">Thông Tin Cá Nhân</h5>
+                                        </div>
+                                        <div class="card-body">
+                                            <div class="mb-4">
+                                                <strong>Số dư</strong>
+                                                <br>
+                                                <p class="text-muted mb-0">{{ number_format($item->balance, 0, ',', '.') }}đ
+                                                </p>
+                                            </div>
+                                            <div class="mb-4">
+                                                <strong>Họ và Tên</strong>
+                                                <br>
+                                                <p class="text-muted">{{ $item->username }}</p>
+                                            </div>
+                                            <div class="mb-4">
+                                                <strong>Số điện thoại</strong>
+                                                <br>
+                                                <p class="text-muted">{{ $item->phone }}</p>
+                                            </div>
+                                            <div class="mb-4">
+                                                <strong>Email</strong>
+                                                <br>
+                                                <p class="text-muted">{{ $item->email }}</p>
+                                            </div>
+                                            <div class="mb-0">
+                                                <strong>Địa chỉ</strong>
+                                                <br>
+                                                <p class="text-muted mb-0">{{ $item->address }}</p>
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div class="card-body">
-                                        <div class="mb-4">
-                                            <strong>Số dư</strong>
-                                            <br>
-                                            <p class="text-muted mb-0">1.000.000đ</p>
-                                        </div>
-                                        <div class="mb-4">
-                                            <strong>Họ và Tên</strong>
-                                            <br>
-                                            <p class="text-muted">Nguyễn Hủ Théng</p>
-                                        </div>
-                                        <div class="mb-4">
-                                            <strong>Số điện thoại</strong>
-                                            <br>
-                                            <p class="text-muted">0123456789</p>
-                                        </div>
-                                        <div class="mb-4">
-                                            <strong>Email</strong>
-                                            <br>
-                                            <p class="text-muted">nguyenhutheng@gmail.com</p>
-                                        </div>
-                                        <div class="mb-0">
-                                            <strong>Địa chỉ</strong>
-                                            <br>
-                                            <p class="text-muted mb-0">Việt Nam</p>
-                                        </div>
-                                    </div>
-                                </div>
+                                @endforeach
+                             
+
+
+
+
                                 <!-- Personal-Information -->
 
                                 <!-- Social -->

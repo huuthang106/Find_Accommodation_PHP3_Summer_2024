@@ -33,15 +33,17 @@ use App\Http\Controllers\Admin\RoomAdminController;
 use App\Http\Controllers\Admin\TransactionAdminController;
 use App\Http\Controllers\Admin\UserController as AdminUserController;
 
-Route::get('/', [RoomController::class, 'index'])->name('home');
-Route::get('/trang-quan-ly', [IndexController::class, 'homeAdmin'])->name('trang-quan-ly');
+Route::get('/', [IndexController::class, 'home'])->name('home');
+Route::get('/home', [IndexController::class, 'homeAdmin'])->name('trang-quan-ly');
 
 Route::get('/tables-advanced', [IndexController::class, 'tables_advanced'])->name('tables-advanced');
 Route::get('/charts', [IndexController::class, 'charts'])->name('charts');
 Route::get('/componetns-widgets', [IndexController::class, 'componetns_widgets'])->name('componetns-widgets');
 Route::get('/extras-contacts', [IndexController::class, 'extras_contacts'])->name('extras-contacts');
 Route::get('/extras-pricing', [IndexController::class, 'extras_pricing'])->name('extras-pricing');
-Route::get('/extras-profile', [IndexController::class, 'extras_profile'])->name('extras-profile');
+
+Route::get('/quan-li-ho-so', [UserController::class, 'index'])->name('extras-profile');
+
 Route::get('/layouts-dark-sidebar', [IndexController::class, 'layouts_dark_sidebar'])->name('layouts-dark-sidebar');
 Route::get('/layouts-horizontal', [IndexController::class, 'layouts_horizontal'])->name('layouts-horizontal');
 Route::get('/layouts-sidebar-collapsed', [IndexController::class, 'layouts_sidebar_collapsed'])->name('layouts-sidebar-collapsed');
