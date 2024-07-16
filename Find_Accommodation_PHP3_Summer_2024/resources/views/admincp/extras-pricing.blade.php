@@ -9,7 +9,7 @@
             <div class="row">
                 <div class="col-12">
                     <div>
-                        <h4 class="header-title mb-3">Pricing</h4>
+                        <h4 class="header-title mb-3">GIÁ</h4>
 
                         <!-- Start row -->
                         <div class="row mt-5 justify-content-center">
@@ -19,16 +19,15 @@
                                 </div>
 
                                 <div class="row mt-5">
+                                    @foreach($price as $item)
                                     <div class="col-lg-4">
                                         <div class="card text-center mt-3 bg-light border-0">
                                             <div class="card-header bg-primary">
                                                 <h5 class="text-uppercase text-white font-16">GÓI KHỞI ĐẦU</h5>
                                             </div>
-
                                             <div class="text-center p-4 mb-3">
-                                                <h1 class="display-4 mt-0 font-weight-bold">190.000 đ</h1>
+                                                <h1 class="display-5 mt-0 font-weight-bold">{{ $item->price }}đ</h1>
                                                 <p class="font-13">Mỗi tháng</p>
-
                                                 <div class="mt-4 pt-2">
                                                     <p>Lưu trữ 10 GB</p>
                                                     <p>Băng thông 500 GB</p>
@@ -37,15 +36,17 @@
                                                     <p>Hỗ trợ email</p>
                                                     <p>Hỗ trợ 24x7</p>
                                                 </div>
-
                                                 <div class="text-center mt-5">
                                                     <a href="#" class="btn btn-danger width-md btn-rounded">Đăng Kí</a>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
+                                @endforeach
+                        
+                             
 
-                                    <div class="col-lg-4">
+                                    {{-- <div class="col-lg-4">
                                         <div class="card text-center mt-3 ribbon-box bg-light border-0">
 
                                             <div class="card-header bg-primary">
@@ -71,9 +72,9 @@
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
+                                    </div> --}}
 
-                                    <div class="col-lg-4">
+                                    {{-- <div class="col-lg-4">
                                         <div class="card text-center mt-3 bg-light border-0">
                                             <div class="card-header bg-primary">
                                                 <h5 class="text-uppercase text-white font-16">GÓI DOANH NGHIỆP</h5>
@@ -97,7 +98,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
+                                    </div> --}}
                                 </div>
 
                             </div>

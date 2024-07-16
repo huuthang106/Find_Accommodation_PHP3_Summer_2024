@@ -14,11 +14,13 @@ class PriceListSeeder extends Seeder
     public function run(): void
     {
         //
+      
         PriceList::create([
             'price'=>'200000',
             'description'=>'vị trí đặt ở vip',
             'created_at'=> Carbon::now(),
             'updated_at'=> Carbon::now(),
         ]);
+        // PriceList::factory()->count(20)->create();
     }
 }

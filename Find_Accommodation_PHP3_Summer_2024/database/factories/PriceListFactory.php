@@ -17,7 +17,11 @@ class PriceListFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'price' => $this->faker->randomFloat(2, 1, 1000),
+            'description' => $this->faker->sentence(),
+            'status' => $this->faker->randomElement(['available', 'unavailable']),
+            'created_at' => now(),
+            'updated_at' => now(),
         ];
     }
 }
