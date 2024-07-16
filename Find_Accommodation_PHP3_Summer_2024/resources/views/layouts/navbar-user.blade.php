@@ -6,12 +6,13 @@
     <!-- Required meta tags -->
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-
+    <!-- DataTables CSS -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.11.4/css/dataTables.bootstrap5.min.css">
     <!-- Bootstrap CSS v5.2.1 -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous" />
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-    <link href="assets\css\style-nht.css" rel="stylesheet" type="text/css" id="app-stylesheet">
+    <link href="{{ asset('assets\css\style-nht.css') }}" rel="stylesheet" type="text/css" id="app-stylesheet">
     {{-- cdn icon --}}
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
         integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
@@ -23,19 +24,28 @@
     <div class="container-fluid ">
         <header>
             <div class="row justify-content-center">
-                <div class="header">
+                <div class="header justify-content-center">
                     <nav class="navbar navbar-expand-lg navbar-light">
                         <div class="col-3">
                             <img class="img-fluid logo-img" src="{{ asset('assets\images\logo3.png') }}" alt="...">
                         </div>
-                        <div class="col-9 ">
+                        <div class="col-9">
                             <div class="justify-content-end" id="navbarSupportedContent">
                                 <ul class="navbar-nav me-auto mb-2 mb-lg-0 fw-bold ">
                                     <li class="nav-item pe-4">
                                         <a class="nav-link" aria-current="page" href="#">Phòng trọ</a>
                                     </li>
-                                    <li class="nav-item pe-4">
-                                        <a class="nav-link" href="#">Nhà nguyên căn</a>
+                                    <li class="nav-item dropdown">
+                                        <a class="nav-link dropdown-toggle" href="#" role="button"
+                                            data-bs-toggle="dropdown" aria-expanded="false">
+                                            Danh sách
+                                        </a>
+                                        <ul class="dropdown-menu">
+                                            @foreach ($categories as $category)
+                                                <li><a class="dropdown-item" href="#">{{ $category->name }}</a>
+                                                </li>
+                                            @endforeach
+                                        </ul>
                                     </li>
                                     <li class="nav-item pe-4">
                                         <a class="nav-link" href="#">Video review</a>
@@ -109,6 +119,16 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
         integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous">
     </script>
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <!-- DataTables JavaScript -->
+    <script src="https://cdn.datatables.net/1.11.4/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.11.4/js/dataTables.bootstrap5.min.js"></script>
+
+    <!-- Ngôn ngữ tiếng Việt cho DataTables -->
+    <script src="https://cdn.datatables.net/plug-ins/1.11.4/i18n/Vietnamese.json"></script>
+    <script src="{{ asset('assets\js\app-nht.js') }}"></script>
 </body>
 
 </html>

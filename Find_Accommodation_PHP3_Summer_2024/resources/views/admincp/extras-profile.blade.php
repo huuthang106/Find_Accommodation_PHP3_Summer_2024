@@ -128,70 +128,7 @@
                                         <h5 class="font-16 m-1">Tiểu sử</h5>
                                     </div>
                                     <div class="card-body">
-                                        {{-- <h5 class="font-14 mb-3 text-uppercase">Về tôi</h5> --}}
-                                        {{-- <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
-                                            Ipsum has been the industry's standard dummy text ever since the 1500s, when an
-                                            unknown printer took a galley of type and scrambled it to make a type specimen
-                                            book. It has survived not only five centuries, but also the leap into electronic
-                                            typesetting, remaining essentially unchanged.</p>
-
-                                        <p><strong>But also the leap into electronic typesetting, remaining
-                                                essentially unchanged.</strong></p>
-
-                                        <p>It was popularised in the 1960s with the release of Letraset sheets containing
-                                            Lorem Ipsum passages, and more recently with desktop publishing software like
-                                            Aldus PageMaker including versions of Lorem Ipsum.</p> --}}
-
-                                        {{-- <div class="">
-
-                                            <h5 class="font-14 mb-3 text-uppercase mt-4 mb-3">Kỹ năng</h5>
-
-                                            <div class="mb-3">
-                                                <h5 class="font-14">Angular Js <span class="float-right">60%</span></h5>
-                                                <div class="progress">
-                                                    <div class="progress-bar progress-bar-primary" role="progressbar"
-                                                        aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"
-                                                        style="width: 60%">
-                                                        <span class="sr-only">60% Complete</span>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <div class="mb-3">
-                                                <h5 class="font-14">Javascript <span class="float-right">90%</span></h5>
-                                                <div class="progress">
-                                                    <div class="progress-bar progress-bar-primary" role="progressbar"
-                                                        aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"
-                                                        style="width: 90%">
-                                                        <span class="sr-only">90% Complete</span>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <div class="mb-3">
-                                                <h5 class="font-14">Wordpress <span class="float-right">80%</span></h5>
-                                                <div class="progress">
-                                                    <div class="progress-bar progress-bar-primary" role="progressbar"
-                                                        aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"
-                                                        style="width: 80%">
-                                                        <span class="sr-only">80% Complete</span>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <div class="mb-0">
-                                                <h5 class="font-14">HTML5 &amp; CSS3 <span class="float-right">95%</span>
-                                                </h5>
-                                                <div class="progress mb-0">
-                                                    <div class="progress-bar progress-bar-primary" role="progressbar"
-                                                        aria-valuenow="95" aria-valuemin="0" aria-valuemax="100"
-                                                        style="width: 95%">
-                                                        <span class="sr-only">95% Complete</span>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                        </div> --}}
+                                      
                                     </div>
                                 </div>
                                 <!-- Personal-Information -->

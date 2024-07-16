@@ -463,9 +463,7 @@
     <!-- Required datatable js -->
     <script src="assets\libs\datatables\jquery.dataTables.min.js"></script>
     <script src="assets\libs\datatables\dataTables.bootstrap4.min.js"></script>
-    <!-- Required datatable js -->
-    <script src="assets\libs\datatables\jquery.dataTables.min.js"></script>
-    <script src="assets\libs\datatables\dataTables.bootstrap4.min.js"></script>
+    
   
 
 </body>

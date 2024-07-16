@@ -59,3 +59,4 @@ Route::get('/pages-room', [IndexController::class, 'pages_room'])->name('pages-r
 Route::get('/pages-evaluate', [IndexController::class, 'pages_evaluate'])->name('pages-evaluate');
 // route user
 Route::get('/xem-phong/{id}',[RoomController::class,'getRoomID'])->name('get-room');
+route::get('/profile', [UserController::class, 'profileuser'])->name('profileus');
