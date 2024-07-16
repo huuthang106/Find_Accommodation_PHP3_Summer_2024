@@ -21,6 +21,7 @@ class PriceListSeeder extends Seeder
             'created_at'=> Carbon::now(),
             'updated_at'=> Carbon::now(),
         ]);
-        // PriceList::factory()->count(20)->create();
+        PriceList::factory()->count(20)->create();
+
     }
 }

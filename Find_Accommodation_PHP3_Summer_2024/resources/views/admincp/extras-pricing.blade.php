@@ -23,18 +23,28 @@
                                     <div class="col-lg-4">
                                         <div class="card text-center mt-3 bg-light border-0">
                                             <div class="card-header bg-primary">
-                                                <h5 class="text-uppercase text-white font-16">GÓI KHỞI ĐẦU</h5>
+                                                <h5 class="text-uppercase text-white font-16">
+                                                    @if($item->status == 1)
+                                                        Gói Tiết Kiệm
+                                                    @elseif($item->status == 2)
+                                                        Gói Nâng Cao
+                                                    @elseif($item->status == 3)
+                                                        Gói Cao Cấp
+                                                    @else
+                                                        Khác
+                                                    @endif
+                                                </h5>
                                             </div>
                                             <div class="text-center p-4 mb-3">
-                                                <h1 class="display-5 mt-0 font-weight-bold">{{ $item->price }}đ</h1>
+                                                <h1 class="display-5 mt-0 font-weight-bold">{{ number_format($item->price, 0, ',', '.') }}đ</h1>
                                                 <p class="font-13">Mỗi tháng</p>
                                                 <div class="mt-4 pt-2">
-                                                    <p>Lưu trữ 10 GB</p>
-                                                    <p>Băng thông 500 GB</p>
-                                                    <p>Không có tên miền</p>
-                                                    <p>1 Người dùng</p>
-                                                    <p>Hỗ trợ email</p>
-                                                    <p>Hỗ trợ 24x7</p>
+                                                    {{-- <p>{{$item->Additional_Features}}</p> --}}
+                                                    <p>{{$item->Support}}</p>
+                                                    <p>{{$item->Post_Posting}}</p>
+                                                    <p>{{$item->Video_Posting}}</p>
+                                                  
+                                                    <p>{{$item->description}}</p>
                                                 </div>
                                                 <div class="text-center mt-5">
                                                     <a href="#" class="btn btn-danger width-md btn-rounded">Đăng Kí</a>
@@ -43,6 +53,7 @@
                                         </div>
                                     </div>
                                 @endforeach
+                                
                         
                              
 
