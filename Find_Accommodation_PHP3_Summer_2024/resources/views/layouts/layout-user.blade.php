@@ -14,10 +14,10 @@
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link href="{{ asset('assets\css\style.css') }}" rel="stylesheet" type="text/css" id="app-stylesheet">
     <link href="{{ asset('assets\css\style-nht.css') }}" rel="stylesheet" type="text/css" id="app-stylesheet">
-     {{-- cdn icon --}}
-     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
-     integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
-     crossorigin="anonymous" referrerpolicy="no-referrer" />
+    {{-- cdn icon --}}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+        integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 
 <body>
@@ -45,15 +45,17 @@
                                             <a class="nav-link" aria-current="page" href="#">Phòng trọ</a>
                                         </li>
                                         <li class="nav-item dropdown">
-                                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                              Loại trọ
+                                            <a class="nav-link dropdown-toggle" href="#" role="button"
+                                                data-bs-toggle="dropdown" aria-expanded="false">
+                                                Loại trọ
                                             </a>
-                                            @foreach($categories as $category)
-                                            <ul class="dropdown-menu">
-                                              <li><a class="dropdown-item" href="#">{{$category->name}}</a></li>
-                                            </ul>
+                                            @foreach ($categories as $category)
+                                                <ul class="dropdown-menu">
+                                                    <li><a class="dropdown-item"
+                                                            href="#">{{ $category->name }}</a></li>
+                                                </ul>
                                             @endforeach
-                                          </li>
+                                        </li>
                                         <li class="nav-item pe-4">
                                             <a class="nav-link" href="#">Video review</a>
                                         </li>
@@ -91,16 +93,27 @@
                                                                 alt="" height="60" width="170"></span>
                                                     </a>
                                                 </div>
-                                                <form action="{{ route('home') }}" class="p-2">
+                                                <form action="{{ route('login-users') }}" method="POST" class="p-2">
+                                                    @csrf
                                                     <div class="mb-3">
                                                         <label for="emailaddress" class="form-label">Email</label>
-                                                        <input class="form-control" type="email" id="emailaddress"
-                                                            required="" placeholder="example@gmail.com">
+                                                        <input class="form-control" name="email" type="email"
+                                                            id="emailaddress" required=""
+                                                            placeholder="example@gmail.com">
+                                                        @error('email')
+                                                            <small
+                                                                class="text-danger text-blod">{{ $message }}</small>
+                                                        @enderror
                                                     </div>
                                                     <div class="mb-3">
                                                         <label for="password" class="form-label">Mật khẩu</label>
-                                                        <input class="form-control" type="password" required=""
-                                                            id="password" placeholder="Nhập mật khẩu">
+                                                        <input class="form-control" name="password" type="password"
+                                                            required="" id="password"
+                                                            placeholder="Nhập mật khẩu">
+                                                        @error('password')
+                                                            <small
+                                                                class="text-danger text-bold">{{ $message }}</small>
+                                                        @enderror
                                                     </div>
                                                     <div class="mb-3 pb-3 form-check">
                                                         <input type="checkbox" class="form-check-input"
@@ -121,8 +134,9 @@
                                         <div class="row mt-3">
                                             <div class="col-sm-12 text-center">
                                                 <p class="text-muted mb-0">Bạn chưa có tài khoản? <a href="#"
-                                                        id="showRegisterModal" class="text-dark" data-bs-toggle="modal"
-                                                        data-bs-target="#registerModal"><b>ĐĂNG KÝ</b></a></p>
+                                                        id="showRegisterModal" class="text-dark"
+                                                        data-bs-toggle="modal" data-bs-target="#registerModal"><b>ĐĂNG
+                                                            KÝ</b></a></p>
                                             </div>
                                         </div>
                                     </div>
@@ -140,7 +154,8 @@
                 <div class="modal-content">
                     <div class="modal-header border-0">
 
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                            aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
                         <div class="text-center">
@@ -151,21 +166,41 @@
                         </div>
                         <div class="account-pages my-3 pt-2">
                             <div class="container">
-                                <form action="" class="p-2">
+                                <form action="" method="POST" class="p-2">
+                                    @csrf
+                                    <div class="mb-3">
+                                        <label for="registerEmail" class="form-label">Tên</label>
+                                        <input class="form-control" name="username" type="text" id=""
+                                            required placeholder="example@gmail.com">
+                                        @error('username')
+                                            <small class="text-danger text-blod">{{ $message }}</small>
+                                        @enderror
+                                    </div>
+
                                     <div class="mb-3">
                                         <label for="registerEmail" class="form-label">Email</label>
-                                        <input class="form-control" type="email" id="registerEmail" required
-                                            placeholder="example@gmail.com">
+                                        <input class="form-control" name="email" type="email" id=""
+                                            required placeholder="example@gmail.com">
+                                        @error('username')
+                                            <small class="text-danger text-blod">{{ $message }}</small>
+                                        @enderror
                                     </div>
+
                                     <div class="mb-3">
                                         <label for="registerPassword" class="form-label">Mật khẩu</label>
-                                        <input class="form-control" type="password" id="registerPassword" required
-                                            placeholder="Nhập mật khẩu">
+                                        <input class="form-control" name="password" type="password"
+                                            id="registerPassword" required placeholder="Nhập mật khẩu">
+                                        @error('password')
+                                            <small class="text-danger text-blod">{{ $message }}</small>
+                                        @enderror
                                     </div>
                                     <div class="mb-3">
                                         <label for="confirmPassword" class="form-label">Xác nhận mật khẩu</label>
-                                        <input class="form-control" type="password" id="confirmPassword" required
-                                            placeholder="Nhập lại mật khẩu">
+                                        <input class="form-control" name="password_confirmation" type="password"
+                                            id="confirmPassword" required placeholder="Nhập lại mật khẩu">
+                                        @error('repassword')
+                                            <small class="text-danger text-blod">{{ $message }}</small>
+                                        @enderror
                                     </div>
                                     <div class="mb-3 text-center">
                                         <button class="btn btn-primary w-100" type="submit">ĐĂNG KÝ</button>

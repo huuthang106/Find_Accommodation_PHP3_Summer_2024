@@ -17,6 +17,9 @@ use App\Http\Controllers\Client\RoomController;
 use App\Http\Controllers\Client\EvaluateController;
 use App\Http\Controllers\Client\TransactionController;
 use App\Http\Controllers\UserController;
+
+use App\Http\Controllers\Client\AuthController;
+use App\Http\Controllers\Client\RegisterController;
 // controller admin
 use App\Http\Controllers\Admin\AcreageAdminController;
 use App\Http\Controllers\Admin\CategoryAdminController;
@@ -36,7 +39,7 @@ use App\Http\Controllers\Admin\UserController as AdminUserController;
 
 // start Nguyen Huu Thang
 Route::get('/', [RoomController::class, 'index'])->name('home');
-Route::get('/xem-phong/{id}',[RoomController::class,'getRoomID'])->name('get-room');
+Route::get('/xem-phong/{id}', [RoomController::class, 'getRoomID'])->name('get-room');
 route::get('/profile', [UserController::class, 'profileuser'])->name('profileus');
 // Route bắt tất cả các yêu cầu không khớp
 Route::fallback(function () {
@@ -81,8 +84,18 @@ Route::get('/pages-room', [IndexController::class, 'pages_room'])->name('pages-r
 Route::get('/pages-evaluate', [IndexController::class, 'pages_evaluate'])->name('pages-evaluate');
 // route user
 
+Route::get('/xem-phong/{id}', [RoomController::class, 'getRoomID'])->name('get-room');
+route::get('/profile', [UserController::class, 'profileuser'])->name('profileus');
 // Route::get('/', [IndexController::class, 'home'])->name('home');
 
+//Login user mhuy
+Route::get('/login', [AuthController::class, 'pages_login'])->name('login');
+Route::post('/login-check', [AuthController::class, 'check_login'])->name('login-users');
+
+// Register user
+Route::get('/register', [RegisterController::class, 'pages_register'])->name('layouts.layout-user');
+Route::post('/', [RegisterController::class, 'check_register']);
+//
 // Login trước khi vào các trang admin
 Route::get('/admin/dang-nhap', [IndexController::class, 'pages_login'])->name('admincp.pages-login');
 Route::post('/admin/dang-nhap', [IndexController::class, 'check_login']);
