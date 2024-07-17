@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Comment;
 
 class CommentAdminController extends Controller
 {
@@ -12,7 +13,8 @@ class CommentAdminController extends Controller
      */
     public function index()
     {
-        //
+        $comment = Comment::all();
+        return view('admincp.pages-comment', compact('comment'));
     }
 
     /**

@@ -28,18 +28,19 @@
                                     <th>STT</th>
                                     <th>Nội dung</th>
                                     <th>Tên người dùng</th>
-                                    <th>Xem chi tiết</th>
-                                </tr>
-                            </thead>
-
-                            <tbody>
-                                <tr>
-                                    <th><input type="checkbox"></th>
+                                    <th>Ngày bình luận</th>
                                     <th></th>
-                                    <td>61</td>
-                                    <td>2011/04/25</td>
-                                    <td><button class="btn btn-primary">Xem chi tiết</button></td>
-                                </tr>
+                            <tbody>
+                                @foreach ($comment as $item)
+                                    <tr>
+                                        <th><input type="checkbox"></th>
+                                        <th>{{ $item->id }}</th>
+                                        <td>{{ $item->content }}</td>
+                                        <td>{{ $item->user_id }}</td>
+                                        <td>{{ $item->created_at }}</td>
+                                        <td><button class="btn btn-primary">Xem chi tiết</button></td>
+                                    </tr>
+                                @endforeach
                             </tbody>
                         </table>
 

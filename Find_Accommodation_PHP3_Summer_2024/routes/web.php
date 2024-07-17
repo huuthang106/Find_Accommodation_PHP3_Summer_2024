@@ -107,3 +107,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
     // Xóa mềm thông báo admin
     Route::get('/xoa-tat-ca-thong-bao', [NotificationAdminController::class, 'softDeleteAll'])->name('soft-delete-all-notifications');
 });
+Route::get('/pages-commet', [CommentAdminController::class, 'index'])->name('pages-commet');
+Route::get('/pages-room', [RoomAdminController::class, 'index'])->name('pages-room');
+Route::get('/pages-evaluate', [IndexController::class, 'pages_evaluate'])->name('pages-evaluate');
+Route::get('/pages-edit-pricing', [IndexController::class, 'pages_edit_pricing'])->name('pages-edit-pricing');

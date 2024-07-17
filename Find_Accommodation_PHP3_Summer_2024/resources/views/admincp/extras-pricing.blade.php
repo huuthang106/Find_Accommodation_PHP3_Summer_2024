@@ -9,7 +9,7 @@
             <div class="row">
                 <div class="col-12">
                     <div>
-                        <h4 class="header-title mb-3">GIÁ</h4>
+                        <h4 class="header-title mb-3">Danh sách gói tin</h4>
 
                         <!-- Start row -->
                         <div class="row mt-5 justify-content-center">
@@ -78,9 +78,12 @@
                                                     <p>Hỗ trợ 24x7</p>
                                                 </div>
 
-                                                <div class="text-center mt-5">
-                                                    <a href="#" class="btn btn-danger width-md btn-rounded">Đăng Kí</a>
+                                                <div class="text-center mt-4">
+                                                    <button type="button" class="btn btn-danger width-md btn-rounded"
+                                                        data-toggle="modal" data-target="#editPackageModal">Chỉnh
+                                                        sửa</button>
                                                 </div>
+
                                             </div>
                                         </div>
                                     </div> --}}
@@ -104,9 +107,12 @@
                                                     <p>Hỗ trợ 24x7</p>
                                                 </div>
 
-                                                <div class="text-center mt-5">
-                                                    <a href="#" class="btn btn-danger width-md btn-rounded">Đăng Kí</a>
+                                                <div class="text-center mt-4">
+                                                    <a href="{{ route('pages-edit-pricing') }} "
+                                                        class="btn btn-danger width-md btn-rounded">Chỉnh
+                                                        sửa</a>
                                                 </div>
+
                                             </div>
                                         </div>
                                     </div> --}}
