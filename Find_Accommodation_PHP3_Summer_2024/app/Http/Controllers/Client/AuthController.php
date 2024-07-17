@@ -31,7 +31,7 @@ class AuthController extends Controller
 
         if (auth()->attempt($credentials)) {
             // Authentication passed
-          dd(auth());
+          
             return redirect()->route('home');
         }
 

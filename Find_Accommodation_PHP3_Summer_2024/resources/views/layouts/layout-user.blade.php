@@ -129,6 +129,15 @@
                                                         class="text-muted float-end text-decoration-none">Quên mật
                                                         khẩu?</a>
                                                 </form>
+                                                <div class="mb-3 text-center">
+                                                    <hr>
+                                                    <button class="btn btn-danger w-100 mb-2" type="button">
+                                                        <i class="fab fa-google"></i> Đăng nhập bằng Google
+                                                    </button>
+                                                    <button class="btn btn-primary w-100" type="button">
+                                                        <i class="fab fa-facebook-f"></i> Đăng nhập bằng Facebook
+                                                    </button>
+                                                </div>
                                             </div>
                                         </div>
                                         <div class="row mt-3">
@@ -206,6 +215,15 @@
                                         <button class="btn btn-primary w-100" type="submit">ĐĂNG KÝ</button>
                                     </div>
                                 </form>
+                                <div class="mb-3 text-center">
+                                    <hr>
+                                    <button class="btn btn-danger w-100 mb-2" type="button">
+                                        <i class="fab fa-google"></i> Đăng ký bằng Google
+                                    </button>
+                                    <button class="btn btn-primary w-100" type="button">
+                                        <i class="fab fa-facebook-f"></i> Đăng ký bằng Facebook
+                                    </button>
+                                </div>
                                 <div class="row mt-3">
                                     <div class="col-sm-12 text-center">
                                         <p class="text-muted mb-0">Bạn đã có tài khoản? <a href="#"
