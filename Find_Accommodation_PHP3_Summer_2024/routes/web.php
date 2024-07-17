@@ -44,6 +44,13 @@ Route::fallback(function () {
 });
 // Route::get('/', [IndexController::class, 'homeAdmin'])->name('trang-quan-ly');
 
+
+Route::get('/home', [RoomController::class, 'index'])->name('home');
+// Route::get('/', [IndexController::class, 'homeAdmin'])->name('trang-quan-ly');
+
+
+Route::get('/', [IndexController::class, 'homeAdmin'])->name('trang-quan-ly');
+
 Route::get('/tables-advanced', [IndexController::class, 'tables_advanced'])->name('tables-advanced');
 Route::get('/charts', [IndexController::class, 'charts'])->name('charts');
 Route::get('/componetns-widgets', [IndexController::class, 'componetns_widgets'])->name('componetns-widgets');
@@ -53,6 +60,9 @@ Route::get('/goi-dang-tin', [PriceListController::class, 'index'])->name('goi-da
 
 
 Route::get('/quan-li-ho-so', [UserController::class, 'index'])->name('extras-profile'); // router trang quan li ho so
+// Route::get('/goi-dang-tin', [PriceListController::class, 'index'])->name('extras-pricing'); // router trang goi dang tin
+
+Route::get('/extras-profile', [UserController::class, 'index'])->name('extras-profile'); // router trang quan li ho so
 
 Route::get('/layouts-dark-sidebar', [IndexController::class, 'layouts_dark_sidebar'])->name('layouts-dark-sidebar');
 Route::get('/layouts-horizontal', [IndexController::class, 'layouts_horizontal'])->name('layouts-horizontal');
