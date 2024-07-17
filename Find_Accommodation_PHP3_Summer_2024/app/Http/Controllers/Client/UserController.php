@@ -1,9 +1,10 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Client;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\User; 
+use App\Models\User;
 
 class UserController extends Controller
 {
@@ -12,8 +13,8 @@ class UserController extends Controller
      */
     public function index()
     {
-    
-        $user = User::where('id',1)->get();
+
+        $user = User::where('id', 1)->get();
         // dd($user);
         return view('admincp.extras-profile', compact('user'));
     }
@@ -65,8 +66,9 @@ class UserController extends Controller
     {
         //
     }
-    public function profileuser(){
-        
+    public function profileuser()
+    {
+
         return view('page.profile-us');
     }
 }

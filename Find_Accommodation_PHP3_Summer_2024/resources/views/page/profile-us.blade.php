@@ -1,8 +1,6 @@
-@extends('layouts.navbar-user')
+@extends('layouts.layout-user')
 @section('titleUs', 'Trang chủ trọ nhanh')
 @section('contentUs')
-
-
     <!-- start  -->
     <div class="row">
         <div class="col-md-12">
@@ -34,8 +32,7 @@
     </div>
     <!-- end row -->
     <!-- end -->
-
-    <div class="mt-5">
+    <div class="mt-5 p-3">
         <ul class="nav nav-tabs tabs-bordered">
             <li class="nav-item">
                 <a href="#home-b1" data-bs-toggle="tab" aria-expanded="false" class="nav-link active">
@@ -48,8 +45,7 @@
                 </a>
             </li>
         </ul>
-
-        <div class="tab-content">
+        <div class="tab-content bg-body">
             <div class="tab-pane fade show active" id="home-b1">
                 <div class="row">
                     <div class="col-lg-4">
@@ -115,7 +111,6 @@
                         </div>
                         <!-- Social -->
                     </div>
-
                     <div class="col-lg-8">
                         <!-- Personal-Information -->
 
@@ -201,7 +196,4 @@
             </div>
         </div>
     </div>
-
-
-
 @endsection

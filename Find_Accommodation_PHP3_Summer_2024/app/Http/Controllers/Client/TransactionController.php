@@ -1,21 +1,18 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Client;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\Room;
-class RoomController extends Controller
+
+class TransactionController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-  
-    
     public function index()
     {
         //
-        $rooms = Room::all();
-        return view('index', compact('rooms'));
     }
 
     /**
@@ -64,10 +61,5 @@ class RoomController extends Controller
     public function destroy(string $id)
     {
         //
-    }
-    public function getRoomID($id){
-        
-        $room = Room::where('id', $id)->first();;
-        return view('page.detail-room',compact('room'));
     }
 }

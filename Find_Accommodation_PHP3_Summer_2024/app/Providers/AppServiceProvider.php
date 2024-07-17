@@ -22,7 +22,7 @@ class AppServiceProvider extends ServiceProvider
     public function boot(): void
     {
         //
-        View::composer('layouts.navbar-user', function ($view) {
+        View::composer('layouts.layout-user', function ($view) {
             // Logic để lấy dữ liệu categories từ database
             $categories = Category::where('status', 1)->get();
             // Truyền dữ liệu categories vào view

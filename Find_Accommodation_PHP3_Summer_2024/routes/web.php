@@ -2,21 +2,21 @@
 
 use Illuminate\Support\Facades\Route;
 // controller user
-use App\Http\Controllers\AcreageController;
-use App\Http\Controllers\CategoryController;
-use App\Http\Controllers\CommentController;
-use App\Http\Controllers\FavouriteController;
-use App\Http\Controllers\HomeController;
-use App\Http\Controllers\ImageController;
-use App\Http\Controllers\IndexController;
-use App\Http\Controllers\LocationController;
+use App\Http\Controllers\Client\AcreageController;
+use App\Http\Controllers\Client\CategoryController;
+use App\Http\Controllers\Client\CommentController;
+use App\Http\Controllers\Client\FavouriteController;
+use App\Http\Controllers\Client\HomeController;
+use App\Http\Controllers\Client\ImageController;
+use App\Http\Controllers\Client\IndexController;
+use App\Http\Controllers\Client\LocationController;
 use App\Http\Controllers\NotificationController;
-use App\Http\Controllers\PriceListController;
+use App\Http\Controllers\Client\PriceListController;
 use App\Http\Controllers\PricesController;
-use App\Http\Controllers\RoomController;
-use App\Http\Controllers\EvaluateController;
-use App\Http\Controllers\TransactionController;
-use App\Http\Controllers\UserController;
+use App\Http\Controllers\Client\RoomController;
+use App\Http\Controllers\Client\EvaluateController;
+use App\Http\Controllers\Client\TransactionController;
+use App\Http\Controllers\Client\UserController;
 // controller admin
 use App\Http\Controllers\Admin\AcreageAdminController;
 use App\Http\Controllers\Admin\CategoryAdminController;
@@ -34,15 +34,15 @@ use App\Http\Controllers\Admin\TransactionAdminController;
 use App\Http\COntrollers\Admin\LoginController;
 use App\Http\Controllers\Admin\UserController as AdminUserController;
 
-Route::get('/home', [IndexController::class, 'home'])->name('home');
-Route::get('/', [IndexController::class, 'homeAdmin'])->name('trang-quan-ly');
+Route::get('/', [RoomController::class, 'index'])->name('home');
+// Route::get('/', [IndexController::class, 'homeAdmin'])->name('trang-quan-ly');
 
 Route::get('/tables-advanced', [IndexController::class, 'tables_advanced'])->name('tables-advanced');
 Route::get('/charts', [IndexController::class, 'charts'])->name('charts');
 Route::get('/componetns-widgets', [IndexController::class, 'componetns_widgets'])->name('componetns-widgets');
 Route::get('/extras-contacts', [IndexController::class, 'extras_contacts'])->name('extras-contacts');
 
-Route::get('/goi-dang-tin', [PriceListController::class, 'index'])->name('extras-pricing');
+Route::get('/goi-dang-tin', [PriceListController::class, 'index'])->name('goi-dang-tin');
 
 
 Route::get('/quan-li-ho-so', [UserController::class, 'index'])->name('extras-profile'); // router trang quan li ho so
@@ -65,7 +65,7 @@ Route::get('/pages-evaluate', [IndexController::class, 'pages_evaluate'])->name(
 // route user
 Route::get('/xem-phong/{id}',[RoomController::class,'getRoomID'])->name('get-room');
 route::get('/profile', [UserController::class, 'profileuser'])->name('profileus');
-Route::get('/', [IndexController::class, 'home'])->name('home');
+// Route::get('/', [IndexController::class, 'home'])->name('home');
 
 // Login trước khi vào các trang admin
 Route::get('/admin/dang-nhap', [IndexController::class, 'pages_login'])->name('admincp.pages-login');

@@ -71,7 +71,7 @@
                     <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button"
                         aria-haspopup="false" aria-expanded="false">
                         <i class="mdi mdi-bell noti-icon"></i>
-                        <span class="badge badge-danger rounded-circle noti-icon-badge">{{ $notificationCount }}</span>
+                        {{-- <span class="badge badge-danger rounded-circle noti-icon-badge">{{ $notificationCount }}</span> --}}
                     </a>
                     <div class="dropdown-menu dropdown-menu-right dropdown-lg">
 
@@ -89,7 +89,7 @@
                         <div class="slimscroll noti-scroll">
 
                             <!-- item-->
-                            @foreach ($unreadNotifications as $item)
+                            {{-- @foreach ($unreadNotifications as $item)
                                 <a href="trang-chi-tiet-thong-bao/{{ $item->id }}"
                                     class="dropdown-item notify-item">
                                     <div class="notify-icon bg-success"><i class="mdi mdi-comment-account-outline"></i>
@@ -98,7 +98,7 @@
                                             class="text-muted">{{ $item->created_at->diffForHumans() }}</small>
                                     </p>
                                 </a>
-                            @endforeach
+                            @endforeach --}}
 
                             {{-- <a href="javascript:void(0);" class="dropdown-item notify-item">
                                 <div class="notify-icon bg-success"><i class="mdi mdi-comment-account-outline"></i>
@@ -306,6 +306,12 @@
                                     <span>Quản lí đánh giá</span>
                                 </a>
                             </li>
+                            <li>
+                                <a href="{{ route('goi-dang-tin') }}">
+                                    <i class="fas fa-money-check"></i>
+                                    <span>Quản lí gói đăng tin</span>
+                                </a>
+                            </li>
                         </ul>
                     </li>
 
@@ -488,8 +494,8 @@
     <!-- Required datatable js -->
     <script src="assets\libs\datatables\jquery.dataTables.min.js"></script>
     <script src="assets\libs\datatables\dataTables.bootstrap4.min.js"></script>
-    
-  
+
+
 
 </body>
 

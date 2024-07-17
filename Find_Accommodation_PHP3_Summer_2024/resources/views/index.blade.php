@@ -2,160 +2,7 @@
 @section('titleUs', 'Trang chủ trọ nhanh')
 @section('contentUs')
     <header>
-        <div class="container">
-            <div class="row headerTop">
-                <div class="col-3">
-                    <div class="logo">
-                        <img class="img-fluid" src="{{ asset('assets\images\logo.png') }}" alt="...">
-                    </div>
-                </div>
-                <div class="col-9">
-                    <div class="header-right">
-                        <nav class="navbar navbar-expand-lg navbar-light ">
-                            <div class="container-fluid">
-                                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                                    aria-expanded="false" aria-label="Toggle navigation">
-                                    <span class="navbar-toggler-icon"></span>
-                                </button>
-                                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                                    <ul class="navbar-nav me-auto mb-2 mb-lg-0 fw-bold">
-                                        <li class="nav-item pe-4">
-                                            <a class="nav-link" aria-current="page" href="#">Phòng trọ</a>
-                                        </li>
-                                        <li class="nav-item pe-4">
-                                            <a class="nav-link" href="#">Nhà nguyên căn</a>
-                                        </li>
-                                        <li class="nav-item pe-4">
-                                            <a class="nav-link" href="#">Video review</a>
-                                        </li>
-                                        <li class="nav-item pe-4">
-                                            <a class="nav-link" href="#">Blog</a>
-                                        </li>
-                                    </ul>
-                                    <button type="button" class="btn btn-primary" data-bs-toggle="modal"
-                                        data-bs-target="#loginModal">
-                                        Đăng nhập/Đăng ký
-                                    </button>
-                                </div>
-                            </div>
-                        </nav>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered"> <!-- Thêm class này -->
-                <div class="modal-content">
-                    <div class="modal-header border-0">
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                        <div class="account-pages my-3 pt-2">
-                            <div class="container">
-                                <div class="row justify-content-center">
-                                    <div class="col-md-12 col-lg-12">
-                                        <div class="card">
-                                            <div class="card-body">
-                                                <div class="text-center">
-                                                    <a href="index.html">
-                                                        <span><img src="{{ asset('assets/images/logo3.png') }}"
-                                                                alt="" height="60" width="170"></span>
-                                                    </a>
-                                                </div>
-                                                <form action="{{ route('home') }}" class="p-2">
-                                                    <div class="mb-3">
-                                                        <label for="emailaddress" class="form-label">Email</label>
-                                                        <input class="form-control" type="email" id="emailaddress"
-                                                            required="" placeholder="example@gmail.com">
-                                                    </div>
-                                                    <div class="mb-3">
-                                                        <label for="password" class="form-label">Mật khẩu</label>
-                                                        <input class="form-control" type="password" required=""
-                                                            id="password" placeholder="Nhập mật khẩu">
-                                                    </div>
-                                                    <div class="mb-3 pb-3 form-check">
-                                                        <input type="checkbox" class="form-check-input"
-                                                            id="checkbox-signin">
-                                                        <label class="form-check-label" for="checkbox-signin">Ghi
-                                                            nhớ tài khoản?</label>
-                                                    </div>
-                                                    <div class="mb-3 text-center">
-                                                        <button class="btn btn-primary w-100" type="submit">ĐĂNG
-                                                            NHẬP</button>
-                                                    </div>
-                                                    <a href="page-recoverpw.html"
-                                                        class="text-muted float-end text-decoration-none">Quên mật
-                                                        khẩu?</a>
-                                                </form>
-                                            </div>
-                                        </div>
-                                        <div class="row mt-3">
-                                            <div class="col-sm-12 text-center">
-                                                <p class="text-muted mb-0">Bạn chưa có tài khoản? <a href="#"
-                                                        id="showRegisterModal" class="text-dark" data-bs-toggle="modal"
-                                                        data-bs-target="#registerModal"><b>ĐĂNG KÝ</b></a></p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Modal Đăng Ký -->
-        <div class="modal fade" id="registerModal" tabindex="-1" aria-labelledby="registerModalLabel"
-            aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered">
-                <div class="modal-content">
-                    <div class="modal-header border-0">
 
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                        <div class="text-center">
-                            <a href="index.html">
-                                <span><img src="{{ asset('assets/images/logo3.png') }}" alt="" height="60"
-                                        width="170"></span>
-                            </a>
-                        </div>
-                        <div class="account-pages my-3 pt-2">
-                            <div class="container">
-                                <form action="" class="p-2">
-                                    <div class="mb-3">
-                                        <label for="registerEmail" class="form-label">Email</label>
-                                        <input class="form-control" type="email" id="registerEmail" required
-                                            placeholder="example@gmail.com">
-                                    </div>
-                                    <div class="mb-3">
-                                        <label for="registerPassword" class="form-label">Mật khẩu</label>
-                                        <input class="form-control" type="password" id="registerPassword" required
-                                            placeholder="Nhập mật khẩu">
-                                    </div>
-                                    <div class="mb-3">
-                                        <label for="confirmPassword" class="form-label">Xác nhận mật khẩu</label>
-                                        <input class="form-control" type="password" id="confirmPassword" required
-                                            placeholder="Nhập lại mật khẩu">
-                                    </div>
-                                    <div class="mb-3 text-center">
-                                        <button class="btn btn-primary w-100" type="submit">ĐĂNG KÝ</button>
-                                    </div>
-                                </form>
-                                <div class="row mt-3">
-                                    <div class="col-sm-12 text-center">
-                                        <p class="text-muted mb-0">Bạn đã có tài khoản? <a href="#"
-                                                id="showLoginModal" class="text-dark" data-bs-toggle="modal"
-                                                data-bs-target="#loginModal"><b>ĐĂNG NHẬP</b></a></p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
         <div class="headerBottom">
             <div class="container">
                 <h1 class="col-4 headerTitle">TÌM NHANH, KIẾM DỄ
@@ -170,17 +17,17 @@
         <div class="container searchHeader">
             <ul class="nav nav-tabs" id="myTab" role="tablist">
                 <li class="nav-item" role="presentation">
-                    <button class="nav-link active" id="all" data-bs-toggle="tab" data-bs-target="#all"
-                        type="button" role="tab" aria-controls="home" aria-selected="true">Tất cả</button>
+                    <button class="nav-link active" id="all" data-bs-toggle="tab" data-bs-target="#all" type="button"
+                        role="tab" aria-controls="home" aria-selected="true">Tất cả</button>
                 </li>
                 <li class="nav-item" role="presentation">
-                    <button class="nav-link" id="homestay" data-bs-toggle="tab" data-bs-target="#homestay"
-                        type="button" role="tab" aria-controls="profile" aria-selected="false">Phòng
+                    <button class="nav-link" id="homestay" data-bs-toggle="tab" data-bs-target="#homestay" type="button"
+                        role="tab" aria-controls="profile" aria-selected="false">Phòng
                         trọ</button>
                 </li>
                 <li class="nav-item" role="presentation">
-                    <button class="nav-link" id="resort" data-bs-toggle="tab" data-bs-target="#resort"
-                        type="button" role="tab" aria-controls="contact" aria-selected="false">Nhà nguyên
+                    <button class="nav-link" id="resort" data-bs-toggle="tab" data-bs-target="#resort" type="button"
+                        role="tab" aria-controls="contact" aria-selected="false">Nhà nguyên
                         căn,
                         chung cư</button>
                 </li>
@@ -321,7 +168,7 @@
                 <h4 class="textMain">Lựa Chọn Vip</h4>
                 <div class="row mt-3 mainRoom">
                     @foreach ($rooms as $room)
-                        <div class="col-3">
+                        <div class="col-3 mt-2">
                             <a href="xem-phong/{{ $room->id }}" class="text-decoration-none">
                                 <div class="card">
                                     <div class="bageVip">
@@ -329,19 +176,20 @@
                                             class="card-img-top rounded" alt="...">
                                     </div>
                                     <div class="card-body">
-                                        <h5 class="card-title">Nhà trọ số 166 đường Cao...</h5>
-                                        <h6 class="card-text mt-3">Từ <span class="cardPrice">3.000.000
+                                        <h5 class="card-title">{{ $room->title }}</h5>
+                                        <h6 class="card-text mt-3">Từ <span class="cardPrice">{{$room->price}}
                                                 VNĐ</span></h6>
                                         <div class="d-flex mt-3">
                                             <div class="room">
-                                                <span>Phòng trọ</span>
+                                                @if(isset($room->category_id))
+                                                <span>{{$room->category->name}}</span>
+                                                @endif
                                             </div>
                                             <div class="acreage">
                                                 <span>12m2</span>
                                             </div>
                                         </div>
-                                        <p class="mt-3"><i class='bx bxs-map' style='color:#0a0a0a'></i>166 đường Cao
-                                            Thắng,Phường..
+                                        <p class="mt-3"><i class='bx bxs-map' style='color:#0a0a0a'></i>{{$room->address}}
                                         </p>
                                     </div>
                                 </div>

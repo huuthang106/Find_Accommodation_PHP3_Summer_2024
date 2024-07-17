@@ -1,4 +1,4 @@
-@extends('layouts.navbar-user')
+@extends('layouts.layout-user')
 @section('titleUs', 'Trang chủ trọ nhanh')
 @section('contentUs')
     <div class="background-content">
@@ -14,7 +14,7 @@
                 <div class="hostel__detail--tags">
                     <a href="" class="item vip text-decoration-none">Tin vip</a>
                 </div>
-                <div class="hostel__detail--address">{{ $room->area }}
+                <div class="hostel__detail--address">{{ $room->address }}
                 </div>
 
             </div>
@@ -42,7 +42,7 @@
                     <h3>Thông tin</h3>
                     <div class="row rounded-top background-content p-3">
                         <div class="col-3">Địa chỉ:</div>
-                        <div class="col-9">{{ $room->area }}</div>
+                        <div class="col-9">{{ $room->address }}</div>
                     </div>
                     <div class="row p-3">
                         <div class="col-3">Giá:</div>

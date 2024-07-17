@@ -17,7 +17,7 @@ return new class extends Migration
             $table->longText('description');
             $table->float('price',10,2);
             $table->string('phone',13);
-            $table->string('area');
+            $table->string('address');
             $table->integer('quantity')->nullable();
             $table-> string('longitude')->nullable();
             $table->string('latitude')->nullable();

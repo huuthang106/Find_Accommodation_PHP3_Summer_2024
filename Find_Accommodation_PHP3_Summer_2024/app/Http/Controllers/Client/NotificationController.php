@@ -1,19 +1,18 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Client;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\PriceList; 
 
-class PriceListController extends Controller
+class NotificationController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $price = PriceList::all();
-        return view('admincp.extras-pricing', compact('price'));
+        //
     }
 
     /**

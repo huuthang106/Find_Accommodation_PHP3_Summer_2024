@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Client;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Notification;
 use App\Models\User;
@@ -13,7 +14,7 @@ class IndexController extends Controller
      * Display a listing of the resource.
      */
     //router chuyển trang mẫu 
-  
+
     public function homeAdmin()
     {
         // Đếm số lượng đã xem hoặc chưa xem (0 là đã xem, 1 là chưa xem)
@@ -27,6 +28,10 @@ class IndexController extends Controller
         // return view('admincp.home');
     }
 
+    public function home()
+    {
+        return view('index');
+    }
 
     public function tables_advanced()
     {

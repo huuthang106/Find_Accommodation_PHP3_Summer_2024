@@ -25,7 +25,7 @@ class RoomFactory extends Factory
             'description' => $this->faker->paragraph,
             'price' => $this->faker->randomFloat(2, 50, 500), // Giá ngẫu nhiên từ 50 đến 500
             'phone' => $this->faker->numberBetween(10, 13),
-            'area' => $this->faker->city,
+            'address' => $this->faker->city,
             'quantity' => $this->faker->randomNumber(2),
             'longitude' => $this->faker->longitude,
             'latitude' => $this->faker->latitude,
