@@ -16,7 +16,7 @@ use App\Http\Controllers\PricesController;
 use App\Http\Controllers\Client\RoomController;
 use App\Http\Controllers\Client\EvaluateController;
 use App\Http\Controllers\Client\TransactionController;
-use App\Http\Controllers\Client\UserController;
+use App\Http\Controllers\UserController;
 // controller admin
 use App\Http\Controllers\Admin\AcreageAdminController;
 use App\Http\Controllers\Admin\CategoryAdminController;
@@ -34,7 +34,14 @@ use App\Http\Controllers\Admin\TransactionAdminController;
 use App\Http\COntrollers\Admin\LoginController;
 use App\Http\Controllers\Admin\UserController as AdminUserController;
 
+// start Nguyen Huu Thang
 Route::get('/', [RoomController::class, 'index'])->name('home');
+Route::get('/xem-phong/{id}',[RoomController::class,'getRoomID'])->name('get-room');
+route::get('/profile', [UserController::class, 'profileuser'])->name('profileus');
+// Route bắt tất cả các yêu cầu không khớp
+Route::fallback(function () {
+    return redirect('/');
+});
 // Route::get('/', [IndexController::class, 'homeAdmin'])->name('trang-quan-ly');
 
 Route::get('/tables-advanced', [IndexController::class, 'tables_advanced'])->name('tables-advanced');
@@ -63,8 +70,7 @@ Route::get('/pages-commet', [IndexController::class, 'pages_commet'])->name('pag
 Route::get('/pages-room', [IndexController::class, 'pages_room'])->name('pages-room');
 Route::get('/pages-evaluate', [IndexController::class, 'pages_evaluate'])->name('pages-evaluate');
 // route user
-Route::get('/xem-phong/{id}',[RoomController::class,'getRoomID'])->name('get-room');
-route::get('/profile', [UserController::class, 'profileuser'])->name('profileus');
+
 // Route::get('/', [IndexController::class, 'home'])->name('home');
 
 // Login trước khi vào các trang admin
