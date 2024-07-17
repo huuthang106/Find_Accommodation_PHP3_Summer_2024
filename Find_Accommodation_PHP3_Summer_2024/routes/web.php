@@ -48,11 +48,7 @@ Route::fallback(function () {
 // Route::get('/', [IndexController::class, 'homeAdmin'])->name('trang-quan-ly');
 
 
-Route::get('/home', [RoomController::class, 'index'])->name('home');
-// Route::get('/', [IndexController::class, 'homeAdmin'])->name('trang-quan-ly');
-
-
-Route::get('/', [IndexController::class, 'homeAdmin'])->name('trang-quan-ly');
+Route::get('/home', [IndexController::class, 'homeAdmin'])->name('trang-quan-ly');
 
 Route::get('/tables-advanced', [IndexController::class, 'tables_advanced'])->name('tables-advanced');
 Route::get('/charts', [IndexController::class, 'charts'])->name('charts');
@@ -65,7 +61,7 @@ Route::get('/goi-dang-tin', [PriceListController::class, 'index'])->name('goi-da
 Route::get('/quan-li-ho-so', [UserController::class, 'index'])->name('extras-profile'); // router trang quan li ho so
 // Route::get('/goi-dang-tin', [PriceListController::class, 'index'])->name('extras-pricing'); // router trang goi dang tin
 
-Route::get('/extras-profile', [UserController::class, 'index'])->name('extras-profile'); // router trang quan li ho so
+Route::get('/quan-li-ho-so', [UserController::class, 'index'])->name('quan-li-ho-so'); // router trang quan li ho so
 
 Route::get('/layouts-dark-sidebar', [IndexController::class, 'layouts_dark_sidebar'])->name('layouts-dark-sidebar');
 Route::get('/layouts-horizontal', [IndexController::class, 'layouts_horizontal'])->name('layouts-horizontal');
@@ -80,7 +76,7 @@ Route::get('/pages-session-expired', [IndexController::class, 'pages_session_exp
 Route::get('/pages-notification', [IndexController::class, 'pages_notification'])->name('pages-notification');
 Route::get('/pages-notification-detail', [IndexController::class, 'pages_notification_detail'])->name('pages-notification-detail');
 Route::get('/pages-commet', [IndexController::class, 'pages_commet'])->name('pages-commet');
-Route::get('/pages-room', [IndexController::class, 'pages_room'])->name('pages-room');
+
 Route::get('/pages-evaluate', [IndexController::class, 'pages_evaluate'])->name('pages-evaluate');
 // route user
 
@@ -124,7 +120,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
     Route::get('/pages-register', [IndexController::class, 'pages_register'])->name('pages-register');
     Route::get('/pages-session-expired', [IndexController::class, 'pages_session_expired'])->name('pages-session-expired');
     Route::get('/pages-commet', [IndexController::class, 'pages_commet'])->name('pages-commet');
-    Route::get('/pages-room', [IndexController::class, 'pages_room'])->name('pages-room');
+    Route::get('/pages-room', [RoomAdminController::class, 'index'])->name('pages-room');
     Route::get('/pages-evaluate', [IndexController::class, 'pages_evaluate'])->name('pages-evaluate');
 
     // Router thông báo admin
