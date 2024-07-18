@@ -55,7 +55,9 @@ Route::fallback(function () {
 // Route::get('/', [IndexController::class, 'homeAdmin'])->name('trang-quan-ly');
 
 
-Route::get('/home', [UserController::class, 'index'])->name('trang-quan-ly');
+Route::get('/home', [HomeAdminController::class, 'index'])->name('trang-quan-ly');
+// Route::get('/', [UserController::class, 'index'])->name('trang-quan-ly');
+
 Route::get('/tables-advanced', [IndexController::class, 'tables_advanced'])->name('tables-advanced');
 Route::get('/charts', [IndexController::class, 'charts'])->name('charts');
 Route::get('/componetns-widgets', [IndexController::class, 'componetns_widgets'])->name('componetns-widgets');
@@ -68,11 +70,12 @@ Route::get('/chinh-sua-goi-tin/{id}', [PriceListAdminController::class, 'getPric
 Route::PUT('/chinh-sua-goi-tin/{id}', [PriceListAdminController::class, 'update'])->name('put-pricelist');
 
 
-Route::get('/quan-li-ho-so', [UserController::class, 'index'])->name('extras-profile'); // router trang quan li ho so
+// Route::get('/quan-li-ho-so', [UserController::class, 'index'])->name('extras-profile'); // router trang quan li ho so
 // Route::get('/goi-dang-tin', [PriceListController::class, 'index'])->name('extras-pricing'); // router trang goi dang tin
 
 Route::get('/quan-li-ho-so', [UserController::class, 'index'])->name('quan-li-ho-so'); // router trang quan li ho so
 Route::get('/extras-pricing', [IndexController::class, 'index'])->name('extras-pricing');
+Route::get('/extras-pricing', [IndexController::class, 'index'])->name('extras-pricing'); 
 // Route::get('/goi-dang-tin', [PriceListController::class, 'index'])->name('extras-pricing'); // router trang goi dang tin
 
 
@@ -122,7 +125,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
     Route::get('/componetns-widgets', [IndexController::class, 'componetns_widgets'])->name('componetns-widgets');
     Route::get('/extras-contacts', [IndexController::class, 'extras_contacts'])->name('extras-contacts');
 
-    Route::get('/admin/extras-pricing', [PriceListAdminController::class, 'index'])->name('goi-dang-tin');
+    Route::get('/admin/extras-pricing', [PriceListAdminController::class, 'index'])->name('goi-dang-tin'); // router quản lí giá gói admin
     Route::get('/extras-profile', [UserController::class, 'index'])->name('extras-profile'); // router trang quan li ho so
     // Route::get('/extras-profile', [IndexController::class, 'extras_profile'])->name('extras-profile');
 

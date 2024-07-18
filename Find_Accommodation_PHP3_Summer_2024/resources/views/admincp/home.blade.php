@@ -133,9 +133,9 @@
                                 </thead>
 
                                 <tbody>
-
+                                    @foreach ($user as $item)
                                     <tr>
-                                        @foreach ($user as $item)
+                                       
                                             <td>
                                                 <div class="checkbox checkbox-primary mr-2 float-left">
                                                     <input id="checkbox2" type="checkbox">
@@ -158,11 +158,11 @@
                                             </td>
                                 
                                             <td>
-                                                {{ $item->created_at->format('d/m/Y') }}
+                                                {{ $item->address}}
                                             </td>
-                                        @endforeach
+                                   
                                     </tr>
-
+                                    @endforeach
                                 </tbody>
                             </table>
                         </div>

@@ -14,8 +14,9 @@ class HomeAdminController extends Controller
     public function index()
     {
         //
-        // $user = User::all();
-        // return view('admincp.home', compact('user'));
+        $user = User::take(6)->get();
+        return view('admincp.home', compact('user'));
+        
     }
 
     /**
