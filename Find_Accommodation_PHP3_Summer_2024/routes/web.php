@@ -41,6 +41,7 @@ use App\Http\Controllers\Admin\UserController as AdminUserController;
 Route::get('/', [RoomController::class, 'index'])->name('home');
 Route::get('/xem-phong/{id}', [RoomController::class, 'getRoomID'])->name('get-room');
 route::get('/profile', [UserController::class, 'profileuser'])->name('profileus');
+route::get('/trang-dang-bai', [RoomController::class, 'page_posting'])->name('posting-room');
 // Route bắt tất cả các yêu cầu không khớp
 Route::fallback(function () {
     return redirect('/');

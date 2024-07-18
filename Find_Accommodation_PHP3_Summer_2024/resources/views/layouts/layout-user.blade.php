@@ -62,7 +62,11 @@
                                         <li class="nav-item pe-4">
                                             <a class="nav-link" href="#">Diễn đàn</a>
                                         </li>
+                                        <li class="nav-item pe-4">
+                                            <a class="nav-link" href="{{route('posting-room')}}">Đăng bài</a>
+                                        </li>
                                     </ul>
+
                                     <button type="button" class="btn btn-primary" data-bs-toggle="modal"
                                         data-bs-target="#loginModal">
                                         Đăng nhập/Đăng ký
@@ -74,11 +78,14 @@
                 </div>
             </div>
         </div>
-        <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+     
+        <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel"
+            aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered"> <!-- Thêm class này -->
                 <div class="modal-content">
                     <div class="modal-header border-0">
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                            aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
                         <div class="account-pages my-3 pt-2">
@@ -93,7 +100,8 @@
                                                                 alt="" height="60" width="170"></span>
                                                     </a>
                                                 </div>
-                                                <form action="{{ route('login-users') }}" method="POST" class="p-2">
+                                                <form action="{{ route('login-users') }}" method="POST"
+                                                    class="p-2">
                                                     @csrf
                                                     <div class="mb-3">
                                                         <label for="emailaddress" class="form-label">Email</label>
