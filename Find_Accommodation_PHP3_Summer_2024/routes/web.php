@@ -93,7 +93,7 @@ Route::get('/register', [RegisterController::class, 'pages_register'])->name('re
 Route::post('/', [RegisterController::class, 'check_register']);
 //
 // Login trước khi vào các trang admin
-Route::get('/admin/dang-nhap', [IndexAdminController::class, 'pages_login'])->name('pages-login-admin');
+Route::get('/admin/dang-nhap', [IndexAdminController::class, 'pages_login'])->name('admincp.pages-login');
 Route::post('/admin/dang-nhap', [IndexAdminController::class, 'check_login']);
 // Đăng ký admin
 Route::get('/admin/dang-ky', [IndexAdminController::class, 'pages_register'])->name('pages-register-admin');
@@ -101,6 +101,7 @@ Route::post('/admin/dang-ky', [IndexAdminController::class, 'check_register']);
 // Đăng xuất admin
 Route::post('/logout', [IndexController::class, 'logout'])->name('logout');
 // Login trước khi vào trang admin
+Route::get('/admin',[IndexAdminController::class, 'admin'])->name('admin');
 
 Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
     // Route::get('/home', [HomeAdminController::class, 'index'])->name('trang-quan-ly');
@@ -108,7 +109,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
     Route::get('/tables-advanced', [NotificationAdminController::class, 'tables_advanced'])->name('tables-advanced');
 
     Route::get('/quan-ly-goi-dang-tin', [PriceListAdminController::class, 'index'])->name('goi-dang-tin'); // router quản lí giá gói admin
-    Route::get('/profile', [UserController::class, 'index'])->name('extras-profile'); // router trang quan li ho so
+    // Route::get('/profile', [UserController::class, 'index'])->name('extras-profile'); // router trang quan li ho so
     // Route::get('/extras-profile', [IndexController::class, 'extras_profile'])->name('extras-profile');
 
 
@@ -133,7 +134,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
     // end Thai Toan
     Route::get('/quan-ly-bai-viet', [RoomAdminController::class, 'index'])->name('pages-room');
     Route::get('/quan-ly-binh-luan', [CommentAdminController::class, 'index'])->name('pages-commet');
-    
+
     // Nguyen Thai Toan admin
 
 

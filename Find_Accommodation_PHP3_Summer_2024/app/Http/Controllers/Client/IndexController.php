@@ -15,14 +15,14 @@ class IndexController extends Controller
      */
     //router chuyển trang mẫu 
 
-  
+
 
     public function home()
     {
         return view('index');
     }
 
-  
+
     public function charts()
     {
         // Đếm số lượng đã xem hoặc chưa xem (0 là đã xem, 1 là chưa xem)
@@ -41,7 +41,7 @@ class IndexController extends Controller
         $unreadNotifications = Notification::where('status', 1)->get();
         return view('admincp.components-widgets', compact('notificationCount', 'unreadNotifications'));
     }
-   
+
     public function extras_pricing()
     {
         // Đếm số lượng đã xem hoặc chưa xem (0 là đã xem, 1 là chưa xem)
@@ -123,10 +123,10 @@ class IndexController extends Controller
         $unreadNotifications = Notification::where('status', 1)->get();
         return view('admincp.pages-forget-password', compact('notificationCount', 'unreadNotifications'));
     }
-    
-   
 
-  
+
+
+
     // Phương thức đăng xuất
     public function logout(Request $request)
     {

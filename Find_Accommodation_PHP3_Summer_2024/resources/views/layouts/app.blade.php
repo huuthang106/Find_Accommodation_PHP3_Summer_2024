@@ -167,7 +167,7 @@
                         </div>
 
                         <!-- item-->
-                        <a href="{{ route('extras-profile') }}" class="dropdown-item notify-item">
+                        <a href="{{ route('quan-li-ho-so') }}" class="dropdown-item notify-item">
                             <i class="mdi mdi-account-outline"></i>
                             <span>Hồ sơ</span>
                         </a>
@@ -339,9 +339,9 @@
                             <span class="badge badge-primary float-right">5</span>
                         </a>
                     </li>
-             
 
-                   
+
+
 
                 </ul>
 
@@ -461,7 +461,7 @@
     <!-- Required datatable js -->
     <script src="assets\libs\datatables\jquery.dataTables.min.js"></script>
     <script src="assets\libs\datatables\dataTables.bootstrap4.min.js"></script>
-    
+
 
 
 </body>

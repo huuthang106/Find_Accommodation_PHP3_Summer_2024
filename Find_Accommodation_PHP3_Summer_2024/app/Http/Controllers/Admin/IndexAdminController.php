@@ -132,4 +132,7 @@ class IndexAdminController extends Controller
         User::create($data);
         return redirect()->route('pages-login-admin');
     }
+    public function admin(){
+        return redirect()->route('trang-quan-ly');
+    }
 }
