@@ -65,32 +65,38 @@ class PriceListAdminController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $priceUpdate = PriceList::findOrFail($id); // Tìm giá theo id, nếu không tìm thấy sẽ bắt lỗi 404
-
         // Validate dữ liệu từ request
         $request->validate([
-            'status' => 'required',
+            'status' => 'required|in:1,2,3', // Đảm bảo status chỉ nhận các giá trị 1, 2 hoặc 3
             'price' => 'required|numeric',
-            'Support' => 'required',
-            'Video_Posting' => 'required',
-            'Post_Posting' => 'required',
+            'support' => 'required',
+            'videoPosting' => 'required',
+            'postPosting' => 'required',
             'description' => 'required',
         ]);
 
-        // Cập nhật các trường dữ liệu
-        $priceUpdate->status = $request->option('status');
-        $priceUpdate->price = $request->input('price');
-        $priceUpdate->Support = $request->input('Support');
-        $priceUpdate->Video_Posting = $request->input('Video_Posting');
-        $priceUpdate->Post_Posting = $request->input('Post_Posting');
-        $priceUpdate->description = $request->input('description');
+        // Tìm đối tượng PriceList theo $id
+        $priceList = PriceList::findOrFail($id);
+
+        // Cập nhật các trường dữ liệu từ request vào đối tượng PriceList
+        $priceList->status = $request->input('status');
+        $priceList->price = $request->input('price');
+        $priceList->Support = $request->input('support');
+        $priceList->Video_Posting = $request->input('videoPosting');
+        $priceList->Post_Posting = $request->input('postPosting');
+        $priceList->description = $request->input('description');
 
         // Lưu lại vào cơ sở dữ liệu
-        $priceUpdate->save();
+        $priceList->save();
 
-        // Redirect về trang danh sách hoặc trang chi tiết
-        // return redirect()->back()->with('success', 'Cập nhật giá thành công');
+        // Redirect về trang danh sách hoặc trang chi tiết (tuỳ theo yêu cầu của bạn)
+        return redirect()->route('post-pricelist', ['id' => $priceList->id])
+            ->with('success', 'Cập nhật giá thành công');
+    
     }
+
+
+
 
     /**
      * Remove the specified resource from storage.

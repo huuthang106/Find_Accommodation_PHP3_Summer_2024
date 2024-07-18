@@ -60,7 +60,7 @@ Route::get('/extras-contacts', [IndexController::class, 'extras_contacts'])->nam
 Route::get('/goi-dang-tin', [PriceListController::class, 'index'])->name('goi-dang-tin');
 Route::get('/chi-tiet-goi-tin', [PriceListAdminController::class, 'getPriceListDetail'])->name('get-pricelist');
 Route::get('/chinh-sua-goi-tin/{id}', [PriceListAdminController::class, 'getPriceListID'])->name('post-pricelist');
-Route::post('/cap-nhat-goi-tin/{id}', [PriceListAdminController::class, 'update'])->name('put-pricelist');
+Route::PUT('/chinh-sua-goi-tin/{id}', [PriceListAdminController::class, 'update'])->name('put-pricelist');
 
 
 Route::get('/quan-li-ho-so', [UserController::class, 'index'])->name('extras-profile'); // router trang quan li ho so
