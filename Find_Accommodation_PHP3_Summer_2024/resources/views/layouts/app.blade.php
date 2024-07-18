@@ -301,12 +301,12 @@
                                     <span>Quản lí tin đăng</span>
                                 </a>
                             </li>
-                            <li>
+                            {{-- <li>
                                 <a href="{{ route('pages-evaluate') }}">
                                     <i class="fas fa-money-check"></i>
                                     <span>Quản lí đánh giá</span>
                                 </a>
-                            </li>
+                            </li> --}}
                             <li>
                                 <a href="{{ route('goi-dang-tin') }}">
                                     <i class="fas fa-money-check"></i>
@@ -322,7 +322,7 @@
                         </ul>
                     </li>
 
-                    <li>
+                    {{-- <li>
                         <a href="javascript: void(0);">
                             <i class="ti-menu-alt"></i>
                             <span> Tables </span>
@@ -331,7 +331,7 @@
                         <ul class="nav-second-level" aria-expanded="false">
                             <li><a href="{{ route('tables-advanced') }}">Advanced Tables</a></li>
                         </ul>
-                    </li>
+                    </li> --}}
                     <li>
                         <a href="{{ route('charts') }}">
                             <i class="ti-pie-chart"></i>
@@ -339,49 +339,9 @@
                             <span class="badge badge-primary float-right">5</span>
                         </a>
                     </li>
-                    <li>
-                        <a href="javascript: void(0);">
-                            <i class="ti-files"></i>
-                            <span> Trang tài liệu </span>
-                            <span class="menu-arrow"></span>
-                        </a>
-                        <ul class="nav-second-level" aria-expanded="false">
-                            <li><a href="{{ route('pages-login') }}">Đăng nhập</a></li>
-                            <li><a href="{{ route('pages-register') }}">Đăng ký</a></li>
-                            <li><a href="{{ route('pages-forget-password') }}">Quên mật khẩu</a></li>
-                            <li><a href="{{ route('pages-404') }}">Lỗi</a></li>
-                            <li><a href="{{ route('pages-confirm-mail') }}">Xác nhận Email</a></li>
-                            <li><a href="{{ route('pages-session-expired') }}">Đăng nhập hết hạng</a></li>
-                        </ul>
-                    </li>
+             
 
-                    <li>
-                        <a href="javascript: void(0);">
-                            <i class="ti-widget"></i>
-                            <span> Extra Pages </span>
-                            <span class="menu-arrow"></span>
-                        </a>
-                        <ul class="nav-second-level" aria-expanded="false">
-                            <li><a href="{{ route('extras-profile') }}">Hồ sơ</a></li>
-                            {{-- <li><a href="{{ route('extras-pricing') }}">Gói đăng tin</a></li> --}}
-                            <li><a href="{{ route('extras-contacts') }}">Liên hệ</a></li>
-                        </ul>
-                    </li>
-
-                    <li>
-                        <a href="javascript: void(0);">
-                            <i class="ti-layout"></i>
-                            <span> Layouts </span>
-                            <span class="badge badge-danger badge-pill float-right">New</span>
-                        </a>
-                        <ul class="nav-second-level" aria-expanded="false">
-                            <li><a href="{{ route('layouts-horizontal') }}">Horizontal</a></li>
-                            <li><a href="{{ route('layouts-dark-sidebar') }}">Dark Sidebar</a></li>
-                            <li><a href="{{ route('layouts-small-sidebar') }}">Small Sidebar</a></li>
-                            <li><a href="{{ route('layouts-sidebar-collapsed') }}">Sidebar Collapsed</a></li>
-                        </ul>
-                    </li>
-
+                   
 
                 </ul>
 

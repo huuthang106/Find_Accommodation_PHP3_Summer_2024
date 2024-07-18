@@ -51,7 +51,7 @@
                     <div class="row mt-4">
                         <div class="col-sm-12 text-center">
                             <p class="text-muted mb-0">Bạn chưa có tài khoản? <a
-                                    href="{{ route('admincp.pages-register') }}" class="text-dark ml-1"><b>ĐĂNG KÝ</b></a>
+                                    href="{{ route('pages-register-admin') }}" class="text-dark ml-1"><b>ĐĂNG KÝ</b></a>
                             </p>
                         </div>
                     </div>

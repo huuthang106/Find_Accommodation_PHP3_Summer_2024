@@ -41,7 +41,7 @@ use App\Http\Controllers\Admin\UserController as AdminUserController;
 Route::get('/', [RoomController::class, 'index'])->name('home');
 Route::get('/xem-phong/{id}', [RoomController::class, 'getRoomID'])->name('get-room');
 
-Route::get('/', [RoomController::class, 'index'])->name('home');
+
 
 // start Nguyen Huu Thang
 Route::get('/home', [RoomController::class, 'index'])->name('home');
@@ -55,50 +55,27 @@ Route::fallback(function () {
 // Route::get('/', [IndexController::class, 'homeAdmin'])->name('trang-quan-ly');
 
 
-Route::get('/home', [HomeAdminController::class, 'index'])->name('trang-quan-ly');
+
 // Route::get('/', [UserController::class, 'index'])->name('trang-quan-ly');
 
-Route::get('/tables-advanced', [IndexController::class, 'tables_advanced'])->name('tables-advanced');
-Route::get('/charts', [IndexController::class, 'charts'])->name('charts');
-Route::get('/componetns-widgets', [IndexController::class, 'componetns_widgets'])->name('componetns-widgets');
-Route::get('/extras-contacts', [IndexController::class, 'extras_contacts'])->name('extras-contacts');
-
-//Nguyen Thai Toan 
-Route::get('/goi-dang-tin', [PriceListController::class, 'index'])->name('goi-dang-tin');
-Route::get('/chi-tiet-goi-tin', [PriceListAdminController::class, 'getPriceListDetail'])->name('get-pricelist');
-Route::get('/chinh-sua-goi-tin/{id}', [PriceListAdminController::class, 'getPriceListID'])->name('post-pricelist');
-Route::PUT('/chinh-sua-goi-tin/{id}', [PriceListAdminController::class, 'update'])->name('put-pricelist');
+// Route::get('/tables-advanced', [IndexController::class, 'tables_advanced'])->name('tables-advanced');
+// 
+// Route::get('/componetns-widgets', [IndexController::class, 'componetns_widgets'])->name('componetns-widgets');
+// 
 
 
-// Route::get('/quan-li-ho-so', [UserController::class, 'index'])->name('extras-profile'); // router trang quan li ho so
-// Route::get('/goi-dang-tin', [PriceListController::class, 'index'])->name('extras-pricing'); // router trang goi dang tin
-
-Route::get('/quan-li-ho-so', [UserController::class, 'index'])->name('quan-li-ho-so'); // router trang quan li ho so
-Route::get('/extras-pricing', [IndexController::class, 'index'])->name('extras-pricing');
-Route::get('/extras-pricing', [IndexController::class, 'index'])->name('extras-pricing');
-// Route::get('/goi-dang-tin', [PriceListController::class, 'index'])->name('extras-pricing'); // router trang goi dang tin
+// 
 
 
 
-Route::get('/layouts-dark-sidebar', [IndexController::class, 'layouts_dark_sidebar'])->name('layouts-dark-sidebar');
-Route::get('/layouts-horizontal', [IndexController::class, 'layouts_horizontal'])->name('layouts-horizontal');
-Route::get('/layouts-sidebar-collapsed', [IndexController::class, 'layouts_sidebar_collapsed'])->name('layouts-sidebar-collapsed');
-Route::get('/layouts-small-sidebar', [IndexController::class, 'layouts_small_sidebar'])->name('layouts-small-sidebar');
-Route::get('/pages-404', [IndexController::class, 'pages_404'])->name('pages-404');
-Route::get('/pages-confirm-mail', [IndexController::class, 'pages_confirm_mail'])->name('pages-confirm-mail');
-Route::get('/pages-forget-password', [IndexController::class, 'pages_forget_password'])->name('pages-forget-password');
-Route::get('/pages-login', [IndexController::class, 'pages_login'])->name('pages-login');
-Route::get('/pages-register', [IndexController::class, 'pages_register'])->name('pages-register');
-Route::get('/pages-session-expired', [IndexController::class, 'pages_session_expired'])->name('pages-session-expired');
-Route::get('/pages-notification', [IndexController::class, 'pages_notification'])->name('pages-notification');
-Route::get('/pages-notification-detail', [IndexController::class, 'pages_notification_detail'])->name('pages-notification-detail');
-Route::get('/pages-commet', [IndexController::class, 'pages_commet'])->name('pages-commet');
 
-Route::get('/pages-evaluate', [IndexController::class, 'pages_evaluate'])->name('pages-evaluate');
+
+
 // route user
-
+// Nguyen Huu Thang
 Route::get('/xem-phong/{id}', [RoomController::class, 'getRoomID'])->name('get-room');
 route::get('/profile', [UserController::class, 'profileuser'])->name('profileus');
+
 // [VoTanLuon] Rpute xem loại trọ client
 Route::get('/loai-tro', [CategoryController::class, 'index'])->name('category-motel');
 // [VoTanLuon] Route trang thông tin tài khoản người dùng (client)
@@ -112,44 +89,34 @@ Route::get('/login', [AuthController::class, 'pages_login'])->name('login');
 Route::post('/login-check', [AuthController::class, 'check_login'])->name('login-users');
 
 // Register user
-Route::get('/register', [RegisterController::class, 'pages_register'])->name('layouts.layout-user');
+Route::get('/register', [RegisterController::class, 'pages_register'])->name('register-user');
 Route::post('/', [RegisterController::class, 'check_register']);
 //
 // Login trước khi vào các trang admin
-Route::get('/admin/dang-nhap', [IndexController::class, 'pages_login'])->name('admincp.pages-login');
-Route::post('/admin/dang-nhap', [IndexController::class, 'check_login']);
+Route::get('/admin/dang-nhap', [IndexAdminController::class, 'pages_login'])->name('pages-login-admin');
+Route::post('/admin/dang-nhap', [IndexAdminController::class, 'check_login']);
 // Đăng ký admin
-Route::get('/admin/dang-ky', [IndexController::class, 'pages_register'])->name('admincp.pages-register');
-Route::post('/admin/dang-ky', [IndexController::class, 'check_register']);
+Route::get('/admin/dang-ky', [IndexAdminController::class, 'pages_register'])->name('pages-register-admin');
+Route::post('/admin/dang-ky', [IndexAdminController::class, 'check_register']);
 // Đăng xuất admin
 Route::post('/logout', [IndexController::class, 'logout'])->name('logout');
 // Login trước khi vào trang admin
-Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
-    Route::get('/trang-quan-ly', [IndexController::class, 'homeAdmin'])->name('trang-quan-ly');
-    Route::get('/tables-advanced', [IndexController::class, 'tables_advanced'])->name('tables-advanced');
-    Route::get('/charts', [IndexController::class, 'charts'])->name('charts');
-    Route::get('/componetns-widgets', [IndexController::class, 'componetns_widgets'])->name('componetns-widgets');
-    Route::get('/extras-contacts', [IndexController::class, 'extras_contacts'])->name('extras-contacts');
 
-    Route::get('/admin/extras-pricing', [PriceListAdminController::class, 'index'])->name('goi-dang-tin'); // router quản lí giá gói admin
-    Route::get('/extras-profile', [UserController::class, 'index'])->name('extras-profile'); // router trang quan li ho so
+Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
+    // Route::get('/home', [HomeAdminController::class, 'index'])->name('trang-quan-ly');
+    Route::get('/trang-quan-ly', [HomeAdminController::class, 'homeAdmin'])->name('trang-quan-ly');
+    Route::get('/tables-advanced', [NotificationAdminController::class, 'tables_advanced'])->name('tables-advanced');
+
+    Route::get('/quan-ly-goi-dang-tin', [PriceListAdminController::class, 'index'])->name('goi-dang-tin'); // router quản lí giá gói admin
+    Route::get('/profile', [UserController::class, 'index'])->name('extras-profile'); // router trang quan li ho so
     // Route::get('/extras-profile', [IndexController::class, 'extras_profile'])->name('extras-profile');
 
-    Route::get('/layouts-dark-sidebar', [IndexController::class, 'layouts_dark_sidebar'])->name('layouts-dark-sidebar');
-    Route::get('/layouts-horizontal', [IndexController::class, 'layouts_horizontal'])->name('layouts-horizontal');
-    Route::get('/layouts-sidebar-collapsed', [IndexController::class, 'layouts_sidebar_collapsed'])->name('layouts-sidebar-collapsed');
-    Route::get('/layouts-small-sidebar', [IndexController::class, 'layouts_small_sidebar'])->name('layouts-small-sidebar');
-    Route::get('/pages-404', [IndexController::class, 'pages_404'])->name('pages-404');
-    Route::get('/pages-confirm-mail', [IndexController::class, 'pages_confirm_mail'])->name('pages-confirm-mail');
-    Route::get('/pages-forget-password', [IndexController::class, 'pages_forget_password'])->name('pages-forget-password');
-    Route::get('/pages-login', [IndexController::class, 'pages_login'])->name('pages-login');
-    Route::get('/pages-register', [IndexController::class, 'pages_register'])->name('pages-register');
-    Route::get('/pages-session-expired', [IndexController::class, 'pages_session_expired'])->name('pages-session-expired');
-    Route::get('/pages-commet', [IndexController::class, 'pages_commet'])->name('pages-commet');
-    Route::get('/pages-room', [RoomAdminController::class, 'index'])->name('pages-room');
-    Route::get('/pages-evaluate', [IndexController::class, 'pages_evaluate'])->name('pages-evaluate');
 
+    Route::get('/lien-he', [HomeAdminController::class, 'extras_contacts'])->name('extras-contacts');
+    Route::get('/thong-so', [IndexController::class, 'charts'])->name('charts');
+    Route::get('/quan-li-ho-so', [UserController::class, 'index'])->name('quan-li-ho-so'); // router trang quan li ho so
     // Router thông báo admin
+
     Route::get('/trang-thong-bao', [NotificationAdminController::class, 'index'])->name('pages-notification');
     // Router chi tiết thông báo admin
     Route::get('/trang-chi-tiet-thong-bao/{id}', [NotificationAdminController::class, 'show'])->name('pages-notification-detail');
@@ -157,8 +124,71 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
     Route::post('/trang-chi-tiet-thong-bao/cap-nhat/{id}', [NotificationAdminController::class, 'update'])->name('pages-notification-detail');
     // Xóa mềm thông báo admin
     Route::get('/xoa-tat-ca-thong-bao', [NotificationAdminController::class, 'softDeleteAll'])->name('soft-delete-all-notifications');
+
+    //Nguyen Thai Toan 
+    Route::get('/goi-dang-tin', [PriceListAdminController::class, 'index'])->name('goi-dang-tin');
+    Route::get('/chi-tiet-goi-tin', [PriceListAdminController::class, 'getPriceListDetail'])->name('get-pricelist');
+    Route::get('/chinh-sua-goi-tin/{id}', [PriceListAdminController::class, 'getPriceListID'])->name('post-pricelist');
+    Route::PUT('/chinh-sua-goi-tin/{id}', [PriceListAdminController::class, 'update'])->name('put-pricelist');
+    // end Thai Toan
+    Route::get('/quan-ly-bai-viet', [RoomAdminController::class, 'index'])->name('pages-room');
+    Route::get('/quan-ly-binh-luan', [CommentAdminController::class, 'index'])->name('pages-commet');
+    
+    // Nguyen Thai Toan admin
+
+
+    // end Nguyen Thai Toan admin
+
+
+    // Le Minh Huy admin
+
+    // end Le Minh Huy admin
+
+
+    // Tong Chi Nhan admin
+
+
+    // end Tong Chi Nhan admin
+
+
+    // Vo Tan Luon admin
+
+
+    // end Vo Tan Luon admin
+
+    // Nguyen Huu Thang admin
+
+
+    // end Nguyen Huu Thang admin
+
 });
-Route::get('/pages-commet', [CommentAdminController::class, 'index'])->name('pages-commet');
-Route::get('/pages-room', [RoomAdminController::class, 'index'])->name('pages-room');
-Route::get('/pages-evaluate', [IndexController::class, 'pages_evaluate'])->name('pages-evaluate');
-Route::get('/pages-edit-pricing', [IndexController::class, 'pages_edit_pricing'])->name('pages-edit-pricing');
+
+
+
+// Route::get('/pages-edit-pricing', [IndexController::class, 'pages_edit_pricing'])->name('pages-edit-pricing');
+// Nguyen Thai Toan user
+
+
+// end Nguyen Thai Toan user
+
+
+// Le Minh Huy user
+
+// end Le Minh Huy user
+
+
+// Tong Chi Nhan user
+
+
+// end Tong Chi Nhan user
+
+
+// Vo Tan Luon user
+
+
+// end Vo Tan Luon User
+
+// Nguyen Huu Thang user
+
+
+// end Nguyen Huu Thang user

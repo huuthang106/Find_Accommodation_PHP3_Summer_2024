@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\Notification;
 
 class HomeAdminController extends Controller
 {
@@ -14,9 +15,30 @@ class HomeAdminController extends Controller
     public function index()
     {
         //
+
+
+
+    }
+    public function extras_contacts()
+    {
+        // Đếm số lượng đã xem hoặc chưa xem (0 là đã xem, 1 là chưa xem)
+        $notificationCount = Notification::where('status', 1)->count();
+
+        // Lấy thông báo chưa xem
+        $unreadNotifications = Notification::where('status', 1)->get();
+        return view('admincp.extras-contacts', compact('notificationCount', 'unreadNotifications'));
+    }
+    public function homeAdmin()
+    {
+        // Đếm số lượng đã xem hoặc chưa xem (0 là đã xem, 1 là chưa xem)
+        $notificationCount = Notification::where('status', 1)->count();
+
+        // Lấy thông báo chưa xem
+        $unreadNotifications = Notification::where('status', 1)->get();
         $user = User::take(6)->get();
-        return view('admincp.home', compact('user'));
-        
+        // Truyền dữ liệu tới view
+        return view('admincp.home', compact('notificationCount', 'unreadNotifications', 'user'));
+        // return view('admincp.home');
     }
 
     /**

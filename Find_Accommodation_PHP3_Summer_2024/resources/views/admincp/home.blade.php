@@ -134,34 +134,35 @@
 
                                 <tbody>
                                     @foreach ($user as $item)
-                                    <tr>
-                                       
+                                        <tr>
+
                                             <td>
                                                 <div class="checkbox checkbox-primary mr-2 float-left">
                                                     <input id="checkbox2" type="checkbox">
                                                     <label for="checkbox2"></label>
                                                 </div>
-                                
-                                                <img src="assets/images/users/avatar-2.jpg" alt="contact-img" title="contact-img" class="rounded-circle avatar-sm">
+
+                                                <img src="assets/images/users/avatar-2.jpg" alt="contact-img"
+                                                    title="contact-img" class="rounded-circle avatar-sm">
                                             </td>
-                                
+
                                             <td>
                                                 {{ $item->username }}
                                             </td>
-                                
+
                                             <td>
                                                 <a href="#" class="text-muted">{{ $item->email }}</a>
                                             </td>
-                                
+
                                             <td>
                                                 <b><a href="" class="text-dark"><b>356</b></a></b>
                                             </td>
-                                
+
                                             <td>
-                                                {{ $item->address}}
+                                                {{ $item->address }}
                                             </td>
-                                   
-                                    </tr>
+
+                                        </tr>
                                     @endforeach
                                 </tbody>
                             </table>

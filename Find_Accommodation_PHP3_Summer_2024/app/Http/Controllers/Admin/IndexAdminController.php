@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Notification;
-
+use App\Models\User;
 
 
 class IndexAdminController extends Controller
@@ -74,5 +74,62 @@ class IndexAdminController extends Controller
     public function destroy(string $id)
     {
         //
+    }
+
+    public function pages_login()
+    {
+        return view('admincp.pages-login');
+    }
+    public function pages_register()
+    {
+        return view('admincp.pages-register');
+    }
+    public function check_login()
+    {
+        // Bắt lỗi
+        request()->validate([
+            'email' => 'required|email|exists:users,email',
+            'password' => 'required',
+        ], [
+            'email.exists' => 'Email không tồn tại trong hệ thống.',
+            'email.required' => 'Vui lòng nhập địa chỉ email.',
+            'email.email' => 'Địa chỉ email không hợp lệ.',
+            'password.required' => 'Vui lòng nhập mật khẩu.',
+        ]);
+
+        $credentials = request()->only('email', 'password');
+
+        if (auth()->attempt($credentials)) {
+            // Authentication passed
+            return redirect()->route('trang-quan-ly');
+        }
+
+        // Authentication failed
+        return redirect()->back()->withErrors([
+            'password' => 'Mật khẩu không chính xác.',
+        ]);
+    }
+    
+    public function check_register()
+    {
+        // Bắt lỗi
+        request()->validate([
+            'username' => 'required',
+            'email' => 'required|email|unique:users,email',
+            'password' => 'required',
+            'password_confirmation' => 'required|same:password',
+        ], [
+            'username.required' => 'Vui lòng nhập tên người dùng.',
+            'email.required' => 'Vui lòng nhập địa chỉ email.',
+            'email.email' => 'Địa chỉ email không hợp lệ.',
+            'email.unique' => 'Địa chỉ email đã tồn tại trong hệ thống.',
+            'password.required' => 'Vui lòng nhập mật khẩu.',
+            'password_confirmation.required' => 'Vui lòng nhập lại mật khẩu để xác nhận.',
+            'password_confirmation.same' => 'Mật khẩu xác nhận không khớp với mật khẩu đã nhập.',
+        ]);
+        $data = request()->all('username', 'email');
+        $data['password'] = bcrypt(request('password'));
+        User::create($data);
+        return redirect()->route('pages-login-admin');
     }
 }

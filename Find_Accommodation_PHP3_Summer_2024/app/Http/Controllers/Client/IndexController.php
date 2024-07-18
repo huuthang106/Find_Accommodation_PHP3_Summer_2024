@@ -15,33 +15,14 @@ class IndexController extends Controller
      */
     //router chuyển trang mẫu 
 
-    public function homeAdmin()
-    {
-        // Đếm số lượng đã xem hoặc chưa xem (0 là đã xem, 1 là chưa xem)
-        $notificationCount = Notification::where('status', 1)->count();
-
-        // Lấy thông báo chưa xem
-        $unreadNotifications = Notification::where('status', 1)->get();
-
-        // Truyền dữ liệu tới view
-        return view('admincp.home', compact('notificationCount', 'unreadNotifications'));
-        // return view('admincp.home');
-    }
+  
 
     public function home()
     {
         return view('index');
     }
 
-    public function tables_advanced()
-    {
-        // Đếm số lượng đã xem hoặc chưa xem (0 là đã xem, 1 là chưa xem)
-        $notificationCount = Notification::where('status', 1)->count();
-
-        // Lấy thông báo chưa xem
-        $unreadNotifications = Notification::where('status', 1)->get();
-        return view('admincp.tables-advanced', compact('notificationCount', 'unreadNotifications'));
-    }
+  
     public function charts()
     {
         // Đếm số lượng đã xem hoặc chưa xem (0 là đã xem, 1 là chưa xem)
@@ -60,15 +41,7 @@ class IndexController extends Controller
         $unreadNotifications = Notification::where('status', 1)->get();
         return view('admincp.components-widgets', compact('notificationCount', 'unreadNotifications'));
     }
-    public function extras_contacts()
-    {
-        // Đếm số lượng đã xem hoặc chưa xem (0 là đã xem, 1 là chưa xem)
-        $notificationCount = Notification::where('status', 1)->count();
-
-        // Lấy thông báo chưa xem
-        $unreadNotifications = Notification::where('status', 1)->get();
-        return view('admincp.extras-contacts', compact('notificationCount', 'unreadNotifications'));
-    }
+   
     public function extras_pricing()
     {
         // Đếm số lượng đã xem hoặc chưa xem (0 là đã xem, 1 là chưa xem)
@@ -150,62 +123,10 @@ class IndexController extends Controller
         $unreadNotifications = Notification::where('status', 1)->get();
         return view('admincp.pages-forget-password', compact('notificationCount', 'unreadNotifications'));
     }
-    public function pages_login()
-    {
-        return view('admincp.pages-login');
-    }
-    public function check_login()
-    {
-        // Bắt lỗi
-        request()->validate([
-            'email' => 'required|email|exists:users,email',
-            'password' => 'required',
-        ], [
-            'email.exists' => 'Email không tồn tại trong hệ thống.',
-            'email.required' => 'Vui lòng nhập địa chỉ email.',
-            'email.email' => 'Địa chỉ email không hợp lệ.',
-            'password.required' => 'Vui lòng nhập mật khẩu.',
-        ]);
+    
+   
 
-        $credentials = request()->only('email', 'password');
-
-        if (auth()->attempt($credentials)) {
-            // Authentication passed
-            return redirect()->route('trang-quan-ly');
-        }
-
-        // Authentication failed
-        return redirect()->back()->withErrors([
-            'password' => 'Mật khẩu không chính xác.',
-        ]);
-    }
-
-    public function pages_register()
-    {
-        return view('admincp.pages-register');
-    }
-    public function check_register()
-    {
-        // Bắt lỗi
-        request()->validate([
-            'username' => 'required',
-            'email' => 'required|email|unique:users,email',
-            'password' => 'required',
-            'password_confirmation' => 'required|same:password',
-        ], [
-            'username.required' => 'Vui lòng nhập tên người dùng.',
-            'email.required' => 'Vui lòng nhập địa chỉ email.',
-            'email.email' => 'Địa chỉ email không hợp lệ.',
-            'email.unique' => 'Địa chỉ email đã tồn tại trong hệ thống.',
-            'password.required' => 'Vui lòng nhập mật khẩu.',
-            'password_confirmation.required' => 'Vui lòng nhập lại mật khẩu để xác nhận.',
-            'password_confirmation.same' => 'Mật khẩu xác nhận không khớp với mật khẩu đã nhập.',
-        ]);
-        $data = request()->all('username', 'email');
-        $data['password'] = bcrypt(request('password'));
-        User::create($data);
-        return redirect()->route('admincp.pages-login');
-    }
+  
     // Phương thức đăng xuất
     public function logout(Request $request)
     {

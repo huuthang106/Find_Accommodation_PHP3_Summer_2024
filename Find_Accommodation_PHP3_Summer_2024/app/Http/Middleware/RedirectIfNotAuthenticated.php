@@ -17,7 +17,7 @@ class RedirectIfNotAuthenticated
     public function handle(Request $request, Closure $next): Response
     {
         if (!Auth::check()) {
-            return redirect()->route('admincp.pages-login')->with('error', 'Bạn cần phải đăng nhập để truy cập trang này.');
+            return redirect()->route('pages-login-admin')->with('error', 'Bạn cần phải đăng nhập để truy cập trang này.');
         }
 
         return $next($request);
