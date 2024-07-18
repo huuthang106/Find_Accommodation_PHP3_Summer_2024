@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\User;
 
 class HomeAdminController extends Controller
 {
@@ -13,6 +14,8 @@ class HomeAdminController extends Controller
     public function index()
     {
         //
+        // $user = User::all();
+        // return view('admincp.home', compact('user'));
     }
 
     /**

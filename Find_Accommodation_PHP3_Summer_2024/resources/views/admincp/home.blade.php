@@ -113,7 +113,7 @@
             <div class="row">
                 <div class="col-sm-12">
                     <div class="card-box">
-                        <h5 class="mt-0 font-14 mb-3">Contacts</h5>
+                        <h5 class="mt-0 font-14 mb-3">Liên Hệ</h5>
                         <div class="table-responsive">
                             <table class="table table-hover mails m-0 table table-actions-bar table-centered">
                                 <thead>
@@ -125,191 +125,42 @@
                                                 <label class="custom-control-label" for="action-checkbox">&nbsp;</label>
                                             </div>
                                         </th>
-                                        <th>Name</th>
+                                        <th>Tên</th>
                                         <th>Email</th>
-                                        <th>Products</th>
-                                        <th>Start Date</th>
+                                        <th>Số Điện Thoại</th>
+                                        <th>Địa Chỉ</th>
                                     </tr>
                                 </thead>
 
                                 <tbody>
-                                    <tr>
-                                        <td>
-                                            <div class="checkbox checkbox-primary mr-2 float-left">
-                                                <input id="checkbox2" type="checkbox">
-                                                <label for="checkbox2"></label>
-                                            </div>
-
-                                            <img src="assets\images\users\avatar-2.jpg" alt="contact-img"
-                                                title="contact-img" class="rounded-circle avatar-sm">
-                                        </td>
-
-                                        <td>
-                                            Tomaslau
-                                        </td>
-
-                                        <td>
-                                            <a href="#" class="text-muted">tomaslau@dummy.com</a>
-                                        </td>
-
-                                        <td>
-                                            <b><a href="" class="text-dark"><b>356</b></a>
-                                            </b>
-                                        </td>
-
-                                        <td>
-                                            01/11/2003
-                                        </td>
-
-                                    </tr>
 
                                     <tr>
-                                        <td>
-                                            <div class="checkbox checkbox-primary mr-2 float-left">
-                                                <input id="checkbox1" type="checkbox">
-                                                <label for="checkbox1"></label>
-                                            </div>
-
-                                            <img src="assets\images\users\avatar-1.jpg" alt="contact-img"
-                                                title="contact-img" class="rounded-circle avatar-sm">
-                                        </td>
-
-                                        <td>
-                                            Chadengle
-                                        </td>
-
-                                        <td>
-                                            <a href="#" class="text-muted">chadengle@dummy.com</a>
-                                        </td>
-
-                                        <td>
-                                            <b><a href="" class="text-dark"><b>568</b></a>
-                                            </b>
-                                        </td>
-
-                                        <td>
-                                            01/11/2003
-                                        </td>
-
-                                    </tr>
-
-                                    <tr>
-                                        <td>
-                                            <div class="checkbox checkbox-primary mr-2 float-left">
-                                                <input id="checkbox3" type="checkbox">
-                                                <label for="checkbox3"></label>
-                                            </div>
-
-                                            <img src="assets\images\users\avatar-3.jpg" alt="contact-img"
-                                                title="contact-img" class="rounded-circle avatar-sm">
-                                        </td>
-
-                                        <td>
-                                            Stillnotdavid
-                                        </td>
-
-                                        <td>
-                                            <a href="#" class="text-muted">stillnotdavid@dummy.com</a>
-                                        </td>
-                                        <td>
-                                            <b><a href="" class="text-dark"><b>201</b></a>
-                                            </b>
-                                        </td>
-
-                                        <td>
-                                            12/11/2003
-                                        </td>
-
-                                    </tr>
-
-                                    <tr>
-                                        <td>
-                                            <div class="checkbox checkbox-primary mr-2 float-left">
-                                                <input id="checkbox4" type="checkbox">
-                                                <label for="checkbox4"></label>
-                                            </div>
-
-                                            <img src="assets\images\users\avatar-4.jpg" alt="contact-img"
-                                                title="contact-img" class="rounded-circle avatar-sm">
-                                        </td>
-
-                                        <td>
-                                            Kurafire
-                                        </td>
-
-                                        <td>
-                                            <a href="#" class="text-muted">kurafire@dummy.com</a>
-                                        </td>
-
-                                        <td>
-                                            <b><a href="" class="text-dark"><b>56</b></a>
-                                            </b>
-                                        </td>
-
-                                        <td>
-                                            14/11/2003
-                                        </td>
-
-                                    </tr>
-
-                                    <tr>
-                                        <td>
-                                            <div class="checkbox checkbox-primary mr-2 float-left">
-                                                <input id="checkbox5" type="checkbox">
-                                                <label for="checkbox5"></label>
-                                            </div>
-
-                                            <img src="assets\images\users\avatar-5.jpg" alt="contact-img"
-                                                title="contact-img" class="rounded-circle avatar-sm">
-                                        </td>
-
-                                        <td>
-                                            Shahedk
-                                        </td>
-
-                                        <td>
-                                            <a href="#" class="text-muted">shahedk@dummy.com</a>
-                                        </td>
-
-                                        <td>
-                                            <b><a href="" class="text-dark"><b>356</b></a>
-                                            </b>
-                                        </td>
-
-                                        <td>
-                                            20/11/2003
-                                        </td>
-
-                                    </tr>
-
-                                    <tr>
-                                        <td>
-                                            <div class="checkbox checkbox-primary mr-2 float-left">
-                                                <input id="checkbox6" type="checkbox">
-                                                <label for="checkbox6"></label>
-                                            </div>
-
-                                            <img src="assets\images\users\avatar-6.jpg" alt="contact-img"
-                                                title="contact-img" class="rounded-circle avatar-sm">
-                                        </td>
-
-                                        <td>
-                                            Adhamdannaway
-                                        </td>
-
-                                        <td>
-                                            <a href="#" class="text-muted">adhamdannaway@dummy.com</a>
-                                        </td>
-
-                                        <td>
-                                            <b><a href="" class="text-dark"><b>956</b></a>
-                                            </b>
-                                        </td>
-
-                                        <td>
-                                            24/11/2003
-                                        </td>
-
+                                        @foreach ($user as $item)
+                                            <td>
+                                                <div class="checkbox checkbox-primary mr-2 float-left">
+                                                    <input id="checkbox2" type="checkbox">
+                                                    <label for="checkbox2"></label>
+                                                </div>
+                                
+                                                <img src="assets/images/users/avatar-2.jpg" alt="contact-img" title="contact-img" class="rounded-circle avatar-sm">
+                                            </td>
+                                
+                                            <td>
+                                                {{ $item->username }}
+                                            </td>
+                                
+                                            <td>
+                                                <a href="#" class="text-muted">{{ $item->email }}</a>
+                                            </td>
+                                
+                                            <td>
+                                                <b><a href="" class="text-dark"><b>356</b></a></b>
+                                            </td>
+                                
+                                            <td>
+                                                {{ $item->created_at->format('d/m/Y') }}
+                                            </td>
+                                        @endforeach
                                     </tr>
 
                                 </tbody>

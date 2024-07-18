@@ -17,8 +17,13 @@ class UserController extends Controller
         $user = User::where('id', 1)->get();
         // dd($user);
         return view('admincp.extras-profile', compact('user'));
-    }
 
+     
+    }
+    public function showHome()
+    {
+       
+    }
     /**
      * Show the form for creating a new resource.
      */

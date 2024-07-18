@@ -4,8 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\PriceList;
-
+use App\Models\PriceList; 
 class PriceListAdminController extends Controller
 {
     /**
@@ -14,6 +13,8 @@ class PriceListAdminController extends Controller
     public function index()
     {
         //
+        $price = PriceList::all();
+        return view('admincp.extras-pricing', compact('price'));
     }
 
     public function getPriceListDetail()

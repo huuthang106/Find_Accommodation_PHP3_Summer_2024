@@ -40,6 +40,12 @@ use App\Http\Controllers\Admin\UserController as AdminUserController;
 // start Nguyen Huu Thang
 Route::get('/', [RoomController::class, 'index'])->name('home');
 Route::get('/xem-phong/{id}', [RoomController::class, 'getRoomID'])->name('get-room');
+
+Route::get('/', [RoomController::class, 'index'])->name('home');
+
+// start Nguyen Huu Thang
+Route::get('/home', [RoomController::class, 'index'])->name('home');
+Route::get('/xem-phong/{id}',[RoomController::class,'getRoomID'])->name('get-room');
 route::get('/profile', [UserController::class, 'profileuser'])->name('profileus');
 route::get('/trang-dang-bai', [RoomController::class, 'page_posting'])->name('posting-room');
 // Route bắt tất cả các yêu cầu không khớp
@@ -49,8 +55,7 @@ Route::fallback(function () {
 // Route::get('/', [IndexController::class, 'homeAdmin'])->name('trang-quan-ly');
 
 
-Route::get('/home', [IndexController::class, 'homeAdmin'])->name('trang-quan-ly');
-
+Route::get('/home', [UserController::class, 'index'])->name('trang-quan-ly');
 Route::get('/tables-advanced', [IndexController::class, 'tables_advanced'])->name('tables-advanced');
 Route::get('/charts', [IndexController::class, 'charts'])->name('charts');
 Route::get('/componetns-widgets', [IndexController::class, 'componetns_widgets'])->name('componetns-widgets');
@@ -67,6 +72,10 @@ Route::get('/quan-li-ho-so', [UserController::class, 'index'])->name('extras-pro
 // Route::get('/goi-dang-tin', [PriceListController::class, 'index'])->name('extras-pricing'); // router trang goi dang tin
 
 Route::get('/quan-li-ho-so', [UserController::class, 'index'])->name('quan-li-ho-so'); // router trang quan li ho so
+Route::get('/extras-pricing', [IndexController::class, 'index'])->name('extras-pricing');
+// Route::get('/goi-dang-tin', [PriceListController::class, 'index'])->name('extras-pricing'); // router trang goi dang tin
+
+
 
 Route::get('/layouts-dark-sidebar', [IndexController::class, 'layouts_dark_sidebar'])->name('layouts-dark-sidebar');
 Route::get('/layouts-horizontal', [IndexController::class, 'layouts_horizontal'])->name('layouts-horizontal');
@@ -112,8 +121,11 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
     Route::get('/charts', [IndexController::class, 'charts'])->name('charts');
     Route::get('/componetns-widgets', [IndexController::class, 'componetns_widgets'])->name('componetns-widgets');
     Route::get('/extras-contacts', [IndexController::class, 'extras_contacts'])->name('extras-contacts');
-    Route::get('/extras-pricing', [IndexController::class, 'extras_pricing'])->name('extras-pricing');
-    Route::get('/extras-profile', [IndexController::class, 'extras_profile'])->name('extras-profile');
+
+    Route::get('/admin/extras-pricing', [PriceListAdminController::class, 'index'])->name('goi-dang-tin');
+    Route::get('/extras-profile', [UserController::class, 'index'])->name('extras-profile'); // router trang quan li ho so
+    // Route::get('/extras-profile', [IndexController::class, 'extras_profile'])->name('extras-profile');
+
     Route::get('/layouts-dark-sidebar', [IndexController::class, 'layouts_dark_sidebar'])->name('layouts-dark-sidebar');
     Route::get('/layouts-horizontal', [IndexController::class, 'layouts_horizontal'])->name('layouts-horizontal');
     Route::get('/layouts-sidebar-collapsed', [IndexController::class, 'layouts_sidebar_collapsed'])->name('layouts-sidebar-collapsed');

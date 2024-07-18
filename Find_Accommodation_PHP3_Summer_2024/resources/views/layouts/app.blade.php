@@ -363,7 +363,7 @@
                         </a>
                         <ul class="nav-second-level" aria-expanded="false">
                             <li><a href="{{ route('extras-profile') }}">Hồ sơ</a></li>
-                            <li><a href="{{ route('extras-pricing') }}">Gói đăng tin</a></li>
+                            {{-- <li><a href="{{ route('extras-pricing') }}">Gói đăng tin</a></li> --}}
                             <li><a href="{{ route('extras-contacts') }}">Liên hệ</a></li>
                         </ul>
                     </li>
