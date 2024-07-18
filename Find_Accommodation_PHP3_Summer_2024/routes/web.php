@@ -12,7 +12,7 @@ use App\Http\Controllers\Client\IndexController;
 use App\Http\Controllers\Client\LocationController;
 use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\Client\PriceListController;
-use App\Http\Controllers\PricesController;
+use App\Http\Controllers\Client\PricesController;
 use App\Http\Controllers\Client\RoomController;
 use App\Http\Controllers\Client\EvaluateController;
 use App\Http\Controllers\Client\TransactionController;
@@ -45,7 +45,7 @@ Route::get('/', [RoomController::class, 'index'])->name('home');
 
 // start Nguyen Huu Thang
 Route::get('/home', [RoomController::class, 'index'])->name('home');
-Route::get('/xem-phong/{id}',[RoomController::class,'getRoomID'])->name('get-room');
+Route::get('/xem-phong/{id}', [RoomController::class, 'getRoomID'])->name('get-room');
 route::get('/profile', [UserController::class, 'profileuser'])->name('profileus');
 route::get('/trang-dang-bai', [RoomController::class, 'page_posting'])->name('posting-room');
 // Route bắt tất cả các yêu cầu không khớp
@@ -75,7 +75,7 @@ Route::PUT('/chinh-sua-goi-tin/{id}', [PriceListAdminController::class, 'update'
 
 Route::get('/quan-li-ho-so', [UserController::class, 'index'])->name('quan-li-ho-so'); // router trang quan li ho so
 Route::get('/extras-pricing', [IndexController::class, 'index'])->name('extras-pricing');
-Route::get('/extras-pricing', [IndexController::class, 'index'])->name('extras-pricing'); 
+Route::get('/extras-pricing', [IndexController::class, 'index'])->name('extras-pricing');
 // Route::get('/goi-dang-tin', [PriceListController::class, 'index'])->name('extras-pricing'); // router trang goi dang tin
 
 
@@ -99,6 +99,12 @@ Route::get('/pages-evaluate', [IndexController::class, 'pages_evaluate'])->name(
 
 Route::get('/xem-phong/{id}', [RoomController::class, 'getRoomID'])->name('get-room');
 route::get('/profile', [UserController::class, 'profileuser'])->name('profileus');
+// [VoTanLuon] Rpute xem loại trọ client
+Route::get('/loai-tro', [CategoryController::class, 'index'])->name('category-motel');
+// [VoTanLuon] Route trang thông tin tài khoản người dùng (client)
+Route::get('/thong-tin-tai-khoan/{id}', [UserController::class, 'show'])->name('profileus');
+// [VoTanLuon] Route trang sửa thông tin tài khoản người dùng (client)
+route::put('/thong-tin-tai-khoan/{id}', [UserController::class, 'update'])->name('update-profile');
 // Route::get('/', [IndexController::class, 'home'])->name('home');
 
 //Login user mhuy

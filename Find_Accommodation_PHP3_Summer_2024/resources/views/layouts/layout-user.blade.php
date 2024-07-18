@@ -42,7 +42,9 @@
                                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                                     <ul class="navbar-nav me-auto mb-2 mb-lg-0 fw-bold">
                                         <li class="nav-item pe-4">
-                                            <a class="nav-link" aria-current="page" href="#">Phòng trọ</a>
+                                            <a class="nav-link" aria-current="page"
+                                                href="{{ route('category-motel') }}">Phòng
+                                                trọ</a>
                                         </li>
                                         <li class="nav-item dropdown">
                                             <a class="nav-link dropdown-toggle" href="#" role="button"
