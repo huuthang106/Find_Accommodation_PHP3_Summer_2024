@@ -312,6 +312,12 @@
                                     <span>Quản lí gói đăng tin</span>
                                 </a>
                             </li>
+                            <li>
+                                <a href="{{ route('get-pricelist') }}">
+                                    <i class="fas fa-money-check"></i>
+                                    <span>Quản lí chi tiết gói</span>
+                                </a>
+                            </li>
                         </ul>
                     </li>
 
@@ -494,6 +500,7 @@
     <!-- Required datatable js -->
     <script src="assets\libs\datatables\jquery.dataTables.min.js"></script>
     <script src="assets\libs\datatables\dataTables.bootstrap4.min.js"></script>
+
 
 
 

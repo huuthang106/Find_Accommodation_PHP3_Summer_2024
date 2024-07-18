@@ -7,47 +7,70 @@
                 <div class="col-md-8 col-lg-6">
                     <div class="card">
                         <div class="card-body">
-                            <div class="row">
-                                <div class="col-12">
-                                    <h4 class="text-center text-primary">CHỈNH SỬA GÓI TIN</h4>
-                                </div>
-                                <div class="col-6">
-                                    <div class="text-center">
-                                        <a href="index.html">
-                                            <img src="assets\images\layouts\mainlogo.jpg" width="60%" alt="">
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="col-6">
-                                    <form action="{{ route('home') }}" class="p-2">
-                                        <div class="form-group">
-                                            <label for="username">Tên</label>
-                                            <input class="form-control" type="text" id="username" required=""
-                                                placeholder="Văn A">
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="emailaddress">Email</label>
-                                            <input class="form-control" type="email" id="emailaddress" required=""
-                                                placeholder="vana@gmail.com">
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="password">Mật khẩu</label>
-                                            <input class="form-control" type="password" required="" id="password"
-                                                placeholder="Nhập mật khẩu">
-                                        </div>
-                                        <div class="form-group mb-4 pb-3">
-                                            <div class="custom-control custom-checkbox checkbox-primary">
-                                                <input type="checkbox" class="custom-control-input" id="checkbox-signin">
-                                                <label class="custom-control-label" for="checkbox-signin">Tôi chấp nhận <a
-                                                        href="#">Các điều khoản và dịch vụ</a></label>
-                                            </div>
-                                        </div>
-                                        <div class="mb-3 text-center">
-                                            <button class="btn btn-primary btn-block" type="submit">Chỉnh sửa</button>
-                                        </div>
-                                    </form>
-                                </div>
+
+                            <div class="col-12">
+                                <h4 class="text-center text-primary">CHỈNH SỬA GÓI TIN</h4>
                             </div>
+                            <form action="{{ route('put-pricelist', ['id' => $priceList->id]) }}" method="POST"
+                                class="p-2">
+                                @csrf
+                                {{-- @method('PUT') --}}
+                                <div class="form-group">
+                                    <label for="package-type">Loại gói</label>
+                                    {{-- Example of accessing data --}}
+                                    <select class="form-control" id="package-type" required="">
+                                        <option value="">
+                                            @if ($priceList->status == 1)
+                                                Gói Tiết Kiệm
+                                            @elseif($priceList->status == 2)
+                                                Gói Nâng Cao
+                                            @elseif($priceList->status == 3)
+                                                Gói Cao Cấp
+                                            @else
+                                                Khác
+                                            @endif
+                                        </option>
+                                        <option value="{{ $priceList->status == 1 }}">Gói Tiết Kiệm</option>
+                                        <option value="{{ $priceList->status == 2 }}">Gói Nâng Cao</option>
+                                        <option value="{{ $priceList->status == 3 }}">Gói Cao Cấp</option>
+                                    </select>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="price">Giá</label>
+                                    <input class="form-control" type="text" id="price" required=""
+                                        placeholder="Giá"
+                                        value="{{ optional($priceList)->price ? number_format($priceList->price, 0, ',', '.') : '' }}">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="support">Hỗ trợ</label>
+                                    <input class="form-control" type="text" id="support" required=""
+                                        placeholder="Hỗ trợ" value="{{ $priceList->Support ?? '' }}">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="video">Video</label>
+                                    <input class="form-control" type="text" id="video" required=""
+                                        placeholder="Video" value="{{ $priceList->Video_Posting ?? '' }}">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="posts">Bài đăng</label>
+                                    <input class="form-control" type="text" id="posts" required=""
+                                        placeholder="Bài đăng" value="{{ $priceList->Post_Posting ?? '' }}">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="content">Nội dung</label>
+                                    <input class="form-control" type="text" id="content" required=""
+                                        placeholder="Nội dung" value="{{ $priceList->description ?? '' }}">
+                                </div>
+
+                                <div class="mb-3 text-center">
+                                    <button class="btn btn-primary btn-block" type="submit">Chỉnh sửa</button>
+                                </div>
+                            </form>
                         </div>
                         <!-- end card-body -->
                     </div>
@@ -55,7 +78,7 @@
 
                     <div class="row mt-4">
                         <div class="col-sm-12 text-center">
-                            <a href="{{ route('pages-login') }}" class="btn btn-secondary"><b>Quay về</b></a>
+                            <a href="{{ route('get-pricelist') }}" class="btn btn-secondary"><b>Quay về</b></a>
                         </div>
                     </div>
 
