@@ -10,12 +10,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="csrf-token" content="{{ csrf_token() }}" />
     <!-- App favicon -->
-    <link rel="shortcut icon" href="{{ asset('assets\images\logo3.png') }}">
+    <link rel="shortcut icon" href="{{ asset('assets/images/logo3.png') }}">
     <!-- third party css -->
     <link href="{{ asset('assets/libs/datatables/dataTables.bootstrap4.css') }}" rel="stylesheet" type="text/css">
     <link href="{{ asset('assets/libs/datatables/buttons.bootstrap4.css') }}" rel="stylesheet" type="text/css">
     <link href="{{ asset('assets/libs/datatables/responsive.bootstrap4.css') }}" rel="stylesheet" type="text/css">
-    <link href="assets\libs\datatables\select.bootstrap4.css" rel="stylesheet" type="text/css">
+    <link href="{{ asset('assets/libs/datatables/select.bootstrap4.css') }} "rel="stylesheet" type="text/css">
     <!-- App css -->
     <link rel="stylesheet" href="{{ asset('assets/css/style-admin.css') }}" type="text/css" id='styleadmin-stylesheet'>
     <link href="{{ asset('assets/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css" id="bootstrap-stylesheet">
@@ -453,14 +453,16 @@
 
     <!-- Datatables init -->
     <script src="{{ asset('assets/js/pages/datatables.init.js') }}"></script>
-
+    <!-- Datatables init -->
+    <script src="{{ asset('assets\js\pages\datatables.init.js') }}"></script>
     <!-- Responsive examples -->
     <script src="{{ asset('assets/libs/datatables/dataTables.responsive.min.js') }}"></script>
     <script src="{{ asset('assets/libs/datatables/responsive.bootstrap4.min.js') }}"></script>
 
     <!-- Required datatable js -->
-    <script src="assets\libs\datatables\jquery.dataTables.min.js"></script>
-    <script src="assets\libs\datatables\dataTables.bootstrap4.min.js"></script>
+    <script src="{{ asset('assets\libs\datatables\jquery.dataTables.min.js') }}"></script>
+    <script src="{{ asset('assets\libs\datatables\dataTables.bootstrap4.min.js') }}"></script>
+
 
 
 

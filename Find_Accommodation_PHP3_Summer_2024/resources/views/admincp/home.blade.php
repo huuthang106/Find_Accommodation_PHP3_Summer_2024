@@ -115,7 +115,7 @@
                     <div class="card-box">
                         <h5 class="mt-0 font-14 mb-3">Liên Hệ</h5>
                         <div class="table-responsive">
-                            <table class="table table-hover mails m-0 table table-actions-bar table-centered">
+                            <table id="myTable" class="table table-hover mails m-0 table table-actions-bar table-centered">
                                 <thead>
                                     <tr>
                                         <th style="min-width: 95px;">
