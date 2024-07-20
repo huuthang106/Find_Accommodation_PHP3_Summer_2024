@@ -74,6 +74,6 @@ class UserController extends Controller
     public function profileuser()
     {
 
-        return view('page.profile-us');
+        return view('page.user.profile-us');
     }
 }
