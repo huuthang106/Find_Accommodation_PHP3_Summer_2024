@@ -7,78 +7,98 @@
                 <div class="card-header text-center">
                     <h5 class="card-title bg">Đăng bài</h5>
                 </div>
-                <div class="row">
-                    <div class="tab-pane col-lg-6" id="">
-                        <!-- Personal-Information -->
-                        <div class="card">
-
-                            <div class="card-body">
-                                <form>
+                <form action="{{ route('show-posting-room') }}" method="POST">
+                    @csrf
+                    <div class="row">
+                        <div class="tab-pane col-lg-6" id="">
+                            <!-- Personal-Information -->
+                            <div class="card">
+                                <div class="card-body">
                                     <div class="mb-3">
                                         <label for="Title" class="form-label">Tiêu đề bài đăng</label>
-                                        <input type="text" class="form-control" id="Title" value="">
+                                        <input type="text" class="form-control" id="Title" name="Title"
+                                            value="{{ old('Title') }}">
+                                        @error('Title')
+                                            <div class="alert alert-danger">{{ $message }}</div>
+                                        @enderror
                                     </div>
                                     <div class="mb-3">
-                                        <label for="Description" class="form-label">Mô tả </label>
-                                        <textarea class="form-control" id="Description" style="height: 125px;" placeholder="Nhập mô tả bản thân (Nếu có)."></textarea>
+                                        <label for="Description" class="form-label">Mô tả</label>
+                                        <textarea class="form-control" id="Description" name="Description" style="height: 125px;"
+                                            placeholder="Nhập mô tả bản thân (Nếu có).">{{ old('Description') }}</textarea>
+                                        @error('Description')
+                                            <div class="alert alert-danger">{{ $message }}</div>
+                                        @enderror
                                     </div>
                                     <div class="mb-3">
-                                        <label for="text" class="form-label">Giá</label>
-                                        <input type="text" class="form-control" id="text"
-                                            placeholder="6 - 15 Ký tự">
+                                        <label for="Price" class="form-label">Giá</label>
+                                        <input type="text" class="form-control" id="Price" name="Price"
+                                            placeholder="Nhập giá" value="{{ old('Price') }}">
+                                        @error('Price')
+                                            <div class="alert alert-danger">{{ $message }}</div>
+                                        @enderror
                                     </div>
                                     <div class="mb-3">
-                                        <label for="PhoneNumber" class="form-label">Số điện thoại</label>
-                                        <input type="text" class="form-control" id="PhoneNumber"
-                                            placeholder="6 - 15 Ký tự">
+                                        <label for="Phone" class="form-label">Số điện thoại</label>
+                                        <input type="text" class="form-control" id="Phone" name="Phone"
+                                            placeholder="6 - 15 Ký tự" value="{{ old('Phone') }}">
+                                        @error('Phone')
+                                            <div class="alert alert-danger">{{ $message }}</div>
+                                        @enderror
                                     </div>
                                     <div class="mb-3">
-                                        <label for="Address" class="form-label">Địa chỉ </label>
-                                        <textarea class="form-control" id="Address" style="height: 125px;" placeholder="Nhập địa chỉ phòng trọ."></textarea>
+                                        <label for="Address" class="form-label">Địa chỉ</label>
+                                        <textarea class="form-control" id="Address" name="Address" style="height: 125px;"
+                                            placeholder="Nhập địa chỉ phòng trọ.">{{ old('Address') }}</textarea>
+                                        @error('Address')
+                                            <div class="alert alert-danger">{{ $message }}</div>
+                                        @enderror
                                     </div>
-                                    <button type="submit" class="btn btn-primary">Lưu</button>
-                                </form>
+                                </div>
                             </div>
+                            <!-- Personal-Information -->
                         </div>
-                        <!-- Personal-Information -->
-                    </div>
-                    <div class="tab-pane col-lg-6" id="">
-                        <!-- Personal-Information -->
-                        <div class="card">
-
-                            <div class="card-body">
-                                <form>
+                        <div class="tab-pane col-lg-6" id="">
+                            <!-- Personal-Information -->
+                            <div class="card">
+                                <div class="card-body">
                                     <div class="mb-3">
-                                        <label for="Categories" class="form-label">Loại</label>
-                                        <select name="" id="" class="form-control">
-                                            <option value="">Phòng trọ</option>
-                                            <option value="">Căn hộ</option>
-
+                                        <label for="Category_id" class="form-label">Loại</label>
+                                        <select name="Category_id" id="Category_id" class="form-control">
+                                            @foreach ($categories as $item)
+                                                <option value="{{ $item->id }}">{{ $item->name }}</option>
+                                            @endforeach
                                         </select>
+                                        @error('Category_id')
+                                            <div class="alert alert-danger">{{ $message }}</div>
+                                        @enderror
                                     </div>
                                     <div class="mb-3">
                                         <label for="quantity" class="form-label">Số lượng phòng trống</label>
-                                        <input type="number" class="form-control" id="quantity"
-                                            value="nguyenhutheng@gmail.com">
+                                        <input type="number" class="form-control" id="quantity" name="quantity"
+                                            value="{{ old('quantity') }}">
+                                        @error('quantity')
+                                            <div class="alert alert-danger">{{ $message }}</div>
+                                        @enderror
                                     </div>
-
                                     <div id="file-inputs">
                                         <div class="mb-3">
                                             <label for="img-room-1" class="form-label">Hình ảnh</label>
-                                            <input type="file" class="form-control" id="img-room-1"
-                                                placeholder="6 - 15 Ký tự">
+                                            <input type="file" class="form-control" id="img-room-1" name="img_room_1">
                                         </div>
-
+                                    </div>
+                                    <div class="mb-3">
+                                        <input type="text" hidden class="form-control" id="user_id" name="user_id"
+                                            placeholder="6 - 15 Ký tự" value="{{ $user }}">
                                     </div>
                                     <button type="button" id="add-file" class="btn btn-primary">+</button>
-
-                                </form>
+                                </div>
                             </div>
+                            <!-- Personal-Information -->
                         </div>
-                        <!-- Personal-Information -->
                     </div>
-                </div>
-
+                    <button type="submit" class="btn btn-primary">Lưu</button>
+                </form>
             </div>
         </div>
     </div>
