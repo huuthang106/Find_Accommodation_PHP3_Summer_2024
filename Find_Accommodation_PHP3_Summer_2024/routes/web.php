@@ -173,7 +173,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
 
 // Route::get('/pages-edit-pricing', [IndexController::class, 'pages_edit_pricing'])->name('pages-edit-pricing');
 // Nguyen Thai Toan user
-
+Route::post('/xu-ly-dang-bai', [RoomController::class, 'check_post_room'])->name('show-posting-room');
 
 // end Nguyen Thai Toan user
 
