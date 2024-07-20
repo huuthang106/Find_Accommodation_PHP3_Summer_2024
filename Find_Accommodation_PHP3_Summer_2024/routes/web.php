@@ -153,7 +153,10 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
 
 
     // Tong Chi Nhan admin
-
+    Route::get('/admin/extras-pricing', [PriceListAdminController::class, 'index'])->name('goi-dang-tin'); // router quản lí giá gói admin
+    Route::get('/extras-profile', [UserController::class, 'index'])->name('extras-profile')->middleware('auth');
+ // router trang quan li ho so
+    // Route::get('/extras-profile', [IndexController::class, 'extras_profile'])->name('extras-profile');
 
     // end Tong Chi Nhan admin
 

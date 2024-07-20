@@ -22,6 +22,10 @@ class UserController extends Controller
             return redirect()->route('pages-404')->with('Thông Báo', 'Không tìm thấy người dùng.');
         }
         return view('admincp.extras-profile', compact('admin'));
+
+      
+
+     
     }
     public function update_profile_admin(Request $request, string $id)
     {
