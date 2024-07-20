@@ -17,18 +17,12 @@
             <div class="row">
                 <div class="col-12">
                     <div class="table-responsive">
-                        {{-- <h5 class="font-14">Default Example</h5> --}}
-                        {{-- <p class="sub-header">
-                            DataTables has most features enabled by default, so all you need to do to use it with your own
-                            tables is to call the construction function: <code>$().DataTable();</code>.
-                        </p> --}}
-
-                        <table id="datatable" class="table table-bordered dt-responsive nowrap"
-                            style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+                        <table id="datatable" class="table table-bordered dt-responsive nowrap">
                             <thead>
                                 <tr>
                                     <th style="min-width: 95px;">
-                                        <div class="checkbox checkbox-single checkbox-primary">Tất cả
+                                        <div class="checkbox checkbox-single checkbox-primary">
+                                            Tất cả
                                             <input type="checkbox" class="custom-control-input" id="action-checkbox">
                                             <label class="custom-control-label" for="action-checkbox">&nbsp;</label>
                                         </div>
@@ -41,9 +35,8 @@
                                     <th>Thao tác</th>
                                 </tr>
                             </thead>
-
-                            @foreach ($notification as $item)
-                                <tbody>
+                            <tbody>
+                                @foreach ($notification as $item)
                                     <tr>
                                         <td>
                                             <div class="checkbox checkbox-primary mr-2 float-left">
@@ -56,17 +49,28 @@
                                         <td>{{ $item->message }}</td>
                                         <td>{{ $item->status == 1 ? 'Chưa xem' : 'Đã xem' }}</td>
                                         <td>{{ $item->created_at->format('d/m/Y H:i:s') }}</td>
-                                        <td><a href="trang-chi-tiet-thong-bao/{{ $item->id }}"><button type="button"
-                                                    class="btn btn-primary">Xem chi
-                                                    tiết</button></a></td>
+                                        <td>
+                                            <a href="trang-chi-tiet-thong-bao/{{ $item->id }}">
+                                                <button type="button" class="btn btn-primary">Xem chi tiết</button>
+                                            </a>
+                                            <form action="{{ route('notification.destroy', $item->id) }}" method="POST" style="display:inline;">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit" class="btn btn-danger" onclick="return confirm('Bạn có chắc chắn muốn xóa thông báo này không?');">Xóa</button>
+                                            </form>
+                                        </td>
                                     </tr>
-                                </tbody>
-                            @endforeach
+                                @endforeach
+                            </tbody>
                         </table>
+                        <!-- Hiển thị phân trang -->
+                        <div class="pagination mt-3">
+                            {{ $notification->links() }}
+                        </div>
                     </div>
-                    <!-- end -->
                 </div>
             </div>
+        
             <!-- end row -->
         </div>
         <!-- end container-fluid -->

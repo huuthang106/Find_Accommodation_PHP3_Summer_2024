@@ -32,37 +32,43 @@
                                     <th>Video</th>
                                     <th>Bài đăng</th>
                                     <th>Nội dung</th>
-                                    <td></td>
-                            <tbody>
-                                @foreach ($priceDetail as $item)
-                                    <tr>
-                                        <th><input type="checkbox"></th>
-                                        <th>{{ $item->id }}</th>
-                                        <td>
-                                            @if ($item->status == 1)
-                                                Gói Tiết Kiệm
-                                            @elseif($item->status == 2)
-                                                Gói Nâng Cao
-                                            @elseif($item->status == 3)
-                                                Gói Cao Cấp
-                                            @else
-                                                Khác
-                                            @endif
-                                        </td>
-                                        <td>
-                                            {{ number_format($item->price, 0, ',', '.') }}đ
-                                        </td>
-                                        <td>{{ Str::limit($item->Support, 20) }}</td>
-                                        <td>{{ $item->Video_Posting }}</td>
-                                        <td>{{ Str::limit($item->Post_Posting, 15) }}</td>
-                                        <td>
-                                            {{ Str::limit($item->description, 10) }}
-                                        </td>
-                                        <td><a href="chinh-sua-goi-tin/{{ $item->id }}" class="btn btn-primary">Chỉnh
-                                                sửa</a></td>
-                                    </tr>
-                                @endforeach
-                            </tbody>
+                                    <th>Chức Năng</th>
+
+                                    <tbody>
+                                        @foreach ($price as $item)
+                                            <tr>
+                                                <th><input type="checkbox"></th>
+                                                <th>{{ $item->id }}</th>
+                                                <td>
+                                                    @if ($item->status == 1)
+                                                        Gói Tiết Kiệm
+                                                    @elseif($item->status == 2)
+                                                        Gói Nâng Cao
+                                                    @elseif($item->status == 3)
+                                                        Gói Cao Cấp
+                                                    @endif
+                                                </td>
+                                                <td>
+                                                    {{ number_format($item->price, 0, ',', '.') }}đ
+                                                </td>
+                                                <td>{{ Str::limit($item->Support, 20) }}</td>
+                                                <td>{{ $item->Video_Posting }}</td>
+                                                <td>{{ Str::limit($item->Post_Posting, 15) }}</td>
+                                                <td>
+                                                    {{ Str::limit($item->description, 10) }}
+                                                </td>
+                                                <td>
+                                                    <a href="chinh-sua-goi-tin/{{ $item->id }}" class="btn btn-primary">Chỉnh sửa</a>
+                                                    <form action="{{ route('tin.destroy', $item->id) }}" method="POST" style="display: inline;">
+                                                        @csrf
+                                                        @method('PUT')
+                                                        <button type="submit" class="btn btn-danger" onclick="return confirm('Bạn có chắc chắn muốn ẩn gói tin này không?');">Xóa</button>
+                                                    </form>
+                                                </td>
+                                            </tr>
+                                        @endforeach
+                                    </tbody>
+                                    
                         </table>
 
                     </div>

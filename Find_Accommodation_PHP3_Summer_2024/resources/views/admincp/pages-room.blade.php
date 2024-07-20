@@ -21,8 +21,7 @@
             <div class="row mt-3">
                 <div class="col-12">
                     <div class='table-responsive'>
-                        <table id="datatable" class="table table-bordered dt-responsive nowrap"
-                            style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+                        <table id="datatable" class="table table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                             <thead>
                                 <tr>
                                     <th>Tất cả <input type="checkbox"></th>
@@ -31,29 +30,37 @@
                                     <th>Giá</th>
                                     <th>Tên người đăng</th>
                                     <th>Xem chi tiết</th>
+                                    <th>Chức Năng</th>
                                 </tr>
                             </thead>
-
                             <tbody>
-                                @foreach ($room as $item)
+                                @foreach ($rooms as $item)
                                     <tr>
                                         <th><input type="checkbox"></th>
                                         <th>{{ $item->id }}</th>
-                                        <td>{{ Str::limit($item->title, 20) }}</td> <!-- Giới hạn 30 ký tự -->
+                                        <td>{{ Str::limit($item->title, 20) }}</td>
                                         <td>{{ $item->price }}</td>
                                         <td>{{ $item->user_id }}</td>
                                         <td><a href="chi-tiet-bai-viet/{{ $item->id }}" class="btn btn-primary">Xem chi
                                                 tiết</a></td>
+                                     
+                                        <td>
+                                            <form action="{{ route('rooms.destroy', $item->id) }}" method="POST" style="display: inline;">
+                                                @csrf
+                                                @method('PUT')
+                                                <button type="submit" class="btn btn-danger" onclick="return confirm('Bạn có chắc chắn muốn ẩn phòng này không?');">Xóa</button>
+                                            </form>
+                                        </td>
                                     </tr>
                                 @endforeach
                             </tbody>
                         </table>
-
                     </div>
                     <!-- end -->
-
                 </div>
             </div>
+            
+            
             <!-- end row -->
 
 

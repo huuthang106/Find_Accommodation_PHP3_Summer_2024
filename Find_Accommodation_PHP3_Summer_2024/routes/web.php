@@ -123,7 +123,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
     route::put('/quan-li-ho-so/{id}', [UserController::class, 'update_profile_admin'])->name('chinh-sua-ho-so');
     // Router thông báo admin
 
-    Route::get('/trang-thong-bao', [NotificationAdminController::class, 'index'])->name('pages-notification');
+    
     // Router chi tiết thông báo admin
     Route::get('/trang-chi-tiet-thong-bao/{id}', [NotificationAdminController::class, 'show'])->name('pages-notification-detail');
     // Router Đã xem thông báo admin
@@ -132,13 +132,15 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
     Route::get('/xoa-tat-ca-thong-bao', [NotificationAdminController::class, 'softDeleteAll'])->name('soft-delete-all-notifications');
 
     //Nguyen Thai Toan 
-    Route::get('/goi-dang-tin', [PriceListAdminController::class, 'index'])->name('goi-dang-tin');
-    Route::get('/chi-tiet-goi-tin', [PriceListAdminController::class, 'getPriceListDetail'])->name('get-pricelist');
+    Route::get('/goi-dang-tin', [PriceListAdminController::class, 'ShowPriceList'])->name('goi-dang-tin');
+  
     Route::get('/chinh-sua-goi-tin/{id}', [PriceListAdminController::class, 'getPriceListID'])->name('post-pricelist');
     Route::put('/chinh-sua-goi-tin/{id}', [PriceListAdminController::class, 'update'])->name('put-pricelist');
     Route::get('/chi-tiet-bai-viet/{id}', [RoomAdminController::class, 'getRoomID'])->name('pages-room-detail');
     // end Thai Toan
-    Route::get('/quan-ly-bai-viet', [RoomAdminController::class, 'index'])->name('pages-room');
+    
+
+
     Route::get('/quan-ly-binh-luan', [CommentAdminController::class, 'index'])->name('pages-commet');
 
     // Nguyen Thai Toan admin
@@ -155,8 +157,23 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
     // Tong Chi Nhan admin
     Route::get('/admin/extras-pricing', [PriceListAdminController::class, 'index'])->name('goi-dang-tin'); // router quản lí giá gói admin
     Route::get('/extras-profile', [UserController::class, 'index'])->name('extras-profile')->middleware('auth');
- // router trang quan li ho so
+ // router trang quan li ho so  
     // Route::get('/extras-profile', [IndexController::class, 'extras_profile'])->name('extras-profile');
+    Route::get('/quan-ly-bai-viet', [RoomAdminController::class, 'index'])->name('pages-room'); // showw phòng ra 
+   
+    Route::put('/rooms/{id}', [RoomAdminController::class, 'destroy'])->name('rooms.destroy'); // xóa phòng
+
+    Route::get('/chi-tiet-goi-tin', [PriceListAdminController::class, 'getPriceListDetail'])->name('get-pricelist'); // showw gói tin ra
+
+    Route::put('/price/{id}', [PriceListAdminController::class, 'destroy'])->name('tin.destroy'); //xóa gói tin
+
+    Route::get('/trang-thong-bao', [NotificationAdminController::class, 'showNofi'])->name('pages-notification'); // showw thông báo
+
+
+    Route::delete('/notification/{id}', [NotificationAdminController::class, 'destroyNofi'])->name('notification.destroy'); // xóa thông báo
+
+
+
 
     // end Tong Chi Nhan admin
 

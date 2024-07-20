@@ -15,9 +15,8 @@ class RoomAdminController extends Controller
     public function index()
     {
         //
-        $room = Room::where('status',1)->get();
-        // dd($room);
-        return view('admincp.pages-room', compact('room'));
+        $rooms = Room::where('status', '!=', 5)->get();
+        return view('admincp.pages-room', compact('rooms'));
     }
 
     /**
@@ -68,11 +67,13 @@ class RoomAdminController extends Controller
      */
     public function destroy(string $id)
     {
-        //
         $room = Room::find($id);
-        $room->delete();
-        return redirect()->back();
-
+        if ($room) {
+            $room->status = 5;
+            $room->save();
+            return redirect()->back()->with('success', 'Phòng đã được ẩn thành công.');
+        }
+        return redirect()->back()->with('error', 'Không tìm thấy phòng.');
     }
 
     public function getRoomID($id)

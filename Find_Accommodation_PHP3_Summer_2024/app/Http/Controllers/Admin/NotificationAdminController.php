@@ -25,6 +25,26 @@ class NotificationAdminController extends Controller
         // Truyền dữ liệu tới view
         return view('admincp.pages-notification', compact('notification'));
     }
+    public function showNofi()
+    {
+        // Lấy tất cả thông báo từ cơ sở dữ liệu và phân trang, loại trừ các thông báo có status = 5
+        $notification = Notification::where('status', '!=', 5)->paginate(10);
+    
+        // Truyền dữ liệu tới view
+        return view('admincp.pages-notification', compact('notification'));
+    }
+    
+    public function destroyNofi(string $id)
+    {
+        $notification = Notification::find($id);
+        if ($notification) {
+            $notification->status = 5; // Đánh dấu thông báo là đã xóa
+            $notification->save();
+            return redirect()->back()->with('success', 'Thông báo đã được ẩn thành công.');
+        }
+        return redirect()->back()->with('error', 'Không tìm thấy thông báo.');
+    }
+    
 
     /**
      * Show the form for creating a new resource.

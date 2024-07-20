@@ -13,14 +13,36 @@ class PriceListAdminController extends Controller
     public function index()
     {
         //
-        $price = PriceList::where('status',1)->get();
-        return view('admincp.extras-pricing', compact('price'));
+     
     }
+    
+    
+    public function ShowPriceList()
+    {
+        // Lấy tất cả các bản ghi với status khác 5
+     
+    }
+    
+    /**
+     * Remove the specified resource from storage.
+     */
+    public function destroy(string $id)
+    {
+        $price = PriceList::find($id);
+        if ($price) {
+            $price->status = 5;
+            $price->save();
+            return redirect()->back()->with('success', 'Gói tin đã được ẩn thành công.');
+        }
+        return redirect()->back()->with('error', 'Không tìm thấy gói tin.');
+    }
+    
 
     public function getPriceListDetail()
     {
-        $priceDetail = PriceList::all();
-        return view('admincp.pages-pricing-detail', compact('priceDetail'));
+       
+        $price = PriceList::where('status', '!=', 5)->get();
+        return view('admincp.pages-pricing-detail', compact('price'));
     }
 
     public function getPriceListID($id)
@@ -98,12 +120,6 @@ class PriceListAdminController extends Controller
 
 
 
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
-    {
-        //
-    }
+    
+    
 }
