@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Room;
+use App\Models\Category;
 
 class RoomAdminController extends Controller
 {
@@ -43,7 +44,7 @@ class RoomAdminController extends Controller
         // $room=Room::where('id', $id)->get();
 
         // return view('admincp.pages-notification-detail',compact('room'));
-    
+
     }
 
     /**
@@ -73,4 +74,12 @@ class RoomAdminController extends Controller
         return redirect()->back();
 
     }
+
+    public function getRoomID($id)
+    {
+        $roomDetail = Room::with('category', 'user')->find($id);
+        // $categoryName = $roomDetail->category ? $roomDetail->category->name : null;
+        return view('admincp.pages-room-detail', compact('roomDetail'));
+    }
+
 }

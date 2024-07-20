@@ -135,7 +135,8 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
     Route::get('/goi-dang-tin', [PriceListAdminController::class, 'index'])->name('goi-dang-tin');
     Route::get('/chi-tiet-goi-tin', [PriceListAdminController::class, 'getPriceListDetail'])->name('get-pricelist');
     Route::get('/chinh-sua-goi-tin/{id}', [PriceListAdminController::class, 'getPriceListID'])->name('post-pricelist');
-    Route::PUT('/chinh-sua-goi-tin/{id}', [PriceListAdminController::class, 'update'])->name('put-pricelist');
+    Route::put('/chinh-sua-goi-tin/{id}', [PriceListAdminController::class, 'update'])->name('put-pricelist');
+    Route::get('/chi-tiet-bai-viet/{id}', [RoomAdminController::class, 'getRoomID'])->name('pages-room-detail');
     // end Thai Toan
     Route::get('/quan-ly-bai-viet', [RoomAdminController::class, 'index'])->name('pages-room');
     Route::get('/quan-ly-binh-luan', [CommentAdminController::class, 'index'])->name('pages-commet');

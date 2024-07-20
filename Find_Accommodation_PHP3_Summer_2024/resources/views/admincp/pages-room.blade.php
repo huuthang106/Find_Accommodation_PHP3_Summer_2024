@@ -42,7 +42,8 @@
                                         <td>{{ Str::limit($item->title, 20) }}</td> <!-- Giới hạn 30 ký tự -->
                                         <td>{{ $item->price }}</td>
                                         <td>{{ $item->user_id }}</td>
-                                        <td><button class="btn btn-primary">Xem chi tiết</button></td>
+                                        <td><a href="chi-tiet-bai-viet/{{ $item->id }}" class="btn btn-primary">Xem chi
+                                                tiết</a></td>
                                     </tr>
                                 @endforeach
                             </tbody>
