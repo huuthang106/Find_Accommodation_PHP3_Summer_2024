@@ -74,7 +74,7 @@ Route::fallback(function () {
 // route user
 // Nguyen Huu Thang
 Route::get('/xem-phong/{id}', [RoomController::class, 'getRoomID'])->name('get-room');
-route::get('/profile', [UserController::class, 'profileuser'])->name('profileus');
+// Nguyen Huu Thang
 
 // [VoTanLuon] Rpute xem loại trọ client
 Route::get('/loai-tro', [CategoryController::class, 'index'])->name('category-motel');
@@ -101,7 +101,7 @@ Route::post('/admin/dang-ky', [IndexAdminController::class, 'check_register']);
 // Đăng xuất admin
 Route::post('/logout', [IndexController::class, 'logout'])->name('logout');
 // Login trước khi vào trang admin
-Route::get('/admin',[IndexAdminController::class, 'admin'])->name('admin');
+Route::get('/admin', [IndexAdminController::class, 'admin'])->name('admin');
 
 Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
     // Route::get('/home', [HomeAdminController::class, 'index'])->name('trang-quan-ly');
@@ -109,8 +109,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
     Route::get('/tables-advanced', [NotificationAdminController::class, 'tables_advanced'])->name('tables-advanced');
 
     Route::get('/quan-ly-goi-dang-tin', [PriceListAdminController::class, 'index'])->name('goi-dang-tin'); // router quản lí giá gói admin
-    // Route::get('/profile', [UserController::class, 'index'])->name('extras-profile'); // router trang quan li ho so
-    // Route::get('/extras-profile', [IndexController::class, 'extras_profile'])->name('extras-profile');
+
 
 
     Route::get('/lien-he', [HomeAdminController::class, 'extras_contacts'])->name('extras-contacts');
@@ -193,3 +192,6 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
 
 
 // end Nguyen Huu Thang user
+Route::group(['prefix'=>'tai-khoang','middleware'=>'auth'],function(){
+    route::get('/', [UserController::class, 'profileuser'])->name('profileus');
+});

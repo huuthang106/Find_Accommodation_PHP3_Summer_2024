@@ -41,12 +41,14 @@
                                                 data-bs-toggle="dropdown" aria-expanded="false">
                                                 Loại trọ
                                             </a>
+                                            <ul class="dropdown-menu">
                                             @foreach ($categories as $category)
-                                                <ul class="dropdown-menu">
+                                            
                                                     <li><a class="dropdown-item"
                                                             href="#">{{ $category->name }}</a></li>
-                                                </ul>
+                                              
                                             @endforeach
+                                        </ul>
                                         </li>
                                         <li class="nav-item pe-4">
                                             <a class="nav-link" href="#">Video review</a>

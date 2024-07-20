@@ -44,7 +44,7 @@ class IndexAdminController extends Controller
     {
         //
     }
-    
+
     /**
      * Show the form for editing the specified resource.
      */
@@ -68,7 +68,7 @@ class IndexAdminController extends Controller
     {
         //
     }
-
+    
     public function pages_login()
     {
         return view('admincp.pages-login');

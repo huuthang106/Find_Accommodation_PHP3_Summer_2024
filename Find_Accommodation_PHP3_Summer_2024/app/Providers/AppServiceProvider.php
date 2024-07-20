@@ -26,6 +26,7 @@ class AppServiceProvider extends ServiceProvider
             // Logic để lấy dữ liệu categories từ database
             $categories = Category::where('status', 1)->get();
             // Truyền dữ liệu categories vào view
+            // dd( $categories   );     
             $view->with('categories', $categories);
         });
         View::composer('layouts.app', function ($view) {

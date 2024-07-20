@@ -142,7 +142,7 @@
                                             <tr>
                                                 <td><input type="checkbox"></td>
                                                 <td><a href="" class="btn btn-primary ">Xem chi tiết</a></td>
-                                                <td><a href="" class="btn btn-primary ">Chỉnh sửa</a></td>
+                                                <td><a href="#" class="btn btn-primary ">Chỉnh sửa</a></td>
                                                 <td></td>
                                                 <td></td>
                                                 <td>System Architect</td>

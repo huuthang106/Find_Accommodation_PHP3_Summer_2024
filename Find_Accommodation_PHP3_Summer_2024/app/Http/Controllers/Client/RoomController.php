@@ -77,10 +77,10 @@ class RoomController extends Controller
     public function getRoomID($id)
     {
         $room = Room::where('id', $id)->first();;
-        return view('page.detail-room', compact('room'));
+        return view('page.rooms.detail-room', compact('room'));
     }
     public function page_posting()
     {
-        return view('page.posting-page');
+        return view('page.rooms.posting-page');
     }
 }
