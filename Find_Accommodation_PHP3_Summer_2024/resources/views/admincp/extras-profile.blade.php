@@ -13,18 +13,24 @@
                     <div class="p-0 text-center">
                         <div class="member-card">
                             <div class="avatar-xxl member-thumb mb-2 center-page mx-auto">
-                                <img src="assets\images\users\avatar-3.jpg" class="rounded-circle img-thumbnail"
-                                    alt="profile-image">
+                                <img src="{{ asset('assets\images\users\avatar-3.jpg') }}"
+                                    class="rounded-circle img-thumbnail" alt="profile-image">
                                 <i class="mdi mdi-star-circle member-star text-success" title="verified user"></i>
                             </div>
 
                             <div class="">
-                                <h5 class="mt-3"></h5>
-                                <p class="text-muted">@webdesigner</p>
+                                <h5 class="mt-3">{{ $admin->username }}</h5>
+                                {{-- Nếu role == 0 sẽ hiển thị Admin, các trường hợp khác thì chưa hiển thị viết sau... --}}
+                                @if ($admin->role == 0)
+                                    <div class="mb-4">
+                                        <strong>Chức vụ</strong>
+                                        <p class="text-muted">Admin</p>
+                                    </div>
+                                @endif
                             </div>
 
                             <p class="text-muted mt-2">
-                                Xin chào tôi là Nguyễn Hủ Théng.
+                                Xin chào tôi là {{ $admin->username }}.
                             </p>
 
                             <button type="button" class="btn btn-primary mt-2 mr-1">Theo dõi</button>
@@ -61,41 +67,40 @@
                             <div class="col-lg-4">
 
 
-                                @foreach ($user as $item)
-                                    <div class="panel card panel-fill">
-                                        <div class="card-header">
-                                            <h5 class="font-16 m-1">Thông Tin Cá Nhân</h5>
+
+                                <div class="panel card panel-fill">
+                                    <div class="card-header">
+                                        <h5 class="font-16 m-1">Thông Tin Cá Nhân</h5>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="mb-4">
+                                            <strong>Số dư</strong>
+                                            <br>
+                                            <p class="text-muted mb-0">{{ number_format($admin->balance, 0, ',', '.') }}đ
+                                            </p>
                                         </div>
-                                        <div class="card-body">
-                                            <div class="mb-4">
-                                                <strong>Số dư</strong>
-                                                <br>
-                                                <p class="text-muted mb-0">{{ number_format($item->balance, 0, ',', '.') }}đ
-                                                </p>
-                                            </div>
-                                            <div class="mb-4">
-                                                <strong>Họ và Tên</strong>
-                                                <br>
-                                                <p class="text-muted">{{ $item->username }}</p>
-                                            </div>
-                                            <div class="mb-4">
-                                                <strong>Số điện thoại</strong>
-                                                <br>
-                                                <p class="text-muted">{{ $item->phone }}</p>
-                                            </div>
-                                            <div class="mb-4">
-                                                <strong>Email</strong>
-                                                <br>
-                                                <p class="text-muted">{{ $item->email }}</p>
-                                            </div>
-                                            <div class="mb-0">
-                                                <strong>Địa chỉ</strong>
-                                                <br>
-                                                <p class="text-muted mb-0">{{ $item->address }}</p>
-                                            </div>
+                                        <div class="mb-4">
+                                            <strong>Họ và Tên</strong>
+                                            <br>
+                                            <p class="text-muted">{{ $admin->username }}</p>
+                                        </div>
+                                        <div class="mb-4">
+                                            <strong>Số điện thoại</strong>
+                                            <br>
+                                            <p class="text-muted">{{ $admin->phone }}</p>
+                                        </div>
+                                        <div class="mb-4">
+                                            <strong>Email</strong>
+                                            <br>
+                                            <p class="text-muted">{{ $admin->email }}</p>
+                                        </div>
+                                        <div class="mb-0">
+                                            <strong>Địa chỉ</strong>
+                                            <br>
+                                            <p class="text-muted mb-0">{{ $admin->address }}</p>
                                         </div>
                                     </div>
-                                @endforeach
+                                </div>
 
 
 
@@ -154,25 +159,54 @@
                                 <h5 class="font-16 m-1">Chỉnh sửa hồ sơ</h5>
                             </div>
                             <div class="card-body">
-                                <form>
+                                <form action="{{ route('chinh-sua-ho-so', ['id' => $admin->id]) }}" method="POST"
+                                    role="form">
+                                    @csrf
+                                    @method('PUT')
                                     <div class="form-group">
                                         <label for="FullName">Họ và Tên</label>
-                                        <input type="text" value="Nguyễn Hủ Théng" id="FullName" class="form-control">
+                                        <input type="text" name="username" value="{{ $admin->username }}" id="FullName"
+                                            class="form-control">
+                                        @error('username')
+                                            <small class="text-danger text-blod">{{ $message }}</small>
+                                        @enderror
                                     </div>
                                     <div class="form-group">
                                         <label for="Email">Email</label>
-                                        <input type="email" value="nguyenhutheng@gmail.com" id="Email"
+                                        <input type="email" name="email" value="{{ $admin->email }}" id="Email"
                                             class="form-control">
+                                        @error('email')
+                                            <small class="text-danger text-blod">{{ $message }}</small>
+                                        @enderror
                                     </div>
-                                    <div class="form-group">
-                                        <label for="Password">Mật khẩu</label>
-                                        <input type="password" placeholder="6 - 15 Ký tự" id="Password"
-                                            class="form-control">
+                                    <div class="mb-3">
+                                        <label for="Phone" class="form-label">Số điện thoại</label>
+                                        <input type="number" class="form-control" id="phone" name="phone"
+                                            value="{{ $admin->phone }}">
+                                        @error('phone')
+                                            <small class="text-danger text-blod">{{ $message }}</small>
+                                        @enderror
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="address" class="form-label">Địa chỉ</label>
+                                        <input type="text" class="form-control" id="address" name="address"
+                                            value="{{ $admin->address }}">
+                                        @error('address')
+                                            <small class="text-danger text-blod">{{ $message }}</small>
+                                        @enderror
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="Password" class="form-label">Mật khẩu</label>
+                                        <input type="password" class="form-control" id="Password" name="passsword"
+                                            placeholder="6 - 15 Ký tự">
                                     </div>
                                     <div class="form-group">
                                         <label for="RePassword">Nhập lại mật khẩu</label>
-                                        <input type="password" placeholder="6 - 15 Ký tự" id="RePassword"
-                                            class="form-control">
+                                        <input type="password" placeholder="6 - 15 Ký tự" name="password_confirmation"
+                                            id="RePassword" class="form-control">
+                                        @error('password_confirmation')
+                                            <small class="text-danger text-blod">{{ $message }}</small>
+                                        @enderror
                                     </div>
                                     <div class="form-group">
                                         <label for="AboutMe">Mô tả</label>

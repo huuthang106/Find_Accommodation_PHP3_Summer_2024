@@ -79,9 +79,11 @@ Route::get('/xem-phong/{id}', [RoomController::class, 'getRoomID'])->name('get-r
 // [VoTanLuon] Rpute xem loại trọ client
 Route::get('/loai-tro', [CategoryController::class, 'index'])->name('category-motel');
 // [VoTanLuon] Route trang thông tin tài khoản người dùng (client)
-Route::get('/thong-tin-tai-khoan/{id}', [UserController::class, 'show'])->name('profileus');
+Route::get('/thong-tin-tai-khoan', [UserController::class, 'show'])->middleware('auth')->name('profileus');
+// [VoTanLuon] Route trang chỉnh sửa thông tin tài khoản người dùng 
+Route::put('/thong-tin-tai-khoan/{id}', [UserController::class, 'update'])->name('chinh-sua-thong-tin');
 // [VoTanLuon] Route trang sửa thông tin tài khoản người dùng (client)
-route::put('/thong-tin-tai-khoan/{id}', [UserController::class, 'update'])->name('update-profile');
+// route::put('/thong-tin-tai-khoan/{id}', [UserController::class, 'update'])->name('update-profile');
 // Route::get('/', [IndexController::class, 'home'])->name('home');
 
 //Login user mhuy
@@ -98,7 +100,7 @@ Route::get('/admin/dang-nhap', [IndexAdminController::class, 'pages_login'])->na
 Route::post('/admin/dang-nhap', [IndexAdminController::class, 'check_login']);
 // Đăng ký admin
 Route::get('/admin/dang-ky', [IndexAdminController::class, 'pages_register'])->name('pages-register-admin');
-Route::post('/admin/dang-ky', [IndexAdminController::class, 'check_register']);
+Route::post('/admin/dang-ky', [IndexAdminController::class, 'check_register'])->name('check-register');
 // Đăng xuất admin
 Route::post('/logout', [IndexController::class, 'logout'])->name('logout');
 // Login trước khi vào trang admin
@@ -115,7 +117,10 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
 
     Route::get('/lien-he', [HomeAdminController::class, 'extras_contacts'])->name('extras-contacts');
     Route::get('/thong-so', [IndexController::class, 'charts'])->name('charts');
-    Route::get('/quan-li-ho-so', [UserController::class, 'index'])->name('quan-li-ho-so'); // router trang quan li ho so
+    // [VoTanLuon] Router hiển thị trang tài khoản Admin
+    Route::get('/quan-li-ho-so', [UserController::class, 'index'])->middleware('auth')->name('quan-li-ho-so');
+    // [VoTanLuon] Router hiển thị chỉnh sửa tài khoản Admin
+    route::put('/quan-li-ho-so/{id}', [UserController::class, 'update_profile_admin'])->name('chinh-sua-ho-so');
     // Router thông báo admin
 
     Route::get('/trang-thong-bao', [NotificationAdminController::class, 'index'])->name('pages-notification');
@@ -192,7 +197,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
 // Nguyen Huu Thang user
 
     // Route::group(['prefix' => 'tai-khoang', 'middleware' => 'authus'], function () {
-        Route::get('/tai-khoang', [UserController::class, 'profileuser'])->name('profileus');
+        Route::get('/tai-khoang', [UserController::class, 'show'])->name('profileus');
         Route::get('/chinh-sua-bai-viet/{id}',[RoomController::class,'page_edit_posting'])->name('edit-posting');
     // });
 // end Nguyen Huu Thang user

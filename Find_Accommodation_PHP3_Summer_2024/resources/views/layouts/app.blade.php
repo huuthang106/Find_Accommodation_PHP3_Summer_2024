@@ -146,7 +146,12 @@
                         <img src="{{ asset('assets\images\users\avatar-1.jpg') }}" alt="user-image"
                             class="rounded-circle">
                         <span class="pro-user-name ml-1">
-                            Maxine K <i class="mdi mdi-chevron-down"></i>
+                            {{-- Maxine K <i class="mdi mdi-chevron-down"></i> --}}
+                            @if (Auth::check())
+                                {{ Auth::user()->username }} <i class="mdi mdi-chevron-down"></i>
+                            @else
+                                <!-- Nếu người dùng chưa đăng nhập, không hiển thị gì -->
+                            @endif
                         </span>
                     </a>
                     <div class="dropdown-menu dropdown-menu-right profile-dropdown ">
@@ -246,10 +251,23 @@
                     <img src="{{ asset('assets\images\users\avatar-1.jpg') }}" alt=""
                         class="avatar-md rounded-circle">
                 </div>
-                <div class="user-info">
-                    <a href="#">Stanley Jones</a>
-                    <p class="text-muted m-0">Administrator</p>
-                </div>
+                {{-- Kiểm tra nếu người dùng đã đăng nhập --}}
+                @if (Auth::check())
+                    @php
+                        $admin = Auth::user();
+                    @endphp
+
+                    <div class="user-info">
+                        <a href="#">{{ $admin->username }}</a>
+
+                        {{-- Kiểm tra vai trò của người dùng --}}
+                        @if ($admin->role == 0)
+                            <p class="text-muted m-0">
+                                Admin
+                            </p>
+                        @endif
+                    </div>
+                @endif
             </div>
 
             <!--- Sidemenu -->

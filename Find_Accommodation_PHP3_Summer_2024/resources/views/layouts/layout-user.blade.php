@@ -61,10 +61,48 @@
                                         </li>
                                     </ul>
 
-                                    <button type="button" class="btn btn-primary" data-bs-toggle="modal"
-                                        data-bs-target="#loginModal">
-                                        Đăng nhập/Đăng ký
-                                    </button>
+                                    {{-- Khi chưa login sẽ hiển thị Đăng Ký/ Đăng nhập, khi login xong sẽ hiển thị Tên login --}}
+                                    <ul class="list-unstyled topnav-menu float-right mb-0 bg-primary p-1 rounded-3">
+                                        @if (Auth::check())
+                                            <li class="dropdown notification-list">
+                                                <a class="nav-link dropdown-toggle nav-user mr-0 text-light"
+                                                    data-toggle="dropdown" href="#" role="button"
+                                                    aria-haspopup="true" aria-expanded="false">
+                                                    {{ Auth::user()->username }} <i class="mdi mdi-chevron-down"></i>
+                                                </a>
+                                                <div class="dropdown-menu dropdown-menu-right profile-dropdown">
+                                                    <!-- item -->
+                                                    <div class="dropdown-header noti-title">
+                                                        <h6 class="text-overflow m-0">Xin chào!</h6>
+                                                    </div>
+                                                    <!-- item -->
+                                                    <a href="{{ route('profileus') }}"
+                                                        class="dropdown-item notify-item">
+                                                        <i class="mdi mdi-account-outline"></i>
+                                                        <span>Hồ sơ</span>
+                                                    </a>
+                                                    <div class="dropdown-divider"></div>
+                                                    <!-- item -->
+                                                    <a href="javascript:void(0);" class="dropdown-item notify-item"
+                                                        onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                                        <i class="mdi mdi-logout-variant"></i>
+                                                        <span>Đăng xuất</span>
+                                                    </a>
+                                                    <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                                                        style="display: none;">
+                                                        @csrf
+                                                    </form>
+                                                </div>
+                                            </li>
+                                        @else
+                                            <li>
+                                                <button type="button" class="btn btn-primary p-0"
+                                                    data-bs-toggle="modal" data-bs-target="#loginModal">
+                                                    Đăng nhập/Đăng ký
+                                                </button>
+                                            </li>
+                                        @endif
+                                    </ul>
                                 </div>
                             </div>
                         </nav>
@@ -166,8 +204,8 @@
                     <div class="modal-body">
                         <div class="text-center">
                             <a href="index.html">
-                                <span><img src="{{ asset('assets/images/logo3.png') }}" alt="" height="60"
-                                        width="170"></span>
+                                <span><img src="{{ asset('assets/images/logo3.png') }}" alt=""
+                                        height="60" width="170"></span>
                             </a>
                         </div>
                         <div class="account-pages my-3 pt-2">

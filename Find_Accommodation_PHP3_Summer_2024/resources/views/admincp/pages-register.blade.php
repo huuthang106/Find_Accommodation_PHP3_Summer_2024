@@ -65,7 +65,7 @@
 
                     <div class="row mt-4">
                         <div class="col-sm-12 text-center">
-                            <p class="text-muted mb-0">Bạn đã có tài khoản? <a href="{{ route('pages-login-admin') }}"
+                            <p class="text-muted mb-0">Bạn đã có tài khoản? <a href="{{ route('admincp.pages-login') }}"
                                     class="text-dark ml-1"><b>ĐĂNG NHẬP</b></a></p>
                         </div>
                     </div>
