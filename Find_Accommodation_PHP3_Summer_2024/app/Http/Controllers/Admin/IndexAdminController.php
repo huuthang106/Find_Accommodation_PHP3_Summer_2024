@@ -15,17 +15,10 @@ class IndexAdminController extends Controller
      */
     public function index()
     {
-        //
-        // Đếm số lượng thông báo 
-        // $notificationCount = Notification::all('status')->count();
-        // Đếm số lượng đã xem hoặc chưa xem (0 là đã xem, 1 là chưa xem)
-        $notificationCount = Notification::where('status', 1)->count();
 
-        // Lấy thông báo chưa xem
-        $unreadNotifications = Notification::where('status', 1)->get();
 
         // Truyền dữ liệu tới view
-        return view('admincp.pages-notification', compact('notification', 'notificationCount', 'unreadNotifications'));
+        return view('admincp.pages-notification');
     }
 
     /**
@@ -51,7 +44,7 @@ class IndexAdminController extends Controller
     {
         //
     }
-
+    
     /**
      * Show the form for editing the specified resource.
      */
@@ -109,7 +102,7 @@ class IndexAdminController extends Controller
             'password' => 'Mật khẩu không chính xác.',
         ]);
     }
-    
+
     public function check_register()
     {
         // Bắt lỗi
@@ -132,7 +125,8 @@ class IndexAdminController extends Controller
         User::create($data);
         return redirect()->route('pages-login-admin');
     }
-    public function admin(){
-        return redirect()->route('trang-quan-ly');
+    public function admin()
+    {
+        return redirect()->route('pages-login-admin');
     }
 }

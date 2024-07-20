@@ -13,7 +13,7 @@ class PriceListAdminController extends Controller
     public function index()
     {
         //
-        $price = PriceList::all();
+        $price = PriceList::where('status',1)->get();
         return view('admincp.extras-pricing', compact('price'));
     }
 

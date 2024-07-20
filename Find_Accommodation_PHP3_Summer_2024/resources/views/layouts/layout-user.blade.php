@@ -6,18 +6,8 @@
     <!-- Required meta tags -->
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <!-- DataTables CSS -->
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.11.4/css/dataTables.bootstrap5.min.css">
-    <!-- Bootstrap CSS v5.2.1 -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous" />
-    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-    <link href="{{ asset('assets\css\style.css') }}" rel="stylesheet" type="text/css" id="app-stylesheet">
-    <link href="{{ asset('assets\css\style-nht.css') }}" rel="stylesheet" type="text/css" id="app-stylesheet">
-    {{-- cdn icon --}}
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
-        integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    @stack('styles')
+
 </head>
 
 <body>
@@ -65,7 +55,7 @@
                                             <a class="nav-link" href="#">Diễn đàn</a>
                                         </li>
                                         <li class="nav-item pe-4">
-                                            <a class="nav-link" href="{{route('posting-room')}}">Đăng bài</a>
+                                            <a class="nav-link" href="{{ route('posting-room') }}">Đăng bài</a>
                                         </li>
                                     </ul>
 
@@ -80,14 +70,12 @@
                 </div>
             </div>
         </div>
-     
-        <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel"
-            aria-hidden="true">
+
+        <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered"> <!-- Thêm class này -->
                 <div class="modal-content">
                     <div class="modal-header border-0">
-                        <button type="button" class="btn-close" data-bs-dismiss="modal"
-                            aria-label="Close"></button>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
                         <div class="account-pages my-3 pt-2">
@@ -102,8 +90,7 @@
                                                                 alt="" height="60" width="170"></span>
                                                     </a>
                                                 </div>
-                                                <form action="{{ route('login-users') }}" method="POST"
-                                                    class="p-2">
+                                                <form action="{{ route('login-users') }}" method="POST" class="p-2">
                                                     @csrf
                                                     <div class="mb-3">
                                                         <label for="emailaddress" class="form-label">Email</label>
@@ -111,15 +98,13 @@
                                                             id="emailaddress" required=""
                                                             placeholder="example@gmail.com">
                                                         @error('email')
-                                                            <small
-                                                                class="text-danger text-blod">{{ $message }}</small>
+                                                            <small class="text-danger text-blod">{{ $message }}</small>
                                                         @enderror
                                                     </div>
                                                     <div class="mb-3">
                                                         <label for="password" class="form-label">Mật khẩu</label>
                                                         <input class="form-control" name="password" type="password"
-                                                            required="" id="password"
-                                                            placeholder="Nhập mật khẩu">
+                                                            required="" id="password" placeholder="Nhập mật khẩu">
                                                         @error('password')
                                                             <small
                                                                 class="text-danger text-bold">{{ $message }}</small>
@@ -283,24 +268,9 @@
             </div>
         </footer>
     </div>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
-        integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous">
-    </script>
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
-        integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous">
-    </script>
-    <!-- jQuery -->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
-    <!-- DataTables JavaScript -->
-    <script src="https://cdn.datatables.net/1.11.4/js/jquery.dataTables.min.js"></script>
-    <script src="https://cdn.datatables.net/1.11.4/js/dataTables.bootstrap5.min.js"></script>
-
-    <!-- Ngôn ngữ tiếng Việt cho DataTables -->
-    <script src="https://cdn.datatables.net/plug-ins/1.11.4/i18n/Vietnamese.json"></script>
-    <script src="{{ asset('assets\js\app-nht.js') }}"></script>
+    @stack('scripts')
 </body>
-</body>
+
+
 
 </html>

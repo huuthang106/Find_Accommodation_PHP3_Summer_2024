@@ -8,6 +8,7 @@ use App\Models\Room;
 use App\Models\Category;
 use App\Models\Prices;
 use App\Models\PriceList;
+use App\Models\Notification;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -24,6 +25,7 @@ class DatabaseSeeder extends Seeder
         Prices::factory(10)->create();
         PriceList::factory(10)->create();
         Room::factory(10)->create();
+        Notification::factory(10)->create();
         // User::factory()->create([
         //     'name' => 'Test User',
         //     'email' => 'test@example.com',

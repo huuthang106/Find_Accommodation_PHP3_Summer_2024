@@ -5,7 +5,7 @@ namespace App\Providers;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\View;
 use App\Models\Category;
-
+use App\Models\Notification;
 class AppServiceProvider extends ServiceProvider
 {
     /**
@@ -28,5 +28,13 @@ class AppServiceProvider extends ServiceProvider
             // Truyền dữ liệu categories vào view
             $view->with('categories', $categories);
         });
+        View::composer('layouts.app', function ($view) {
+            $notificationCount = Notification::where('status', 1)->count();
+            // Lấy thông báo chưa xem
+            $unreadNotifications = Notification::where('status', 1)->get();
+            $view->with('notificationCount', $notificationCount);
+            $view->with('unreadNotifications', $unreadNotifications);
+        });
+
     }
 }

@@ -14,7 +14,7 @@ class RoomAdminController extends Controller
     public function index()
     {
         //
-        $room = Room::all();
+        $room = Room::where('status',1)->get();
         // dd($room);
         return view('admincp.pages-room', compact('room'));
     }

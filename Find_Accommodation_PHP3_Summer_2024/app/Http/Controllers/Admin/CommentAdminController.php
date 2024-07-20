@@ -13,7 +13,7 @@ class CommentAdminController extends Controller
      */
     public function index()
     {
-        $comment = Comment::all();
+        $comment = Comment::where('status',1)->get();
         return view('admincp.pages-comment', compact('comment'));
     }
 

@@ -20,16 +20,10 @@ class NotificationAdminController extends Controller
         //     dd($item);
         // }
 
-        // Đếm số lượng thông báo 
-        // $notificationCount = Notification::all('status')->count();
-        // Đếm số lượng đã xem hoặc chưa xem (0 là đã xem, 1 là chưa xem)
-        $notificationCount = Notification::where('status', 1)->count();
-
-        // Lấy thông báo chưa xem
-        $unreadNotifications = Notification::where('status', 1)->get();
+    
 
         // Truyền dữ liệu tới view
-        return view('admincp.pages-notification', compact('notification', 'notificationCount', 'unreadNotifications'));
+        return view('admincp.pages-notification', compact('notification'));
     }
 
     /**
@@ -55,13 +49,9 @@ class NotificationAdminController extends Controller
     {
         $notifications = Notification::where('id', $id)->get();
 
-        // Đếm số lượng đã xem hoặc chưa xem (0 là đã xem, 1 là chưa xem)
-        $notificationCount = Notification::where('status', 1)->count();
-
-        // Lấy thông báo chưa xem
-        $unreadNotifications = Notification::where('status', 1)->get();
+     
         // Hiển thị giao diện Chi tiết thông báo admin
-        return view('admincp.pages-notification-detail', compact('notifications', 'notificationCount', 'unreadNotifications'));
+        return view('admincp.pages-notification-detail', compact('notifications'));
     }
 
     /**
@@ -119,11 +109,7 @@ class NotificationAdminController extends Controller
     }
     public function tables_advanced()
     {
-        // Đếm số lượng đã xem hoặc chưa xem (0 là đã xem, 1 là chưa xem)
-        $notificationCount = Notification::where('status', 1)->count();
-
-        // Lấy thông báo chưa xem
-        $unreadNotifications = Notification::where('status', 1)->get();
-        return view('admincp.tables-advanced', compact('notificationCount', 'unreadNotifications'));
+     
+        return view('admincp.tables-advanced');
     }
 }

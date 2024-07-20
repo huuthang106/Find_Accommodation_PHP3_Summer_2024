@@ -93,7 +93,7 @@ Route::get('/register', [RegisterController::class, 'pages_register'])->name('re
 Route::post('/', [RegisterController::class, 'check_register']);
 //
 // Login trước khi vào các trang admin
-Route::get('/admin/dang-nhap', [IndexAdminController::class, 'pages_login'])->name('admincp.pages-login');
+Route::get('/admin/dang-nhap', [IndexAdminController::class, 'pages_login'])->name('pages-login-admin');
 Route::post('/admin/dang-nhap', [IndexAdminController::class, 'check_login']);
 // Đăng ký admin
 Route::get('/admin/dang-ky', [IndexAdminController::class, 'pages_register'])->name('pages-register-admin');

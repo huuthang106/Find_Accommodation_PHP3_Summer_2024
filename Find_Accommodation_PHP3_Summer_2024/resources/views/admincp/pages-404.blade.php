@@ -1,37 +1,95 @@
 ﻿@extends('layouts.error')
-@section('titleAdmin','404 Error | Simple - Responsive Bootstrap 4 Admin Dashboard')
+@section('titleAdmin', '404 Error | Simple - Responsive Bootstrap 4 Admin Dashboard')
 @section('content')
 
-<div class="account-pages my-5 pt-5">
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-8 col-lg-6">
-                <div class="card">
-                    <div class="card-body">
-                        <div class="text-center mb-4 mt-3">
-                            <a href="index.html">
-                                <span><img src="assets\images\logo-dark.png" alt="" height="30"></span>
-                            </a>
-                        </div>
-                        <div class="mt-4 pt-3 text-center">
-                            <img src="assets\images\cancel.svg" title="invite.svg" class="avatar-lg">
-                            <h3 class="expired-title mb-4 mt-3 font-weight-normal">Không tìm thấy trang</h3>
-                            <p class="text-muted mt-3"> Có vẻ như bạn đã rẽ nhầm hướng. Đừng lo... điều này xảy ra với cả những người giỏi nhất.
-                                 Bạn có thể muốn kiểm tra kết nối internet của mình.</p>
-                        </div>
+    <div class="account-pages my-5 pt-5">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-8 col-lg-6">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="text-center mb-4 mt-3">
+                                <a href="index.html">
+                                    <span><img src="assets\images\logo-dark.png" alt="" height="30"></span>
+                                </a>
+                            </div>
+                            <div class="mt-4 pt-3 text-center">
+                                <img src="assets\images\cancel.svg" title="invite.svg" class="avatar-lg">
+                                <h3 class="expired-title mb-4 mt-3 font-weight-normal">Không tìm thấy trang</h3>
+                                <p class="text-muted mt-3"> Có vẻ như bạn đã rẽ nhầm hướng. Đừng lo... điều này xảy ra với
+                                    cả những người giỏi nhất.
+                                    Bạn có thể muốn kiểm tra kết nối internet của mình.</p>
+                            </div>
 
-                        <div class="mb-3 mt-4 text-center">
-                            <a href="{{route('home')}}" class="btn btn-primary btn-block">Quay về nhà</a>
+                            <div class="mb-3 mt-4 text-center">
+                                <a href="{{ route('home') }}" class="btn btn-primary btn-block">Quay về nhà</a>
+                            </div>
                         </div>
+                        <!-- end card-body -->
                     </div>
-                    <!-- end card-body -->
+                    <!-- end card -->
                 </div>
-                <!-- end card -->
+                <!-- end col -->
             </div>
-            <!-- end col -->
+            <!-- end row -->
         </div>
-        <!-- end row -->
+        <!-- end container -->
     </div>
-    <!-- end container -->
-</div>
 @endsection
+@push('styles')
+    <!-- App favicon -->
+    <link rel="shortcut icon" href="{{ asset('assets/images/logo3.png') }}">
+    <!-- third party css -->
+    <link href="{{ asset('assets/libs/datatables/dataTables.bootstrap4.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{ asset('assets/libs/datatables/buttons.bootstrap4.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{ asset('assets/libs/datatables/responsive.bootstrap4.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{ asset('assets/libs/datatables/select.bootstrap4.css') }} "rel="stylesheet" type="text/css">
+    <!-- App css -->
+    <link rel="stylesheet" href="{{ asset('assets/css/style-admin.css') }}" type="text/css" id='styleadmin-stylesheet'>
+    <link href="{{ asset('assets/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css" id="bootstrap-stylesheet">
+    <link href="{{ asset('assets/css/icons.min.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{ asset('assets/css/app.min.css') }}" rel="stylesheet" type="text/css" id="app-stylesheet">
+@endpush
+
+@push('scripts')
+    <!-- Vendor js -->
+    <script src="{{ asset('assets/js/vendor.min.js') }}"></script>
+
+    <script src="{{ asset('assets/libs/morris-js/morris.min.js') }}"></script>
+    <script src="{{ asset('assets/libs/raphael/raphael.min.js') }}"></script>
+
+    <script src="{{ asset('assets/js/pages/dashboard.init.js') }}"></script>
+
+    <script src="{{ asset('assets/js/pages/morris.init.js') }}"></script>
+
+    <script src="{{ asset('assets/libs/flot-charts/jquery.flot.js') }}"></script>
+    <script src="{{ asset('assets/libs/flot-charts/jquery.flot.time.js') }}"></script>
+    <script src="{{ asset('assets/libs/flot-charts/jquery.flot.tooltip.min.js') }}"></script>
+    <script src="{{ asset('assets/libs/flot-charts/jquery.flot.resize.js') }}"></script>
+    <script src="{{ asset('assets/libs/flot-charts/jquery.flot.pie.js') }}"></script>
+    <script src="{{ asset('assets/libs/flot-charts/jquery.flot.selection.js') }}"></script>
+    <script src="{{ asset('assets/libs/flot-charts/jquery.flot.stack.js') }}"></script>
+    <script src="{{ asset('assets/libs/flot-charts/jquery.flot.orderBars.js') }}"></script>
+    <script src="{{ asset('assets/libs/flot-charts/jquery.flot.crosshair.js') }}"></script>
+    <script src="{{ asset('assets/libs/flot-charts/jquery.flot.axislabels.js') }}"></script>
+
+    <!-- KNOB JS -->
+    <script src="{{ asset('assets/libs/jquery-knob/jquery.knob.min.js') }}"></script>
+
+    <script src="{{ asset('assets/js/pages/flot.init.js') }}"></script>
+
+    <!-- App js -->
+    <script src="{{ asset('assets/js/app.min.js') }}"></script>
+
+    <!-- Datatables init -->
+    <script src="{{ asset('assets/js/pages/datatables.init.js') }}"></script>
+    <!-- Datatables init -->
+    <script src="{{ asset('assets\js\pages\datatables.init.js') }}"></script>
+    <!-- Responsive examples -->
+    <script src="{{ asset('assets/libs/datatables/dataTables.responsive.min.js') }}"></script>
+    <script src="{{ asset('assets/libs/datatables/responsive.bootstrap4.min.js') }}"></script>
+
+    <!-- Required datatable js -->
+    <script src="{{ asset('assets\libs\datatables\jquery.dataTables.min.js') }}"></script>
+    <script src="{{ asset('assets\libs\datatables\dataTables.bootstrap4.min.js') }}"></script>
+@endpush

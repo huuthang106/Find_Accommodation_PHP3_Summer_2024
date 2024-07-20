@@ -1,7 +1,8 @@
 <?php
 
 namespace Database\Factories;
-
+use App\Models\User;
+use App\Models\Room;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -18,6 +19,12 @@ class NotificationFactory extends Factory
     {
         return [
             //
+            'type' => $this->faker->word,
+            'data' => $this->faker->optional()->sentence,
+            'message' => $this->faker->sentence,
+            'status' => $this->faker->boolean,
+            'user_id' => User::factory(),
+            'room_id' => Room::factory(),
         ];
     }
 }
