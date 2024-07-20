@@ -83,4 +83,8 @@ class RoomController extends Controller
     {
         return view('page.rooms.posting-page');
     }
+    public function page_edit_posting(){
+
+        return view('page.rooms.edit-posting-room');
+    }
 }

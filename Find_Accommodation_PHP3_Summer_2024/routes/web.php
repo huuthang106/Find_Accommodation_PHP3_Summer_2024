@@ -46,7 +46,7 @@ Route::get('/xem-phong/{id}', [RoomController::class, 'getRoomID'])->name('get-r
 // start Nguyen Huu Thang
 Route::get('/home', [RoomController::class, 'index'])->name('home');
 Route::get('/xem-phong/{id}', [RoomController::class, 'getRoomID'])->name('get-room');
-route::get('/profile', [UserController::class, 'profileuser'])->name('profileus');
+
 route::get('/trang-dang-bai', [RoomController::class, 'page_posting'])->name('posting-room');
 // Route bắt tất cả các yêu cầu không khớp
 Route::fallback(function () {
@@ -190,8 +190,8 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
 
 // Nguyen Huu Thang user
 
-
+    // Route::group(['prefix' => 'tai-khoang', 'middleware' => 'authus'], function () {
+        Route::get('/tai-khoang', [UserController::class, 'profileuser'])->name('profileus');
+        Route::get('/chinh-sua-bai-viet/{id}',[RoomController::class,'page_edit_posting'])->name('edit-posting');
+    // });
 // end Nguyen Huu Thang user
-Route::group(['prefix'=>'tai-khoang','middleware'=>'auth'],function(){
-    route::get('/', [UserController::class, 'profileuser'])->name('profileus');
-});
