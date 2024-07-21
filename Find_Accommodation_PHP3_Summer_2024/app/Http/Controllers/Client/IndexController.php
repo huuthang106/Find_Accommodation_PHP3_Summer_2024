@@ -49,7 +49,7 @@ class IndexController extends Controller
     public function pages_404()
     {
    
-        return view('admincp.pages-404');
+        return view('admincp.error.pages-404');
     }
     public function pages_forget_password()
     {

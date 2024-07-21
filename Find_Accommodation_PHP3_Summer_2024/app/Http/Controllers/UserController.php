@@ -21,7 +21,7 @@ class UserController extends Controller
         if (!$admin) {
             return redirect()->route('pages-404')->with('Thông Báo', 'Không tìm thấy người dùng.');
         }
-        return view('admincp.extras-profile', compact('admin'));
+        return view('admincp.accounts.extras-profile', compact('admin'));
 
       
 

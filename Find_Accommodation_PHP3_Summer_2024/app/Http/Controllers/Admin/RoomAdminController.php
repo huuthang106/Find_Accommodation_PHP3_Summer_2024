@@ -80,7 +80,7 @@ class RoomAdminController extends Controller
     {
         $roomDetail = Room::with('category', 'user')->find($id);
         // $categoryName = $roomDetail->category ? $roomDetail->category->name : null;
-        return view('admincp.pages-room-detail', compact('roomDetail'));
+        return view('admincp.details.pages-room-detail', compact('roomDetail'));
     }
 
 }

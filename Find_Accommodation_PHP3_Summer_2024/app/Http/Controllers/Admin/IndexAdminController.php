@@ -71,11 +71,11 @@ class IndexAdminController extends Controller
 
     public function pages_login()
     {
-        return view('admincp.pages-login');
+        return view('admincp.accounts.pages-login');
     }
     public function pages_register()
     {
-        return view('admincp.pages-register');
+        return view('admincp.accounts.pages-register');
     }
     public function check_login()
     {

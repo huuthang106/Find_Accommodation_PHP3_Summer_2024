@@ -33,7 +33,7 @@ class HomeAdminController extends Controller
        
         $user = User::take(6)->get();
         // Truyền dữ liệu tới view
-        return view('admincp.home', compact('user'));
+        return view('admincp.manages.home', compact('user'));
         // return view('admincp.home');
     }
 

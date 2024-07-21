@@ -80,7 +80,7 @@
 
                             <!-- item-->
                             @foreach ($unreadNotifications as $item)
-                                <a href="trang-chi-tiet-thong-bao/{{ $item->id }}"
+                                <a href="{{ route('pages-notification-detail',$item->id)}}"
                                     class="dropdown-item notify-item">
                                     <div class="notify-icon bg-success"><i class="mdi mdi-comment-account-outline"></i>
                                     </div>
@@ -339,13 +339,7 @@
                             <li><a href="{{ route('tables-advanced') }}">Advanced Tables</a></li>
                         </ul>
                     </li> --}}
-                    <li>
-                        <a href="{{ route('charts') }}">
-                            <i class="ti-pie-chart"></i>
-                            <span> Charts </span>
-                            <span class="badge badge-primary float-right">5</span>
-                        </a>
-                    </li>
+                 
 
 
 

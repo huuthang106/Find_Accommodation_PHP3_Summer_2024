@@ -71,7 +71,7 @@ class NotificationAdminController extends Controller
 
      
         // Hiển thị giao diện Chi tiết thông báo admin
-        return view('admincp.pages-notification-detail', compact('notifications'));
+        return view('admincp.details.pages-notification-detail', compact('notifications'));
     }
 
     /**

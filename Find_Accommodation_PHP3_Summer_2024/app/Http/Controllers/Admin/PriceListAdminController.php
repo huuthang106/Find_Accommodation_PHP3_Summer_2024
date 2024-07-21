@@ -13,6 +13,8 @@ class PriceListAdminController extends Controller
     public function index()
     {
         //
+        $price = PriceList::all();
+        return view('admincp.manages.extras-pricing', compact('price'));
      
     }
     
@@ -49,7 +51,7 @@ class PriceListAdminController extends Controller
     {
         $priceList = PriceList::where('id', $id)->first();
         // dd($priceList);
-        return view('admincp.pages-edit-pricing', compact('priceList'));
+        return view('admincp.edit.pages-edit-pricing', compact('priceList'));
     }
     /**
      * Show the form for creating a new resource.

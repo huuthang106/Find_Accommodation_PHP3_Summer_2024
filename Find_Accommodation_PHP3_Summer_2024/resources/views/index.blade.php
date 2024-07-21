@@ -282,7 +282,7 @@
                 <div class="row mt-3 mainRoom">
                     @foreach ($rooms as $room)
                         <div class="col-3 mt-2">
-                            <a href="xem-phong/{{ $room->id }}" class="text-decoration-none">
+                            <a href="{{route('get-room',['id'=> $room->id])}}" class="text-decoration-none">
                                 <div class="card">
                                     <div class="bageVip">
                                         <img src="{{ asset('assets\images\448469911_476143361772862_3803638986442606747_n-min.jpg') }}"
