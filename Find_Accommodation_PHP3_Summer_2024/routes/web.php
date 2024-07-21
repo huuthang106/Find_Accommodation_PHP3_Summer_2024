@@ -196,8 +196,8 @@ Route::post('/xu-ly-dang-bai', [RoomController::class, 'check_post_room'])->name
 
 // Nguyen Huu Thang user
 
-    // Route::group(['prefix' => 'tai-khoang', 'middleware' => 'authus'], function () {
-        Route::get('/tai-khoang', [UserController::class, 'show'])->name('profileus');
-        Route::get('/chinh-sua-bai-viet/{id}',[RoomController::class,'page_edit_posting'])->name('edit-posting');
+// Route::group(['prefix' => 'tai-khoang', 'middleware' => 'authus'], function () {
+Route::get('/tai-khoang', [UserController::class, 'show'])->name('profileus');
+Route::get('/chinh-sua-bai-viet/{id}', [RoomController::class, 'page_edit_posting'])->name('edit-posting');
     // });
 // end Nguyen Huu Thang user

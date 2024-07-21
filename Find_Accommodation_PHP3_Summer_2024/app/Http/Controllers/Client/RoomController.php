@@ -85,7 +85,7 @@ class RoomController extends Controller
     {
         $categories = Category::where('status', 1)->get();
         $user = auth()->user();
-        return view('page.posting-page', compact('categories', 'user'));
+        return view('page.rooms.posting-page', compact('categories', 'user'));
     }
 
     public function check_post_room()
