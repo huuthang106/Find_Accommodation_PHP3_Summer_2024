@@ -45,7 +45,7 @@
                                             @foreach ($categories as $category)
                                             
                                                     <li><a class="dropdown-item"
-                                                            href="#">{{ $category->name }}</a></li>
+                                                            href="{{route('category-motel')}}">{{ $category->name }}</a></li>
                                               
                                             @endforeach
                                         </ul>
