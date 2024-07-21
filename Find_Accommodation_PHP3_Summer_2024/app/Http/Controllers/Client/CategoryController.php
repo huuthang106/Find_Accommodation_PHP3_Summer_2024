@@ -19,7 +19,7 @@ class CategoryController extends Controller
         // return view('admincp.pages-category', compact('category'));
 
         // Cái này là user
-        return view('page.category-motel');
+        return view('page.rooms.category-motel');
     }
 
     /**
