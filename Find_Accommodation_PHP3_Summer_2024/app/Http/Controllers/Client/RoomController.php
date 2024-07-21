@@ -80,6 +80,9 @@ class RoomController extends Controller
     {
         $room = Room::where('id', $id)->first();;
         return view('page.rooms.detail-room', compact('room'));
+        // $room = Room::where('id', $id)->first();
+        ;
+        // return redirect()->route('comments.index', ['id' => $id]);
     }
     public function page_posting()
     {

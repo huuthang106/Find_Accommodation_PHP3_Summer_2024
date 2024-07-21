@@ -76,16 +76,119 @@
                 </div>
             </div>
 
-            <div class="row justify-content-center p-0 mt-4 margin-botton">
+            <div class="row justify-content-center p-0 mt-4">
                 <div class="col-9 bg-body rounded p-4">
-                    <h3>Đường đi</h3>
-                    <iframe
-                        src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d4672.916017875077!2d105.75542651411102!3d9.980603954525968!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31a08906415c355f%3A0x416815a99ebd841e!2zVHLGsOG7nW5nIENhbyDEkeG6s25nIEZQVCBQb2x5dGVjaG5pYw!5e0!3m2!1svi!2s!4v1721110647679!5m2!1svi!2s"
-                        width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"
-                        referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    <h3>Bình luận</h3>
+                    <div class="row d-flex justify-content-center">
+                        <div class="col-md-12">
+                            <div id="commentList">
+                                @if ($comments->isNotEmpty())
+                                    @foreach ($comments as $comment)
+                                        <div class="card mb-3 comment-card" data-comment-id="{{ $comment->id }}">
+                                            <div class="card-body">
+                                                <div class="d-flex flex-start align-items-center">
+                                                    <img class="rounded-circle shadow-1-strong me-3"
+                                                        src="{{ asset('assets/images/448469911_476143361772862_3803638986442606747_n-min.jpg') }}"
+                                                        alt="avatar" width="60" height="60" />
+                                                    <div>
+                                                        <h6 class="fw-bold text-dark mb-1">{{ $comment->user->username }}
+                                                        </h6>
+                                                        <p class="text-muted small mb-0">Đăng vào
+                                                            {{ $comment->created_at->format('d/m/Y H:i') }}</p>
+                                                    </div>
+                                                </div>
+                                                <p class="mt-3 mb-4 pb-2">{{ $comment->content }}</p>
+                                                <div class="small d-flex justify-content-start">
+                                                    <a href="#!"
+                                                        class="d-flex align-items-center me-3 text-decoration-none text-primary like-btn">
+                                                        <i class="far fa-thumbs-up me-2"></i>
+                                                        <p class="mb-0">Thích</p>
+                                                    </a>
+                                                    <a href="#!"
+                                                        class="d-flex align-items-center me-3 text-decoration-none text-primary reply-btn"
+                                                        data-comment-id="{{ $comment->id }}">
+                                                        <i class="far fa-comment-dots me-2"></i>
+                                                        <p class="mb-0">Trả lời</p>
+                                                    </a>
+                                                </div>
+                                                <!-- Form trả lời -->
+                                                <div class="reply-form" id="reply-form-{{ $comment->id }}"
+                                                    style="display: none;">
+                                                    <form action="{{ route('comments.store') }}" method="POST"
+                                                        class="reply-form-ajax">
+                                                        @csrf
+                                                        <input type="hidden" name="parent_id" value="{{ $comment->id }}">
+                                                        <div class="form-floating">
+                                                            <textarea class="form-control border-primary rounded-3 shadow-sm" name="content" rows="3"
+                                                                placeholder="Nhập tin nhắn ở đây" required></textarea>
+                                                            <label for="replyTextArea-{{ $comment->id }}">Tin nhắn</label>
+                                                        </div>
+                                                        <div class="d-flex justify-content-end mt-2">
+                                                            <button type="submit"
+                                                                class="btn btn-primary btn-sm me-2">Đăng</button>
+                                                            <button type="button"
+                                                                class="btn btn-outline-primary btn-sm cancel-reply">Hủy</button>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    @endforeach
+                                    @if ($comments->count() >= 3)
+                                        <div class="text-center mb-2">
+                                            <a href="{{ route('comments.showAll', ['id' => $room->id]) }}"
+                                                id="showAllComments" class="btn btn-primary">Xem tất cả bình luận</a>
+                                        </div>
+                                    @endif
+                                @else
+                                    <p></p>
+                                @endif
+                            </div>
+                            <div class="card-footer py-3 border-0" style="background-color: #f8f9fa;">
+                                <form id="commentForm" action="{{ route('comments.store') }}" method="POST"
+                                    class="comment-form-ajax">
+                                    @csrf
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <div class="d-flex align-items-start">
+                                                <img class="rounded-circle shadow-sm ms-2 me-3"
+                                                    src="{{ asset('assets/images/448469911_476143361772862_3803638986442606747_n-min.jpg') }}"
+                                                    alt="avatar" width="40" height="40" />
+                                                <div class="w-100">
+                                                    <div class="form-floating">
+                                                        <textarea class="form-control border-primary rounded-3 shadow-sm" id="textAreaExample" name="content" rows="3"
+                                                            placeholder="Nhập tin nhắn ở đây" required></textarea>
+                                                        <label for="textAreaExample">Tin nhắn</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <input type="hidden" name="room_id" value="{{ $room->id }}">
+                                    <div class="d-flex justify-content-end mt-2">
+                                        <button type="submit" class="btn btn-primary btn-sm me-2">Đăng</button>
+                                        <button type="button" class="btn btn-outline-primary btn-sm">Hủy</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
+
+
+
         </div>
+        <div class="row justify-content-center p-0 mt-4 margin-botton">
+            <div class="col-9 bg-body rounded p-4">
+                <h3>Đường đi</h3>
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d4672.916017875077!2d105.75542651411102!3d9.980603954525968!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31a08906415c355f%3A0x416815a99ebd841e!2zVHLGsOG7nW5nIENhbyDEkeG6s25nIEZQVCBQb2x5dGVjaG5pYw!5e0!3m2!1svi!2s!4v1721110647679!5m2!1svi!2s"
+                    width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+        </div>
+    </div>
 
 
     </div>

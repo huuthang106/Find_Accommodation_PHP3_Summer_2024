@@ -86,6 +86,13 @@ Route::put('/thong-tin-tai-khoan/{id}', [UserController::class, 'update'])->name
 // route::put('/thong-tin-tai-khoan/{id}', [UserController::class, 'update'])->name('update-profile');
 // Route::get('/', [IndexController::class, 'home'])->name('home');
 
+//binh luan mhuy
+
+Route::post('/comments', [CommentController::class, 'store'])->middleware('auth')->name('comments.store');
+Route::get('/rooms/{id}/', [CommentController::class, 'index'])->name('comments.index');
+Route::get('/rooms/{id}/comments/all', [CommentController::class, 'showAll'])->name('comments.showAll');
+
+
 //Login user mhuy
 Route::get('/login', [AuthController::class, 'pages_login'])->name('login');
 Route::post('/login-check', [AuthController::class, 'check_login'])->name('login-users');
