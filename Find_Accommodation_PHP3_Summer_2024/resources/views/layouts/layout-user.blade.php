@@ -62,10 +62,10 @@
                                     </ul>
 
                                     {{-- Khi chưa login sẽ hiển thị Đăng Ký/ Đăng nhập, khi login xong sẽ hiển thị Tên login --}}
-                                    <ul class="list-unstyled topnav-menu float-right mb-0 bg-primary p-1 rounded-3">
-                                        @if (Auth::check())
+                                    
+                                        @if (Auth::check())<ul class="list-unstyled topnav-menu float-right mb-0  p-1 rounded-3">
                                             <li class="dropdown notification-list">
-                                                <a class="nav-link dropdown-toggle nav-user mr-0 text-light"
+                                                <a class="nav-link dropdown-toggle nav-user mr-0 "
                                                     data-toggle="dropdown" href="#" role="button"
                                                     aria-haspopup="true" aria-expanded="false">
                                                     {{ Auth::user()->username }} <i class="mdi mdi-chevron-down"></i>
@@ -95,6 +95,7 @@
                                                 </div>
                                             </li>
                                         @else
+                                        <ul class="list-unstyled topnav-menu float-right mb-0 bg-primary p-1 rounded-3">
                                             <li>
                                                 <button type="button" class="btn btn-primary p-0"
                                                     data-bs-toggle="modal" data-bs-target="#loginModal">
