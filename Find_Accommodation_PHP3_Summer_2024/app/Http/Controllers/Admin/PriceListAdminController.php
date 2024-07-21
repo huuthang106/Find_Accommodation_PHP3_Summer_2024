@@ -22,7 +22,9 @@ class PriceListAdminController extends Controller
     public function ShowPriceList()
     {
         // Lấy tất cả các bản ghi với status khác 5
-     
+        $price = PriceList::where('status', '!=', 5)->take(3)->get();
+
+        return view('admincp.extras-pricing', compact('price'));
     }
     
     /**

@@ -111,9 +111,10 @@ Route::get('/admin', [IndexAdminController::class, 'admin'])->name('admin');
 Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
     // Route::get('/home', [HomeAdminController::class, 'index'])->name('trang-quan-ly');
     Route::get('/trang-quan-ly', [HomeAdminController::class, 'homeAdmin'])->name('trang-quan-ly');
+
     Route::get('/tables-advanced', [NotificationAdminController::class, 'tables_advanced'])->name('tables-advanced');
 
-    Route::get('/quan-ly-goi-dang-tin', [PriceListAdminController::class, 'index'])->name('goi-dang-tin'); // router quản lí giá gói admin
+    Route::get('/quan-ly-goi-dang-tin', [PriceListAdminController::class, 'ShowPriceList'])->name('goi-dang-tin'); // router quản lí giá gói admin
 
 
 

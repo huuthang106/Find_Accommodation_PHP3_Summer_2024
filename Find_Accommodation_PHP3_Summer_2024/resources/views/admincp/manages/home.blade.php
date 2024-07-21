@@ -126,71 +126,36 @@
                                                 <label class="custom-control-label" for="action-checkbox">&nbsp;</label>
                                             </div>
                                         </th>
+                                        <th>ID</th>
                                         <th>Tên</th>
                                         <th>Email</th>
-                                        <th>Số Điện Thoại</th>
                                         <th>Địa Chỉ</th>
+                                        <th>Số Bài Đăng</th>
+                                     
                                     </tr>
                                 </thead>
 
                                 <tbody>
-                                    @foreach ($user as $item)
-                                    <tr>
-                                        
-                                    <tr>
-                                        <td>
-                                            <div class="checkbox checkbox-primary mr-2 float-left">
-                                                <input id="checkbox2" type="checkbox">
-                                                <label for="checkbox2"></label>
-                                            </div>
-
-
-                                            <img src="assets/images/users/avatar-2.jpg" alt="contact-img"
-                                                title="contact-img" class="rounded-circle avatar-sm">
-                                        </td>
-
-                                        <td>
-                                            {{ $item->username }}
-                                        </td>
-
-                                        <td>
-                                            <a href="#" class="text-muted">{{ $item->email }}</a>
-                                        </td>
-
-                                        <td>
-                                            <b><a href="" class="text-dark"><b>356</b></a></b>
-                                        </td>
-
-                                        <td>
-                                            {{ $item->address }}
-                                        </td>
-
-                                    </tr>
-
-
-                                        {{-- <img src="assets/images/users/avatar-2.jpg" alt="contact-img" title="contact-img"
-                                        class="rounded-circle avatar-sm"> --}}
-                                    </td>
-
-                                    {{-- <td>
-                                                {{ $item->username }}
-                                            </td>
-
+                                    @foreach ($users as $item)
+                                        <tr>
                                             <td>
-                                                <a href="#" class="text-muted">{{ $item->email }}</a>
-                                            </td>
-
-                                            <td>
-                                                <b><a href="" class="text-dark"><b>356</b></a></b>
-                                            </td>
-
-                                            <td>
-                                                {{ $item->address }}
+                                                <div class="checkbox checkbox-primary mr-2 float-left">
+                                                    <input id="checkbox2" type="checkbox">
+                                                    <label for="checkbox2"></label>
+                                                </div>
+                                                {{-- <img src="assets/images/users/avatar-2.jpg" alt="contact-img"
+                                                     title="contact-img" class="rounded-circle avatar-sm">
                                             </td> --}}
-
-                                    </tr>
+                                            <td>{{ $item->id}}</td>
+                                            <td>{{ $item->username }}</td>
+                                            <td><a href="#" class="text-muted">{{ $item->email }}</a></td>
+                                            <td>{{ $item->address }}</td>
+                                            <td><b><a href="" class="text-dark"><b>{{ $item->post_count }}</b></a></b></td>
+                                          
+                                        </tr>
                                     @endforeach
                                 </tbody>
+                                
                             </table>
                         </div>
                     </div>
