@@ -9,8 +9,14 @@
             <div class="row">
                 <div class="col-12">
                     <div class="d-flex justify-content-between align-items-center header-title">
-                        <h4 class="mb-3">Danh sách thông báo</h4>
-                        <button type="button" class="btn btn-danger">Xóa tất cả</button>
+                        <h4 class="mb-3">Danh sách bình luận</h4>
+                        <div>
+
+                            <button type="button" class="btn btn-danger">Xóa tất cả</button>
+                            <a href="{{ route('pages-trash-comment') }}" class="btn btn-primary text-white me-2">
+                                <i class="fas fa-trash-alt"></i>&nbsp;Thùng rác
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -27,49 +33,62 @@
                                     <th>Tất cả <input type="checkbox"></th>
                                     <th>STT</th>
                                     <th>Nội dung</th>
+                                    <th>Tên bài viết</th>
                                     <th>Tên người dùng</th>
                                     <th>Ngày bình luận</th>
-                                    <th></th>
+                                    <th>Chức năng</th>
+                                </tr>
+                            </thead>
                             <tbody>
-                                @foreach ($comment as $item)
+                                @foreach ($comments as $comment)
                                     <tr>
-                                        <th><input type="checkbox"></th>
-                                        <th>{{ $item->id }}</th>
-                                        <td>{{ $item->content }}</td>
-                                        <td>{{ $item->user_id }}</td>
-                                        <td>{{ $item->created_at }}</td>
-                                        <td><button class="btn btn-primary">Xem chi tiết</button></td>
+                                        <td><input type="checkbox"></td>
+                                        <td>{{ $comment->id }}</td>
+                                        <td>{{ $comment->content }}</td>
+                                        <td>{{ $comment->room->title }}</td>
+                                        <td>{{ $comment->user->username }}</td>
+                                        <td>{{ $comment->created_at }}</td>
+                                        <td>
+                                            <form action="{{ route('comment.destroy', $comment->id) }}" method="POST"
+                                                style="display: inline;">
+                                                @csrf
+                                                @method('PUT')
+                                                <button type="submit" class="btn btn-danger"
+                                                    onclick="return confirm('Bạn có chắc chắn muốn ẩn bình luận này không?');">Xóa</button>
+                                            </form>
+                                        </td>
                                     </tr>
                                 @endforeach
                             </tbody>
                         </table>
-
                     </div>
-                    <!-- end -->
-
                 </div>
             </div>
-            <!-- end row -->
 
-
-            <!-- end row -->
 
         </div>
-        <!-- end container-fluid -->
+    </div>
+    <!-- end row -->
+
+
+    <!-- end row -->
+
+    </div>
+    <!-- end container-fluid -->
 
 
 
-        <!-- Footer Start -->
-        <footer class="footer">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-md-12">
-                        2017 - 2020 &copy; Simple theme by <a href="">Coderthemes</a>
-                    </div>
+    <!-- Footer Start -->
+    <footer class="footer">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12">
+                    2017 - 2020 &copy; Simple theme by <a href="">Coderthemes</a>
                 </div>
             </div>
-        </footer>
-        <!-- end Footer -->
+        </div>
+    </footer>
+    <!-- end Footer -->
 
     </div>
 @endsection
