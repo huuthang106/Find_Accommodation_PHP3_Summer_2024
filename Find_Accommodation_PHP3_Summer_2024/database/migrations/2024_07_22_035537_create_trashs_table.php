@@ -11,16 +11,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('notifications', function (Blueprint $table) {
+        Schema::create('trashs', function (Blueprint $table) {
             $table->id();
-            $table->string('type');
-            $table->string('data')->nullable();
-            $table->string('message');
-            $table->boolean('status')->default(1);
-            $table->foreignId('user_id')->constrained('users');
+            $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
             $table->foreignId('room_id')->constrained('rooms')->onDelete('cascade');
+            $table->foreignId('category_id')->constrained('categories')->onDelete('cascade');
+            $table->foreignId('price_list_id')->constrained('price_lists')->onDelete('cascade');
             $table->foreignId('comment_id')->constrained('comments')->onDelete('cascade');
-            $table->foreignId('friendlist_id')->constrained('friendlists')->onDelete('cascade');
+            $table->foreignId('blog_id')->constrained('blogs')->onDelete('cascade');
+            
             $table->timestamps();
         });
     }
@@ -30,6 +29,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('notifications');
+        Schema::dropIfExists('trashs');
     }
 };
