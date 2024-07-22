@@ -12,12 +12,13 @@ class CommentController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index($roomId)
+    public function index($id)
     {
-        $room = Room::findOrFail($roomId);
-        $comments = $room->comments()->latest()->take(3)->get();
-
-        return view('page.rooms.detail-room', compact('room', 'comments'));
+        $comments = Comment::where('room_id', $id)
+            ->with('user', 'replies.user')
+            ->get();
+        $room = Room::find($id);
+        return view('page.rooms.detail-room', compact('comments', 'room'));
     }
 
     /**
@@ -33,30 +34,28 @@ class CommentController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-            'content' => 'required',
-            'room_id' => 'required|exists:rooms,id',
+        $comment = new Comment();
+        $comment->content = $request->content;
+        $comment->user_id = auth()->id();
+        $comment->room_id = $request->room_id;
+        $comment->parent_id = $request->parent_id;
+        $comment->save();
+
+        return response()->json([
+            'success' => true,
+            'comment' => [
+                'id' => $comment->id,
+                'user_name' => $comment->user->username,
+                'avatar' => asset('assets/images/clinh4.jpeg'),
+                'created_at' => $comment->created_at->format('d/m/Y H:i'),
+                'content' => $comment->content,
+                'room_id' => $comment->room_id,
+            ]
         ]);
-
-        $comment = Comment::create([
-            'user_id' => auth()->id(),
-            'room_id' => $request->room_id,
-            'content' => $request->content,
-        ]);
-
-        if ($request->ajax()) {
-            return response()->json([
-                'success' => true,
-                'comment' => [
-                    'user_name' => auth()->user()->username,
-                    'content' => $comment->content,
-                    'created_at' => $comment->created_at->format('d/m/Y H:i')
-                ]
-            ]);
-        }
-
-        return redirect()->back()->with('success', 'Bình luận đã được gửi.');
     }
+
+
+
 
     // app/Http/Controllers/Client/CommentController.php
     public function showAll($id)
@@ -69,6 +68,7 @@ class CommentController extends Controller
                     'user_name' => $comment->user->username,
                     'created_at' => $comment->created_at->format('d/m/Y H:i'),
                     'content' => $comment->content,
+                    'parent_id' => $comment->parent_id,
                 ];
             }),
         ]);

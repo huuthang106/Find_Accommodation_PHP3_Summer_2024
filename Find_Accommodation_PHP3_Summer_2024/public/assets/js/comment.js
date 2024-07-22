@@ -1,145 +1,117 @@
-document.addEventListener('DOMContentLoaded', function () {
-    // Xử lý sự kiện nhấp chuột vào nút "Trả lời"
-    document.querySelectorAll('.reply-btn').forEach(function (btn) {
-        btn.addEventListener('click', function (event) {
-            event.preventDefault();
-            const commentId = btn.getAttribute('data-comment-id');
-            const replyForm = document.getElementById(`reply-form-${commentId}`);
-            if (replyForm) {
-                // Ẩn tất cả các form trả lời khác
-                document.querySelectorAll('.reply-form').forEach(function (form) {
-                    if (form.id !== `reply-form-${commentId}`) {
-                        form.style.display = 'none';
-                    }
-                });
-                // Chuyển trạng thái hiển thị của form trả lời
-                replyForm.style.display = replyForm.style.display === 'none' ? 'block' : 'none';
-            }
-        });
-    });
-
-    // Xử lý sự kiện nhấp chuột vào nút "Hủy"
-    document.querySelectorAll('.cancel-reply').forEach(function (btn) {
-        btn.addEventListener('click', function (event) {
-            event.preventDefault();
-            const replyForm = btn.closest('.reply-form');
-            if (replyForm) {
-                replyForm.style.display = 'none';
-            }
-        });
-    });
-});
-
 $(document).ready(function () {
-    $('#commentForm').on('submit', function (e) {
-        e.preventDefault(); // Ngăn việc tải lại trang
+    // Hiển thị form trả lời khi nhấn nút "Trả lời"
+    $(document).on('click', '.reply-btn', function (e) {
+        e.preventDefault();
+        var commentId = $(this).data('comment-id');
+        $('#reply-form-' + commentId).toggle();
+    });
 
+    // Gửi form trả lời qua AJAX
+    $(document).on('submit', '.reply-form-ajax', function (e) {
+        e.preventDefault();
+        var form = $(this);
+        var commentId = form.find('input[name="parent_id"]').val();
+        
         $.ajax({
-            url: $(this).attr('action'),
-            method: $(this).attr('method'),
-            data: $(this).serialize(),
+            type: 'POST',
+            url: form.attr('action'),
+            data: form.serialize(),
             success: function (response) {
                 if (response.success) {
-                    // Thêm bình luận mới vào danh sách
-                    $('#commentList').prepend(`
-                        <div class="card mb-3" id="newComment-${response.comment.id}">
-                            <div class="card-body">
-                                <div class="d-flex flex-start align-items-center">
-                                    <img class="rounded-circle shadow-1-strong me-3"
-                                        src="/assets/images/448469911_476143361772862_3803638986442606747_n-min.jpg"
-                                        alt="avatar" width="60" height="60" />
-                                    <div>
-                                        <h6 class="fw-bold text-dark mb-1">${response.comment.user_name}</h6>
-                                        <p class="text-muted small mb-0">Đăng vào ${response.comment.created_at}</p>
-                                    </div>
-                                </div>
-                                <p class="mt-3 mb-4 pb-2">${response.comment.content}</p>
-                                <div class="small d-flex justify-content-start">
-                                    <a href="#!" class="d-flex align-items-center me-3 text-decoration-none text-primary">
-                                        <i class="far fa-thumbs-up me-2"></i>
-                                        <p class="mb-0">Thích</p>
-                                    </a>
-                                    <a href="#!" class="d-flex align-items-center me-3 text-decoration-none text-primary">
-                                        <i class="far fa-comment-dots me-2"></i>
-                                        <p class="mb-0">Trả lời</p>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    `);
-                    $('#textAreaExample').val('');
+                    var newReply = '<div class="card mb-3 comment-card" data-comment-id="' + response.comment.id + '">';
+                    newReply += '<div class="card-body">';
+                    newReply += '<div class="d-flex flex-start align-items-center">';
+                    newReply += '<img class="rounded-circle shadow-1-strong me-3" src="' + response.comment.avatar + '" alt="avatar" width="60" height="60" />';
+                    newReply += '<div>';
+                    newReply += '<h6 class="fw-bold text-dark mb-1">' + response.comment.user_name + '</h6>';
+                    newReply += '<p class="text-muted small mb-0">Đăng vào ' + response.comment.created_at + '</p>';
+                    newReply += '</div></div>';
+                    newReply += '<p class="mt-3 mb-4 pb-2">' + response.comment.content + '</p>';
+                    newReply += '<div class="small d-flex justify-content-start">';
+                    newReply += '<a href="#!" class="d-flex align-items-center me-3 text-decoration-none text-primary like-btn">';
+                    newReply += '<i class="far fa-thumbs-up me-2"></i><p class="mb-0">Thích</p></a>';
+                    newReply += '<a href="#!" class="d-flex align-items-center me-3 text-decoration-none text-primary reply-btn" data-comment-id="' + response.comment.id + '">';
+                    newReply += '<i class="far fa-comment-dots me-2"></i><p class="mb-0">Trả lời</p></a></div>';
+                    newReply += '<div class="reply-form" id="reply-form-' + response.comment.id + '" style="display: none;">';
+                    newReply += '<form action="' + form.attr('action') + '" method="POST" class="reply-form-ajax">';
+                    newReply += '@csrf';
+                    newReply += '<input type="hidden" name="parent_id" value="' + response.comment.id + '">';
+                    newReply += '<input type="hidden" name="room_id" value="' + response.comment.room_id + '">';
+                    newReply += '<div class="form-floating"><textarea class="form-control border-primary rounded-3 shadow-sm" name="content" rows="3" placeholder="Nhập tin nhắn ở đây" required></textarea>';
+                    newReply += '<label for="replyTextArea-' + response.comment.id + '">Tin nhắn</label></div>';
+                    newReply += '<div class="d-flex justify-content-end mt-2"><button type="submit" class="btn btn-primary btn-sm me-2">Đăng</button><button type="button" class="btn btn-outline-primary btn-sm cancel-reply">Hủy</button></div></form></div></div></div>';
 
-                    // Xóa bình luận cũ nếu số lượng bình luận nhiều hơn 3
-                    if ($('#commentList .card').length > 3) {
-                        $('#commentList .card').last().remove();
-                        if (!$('#showAllComments').length) {
-                            $('#commentList').after(`
-                                <div class="text-center mb-2">
-                                    <a href="{{ route('comments.showAll', ['id' => $room->id]) }}" id="showAllComments" class="btn btn-primary">Xem tất cả bình luận</a>
-                                </div>
-                            `);
-                        }
+                    // Thêm bình luận trả lời mới vào đúng vị trí
+                    var parentComment = $('#commentList').find('[data-comment-id="' + commentId + '"]').find('.replies');
+                    if (parentComment.length) {
+                        parentComment.prepend(newReply);
+                    } else {
+                        // Nếu không có phần replies, thêm vào sau bình luận chính
+                        $('#commentList').find('[data-comment-id="' + commentId + '"]').append('<div class="replies mt-3">' + newReply + '</div>');
                     }
-
-                    // Lưu vị trí cuộn vào local storage và tải lại trang
-                    localStorage.setItem('scrollPosition', $(window).scrollTop());
-                    window.location.reload();
+                    
+                    // Xóa nội dung trong ô nhập liệu sau khi gửi thành công
+                    form.find('textarea[name="content"]').val('');
+                    // Ẩn form trả lời sau khi gửi
+                    form.closest('.reply-form').hide();
+                } else {
+                    alert('Có lỗi xảy ra. Vui lòng thử lại.');
                 }
             },
-            error: function () {
-                alert('Đã xảy ra lỗi. Vui lòng thử lại.');
+            error: function (xhr, status, error) {
+                console.error('Có lỗi xảy ra:', error);
+                alert('Có lỗi xảy ra. Vui lòng thử lại.');
             }
         });
     });
 
-    $('#showAllComments').on('click', function (e) {
-        e.preventDefault();
 
+
+    $('#commentForm').submit(function (e) {
+        e.preventDefault(); // Ngăn chặn hành vi mặc định của form gửi đi
+    
+        var form = $(this);
+        
         $.ajax({
-            url: $(this).attr('href'),
-            method: 'GET',
+            type: 'POST',
+            url: form.attr('action'),
+            data: form.serialize(),
             success: function (response) {
-                if (response.comments) {
-                    let html = '';
-                    response.comments.forEach(comment => {
-                        html += `
-                            <div class="card mb-3">
-                                <div class="card-body">
-                                    <div class="d-flex flex-start align-items-center">
-                                        <img class="rounded-circle shadow-1-strong me-3"
-                                            src="/assets/images/448469911_476143361772862_3803638986442606747_n-min.jpg"
-                                            alt="avatar" width="60" height="60" />
-                                        <div>
-                                            <h6 class="fw-bold text-dark mb-1">${comment.user_name}</h6>
-                                            <p class="text-muted small mb-0">Đăng vào ${comment.created_at}</p>
-                                        </div>
-                                    </div>
-                                    <p class="mt-3 mb-4 pb-2">${comment.content}</p>
-                                    <div class="small d-flex justify-content-start">
-                                        <a href="#!" class="d-flex align-items-center me-3 text-decoration-none text-primary">
-                                            <i class="far fa-thumbs-up me-2"></i>
-                                            <p class="mb-0">Thích</p>
-                                        </a>
-                                        <a href="#!" class="d-flex align-items-center me-3 text-decoration-none text-primary">
-                                            <i class="far fa-comment-dots me-2"></i>
-                                            <p class="mb-0">Trả lời</p>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        `;
-                    });
-                    $('#commentList').html(html);
+                if (response.success) {
+                    location.reload(); // Tải lại trang để cập nhật bình luận mới
+                } else {
+                    // Xử lý lỗi nếu có
+                    alert('Có lỗi xảy ra. Vui lòng thử lại.');
                 }
             },
-            error: function () {
-                alert('Đã xảy ra lỗi. Vui lòng thử lại.');
+            error: function (xhr, status, error) {
+                console.error('Có lỗi xảy ra:', error);
+                alert('Có lỗi xảy ra. Vui lòng thử lại.');
             }
         });
+    });
+    
+
+
+     $(document).on('click', '#showAllCommentsBtn', function(e) {
+        e.preventDefault();
+
+        let additionalComments = $('.additional-comment');
+
+        additionalComments.each(function() {
+            $(this).slideToggle();
+        });
+
+        $(this).hide();
+    });
+
+    // Lưu vị trí cuộn khi người dùng rời khỏi trang
+    $(window).on('scroll', function() {
+        localStorage.setItem('scrollPosition', $(window).scrollTop());
     });
 
     // Khi trang được tải lại, cuộn đến vị trí đã lưu
-    $(window).on('load', function () {
+    $(window).on('load', function() {
         let scrollPosition = localStorage.getItem('scrollPosition');
         if (scrollPosition) {
             $(window).scrollTop(scrollPosition);
