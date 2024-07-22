@@ -86,6 +86,21 @@ Route::get('/thong-tin-tai-khoan', [UserController::class, 'show'])->middleware(
 // [VoTanLuon] Route trang chỉnh sửa thông tin tài khoản người dùng 
 Route::put('/thong-tin-tai-khoan/{id}', [UserController::class, 'update'])->name('chinh-sua-thong-tin');
 // [VoTanLuon] Route trang sửa thông tin tài khoản người dùng (client)
+
+// VoTanLuon Start
+// Quên Mật Khẩu Admin
+Route::get('/quen-mat-khau', [UserController::class, 'forget_password'])->name('pages-forget-password');
+Route::post('/quen-mat-khau', [UserController::class, 'check_forget_password'])->name('check-forget-password');
+// Đổi Mật Khẩu Admin
+Route::get('/doi-mat-khau/{token}', [UserController::class, 'reset_password'])->name('pages-reset-password');
+Route::post('/doi-mat-khau/{token}', [UserController::class, 'check_reset_password'])->name('check-reset-password');
+// Quên Mật Khẩu User
+Route::post('/lay-lai-mat-khau', [UserController::class, 'check_forget_password_us'])->name('check-forget-password-us');
+// Đổi Mật Khẩu User
+Route::get('/thay-doi-mat-khau/{token}', [UserController::class, 'reset_password_us'])->name('pages-reset-password-us');
+Route::post('/thay-doi-mat-khau/{token}', [UserController::class, 'check_reset_password_us'])->name('check-reset-password-us');
+// VoTanLuon End
+
 // route::put('/thong-tin-tai-khoan/{id}', [UserController::class, 'update'])->name('update-profile');
 // Route::get('/', [IndexController::class, 'home'])->name('home');
 

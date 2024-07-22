@@ -20,7 +20,8 @@
 <body>
     @yield('content')
     <script src="{{ asset('assets\js\vendor.min.js') }}"></script>
-
+    {{-- SweetAlert2 --}}
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <!-- App js -->
     <script src="{{ asset('assets\js\app.min.js') }}"></script>
 
