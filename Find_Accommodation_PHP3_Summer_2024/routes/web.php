@@ -171,6 +171,13 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
 
     // Nguyen Huu Thang admin
     Route::group(['prefix' => 'trang-quan-ly'], function () {
+        Route::prefix('binh-luan')->group(function () {
+            Route::get('/binh-luan', [CommentAdminController::class, 'index'])->name('pages-commet');// Route để xem danh sách bình luận       
+            Route::put('/{id}', [CommentAdminController::class, 'destroy'])->name('comment.destroy'); // Route để xóa bình luận          
+            Route::get('/thung-rac', [CommentAdminController::class, 'trash'])->name('pages-trash-comment'); // Route để xem bình luận đã xóa       
+            Route::put('/restore/{id}', [CommentAdminController::class, 'restore'])->name('comment.restore'); // Route để khôi phục bình luận      
+            Route::delete('/deletePermanent/{id}', [CommentAdminController::class, 'deletePermanent'])->name('comment.deletePermanent'); // Route để xóa vĩnh viễn bình luận
+        });
         Route::get('/bai-viet', [RoomAdminController::class, 'index'])->name('pages-room'); // showw phòng ra 
         Route::get('/thong-bao', [NotificationAdminController::class, 'showNofi'])->name('pages-notification'); // showw thông báo
         Route::get('/chi-tiet-goi-tin', [PriceListAdminController::class, 'getPriceListDetail'])->name('get-pricelist'); // showw gói tin ra
