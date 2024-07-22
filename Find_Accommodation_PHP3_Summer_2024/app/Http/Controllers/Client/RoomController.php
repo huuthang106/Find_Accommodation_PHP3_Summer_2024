@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use App\Models\Room;
 use App\Models\Category;
+use App\Models\Areas;
 use Illuminate\Support\Facades\Auth;
 
 class RoomController extends Controller
@@ -87,8 +88,9 @@ class RoomController extends Controller
     public function page_posting()
     {
         $categories = Category::where('status', 1)->get();
+        $areas = Areas::where('status', 1)->get();
         $user = auth()->user();
-        return view('page.rooms.posting-page', compact('categories', 'user'));
+        return view('page.rooms.posting-page', compact('categories', 'user','areas'));
     }
 
     public function check_post_room()

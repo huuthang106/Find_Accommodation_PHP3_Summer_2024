@@ -74,6 +74,17 @@
                                         @enderror
                                     </div>
                                     <div class="mb-3">
+                                        <label for="area" class="form-label">Khu vực</label>
+                                        <select name="area_id" id="area_id" class="form-control">
+                                            @foreach ($areas as $item)
+                                                <option value="{{ $item->id }}">{{ $item->name }}</option>
+                                            @endforeach
+                                        </select>
+                                        @error('Category_id')
+                                            <div class="alert alert-danger">{{ $message }}</div>
+                                        @enderror
+                                    </div>
+                                    <div class="mb-3">
                                         <label for="quantity" class="form-label">Số lượng phòng trống</label>
                                         <input type="number" class="form-control" id="quantity" name="quantity"
                                             value="{{ old('quantity') }}">
