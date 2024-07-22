@@ -311,7 +311,8 @@
                         </div>
                         <div class="account-pages my-3 pt-2">
                             <div class="container">
-                                <form action="{{ route('home') }}" method="POST" class="p-2">
+                                <form action="{{ route('check-forget-password-us') }}" method="POST"
+                                    class="p-2">
                                     @csrf
                                     <div class="text-center">
                                         <p class="text-muted w-75 mx-auto"> Nhập địa chỉ email của bạn và chúng tôi sẽ
@@ -343,7 +344,6 @@
                 </div>
             </div>
         </div>
-        
         {{-- start content --}}
         @yield('contentUs')
         {{-- end content --}}
