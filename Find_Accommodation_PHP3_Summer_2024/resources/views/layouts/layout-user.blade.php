@@ -192,57 +192,49 @@
             </div>
         </div>
         <!-- Modal Đăng Ký -->
-        <div class="modal fade" id="registerModal" tabindex="-1" aria-labelledby="registerModalLabel"
-            aria-hidden="true">
+        <div class="modal fade" id="registerModal" tabindex="-1" aria-labelledby="registerModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
                     <div class="modal-header border-0">
-
-                        <button type="button" class="btn-close" data-bs-dismiss="modal"
-                            aria-label="Close"></button>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
                         <div class="text-center">
                             <a href="index.html">
-                                <span><img src="{{ asset('assets/images/logo3.png') }}" alt=""
-                                        height="60" width="170"></span>
+                                <span><img src="{{ asset('assets/images/logo3.png') }}" alt="" height="60" width="170"></span>
                             </a>
                         </div>
                         <div class="account-pages my-3 pt-2">
                             <div class="container">
-                                <form action="" method="POST" class="p-2">
+                                <form action="{{ route('register-user') }}" method="POST" class="p-2">
                                     @csrf
                                     <div class="mb-3">
-                                        <label for="registerEmail" class="form-label">Tên</label>
-                                        <input class="form-control" name="username" type="text" id=""
-                                            required placeholder="example@gmail.com">
+                                        <label for="registerUsername" class="form-label">Tên</label>
+                                        <input class="form-control" name="username" type="text" id="registerUsername" required placeholder="Tên người dùng">
                                         @error('username')
                                             <small class="text-danger text-blod">{{ $message }}</small>
                                         @enderror
                                     </div>
-
+        
                                     <div class="mb-3">
                                         <label for="registerEmail" class="form-label">Email</label>
-                                        <input class="form-control" name="email" type="email" id=""
-                                            required placeholder="example@gmail.com">
-                                        @error('username')
+                                        <input class="form-control" name="email" type="email" id="registerEmail" required placeholder="example@gmail.com">
+                                        @error('email')
                                             <small class="text-danger text-blod">{{ $message }}</small>
                                         @enderror
                                     </div>
-
+        
                                     <div class="mb-3">
                                         <label for="registerPassword" class="form-label">Mật khẩu</label>
-                                        <input class="form-control" name="password" type="password"
-                                            id="registerPassword" required placeholder="Nhập mật khẩu">
+                                        <input class="form-control" name="password" type="password" id="registerPassword" required placeholder="Nhập mật khẩu">
                                         @error('password')
                                             <small class="text-danger text-blod">{{ $message }}</small>
                                         @enderror
                                     </div>
                                     <div class="mb-3">
                                         <label for="confirmPassword" class="form-label">Xác nhận mật khẩu</label>
-                                        <input class="form-control" name="password_confirmation" type="password"
-                                            id="confirmPassword" required placeholder="Nhập lại mật khẩu">
-                                        @error('repassword')
+                                        <input class="form-control" name="password_confirmation" type="password" id="confirmPassword" required placeholder="Nhập lại mật khẩu">
+                                        @error('password_confirmation')
                                             <small class="text-danger text-blod">{{ $message }}</small>
                                         @enderror
                                     </div>
@@ -261,9 +253,7 @@
                                 </div>
                                 <div class="row mt-3">
                                     <div class="col-sm-12 text-center">
-                                        <p class="text-muted mb-0">Bạn đã có tài khoản? <a href="#"
-                                                id="showLoginModal" class="text-dark" data-bs-toggle="modal"
-                                                data-bs-target="#loginModal"><b>ĐĂNG NHẬP</b></a></p>
+                                        <p class="text-muted mb-0">Bạn đã có tài khoản? <a href="#" id="showLoginModal" class="text-dark" data-bs-toggle="modal" data-bs-target="#loginModal"><b>ĐĂNG NHẬP</b></a></p>
                                     </div>
                                 </div>
                             </div>
@@ -272,6 +262,7 @@
                 </div>
             </div>
         </div>
+        
         {{-- start content --}}
         @yield('contentUs')
         {{-- end content --}}

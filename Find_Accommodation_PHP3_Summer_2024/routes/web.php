@@ -95,7 +95,7 @@ Route::post('/login-check', [AuthController::class, 'check_login'])->name('login
 
 // Register user
 Route::get('/register', [RegisterController::class, 'pages_register'])->name('register-user');
-Route::post('/', [RegisterController::class, 'check_register']);
+Route::post('/register', [RegisterController::class, 'check_register']);
 //
 Route::get('/loi-trang', [IndexController::class, 'pages_404'])->name('pages-404');
 // Login trước khi vào các trang admin
