@@ -18,7 +18,7 @@ return new class extends Migration
             $table->foreignId('user_id')->constrained('users')->onDelete('cascade'); // Khóa ngoại với hành động on delete cascade
             $table->foreignId('room_id')->constrained('rooms')->onDelete('cascade'); 
             $table->foreignId('parent_id')->nullable()->constrained('comments')->onDelete('cascade'); // Thêm cột parent_id
-            $table->foreignId('blog_id')-> constrained('blogs')->onDelete('cascade');
+            $table->foreignId('blog_id')->nullable()-> constrained('blogs')->onDelete('cascade');
             $table->timestamps();
         });
     }
