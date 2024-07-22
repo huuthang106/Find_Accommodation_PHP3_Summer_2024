@@ -115,7 +115,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
 
     Route::get('/tables-advanced', [NotificationAdminController::class, 'tables_advanced'])->name('tables-advanced');
 
-    Route::get('/quan-ly-goi-dang-tin', [PriceListAdminController::class, 'ShowPriceList'])->name('goi-dang-tin'); // router quản lí giá gói admin
+    // router quản lí giá gói admin
 
 
 
@@ -141,10 +141,18 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
 
 
 
-
+    //Tong chi nhan user
+    Route::post('/report-room/{roomId}', [RoomController::class, 'reportRoom'])->name('report.room');
+   
+    // end Tong chi nhan
 
     // Tong Chi Nhan admin
     Route::get('/extras-profile', [UserController::class, 'index'])->name('extras-profile')->middleware('auth');
+ 
+  
+
+
+    Route::get('/quan-ly-goi-dang-tin', [PriceListAdminController::class, 'ShowPriceList'])->name('goi-dang-tin');
     // router trang quan li ho so  
     // Route::get('/extras-profile', [IndexController::class, 'extras_profile'])->name('extras-profile');
 
@@ -183,6 +191,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
         Route::get('/chi-tiet-goi-tin', [PriceListAdminController::class, 'getPriceListDetail'])->name('get-pricelist'); // showw gói tin ra
         Route::get('/chi-tiet-goi-tin/chinh-sua-goi-tin/{id}', [PriceListAdminController::class, 'getPriceListID'])->name('post-pricelist');
         Route::put('/chi-tiet-goi-tin/chinh-sua-goi-tin/{id}', [PriceListAdminController::class, 'update'])->name('put-pricelist');
+        Route::get('/blog', [LocationAdminController::class, 'index'])->name('quan-li-blog');
         Route::get('/goi-dang-tin', [PriceListAdminController::class, 'index'])->name('goi-dang-tin'); // router quản lí giá gói admin
         Route::get('/binh-luan', [CommentAdminController::class, 'index'])->name('pages-commet');
         Route::get('/bai-viet/chi-tiet-bai-viet/{id}', [RoomAdminController::class, 'getRoomID'])->name('pages-room-detail');
@@ -233,7 +242,7 @@ Route::group(['prefix' => 'tai-khoan', 'middleware' => 'auth'], function () {
 Route::group(['prefix' => 'bai-viet'], function () {
     //binh luan mhuy
     Route::post('/comments', [CommentController::class, 'store'])->middleware('auth')->name('comments.store');
-    Route::get('/xem-bai-viet/{id}/', [CommentController::class, 'index'])->name('comments.index');
+    Route::get('/xem-bai-viet/{id}/', [CommentController::class, 'index'])->name('comments.index'); 
     Route::get('/rooms/{id}/comments/all', [CommentController::class, 'showAll'])->name('comments.showAll');
 
     // Nguyen Huu Thăng

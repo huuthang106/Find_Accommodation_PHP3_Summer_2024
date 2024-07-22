@@ -32,6 +32,15 @@ class RoomController extends Controller
         return view('index', compact('rooms'));
     }
 
+public function reportRoom($roomId)
+{
+    $room = Room::findOrFail($roomId);
+    $room->status = 1;
+    $room->save();
+
+    return redirect()->back()->with('success', 'Room status updated successfully.');
+}
+
     /**
      * Show the form for creating a new resource.
      */

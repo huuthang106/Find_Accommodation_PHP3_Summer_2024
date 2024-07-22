@@ -326,6 +326,14 @@
                                     <span>Quản lí chi tiết gói</span>
                                 </a>
                             </li>
+                            <li>
+                                <a href="{{ route('quan-li-blog') }}">
+                                    <i class="fas fa-money-check"></i>
+                                    <span>Quản lí blog</span>
+                                </a>
+                            </li>
+                            
+                            
                         </ul>
                     </li>
 

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\PriceList; 
 
 class LocationAdminController extends Controller
 {
@@ -13,8 +14,16 @@ class LocationAdminController extends Controller
     public function index()
     {
         //
+        $blog = PriceList::all();
+        
+    
+        return view('admincp.manages.extras-blog', compact('blog'));
     }
-
+    public function Showblog()
+    {
+        // Lấy tất cả các bản ghi với status khác 5
+     
+    }
     /**
      * Show the form for creating a new resource.
      */

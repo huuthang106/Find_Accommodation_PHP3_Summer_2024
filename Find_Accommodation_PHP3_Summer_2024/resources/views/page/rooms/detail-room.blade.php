@@ -27,9 +27,21 @@
                         <p class="fw-bold text-orange"><span class="fs-4">{{ $room->price }}</span>
                             VND/tháng</p>
                     </div>
-                    <div class="d-flex justify-content-end p-0"> <a href="#" class="btn btn-orange p-3 text-light"><i
+                    <div class="d-flex justify-content-end p-0"> <a href="#" class="btn btn-primary p-3 text-light"><i
                                 class="fa-solid fa-phone" style="color: #ffffff;"></i> 0985885475</a></div>
                 </div>
+                <div class="d-flex justify-content-end p-0 mt-2">
+                    <form action="{{ route('report.room', $room->id) }}" method="POST">
+                        @csrf
+                        <input type="hidden" name="reason" value="Đã báo cáo vì nội dung không phù hợp"> <!-- Optional: Add a reason -->
+                        <button type="submit" class="btn btn-danger p-2 text-light">
+                            <i class="fa-solid fa-phone" style="color: #ffffff;"></i> Báo Cáo
+                        </button>
+                    </form>
+                </div>
+                
+                
+                
 
             </div>
             <div class="row justify-content-center p-0 mt-3">

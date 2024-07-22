@@ -18,7 +18,9 @@ class PriceListAdminController extends Controller
         return view('admincp.manages.extras-pricing', compact('price'));
      
     }
-
+   
+    
+    
 
     public function ShowPriceList()
     {
