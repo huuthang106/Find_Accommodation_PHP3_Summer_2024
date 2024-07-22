@@ -20,6 +20,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\Client\AuthController;
 use App\Http\Controllers\Client\RegisterController;
 use App\Http\Controllers\Client\MemberregistrationController;
+
 // controller admin
 use App\Http\Controllers\Admin\AcreageAdminController;
 use App\Http\Controllers\Admin\BlogAdminController;
@@ -34,6 +35,7 @@ use App\Http\Controllers\Admin\NotificationAdminController;
 use App\Http\Controllers\Admin\PriceListAdminController;
 use App\Http\Controllers\Admin\PricesAdminController;
 use App\Http\Controllers\Admin\RoomAdminController;
+use App\Http\Controllers\Admin\RoleAdminController;
 use App\Http\Controllers\Admin\TransactionAdminController;
 use App\Http\COntrollers\Admin\LoginController;
 use App\Http\Controllers\Admin\UserController as AdminUserController;
@@ -200,6 +202,10 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
         Route::get('/blogs/create', [BlogAdminController::class, 'create'])->name('blogs.create'); // Tạo blog
 
         Route::post('/blogs', [BlogAdminController::class, 'store'])->name('blogs.store'); // tạo blog
+
+        Route::get('/role', [RoleAdminController::class, 'ShowRole'])->name('quan-li-role');
+        Route::delete('/delete-role/{id}', [RoleAdminController::class, 'deleteRole'])->name('delete-role');
+
 
 
         Route::get('/goi-dang-tin', [PriceListAdminController::class, 'index'])->name('goi-dang-tin'); // router quản lí giá gói admin
