@@ -16,6 +16,7 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rule;
 
+use App\Models\Room;
 
 class UserController extends Controller
 {
@@ -32,6 +33,10 @@ class UserController extends Controller
             return redirect()->route('pages-404')->with('Thông Báo', 'Không tìm thấy người dùng.');
         }
         return view('admincp.accounts.extras-profile', compact('admin'));
+
+
+
+
     }
     public function update_profile_admin(Request $request, string $id)
     {
@@ -239,7 +244,8 @@ class UserController extends Controller
         if (!$user) {
             return redirect()->route('pages-404')->with('Thông Báo', 'Không tìm thấy người dùng.');
         }
-        return view('page.users.profile-us', compact('user'));
+        $rooms = Room::where('status', '!=', 7)->get();
+        return view('page.users.profile-us', compact('user', 'rooms'));
     }
     /**
      * Show the form for editing the specified resource.

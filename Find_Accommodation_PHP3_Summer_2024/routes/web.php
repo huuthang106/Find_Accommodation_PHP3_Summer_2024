@@ -276,6 +276,7 @@ Route::group(['prefix' => 'tai-khoan', 'middleware' => 'auth'], function () {
     Route::get('/dang-ky-thanh-vien',[MemberregistrationController::class,'index'])->name('register-member');
     Route::post('/dang-ky-thanh-vien',[MemberregistrationController::class,'store'])->name('check-register-member');
 
+    Route::get('/xoa-bai-dang/{id}', [RoomController::class, 'delete'])->name('delete-posting');
 });
 // end Nguyen Huu Thang user
 Route::group(['prefix' => 'bai-viet'], function () {

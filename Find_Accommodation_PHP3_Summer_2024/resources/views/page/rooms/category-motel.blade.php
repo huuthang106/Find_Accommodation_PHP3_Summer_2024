@@ -85,48 +85,55 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($rooms as $room)
+                                @if ($rooms->isEmpty())
                                     <tr>
-                                        <th>
-                                            <div class="card mb-3 bg-light text-dark">
-                                                <div class="div">
-                                                    <div class="row g-0">
-                                                        <div class="col-md-4">
-                                                            <a href="#">
-                                                                <img src="https://tromoi.com/uploads/members/hiephoang/thang%208/17_08/nhung-dieu-bat-buoc-phai-nho-khi-tim-phong-01.jpg"
-                                                                    class="img-fluid rounded-2" alt="">
-                                                            </a>
-                                                        </div>
-                                                        <div class="col-md-8">
-                                                            <div class="card-body">
-                                                                <a href="#" class="text-decoration-none custom-link">
-                                                                    <p class="card-title fs-6 fw-bold">{{ $room->title }}
-                                                                    </p>
+                                        <td colspan="10" class="text-center">Không có dữ liệu</td>
+                                    </tr>
+                                @else
+                                    @foreach ($rooms as $room)
+                                        <tr>
+                                            <th>
+                                                <div class="card mb-3 bg-light text-dark">
+                                                    <div class="div">
+                                                        <div class="row g-0">
+                                                            <div class="col-md-4">
+                                                                <a href="#">
+                                                                    <img src="https://tromoi.com/uploads/members/hiephoang/thang%208/17_08/nhung-dieu-bat-buoc-phai-nho-khi-tim-phong-01.jpg"
+                                                                        class="img-fluid rounded-2" alt="">
                                                                 </a>
-                                                                <p class="card-text fw-bold" style="color: #ff5c00">Liên hệ
-                                                                    lấy giá</p>
-                                                                <div class="container p-0">
-                                                                    <a href="#">
-                                                                        <button type="button"
-                                                                            class="p-1 btn btn-secondary btn-sm">
-                                                                            {{ $room->category->name }}
-                                                                        </button>
+                                                            </div>
+                                                            <div class="col-md-8">
+                                                                <div class="card-body">
+                                                                    <a href="#"
+                                                                        class="text-decoration-none custom-link">
+                                                                        <p class="card-title fs-6 fw-bold">
+                                                                            {{ $room->title }}</p>
                                                                     </a>
+                                                                    <p class="card-text fw-bold" style="color: #ff5c00">Liên
+                                                                        hệ lấy giá</p>
+                                                                    <div class="container p-0">
+                                                                        <a href="#">
+                                                                            <button type="button"
+                                                                                class="p-1 btn btn-secondary btn-sm">
+                                                                                {{ $room->category->name }}
+                                                                            </button>
+                                                                        </a>
+                                                                    </div>
+                                                                    <p class="card-text pt-3">
+                                                                        <small class="text-muted">
+                                                                            <i class="fa-solid fa-location-dot"></i>
+                                                                            {{ $room->address }}
+                                                                        </small>
+                                                                    </p>
                                                                 </div>
-                                                                <p class="card-text pt-3">
-                                                                    <small class="text-muted">
-                                                                        <i class="fa-solid fa-location-dot"></i>
-                                                                        {{ $room->address }}
-                                                                    </small>
-                                                                </p>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </div>
-                                        </th>
-                                    </tr>
-                                @endforeach
+                                            </th>
+                                        </tr>
+                                    @endforeach
+                                @endif
                             </tbody>
                         </table>
                     </div>

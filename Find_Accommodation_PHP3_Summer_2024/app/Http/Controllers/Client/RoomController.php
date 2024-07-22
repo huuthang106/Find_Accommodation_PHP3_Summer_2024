@@ -181,4 +181,22 @@ public function reportRoom($roomId)
             return redirect()->route('login')->with('error', 'Bạn phải đăng nhập để sửa bài đăng.');
         }
     }
+    //Phương thức xóa chuyển status==7 [Nguyen Thai Toan]
+    public function delete($id)
+    {
+        // Tìm room theo id
+        $room = Room::find($id);
+
+        // Kiểm tra nếu room không tồn tại
+        if (!$room) {
+            return abort(404, 'Room not found');
+        }
+
+        // Cập nhật status thành 7 để xóa mềm
+        $room->status = 7;
+        $room->save();
+        return view('page.users.profile-us');
+    }
+
+
 }
