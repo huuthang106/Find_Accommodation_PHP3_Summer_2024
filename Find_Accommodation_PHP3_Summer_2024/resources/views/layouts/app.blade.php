@@ -332,6 +332,12 @@
                                     <span>Quản lí blog</span>
                                 </a>
                             </li>
+                            <li>
+                                <a href="{{ route('quan-li-role') }}">
+                                    <i class="fas fa-money-check"></i>
+                                    <span>Quản lí role</span>
+                                </a>
+                            </li>
                             
                             
                         </ul>

@@ -9,9 +9,9 @@
             <div class="row">
                 <div class="col-12">
                     <div class="d-flex justify-content-between align-items-center header-title">
-                        <h4 class="mb-3">Danh sách Blog</h4>
+                        <h4 class="mb-3">Danh sách Role</h4>
                         <div class="btn-group">
-                            <a href="{{ route('blogs.create') }}" class="btn btn-primary mx-2">Thêm Blog</a>
+                            {{-- <a href="{{ route('blogs.create') }}" class="btn btn-primary mx-2">Thêm Blog</a> --}}
                             <button type="button" class="btn btn-danger me-2">Xóa tất cả</button>
                         
                         </div>

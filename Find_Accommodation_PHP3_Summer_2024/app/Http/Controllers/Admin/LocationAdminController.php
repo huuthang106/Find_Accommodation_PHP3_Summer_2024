@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\PriceList; 
+use App\Models\blogs; 
 
 class LocationAdminController extends Controller
 {
@@ -14,7 +14,7 @@ class LocationAdminController extends Controller
     public function index()
     {
         //
-        $blog = PriceList::all();
+        $blog = blogs::all();
         
     
         return view('admincp.manages.extras-blog', compact('blog'));

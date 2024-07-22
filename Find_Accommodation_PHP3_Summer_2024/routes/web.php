@@ -22,6 +22,7 @@ use App\Http\Controllers\Client\RegisterController;
 use App\Http\Controllers\Client\MemberregistrationController;
 // controller admin
 use App\Http\Controllers\Admin\AcreageAdminController;
+use App\Http\Controllers\Admin\BlogAdminController;
 use App\Http\Controllers\Admin\CategoryAdminController;
 use App\Http\Controllers\Admin\CommentAdminController;
 use App\Http\Controllers\Admin\FavouriteAdminController;
@@ -191,7 +192,16 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
         Route::get('/chi-tiet-goi-tin', [PriceListAdminController::class, 'getPriceListDetail'])->name('get-pricelist'); // showw gói tin ra
         Route::get('/chi-tiet-goi-tin/chinh-sua-goi-tin/{id}', [PriceListAdminController::class, 'getPriceListID'])->name('post-pricelist');
         Route::put('/chi-tiet-goi-tin/chinh-sua-goi-tin/{id}', [PriceListAdminController::class, 'update'])->name('put-pricelist');
-        Route::get('/blog', [LocationAdminController::class, 'index'])->name('quan-li-blog');
+        
+        Route::get('/blog', [BlogAdminController::class, 'Showblog'])->name('quan-li-blog'); // Hiển thị blog 
+
+        Route::delete('/delete-blog/{id}', [BlogAdminController::class, 'deleteBlog'])->name('delete-blog'); // Xóa blog
+
+        Route::get('/blogs/create', [BlogAdminController::class, 'create'])->name('blogs.create'); // Tạo blog
+
+        Route::post('/blogs', [BlogAdminController::class, 'store'])->name('blogs.store'); // tạo blog
+
+
         Route::get('/goi-dang-tin', [PriceListAdminController::class, 'index'])->name('goi-dang-tin'); // router quản lí giá gói admin
         Route::get('/binh-luan', [CommentAdminController::class, 'index'])->name('pages-commet');
         Route::get('/bai-viet/chi-tiet-bai-viet/{id}', [RoomAdminController::class, 'getRoomID'])->name('pages-room-detail');
