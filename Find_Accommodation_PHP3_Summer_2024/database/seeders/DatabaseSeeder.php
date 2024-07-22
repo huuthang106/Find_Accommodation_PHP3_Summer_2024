@@ -3,7 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\User;
-use App\Models\Acreage;
+use App\Models\Areas;
 use App\Models\Room;
 use App\Models\Category;
 use App\Models\Prices;
@@ -20,7 +20,7 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         User::factory(10)->create();
-        Acreage::factory(10)->create();
+        Areas::factory(1)->create();
         Category::factory(10)->create();
         Prices::factory(10)->create();
         PriceList::factory(10)->create();

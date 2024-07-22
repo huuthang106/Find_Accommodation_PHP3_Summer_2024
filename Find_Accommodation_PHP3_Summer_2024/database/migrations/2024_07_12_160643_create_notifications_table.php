@@ -17,10 +17,10 @@ return new class extends Migration
             $table->string('data')->nullable();
             $table->string('message');
             $table->boolean('status')->default(1);
-            $table->foreignId('user_id')->constrained('users');
-            $table->foreignId('room_id')->constrained('rooms')->onDelete('cascade');
-            $table->foreignId('comment_id')->constrained('comments')->onDelete('cascade');
-            $table->foreignId('friendlist_id')->constrained('friendlists')->onDelete('cascade');
+            $table->foreignId('user_id')->nullable()->constrained('users');
+            $table->foreignId('room_id')->nullable()->constrained('rooms')->onDelete('cascade');
+            $table->foreignId('comment_id')->nullable()->constrained('comments')->onDelete('cascade');
+            $table->foreignId('friendlist_id')->nullable()->constrained('friendlists')->onDelete('cascade');
             $table->timestamps();
         });
     }

@@ -3,10 +3,11 @@
 namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
-use App\Models\Acreage;
+use App\Models\Areas;
 use App\Models\User;
 use App\Models\Category;
 use App\Models\Prices;
+
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Room>
  */
@@ -31,7 +32,7 @@ class RoomFactory extends Factory
             'latitude' => $this->faker->latitude,
             'view' => $this->faker->numberBetween(0, 1000),
             'status' => $this->faker->boolean(90), // 90% khả năng là true (hoạt động)
-            'acreage_id' => Acreage::factory()->create()->id, // Tạo ngẫu nhiên một acreage và lấy id của nó
+            'area_id' => Areas::factory()->create()->id, // Tạo ngẫu nhiên một acreage và lấy id của nó
             'user_id' => User::factory()->create()->id, // Tạo ngẫu nhiên một user và lấy id của nó
             'price_id' => Prices::factory()->create()->id, // Tạo ngẫu nhiên một price và lấy id của nó
             'category_id' => Category::factory()->create()->id, // Tạo ngẫu nhiên một category và lấy id của nó
