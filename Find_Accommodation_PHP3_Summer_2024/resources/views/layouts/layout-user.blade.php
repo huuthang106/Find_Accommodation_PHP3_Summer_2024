@@ -43,7 +43,7 @@
                                             <ul class="dropdown-menu">
                                                 @foreach ($categories as $category)
                                                     <li><a class="dropdown-item"
-                                                            href="{{ route('category-motel') }}">{{ $category->name }}</a>
+                                                            href="{{ route('category-motel-id', $category->id) }}">{{ $category->name }}</a>
                                                     </li>
                                                 @endforeach
                                             </ul>

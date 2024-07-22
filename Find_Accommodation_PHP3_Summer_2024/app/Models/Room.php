@@ -17,6 +17,10 @@ class Room extends Model
     {
         return $this->belongsTo(Category::class, 'category_id');
     }
+    public function acreages()
+    {
+        return $this->belongsTo(Acreage::class, 'acreages_id');
+    }
     protected $fillable = [
         'Title',
         'Description',
