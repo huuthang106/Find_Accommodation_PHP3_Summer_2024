@@ -195,7 +195,7 @@ public function reportRoom($roomId)
         // Cập nhật status thành 7 để xóa mềm
         $room->status = 7;
         $room->save();
-        return view('page.users.profile-us');
+        return redirect()->route('profileus')->with('success', 'Xóa thành công');
     }
 
 

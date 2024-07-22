@@ -374,67 +374,119 @@
                     @endsection
                     {{-- Preview trước avatar nếu chưa có avatar --}}
 
-                    @push('styles')
-                        <!-- DataTables CSS -->
-                        <link rel="stylesheet" href="https://cdn.datatables.net/1.11.4/css/dataTables.bootstrap5.min.css">
-                        <!-- Bootstrap CSS v5.2.1 -->
-                        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
-                            rel="stylesheet"
-                            integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
-                            crossorigin="anonymous" />
-                        <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-                        <link href="{{ asset('assets\css\style.css') }}" rel="stylesheet" type="text/css"
-                            id="app-stylesheet">
-                        <link href="{{ asset('assets\css\style-nht.css') }}" rel="stylesheet" type="text/css"
-                            id="app-stylesheet">
-                        {{-- cdn icon --}}
-                        <link rel="stylesheet"
-                            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
-                            integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
-                            crossorigin="anonymous" referrerpolicy="no-referrer" />
-                    @endpush
-                    @push('scripts')
-                        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
-                            integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous">
-                        </script>
+                    <div class="card">
+                        <div class="card-header">
+                            <h5 class="card-title">Bài viết đã đăng</h5>
+                        </div>
+                        <div class="card-body">
+                            <!-- Nội dung tiểu sử -->
+                            <div>
+                                <table class="table table-bordered dt-responsive nowrap"
+                                    style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+                                    <thead>
+                                        <tr>
+                                            <th>Tất cả <input type="checkbox"></th>
+                                            <th>STT</th>
+                                            <th>Tiêu đề</th>
+                                            <th>Giá</th>
+                                            <th>Số điện thoại</th>
+                                            <th>Người đăng</th>
+                                            <th>Loại phòng</th>
+                                            <th>Số lượng</th>
+                                            <th>Nội dung</th>
+                                            <th width="13%"></th>
+                                            <th width="11%"></th>
+                                            <th></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach ($rooms as $item)
+                                            <tr>
+                                                <td><input type="checkbox"></td>
+                                                <td>{{ $item->id }}</td>
+                                                <td>{{ $item->title }}</td>
+                                                <td>{{ $item->price }}</td>
+                                                <td>{{ $item->phone }}</td>
+                                                <td>{{ $item->user->username }}</td>
+                                                <td>{{ $item->category->name }}</td>
+                                                <td>{{ $item->quantity }}</td>
+                                                <td>{{ $item->description }}</td>
+                                                <td><button class="btn btn-primary">Xem chi tiết</button></td>
+                                                <td><button class="btn btn-primary">Chỉnh sửa</button></td>
+                                                <td>
+                                                    <form action="{{ route('delete-posting', $item->id) }}"
+                                                        method="GET">
+                                                        @csrf
+                                                        <button type="submit" class="btn btn-danger">Xóa</button>
+                                                    </form>
+                                                </td>
+                                            </tr>
+                                        @endforeach
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@push('styles')
+    <!-- DataTables CSS -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.11.4/css/dataTables.bootstrap5.min.css">
+    <!-- Bootstrap CSS v5.2.1 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous" />
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link href="{{ asset('assets\css\style.css') }}" rel="stylesheet" type="text/css" id="app-stylesheet">
+    <link href="{{ asset('assets\css\style-nht.css') }}" rel="stylesheet" type="text/css" id="app-stylesheet">
+    {{-- cdn icon --}}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+        integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+@endpush
+@push('scripts')
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+        integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous">
+    </script>
 
-                        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
-                            integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous">
-                        </script>
-                        <!-- jQuery -->
-                        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
+        integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous">
+    </script>
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- DataTables JavaScript -->
+    <script src="https://cdn.datatables.net/1.11.4/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.11.4/js/dataTables.bootstrap5.min.js"></script>
 
-                        <!-- DataTables JavaScript -->
-                        <script src="https://cdn.datatables.net/1.11.4/js/jquery.dataTables.min.js"></script>
-                        <script src="https://cdn.datatables.net/1.11.4/js/dataTables.bootstrap5.min.js"></script>
+    <!-- Ngôn ngữ tiếng Việt cho DataTables -->
+    <script src="https://cdn.datatables.net/plug-ins/1.11.4/i18n/Vietnamese.json"></script>
+    <script src="{{ asset('assets\js\app-nht.js') }}"></script>
+    {{-- dropdow nut profile --}}
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const avatarInput = document.getElementById('avatar');
+            const avatarPreview = document.getElementById('avatar-preview');
 
-                        <!-- Ngôn ngữ tiếng Việt cho DataTables -->
-                        <script src="https://cdn.datatables.net/plug-ins/1.11.4/i18n/Vietnamese.json"></script>
-                        <script src="{{ asset('assets\js\app-nht.js') }}"></script>
-                        {{-- dropdow nut profile --}}
-                        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-                        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
-                        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-                        <script>
-                            document.addEventListener('DOMContentLoaded', function() {
-                                const avatarInput = document.getElementById('avatar');
-                                const avatarPreview = document.getElementById('avatar-preview');
+            avatarInput.addEventListener('change', function(e) {
+                const file = e.target.files[0];
+                if (file) {
+                    const reader = new FileReader();
 
-                                avatarInput.addEventListener('change', function(e) {
-                                    const file = e.target.files[0];
-                                    if (file) {
-                                        const reader = new FileReader();
+                    reader.onload = function(e) {
+                        avatarPreview.innerHTML =
+                            `<img src="${e.target.result}" alt="Avatar Preview" class="img-thumbnail" style="max-width: 100px;">`;
+                    }
 
-                                        reader.onload = function(e) {
-                                            avatarPreview.innerHTML =
-                                                `<img src="${e.target.result}" alt="Avatar Preview" class="img-thumbnail" style="max-width: 100px;">`;
-                                        }
-
-                                        reader.readAsDataURL(file);
-                                    } else {
-                                        avatarPreview.innerHTML = '';
-                                    }
-                                });
-                            });
-                        </script>
-                    @endpush
+                    reader.readAsDataURL(file);
+                } else {
+                    avatarPreview.innerHTML = '';
+                }
+            });
+        });
+    </script>
+@endpush

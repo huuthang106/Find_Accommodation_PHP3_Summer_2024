@@ -17,6 +17,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rule;
 
 use App\Models\Room;
+use Illuminate\Support\Str;
 
 class UserController extends Controller
 {
@@ -245,6 +246,14 @@ class UserController extends Controller
             return redirect()->route('pages-404')->with('Thông Báo', 'Không tìm thấy người dùng.');
         }
         $rooms = Room::where('status', '!=', 7)->get();
+        $rooms = $rooms->map(function ($room) {
+            $room->title = Str::limit($room->title, 15);
+            $room->address = Str::limit($room->address, 20);
+            $room->description = Str::limit($room->description, 10); // Giới hạn độ dài của description
+            $room->user->username = Str::limit($room->user->username, 10);
+            $room->category->name = Str::limit($room->category->name, 10);
+            return $room;
+        });
         return view('page.users.profile-us', compact('user', 'rooms'));
     }
     /**

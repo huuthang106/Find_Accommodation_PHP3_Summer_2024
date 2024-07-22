@@ -65,9 +65,6 @@
                     <div class="tab-pane active" id="home-b1">
                         <div class="row">
                             <div class="col-lg-4">
-
-
-
                                 <div class="panel card panel-fill">
                                     <div class="card-header">
                                         <h5 class="font-16 m-1">Thông Tin Cá Nhân</h5>
@@ -101,10 +98,6 @@
                                         </div>
                                     </div>
                                 </div>
-
-
-
-
 
                                 <!-- Personal-Information -->
 
