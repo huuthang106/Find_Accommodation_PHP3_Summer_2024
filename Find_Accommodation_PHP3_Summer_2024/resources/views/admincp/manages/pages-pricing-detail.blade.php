@@ -24,7 +24,7 @@
                             style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                             <thead>
                                 <tr>
-                                    <th>Thao tác</th>
+                                
                                     <th>Tất cả <input type="checkbox"></th>
                                     <th>STT</th>
                                     <th>Loại gói</th>
@@ -33,19 +33,12 @@
                                     <th>Video</th>
                                     <th>Bài đăng</th>
                                     <th>Nội dung</th>
-                               
+                                    <th>Thao tác</th>
 
                                     <tbody>
                                         @foreach ($price as $item)
                                             <tr>
-                                                <td>
-                                                    <a href="{{ route('post-pricelist',['id'=> $item->id] ) }}" class="btn btn-primary">Chỉnh sửa</a>
-                                                    <form action="{{ route('tin.destroy', $item->id) }}" method="POST" style="display: inline;">
-                                                        @csrf
-                                                        @method('PUT')
-                                                        <button type="submit" class="btn btn-danger" onclick="return confirm('Bạn có chắc chắn muốn ẩn gói tin này không?');">Xóa</button>
-                                                    </form>
-                                                </td>
+                                               
                                                 <th><input type="checkbox"></th>
                                                 <th>{{ $item->id }}</th>
                                                 <td>
@@ -66,7 +59,14 @@
                                                 <td>
                                                     {{ Str::limit($item->description, 10) }}
                                                 </td>
-                                              
+                                                <td>
+                                                    <a href="{{ route('post-pricelist',['id'=> $item->id] ) }}" class="btn btn-primary">Chỉnh sửa</a>
+                                                    <form action="{{ route('tin.destroy', $item->id) }}" method="POST" style="display: inline;">
+                                                        @csrf
+                                                        @method('PUT')
+                                                        <button type="submit" class="btn btn-danger" onclick="return confirm('Bạn có chắc chắn muốn ẩn gói tin này không?');">Xóa</button>
+                                                    </form>
+                                                </td>
                                             </tr>
                                         @endforeach
                                     </tbody>

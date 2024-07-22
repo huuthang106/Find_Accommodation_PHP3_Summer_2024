@@ -14,8 +14,9 @@ class PriceListAdminController extends Controller
     public function index()
     {
         //
-        $price = PriceList::all();
+        $price = PriceList::where('status', '!=', 5)->take(3)->get();
         return view('admincp.manages.extras-pricing', compact('price'));
+     
     }
 
 
@@ -26,7 +27,7 @@ class PriceListAdminController extends Controller
 
         return view('admincp.extras-pricing', compact('price'));
     }
-
+    
     /**
      * Remove the specified resource from storage.
      */
