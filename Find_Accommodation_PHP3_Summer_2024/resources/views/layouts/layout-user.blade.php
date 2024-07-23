@@ -160,7 +160,7 @@
                                                         <button class="btn btn-primary w-100" type="submit">ĐĂNG
                                                             NHẬP</button>
                                                     </div>
-                                                    <a href="page-recoverpw.html"
+                                                    <a href="{{route('pages-forget-password')}}"
                                                         class="text-muted float-end text-decoration-none">Quên mật
                                                         khẩu?</a>
                                                 </form>
