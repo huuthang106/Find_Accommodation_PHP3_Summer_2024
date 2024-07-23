@@ -32,8 +32,8 @@
                                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                                     <ul class="navbar-nav me-auto mb-2 mb-lg-0 fw-bold">
                                         <li class="nav-item pe-4">
-                                            <a class="nav-link" aria-current="page"
-                                                href="{{ route('home') }}">Trang chủ</a>
+                                            <a class="nav-link" aria-current="page" href="{{ route('home') }}">Trang
+                                                chủ</a>
                                         </li>
                                         <li class="nav-item dropdown">
                                             <a class="nav-link dropdown-toggle" href="#" role="button"
@@ -41,13 +41,12 @@
                                                 Loại trọ
                                             </a>
                                             <ul class="dropdown-menu">
-                                            @foreach ($categories as $category)
-                                            
+                                                @foreach ($categories as $category)
                                                     <li><a class="dropdown-item"
-                                                            href="{{route('category-motel')}}">{{ $category->name }}</a></li>
-                                              
-                                            @endforeach
-                                        </ul>
+                                                            href="{{ route('category-motel') }}">{{ $category->name }}</a>
+                                                    </li>
+                                                @endforeach
+                                            </ul>
                                         </li>
                                         <li class="nav-item pe-4">
                                             <a class="nav-link" href="#">Video review</a>
@@ -61,8 +60,9 @@
                                     </ul>
 
                                     {{-- Khi chưa login sẽ hiển thị Đăng Ký/ Đăng nhập, khi login xong sẽ hiển thị Tên login --}}
-                                    
-                                        @if (Auth::check())<ul class="list-unstyled topnav-menu float-right mb-0  p-1 rounded-3">
+
+                                    @if (Auth::check())
+                                        <ul class="list-unstyled topnav-menu float-right mb-0  p-1 rounded-3">
                                             <li class="dropdown notification-list">
                                                 <a class="nav-link dropdown-toggle nav-user mr-0 "
                                                     data-toggle="dropdown" href="#" role="button"
@@ -94,14 +94,15 @@
                                                 </div>
                                             </li>
                                         @else
-                                        <ul class="list-unstyled topnav-menu float-right mb-0 bg-primary p-1 rounded-3">
-                                            <li>
-                                                <button type="button" class="btn btn-primary p-0"
-                                                    data-bs-toggle="modal" data-bs-target="#loginModal">
-                                                    Đăng nhập/Đăng ký
-                                                </button>
-                                            </li>
-                                        @endif
+                                            <ul
+                                                class="list-unstyled topnav-menu float-right mb-0 bg-primary p-1 rounded-3">
+                                                <li>
+                                                    <button type="button" class="btn btn-primary p-0"
+                                                        data-bs-toggle="modal" data-bs-target="#loginModal">
+                                                        Đăng nhập/Đăng ký
+                                                    </button>
+                                                </li>
+                                    @endif
                                     </ul>
                                 </div>
                             </div>
@@ -130,7 +131,8 @@
                                                                 alt="" height="60" width="170"></span>
                                                     </a>
                                                 </div>
-                                                <form action="{{ route('login-users') }}" method="POST" class="p-2">
+                                                <form action="{{ route('login-users') }}" method="POST"
+                                                    class="p-2">
                                                     @csrf
                                                     <div class="mb-3">
                                                         <label for="emailaddress" class="form-label">Email</label>
@@ -138,13 +140,15 @@
                                                             id="emailaddress" required=""
                                                             placeholder="example@gmail.com">
                                                         @error('email')
-                                                            <small class="text-danger text-blod">{{ $message }}</small>
+                                                            <small
+                                                                class="text-danger text-blod">{{ $message }}</small>
                                                         @enderror
                                                     </div>
                                                     <div class="mb-3">
                                                         <label for="password" class="form-label">Mật khẩu</label>
                                                         <input class="form-control" name="password" type="password"
-                                                            required="" id="password" placeholder="Nhập mật khẩu">
+                                                            required="" id="password"
+                                                            placeholder="Nhập mật khẩu">
                                                         @error('password')
                                                             <small
                                                                 class="text-danger text-bold">{{ $message }}</small>
@@ -160,7 +164,8 @@
                                                         <button class="btn btn-primary w-100" type="submit">ĐĂNG
                                                             NHẬP</button>
                                                     </div>
-                                                    <a href="{{route('pages-forget-password')}}"
+                                                    <a href="" id="showforgotpassModal" class="text-dark"
+                                                        data-bs-toggle="modal" data-bs-target="#forgotpassModal"
                                                         class="text-muted float-end text-decoration-none">Quên mật
                                                         khẩu?</a>
                                                 </form>
@@ -192,16 +197,19 @@
             </div>
         </div>
         <!-- Modal Đăng Ký -->
-        <div class="modal fade" id="registerModal" tabindex="-1" aria-labelledby="registerModalLabel" aria-hidden="true">
+        <div class="modal fade" id="registerModal" tabindex="-1" aria-labelledby="registerModalLabel"
+            aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
                     <div class="modal-header border-0">
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                            aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
                         <div class="text-center">
                             <a href="index.html">
-                                <span><img src="{{ asset('assets/images/logo3.png') }}" alt="" height="60" width="170"></span>
+                                <span><img src="{{ asset('assets/images/logo3.png') }}" alt=""
+                                        height="60" width="170"></span>
                             </a>
                         </div>
                         <div class="account-pages my-3 pt-2">
@@ -210,30 +218,34 @@
                                     @csrf
                                     <div class="mb-3">
                                         <label for="registerUsername" class="form-label">Tên</label>
-                                        <input class="form-control" name="username" type="text" id="registerUsername" required placeholder="Tên người dùng">
+                                        <input class="form-control" name="username" type="text"
+                                            id="registerUsername" required placeholder="Tên người dùng">
                                         @error('username')
                                             <small class="text-danger text-blod">{{ $message }}</small>
                                         @enderror
                                     </div>
-        
+
                                     <div class="mb-3">
                                         <label for="registerEmail" class="form-label">Email</label>
-                                        <input class="form-control" name="email" type="email" id="registerEmail" required placeholder="example@gmail.com">
+                                        <input class="form-control" name="email" type="email" id="registerEmail"
+                                            required placeholder="example@gmail.com">
                                         @error('email')
                                             <small class="text-danger text-blod">{{ $message }}</small>
                                         @enderror
                                     </div>
-        
+
                                     <div class="mb-3">
                                         <label for="registerPassword" class="form-label">Mật khẩu</label>
-                                        <input class="form-control" name="password" type="password" id="registerPassword" required placeholder="Nhập mật khẩu">
+                                        <input class="form-control" name="password" type="password"
+                                            id="registerPassword" required placeholder="Nhập mật khẩu">
                                         @error('password')
                                             <small class="text-danger text-blod">{{ $message }}</small>
                                         @enderror
                                     </div>
                                     <div class="mb-3">
                                         <label for="confirmPassword" class="form-label">Xác nhận mật khẩu</label>
-                                        <input class="form-control" name="password_confirmation" type="password" id="confirmPassword" required placeholder="Nhập lại mật khẩu">
+                                        <input class="form-control" name="password_confirmation" type="password"
+                                            id="confirmPassword" required placeholder="Nhập lại mật khẩu">
                                         @error('password_confirmation')
                                             <small class="text-danger text-blod">{{ $message }}</small>
                                         @enderror

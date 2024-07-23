@@ -32,10 +32,6 @@ class UserController extends Controller
             return redirect()->route('pages-404')->with('Thông Báo', 'Không tìm thấy người dùng.');
         }
         return view('admincp.accounts.extras-profile', compact('admin'));
-
-      
-
-     
     }
     public function update_profile_admin(Request $request, string $id)
     {
@@ -140,7 +136,7 @@ class UserController extends Controller
         // Xóa token sau khi cập nhật thành công
         $tokenData->delete();
 
-        return redirect()->route('admincp.pages-login')->with('success', 'Mật khẩu đã được cập nhật thành công')->with('showAlert', true);
+        return redirect()->route('pages-login-admin')->with('success', 'Mật khẩu đã được cập nhật thành công')->with('showAlert', true);
     }
     public function check_forget_password_us(Request $request)
     {
@@ -291,22 +287,21 @@ class UserController extends Controller
 
         // Xử lý upload avatar
         if ($request->hasFile('avatar')) {
-            // Xóa avatar cũ nếu có
-            if ($user->avatar) {
-                Storage::disk('public')->delete($user->avatar);
-            }
-
-            // Lấy file
             $file = $request->file('avatar');
 
             // Tạo tên file mới
-            $fileName = time() . '.' . $file->getClientOriginalExtension();
+            $fileName = time() . '_' . $file->getClientOriginalName();
 
-            // Upload avatar mới với tên file mới
-            $avatarPath = $file->storeAs('avatars', $fileName, 'public');
+            // Đặt đường dẫn thư mục lưu trữ
+            $destinationPath = public_path('assets/images/users');
 
-            $validatedData['avatar'] = $avatarPath;
+            // Di chuyển tệp tải lên
+            $file->move($destinationPath, $fileName);
+
+            // Lưu đường dẫn tương đối của ảnh vào dữ liệu đã xác thực
+            $validatedData['avatar'] =$fileName ;
         }
+
 
         // Xử lý password nếu được cung cấp
         if (isset($validatedData['password'])) {
