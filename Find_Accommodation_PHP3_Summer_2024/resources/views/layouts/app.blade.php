@@ -340,7 +340,18 @@
                             </li>
                             
                             
+                                <a href="{{ route('manages-user') }}">
+                                    <i class="fas fa-user"></i>
+                                    <span>Quản lí người dùng</span>
+                                </a>
+                            </li>
                         </ul>
+                    </li>
+                    <li>
+                        <a href="{{ route('pages-register-admin') }}">
+                            <i class="fas fa-address-card"></i>
+                            <span> Đăng ký thành viên </span>
+                        </a>
                     </li>
 
                     {{-- <li>

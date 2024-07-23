@@ -159,8 +159,8 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
     Route::post('/trang-chi-tiet-thong-bao/cap-nhat/{id}', [NotificationAdminController::class, 'update'])->name('update-pages-notification-detail');
     // Xóa mềm thông báo admin
     Route::get('/xoa-tat-ca-thong-bao', [NotificationAdminController::class, 'softDeleteAll'])->name('soft-delete-all-notifications');
-
-
+    // start Thai Toan 
+    Route::get('/quan-ly-nguoi-dung', [UserController::class, 'showAdmin'])->name('manages-user');
     // end Thai Toan
 
 
@@ -249,6 +249,8 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
 Route::post('/xu-ly-dang-bai', [RoomController::class, 'check_post_room'])->name('show-posting-room');
 // Route xem loai tro co id
 Route::get('/loai-tro/{id}', [CategoryController::class, 'getIDCategory'])->name('category-motel-id');
+// Hien thi profile user khac [Nguyen Thai Toan]
+Route::get('/ho-so-nguoi-khac/{id}', [UserController::class, 'showHome'])->name('profile-other');
 // end Nguyen Thai Toan user
 
 

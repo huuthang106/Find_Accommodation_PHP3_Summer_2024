@@ -34,9 +34,6 @@ class UserController extends Controller
         }
         return view('admincp.accounts.extras-profile', compact('admin'));
 
-
-
-
     }
     public function update_profile_admin(Request $request, string $id)
     {
@@ -343,4 +340,17 @@ class UserController extends Controller
 
         return view('page.users.profile-us');
     }
+    // Lay thong tin user theo id 
+    public function showHome(string $id)
+    {
+        $users = User::find($id);
+        return view('page.users.proflie-us-other', compact('users'));
+    }
+
+    public function showAdmin()
+    {
+        $users = User::whereIn('role', [1, 2])->get();
+        return view('admincp.manages.pages-user', compact('users'));
+    }
+
 }

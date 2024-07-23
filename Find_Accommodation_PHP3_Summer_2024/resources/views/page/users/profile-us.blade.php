@@ -35,11 +35,6 @@
                     <p class="text-muted mt-2">
                         Xin chào tôi là {{ $user->username }}.
                     </p>
-
-
-
-
-                    <!-- end col -->
                 </div>
                 <!-- end row -->
                 <!-- end -->
@@ -132,24 +127,22 @@
                                         </div>
                                         <div class="card-body">
                                             <!-- Nội dung tiểu sử -->
-                                            <div class='table-responsive'>
+                                            <div class="table-responsive">
                                                 <table id="myTable" class="table table-bordered dt-responsive nowrap"
                                                     style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                                                     <thead>
                                                         <tr>
-                                                            <th>STT</th>
-                                                            <th>Xem chi tiết</th>
-                                                            <th>Chỉnh sửa</th>
                                                             <th>Tất cả <input type="checkbox"></th>
-
+                                                            <th>STT</th>
                                                             <th>Tiêu đề</th>
+                                                            <th>Giá</th>
                                                             <th>Số điện thoại</th>
                                                             <th>Người đăng</th>
                                                             <th>Loại phòng</th>
                                                             <th>Số lượng</th>
                                                             <th>Nội dung</th>
-                                                            <th width="13%"></th>
-                                                            <th width="11%"></th>
+                                                            <th></th>
+                                                            <th></th>
                                                             <th></th>
                                                         </tr>
                                                     </thead>
@@ -167,7 +160,8 @@
                                                                 <td>{{ $item->description }}</td>
                                                                 <td><button class="btn btn-primary">Xem chi tiết</button>
                                                                 </td>
-                                                                <td><button class="btn btn-primary">Chỉnh sửa</button></td>
+                                                                <td><a href="{{ route('edit-posting',$item->id) }}"
+                                                                        class="btn btn-primary">Chỉnh sửa</a></td>
                                                                 <td>
                                                                     <form action="{{ route('delete-posting', $item->id) }}"
                                                                         method="GET">
@@ -181,7 +175,6 @@
                                                     </tbody>
                                                 </table>
                                             </div>
-
                                         </div>
                                     </div>
                                     <!-- Personal-Information -->

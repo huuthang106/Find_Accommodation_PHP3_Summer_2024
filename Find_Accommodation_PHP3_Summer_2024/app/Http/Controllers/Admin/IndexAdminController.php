@@ -75,7 +75,7 @@ class IndexAdminController extends Controller
     }
     public function pages_register()
     {
-        return view('admincp.accounts.pages-register');
+        return view('admincp.accounts.pages-user-role');
     }
     public function check_login()
     {
@@ -115,12 +115,13 @@ class IndexAdminController extends Controller
 
     public function check_register()
     {
-        // Bắt lỗi
+        // Validate the input fields
         request()->validate([
             'username' => 'required',
             'email' => 'required|email|unique:users,email',
             'password' => 'required',
             'password_confirmation' => 'required|same:password',
+            'role' => 'required',
         ], [
             'username.required' => 'Vui lòng nhập tên người dùng.',
             'email.required' => 'Vui lòng nhập địa chỉ email.',
@@ -129,13 +130,20 @@ class IndexAdminController extends Controller
             'password.required' => 'Vui lòng nhập mật khẩu.',
             'password_confirmation.required' => 'Vui lòng nhập lại mật khẩu để xác nhận.',
             'password_confirmation.same' => 'Mật khẩu xác nhận không khớp với mật khẩu đã nhập.',
+            'role.required' => 'Vui lòng chọn vai trò người dùng.',
         ]);
-        $data = request()->all('username', 'email');
+
+        // Retrieve input data
+        $data = request()->only('username', 'email', 'role');
         $data['password'] = bcrypt(request('password'));
-        $data['role'] = 0;
+
+        // Create a new user
         User::create($data);
-        return redirect()->route('pages-login-admin');
+
+        // Redirect to the login page
+        return redirect()->route('manages-user');
     }
+
     public function admin()
     {
         return redirect()->route('pages-login-admin');
