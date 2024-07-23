@@ -10,7 +10,6 @@ use Illuminate\Support\Facades\Auth;
 use App\Mail\ForgotPassword;
 use App\Mail\ForgotPasswordUs;
 use Illuminate\Support\Facades\Mail;
-use Illuminate\Support\Str;
 use App\Models\ResetPasswordToken;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Hash;
