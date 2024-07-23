@@ -21,6 +21,7 @@ return new class extends Migration
             $table->foreignId('room_id')->nullable()->constrained('rooms')->onDelete('cascade');
             $table->foreignId('comment_id')->nullable()->constrained('comments')->onDelete('cascade');
             $table->foreignId('friendlist_id')->nullable()->constrained('friendlists')->onDelete('cascade');
+            $table->foreignId('memberregistration_id')->nullable()->constrained('memberregistrations')->onDelete('cascade');
             $table->timestamps();
         });
     }

@@ -4,8 +4,9 @@ namespace App\Http\Controllers\Client;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Imagesmember;
 
-class LocationController extends Controller
+class ImagesmembersController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -26,11 +27,27 @@ class LocationController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(Request $request, $id)
     {
         //
-    
-    
+        $request->validate([
+            'images.*' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+        ]);
+
+        $memberregistration_id = $id; // Thay thế bằng room_id thực tế
+
+        if ($request->hasfile('images')) {
+            foreach ($request->file('images') as $file) {
+                $name = time() . '_' . $file->getClientOriginalName();
+                $file->move(public_path('assets/images/imagesmembers'), $name);
+                Imagesmember::create([
+                    'memberregistration_id' => $memberregistration_id,
+                    'filename' => $name,
+                ]);
+            }
+        }
+
+        return back()->with('success', 'Hình ảnh được tải lên thành công');
     }
 
     /**

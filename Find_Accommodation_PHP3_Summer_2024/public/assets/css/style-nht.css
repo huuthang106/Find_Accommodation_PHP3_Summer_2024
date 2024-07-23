@@ -51,3 +51,8 @@
 .margin-botton{
     margin-bottom: 2%;
 }
+.preview-image img {
+    max-width: 100%;
+    max-height: 200px;
+    margin-top: 10px;
+}

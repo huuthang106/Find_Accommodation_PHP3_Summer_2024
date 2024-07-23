@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('imagesmembers', function (Blueprint $table) {
           
                 $table->string('filename');
-                $table->foreignId('memberregistration')->constrained('memberregistrations');
+                $table->foreignId('memberregistration_id')->constrained('memberregistrations');
             $table->timestamps();
         });
     }

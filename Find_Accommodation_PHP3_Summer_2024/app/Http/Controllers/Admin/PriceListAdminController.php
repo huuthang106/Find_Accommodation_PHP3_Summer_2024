@@ -4,7 +4,8 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\PriceList; 
+use App\Models\PriceList;
+
 class PriceListAdminController extends Controller
 {
     /**
@@ -15,10 +16,9 @@ class PriceListAdminController extends Controller
         //
         $price = PriceList::all();
         return view('admincp.manages.extras-pricing', compact('price'));
-     
     }
-    
-    
+
+
     public function ShowPriceList()
     {
         // Lấy tất cả các bản ghi với status khác 5
@@ -26,7 +26,7 @@ class PriceListAdminController extends Controller
 
         return view('admincp.extras-pricing', compact('price'));
     }
-    
+
     /**
      * Remove the specified resource from storage.
      */
@@ -40,11 +40,11 @@ class PriceListAdminController extends Controller
         }
         return redirect()->back()->with('error', 'Không tìm thấy gói tin.');
     }
-    
+
 
     public function getPriceListDetail()
     {
-       
+
         $price = PriceList::where('status', '!=', 5)->get();
         return view('admincp.manages.pages-pricing-detail', compact('price'));
     }
@@ -119,11 +119,5 @@ class PriceListAdminController extends Controller
         // Redirect về trang danh sách hoặc trang chi tiết (tuỳ theo yêu cầu của bạn)
         return redirect()->route('post-pricelist', ['id' => $priceList->id])
             ->with('success', 'Cập nhật giá thành công');
-    
     }
-
-
-
-    
-    
 }

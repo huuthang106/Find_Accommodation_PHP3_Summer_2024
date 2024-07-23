@@ -8,4 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Imagesmember extends Model
 {
     use HasFactory;
+    protected $fillable = [
+        // cho phép thêm hàng loạt dữ liệu Nguyen Huu Thang
+        'memberregistration_id',
+        'filename',
+    ];
 }

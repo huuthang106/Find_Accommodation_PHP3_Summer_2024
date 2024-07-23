@@ -2,40 +2,43 @@
 @section('titleUs', 'Trang chủ trọ nhanh')
 @section('contentUs')
     <!-- start  -->
-    <div class="row">
-        <div class="col-md-12">
-            <div class="p-0 text-center">
-                <div class="member-card">
-                    <div class="avatar-xxl member-thumb mb-2 center-page mx-auto">
-                        <img src="{{ asset('assets/images/users/avatar-3.jpg') }}" class="rounded-circle img-thumbnail"
-                            alt="profile-image">
-                        <i class="mdi mdi-star-circle member-star text-success" title="verified user"></i>
-                    </div>
-                    <div class="">
-                        <h5 class="mt-3">{{ $user->username }}</h5>
-                        {{-- <p class="text-muted">@webdesigner</p> --}}
-                        {{-- Nếu role == 0 sẽ hiển thị Admin, các trường hợp khác thì chưa hiển thị viết sau... --}}
-                        @if ($user->role == 0)
-                            <div class="mb-4">
-                                <strong>Chức vụ</strong>
-                                <p class="text-muted">Admin</p>
-                            </div>
-                        @endif
-                    </div>
-
-                    <p class="text-muted mt-2">
-                        Xin chào tôi là {{ $user->username }}.
-                    </p>
 
 
-
+    <div class="col-md-12">
+        <div class="p-0 text-center">
+            <div class="member-card">
+                <div class="avatar-xxl member-thumb mb-2 center-page mx-auto">
+                    <img src="{{ asset('assets/images/users/avatar-3.jpg') }}" class="rounded-circle img-thumbnail"
+                        alt="profile-image">
+                    <i class="mdi mdi-star-circle member-star text-success" title="verified user"></i>
+                </div>
+                <div class="">
+                    <h5 class="mt-3">{{ $user->username }}</h5>
+                    {{-- <p class="text-muted">@webdesigner</p> --}}
+                    {{-- Nếu role == 0 sẽ hiển thị Admin, các trường hợp khác thì chưa hiển thị viết sau... --}}
+                    @if ($user->role == 0)
+                        <div class="mb-4">
+                            <strong>Chức vụ</strong>
+                            <p class="text-muted">Admin</p>
+                        </div>
+                    @endif
                 </div>
 
+                <p class="text-muted mt-2">
+                    Xin chào tôi là {{ $user->username }}.
+                </p>
+
+
+                <a href="{{ route('register-member') }}" type="button" class="btn btn-primary mt-2 mr-1">đăng ký
+                    đăng
+                    bài</a>
             </div>
-            <!-- end card-box -->
 
         </div>
-        <!-- end col -->
+        <!-- end card-box -->
+
+    </div>
+    <!-- end col -->
     </div>
     <!-- end row -->
     <!-- end -->
@@ -128,7 +131,7 @@
                             </div>
                             <div class="card-body">
                                 <!-- Nội dung tiểu sử -->
-                                <div>
+                                <div class='table-responsive'>
                                     <table id="myTable" class="table table-bordered dt-responsive nowrap"
                                         style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                                         <thead>
@@ -243,6 +246,7 @@
             </div>
         </div>
     </div>
+
 @endsection
 
 @push('styles')

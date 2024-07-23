@@ -19,6 +19,7 @@ use App\Http\Controllers\Client\TransactionController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\Client\AuthController;
 use App\Http\Controllers\Client\RegisterController;
+use App\Http\Controllers\Client\MemberregistrationController;
 // controller admin
 use App\Http\Controllers\Admin\AcreageAdminController;
 use App\Http\Controllers\Admin\CategoryAdminController;
@@ -217,6 +218,9 @@ Route::get('/login', [HomeController::class, 'login'])->name('login');
 Route::group(['prefix' => 'tai-khoan', 'middleware' => 'auth'], function () {
     Route::get('/', [UserController::class, 'show'])->name('profileus');
     Route::get('/chinh-sua-bai-viet/{id}', [RoomController::class, 'page_edit_posting'])->name('edit-posting');
+    Route::get('/dang-ky-thanh-vien',[MemberregistrationController::class,'index'])->name('register-member');
+    Route::post('/dang-ky-thanh-vien',[MemberregistrationController::class,'store'])->name('check-register-member');
+
 });
 // end Nguyen Huu Thang user
 Route::group(['prefix' => 'bai-viet'], function () {
