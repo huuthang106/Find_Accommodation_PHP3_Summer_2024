@@ -10,6 +10,7 @@ use App\Models\Prices;
 use App\Models\PriceList;
 use App\Models\Notification;
 use App\Models\Blogs;
+use App\Models\Report;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -28,6 +29,7 @@ class DatabaseSeeder extends Seeder
         Room::factory(10)->create();
         Notification::factory(10)->create();
         Blogs::factory(10)->create();
+        Report::factory(10)->create();
         // User::factory()->create([
         //     'name' => 'Test User',
         //     'email' => 'test@example.com',

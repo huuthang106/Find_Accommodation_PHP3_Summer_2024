@@ -37,7 +37,9 @@ use App\Http\Controllers\Admin\PricesAdminController;
 use App\Http\Controllers\Admin\RoomAdminController;
 use App\Http\Controllers\Admin\RoleAdminController;
 use App\Http\Controllers\Admin\TransactionAdminController;
-use App\Http\COntrollers\Admin\LoginController;
+use App\Http\Controllers\Admin\LoginAdminController;
+use App\Http\Controllers\Admin\RegisterAdminController;
+use App\Http\Controllers\Admin\ReportAdminController;
 use App\Http\Controllers\Admin\UserController as AdminUserController;
 
 // start Nguyen Huu Thang
@@ -143,9 +145,14 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
     Route::get('/quan-li-ho-so', [UserController::class, 'index'])->middleware('auth')->name('quan-li-ho-so');
     // [VoTanLuon] Router hiển thị chỉnh sửa tài khoản Admin
     route::put('/quan-li-ho-so/{id}', [UserController::class, 'update_profile_admin'])->name('chinh-sua-ho-so');
-    // Router thông báo admin
-
-
+    // [VoTanLuon] Router hiển thị trang Báo Cáo
+    Route::get('/bang-bao-cao', [ReportAdminController::class, 'index'])->name('pages-report');
+    // [VoTanLuon] Router hiển thị chi tiết báo cáo
+    Route::get('/bang-bao-cao/{id}', [ReportAdminController::class, 'showReport'])->name('pages-report-detail');
+    // [VoTanLuon] Router xóa mềm Báo Cáo
+    Route::delete('/bang-bao-cao/{id}', [ReportAdminController::class, 'destroyReport'])->name('report.destroy');
+    // [VoTanLuon] Router Đã xem bảng Báo cáo
+    Route::post('/chi-tiet-bao-cao/cap-nhat/{id}', [ReportAdminController::class, 'updateReport'])->name('update-pages-report-detail');
     // Router chi tiết thông báo admin
     Route::get('/trang-chi-tiet-thong-bao/{id}', [NotificationAdminController::class, 'show'])->name('pages-notification-detail');
     // Router Đã xem thông báo admin

@@ -253,7 +253,88 @@
                                 </div>
                                 <div class="row mt-3">
                                     <div class="col-sm-12 text-center">
-                                        <p class="text-muted mb-0">Bạn đã có tài khoản? <a href="#" id="showLoginModal" class="text-dark" data-bs-toggle="modal" data-bs-target="#loginModal"><b>ĐĂNG NHẬP</b></a></p>
+                                        <p class="text-muted mb-0">Bạn đã có tài khoản? <a href="#"
+                                                id="showLoginModal" class="text-dark" data-bs-toggle="modal"
+                                                data-bs-target="#loginModal"><b>ĐĂNG NHẬP</b></a></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {{-- Modal Quên Mật Khẩu --}}
+        @if (session('showAlert'))
+            <script>
+                document.addEventListener('DOMContentLoaded', function() {
+                    setTimeout(function() {
+                        @if (session('success'))
+                            Swal.fire({
+                                icon: 'success',
+                                title: 'Thành công!',
+                                text: "{{ session('success') }}",
+                                timer: 5000,
+                                timerProgressBar: true,
+                                showConfirmButton: false
+                            });
+                        @endif
+
+                        @if (session('error'))
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'Lỗi!',
+                                text: "{{ session('error') }}",
+                                timer: 5000,
+                                timerProgressBar: true,
+                                showConfirmButton: false
+                            });
+                        @endif
+                    }); // Delay 500ms trước khi hiển thị alert
+                });
+            </script>
+        @endif
+        <div class="modal fade" id="forgotpassModal" tabindex="-1" aria-labelledby="forgotpassModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header border-0">
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                            aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="text-center">
+                            <a href="index.html">
+                                <span><img src="{{ asset('assets/images/logo3.png') }}" alt=""
+                                        height="60" width="170"></span>
+                            </a>
+                        </div>
+                        <div class="account-pages my-3 pt-2">
+                            <div class="container">
+                                <form action="{{ route('home') }}" method="POST" class="p-2">
+                                    @csrf
+                                    <div class="text-center">
+                                        <p class="text-muted w-75 mx-auto"> Nhập địa chỉ email của bạn và chúng tôi sẽ
+                                            gửi cho bạn
+                                            một email kèm theo hướng dẫn để đặt lại mật khẩu của bạn. </p>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="registerEmail" class="form-label">Email</label>
+                                        <input class="form-control" name="email" type="email" id=""
+                                            required placeholder="Nhập địa chỉ Email">
+                                        @error('email')
+                                            <small class="text-danger text-blod">{{ $message }}</small>
+                                        @enderror
+                                    </div>
+                                    <div class="mb-3 text-center">
+                                        <button class="btn btn-primary w-100" type="submit">XÁC NHẬN</button>
+                                    </div>
+                                </form>
+                                <div class="row mt-3">
+                                    <div class="col-sm-12 text-center">
+                                        <p class="text-muted mb-0">Bạn đã có tài khoản? <a href="#"
+                                                id="showLoginModal" class="text-dark" data-bs-toggle="modal"
+                                                data-bs-target="#loginModal"><b>ĐĂNG NHẬP</b></a></p>
                                     </div>
                                 </div>
                             </div>

@@ -17,6 +17,7 @@ return new class extends Migration
             $table->boolean('status')->default(1);
             $table->foreignId('user_id')->nullable()->constrained('users');
             $table->foreignId('room_id')->nullable()->constrained('rooms');
+            $table->foreignId('report_id')->nullable()->constrained('users');
             $table->timestamps();
         });
     }
