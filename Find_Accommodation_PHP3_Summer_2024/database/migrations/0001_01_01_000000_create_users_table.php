@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('address')->nullable();
             $table->boolean('role')->default(1);
             $table->float('balance', 10, 2)->default(0);
+            $table->longText('avatar')->nullable();
             $table->string('token')->nullable();
             $table->boolean('status')->default(1);
             $table->string('provider')->nullable();

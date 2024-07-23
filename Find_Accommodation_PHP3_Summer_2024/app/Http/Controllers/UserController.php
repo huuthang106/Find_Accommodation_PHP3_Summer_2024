@@ -12,6 +12,10 @@ use App\Mail\ForgotPasswordUs;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Str;
 use App\Models\ResetPasswordToken;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Validation\Rule;
+
 
 class UserController extends Controller
 {
@@ -254,7 +258,68 @@ class UserController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        // Tìm thông tin khách hàng theo id
+        $user = User::find($id);
+
+        // Xem người dùng có tồn tại
+        if (!$user) {
+            return redirect()->route('profileus')->with('error', 'Tài khoản không tồn tại');
+        }
+
+        // Bắt lỗi dữ liệu
+        $validatedData = $request->validate([
+            'username' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255|unique:users,email,' . $user->id,
+            'password' => 'nullable|min:6|max:15',
+            'password_confirmation' => 'nullable|same:password',
+            'avatar' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'phone' => 'nullable|string|max:20',
+            'address' => 'nullable|string|max:255',
+            'about_me' => 'nullable|string',
+        ], [
+            'username.required' => 'Vui lòng nhập tên người dùng.',
+            'email.required' => 'Vui lòng nhập địa chỉ email.',
+            'email.email' => 'Địa chỉ email không hợp lệ.',
+            'email.unique' => 'Địa chỉ email đã tồn tại trong hệ thống.',
+            'password.min' => 'Mật khẩu phải có ít nhất 6 ký tự.',
+            'password.max' => 'Mật khẩu không được vượt quá 15 ký tự.',
+            'password_confirmation.same' => 'Mật khẩu xác nhận không khớp với mật khẩu đã nhập.',
+            'avatar.image' => 'File phải là hình ảnh.',
+            'avatar.mimes' => 'Hình ảnh phải có định dạng: jpeg, png, jpg, gif.',
+            'avatar.max' => 'Kích thước hình ảnh không được vượt quá 2MB.',
+        ]);
+
+        // Xử lý upload avatar
+        if ($request->hasFile('avatar')) {
+            // Xóa avatar cũ nếu có
+            if ($user->avatar) {
+                Storage::disk('public')->delete($user->avatar);
+            }
+
+            // Lấy file
+            $file = $request->file('avatar');
+
+            // Tạo tên file mới
+            $fileName = time() . '.' . $file->getClientOriginalExtension();
+
+            // Upload avatar mới với tên file mới
+            $avatarPath = $file->storeAs('avatars', $fileName, 'public');
+
+            $validatedData['avatar'] = $avatarPath;
+        }
+
+        // Xử lý password nếu được cung cấp
+        if (isset($validatedData['password'])) {
+            $validatedData['password'] = Hash::make($validatedData['password']);
+        } else {
+            unset($validatedData['password']);
+        }
+
+        // Cập nhật thông tin người dùng
+        $user->update($validatedData);
+
+        // Chuyển hướng sau khi cập nhật thành công
+        return redirect()->route('profileus', ['id' => $user->id])->with('success', 'Thông tin đã được cập nhật');
     }
 
     /**

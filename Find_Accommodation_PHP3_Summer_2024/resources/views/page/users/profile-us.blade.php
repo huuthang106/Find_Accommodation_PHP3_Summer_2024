@@ -2,6 +2,39 @@
 @section('titleUs', 'Trang chủ trọ nhanh')
 @section('contentUs')
     <!-- start  -->
+    <div class="row">
+        <div class="col-md-12">
+            <div class="p-0 text-center">
+                <div class="member-card">
+                    <div class="avatar-xxl member-thumb mb-2 center-page mx-auto">
+                        @if ($user->avatar)
+                            {{-- Nếu có avatar sẽ hiển thị avatar --}}
+                            <img src="{{ asset('storage/' . $user->avatar) }}" class="rounded-circle img-thumbnail avatar-img"
+                                alt="profile-image" width="150" height="auto">
+                        @else
+                            {{-- còn chưa có sẽ hiển thị 1 avatar cứng --}}
+                            <img src="{{ asset('assets/images/users/avatar-user.png') }}"
+                                class="rounded-circle img-thumbnail avatar-img" alt="profile-image" width="150"
+                                height="auto">
+                        @endif
+                        <i class="mdi mdi-star-circle member-star text-success" title="verified user"></i>
+                    </div>
+                    <div class="">
+                        <h5 class="mt-3">{{ $user->username }}</h5>
+                        {{-- <p class="text-muted">@webdesigner</p> --}}
+                        {{-- Nếu role == 0 sẽ hiển thị Admin, các trường hợp khác thì chưa hiển thị viết sau... --}}
+                        @if ($user->role == 0)
+                            <div class="mb-4">
+                                <strong>Chức vụ</strong>
+                                <p class="text-muted">Admin</p>
+                            </div>
+                        @endif
+                    </div>
+
+                    <p class="text-muted mt-2">
+                        Xin chào tôi là {{ $user->username }}.
+                    </p>
+
 
 
     <div class="col-md-12">
@@ -186,9 +219,24 @@
                     </div>
                     <div class="card-body">
                         <form action="{{ route('chinh-sua-thong-tin', ['id' => $user->id]) }}" method="POST"
-                            role="form">
+                            role="form" enctype="multipart/form-data">>
                             @csrf
                             @method('PUT')
+                            <!-- Thêm trường input cho avatar -->
+                            <div class="mb-3">
+                                <label for="avatar" class="form-label">Ảnh đại diện</label>
+                                <input type="file" class="form-control" id="avatar" name="avatar"
+                                    accept="image/*">
+                                @error('avatar')
+                                    <small class="text-danger text-bold">{{ $message }}</small>
+                                @enderror
+                                <div id="avatar-preview" class="mt-2">
+                                    @if ($user->avatar)
+                                        <img src="{{ asset('storage/' . $user->avatar) }}" alt="Current Avatar"
+                                            class="img-thumbnail" style="max-width: 100px;">
+                                    @endif
+                                </div>
+                            </div>
                             <div class="mb-3">
                                 <label for="FullName" class="form-label">Họ và Tên</label>
                                 <input type="text" class="form-control" id="FullName" name="username"
@@ -236,7 +284,8 @@
                             </div>
                             <div class="mb-3">
                                 <label for="AboutMe" class="form-label">Mô tả</label>
-                                <textarea class="form-control" id="AboutMe" style="height: 125px;" placeholder="Nhập mô tả bản thân (Nếu có)."></textarea>
+                                <textarea class="form-control" name="about_me" id="AboutMe" style="height: 125px;"
+                                    placeholder="Nhập mô tả bản thân (Nếu có)."></textarea>
                             </div>
                             <button type="submit" class="btn btn-primary">Lưu</button>
                         </form>
@@ -248,7 +297,29 @@
     </div>
 
 @endsection
+{{-- Preview trước avatar nếu chưa có avatar --}}
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const avatarInput = document.getElementById('avatar');
+        const avatarPreview = document.getElementById('avatar-preview');
 
+        avatarInput.addEventListener('change', function(e) {
+            const file = e.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+
+                reader.onload = function(e) {
+                    avatarPreview.innerHTML =
+                        `<img src="${e.target.result}" alt="Avatar Preview" class="img-thumbnail" style="max-width: 100px;">`;
+                }
+
+                reader.readAsDataURL(file);
+            } else {
+                avatarPreview.innerHTML = '';
+            }
+        });
+    });
+</script>
 @push('styles')
     <!-- DataTables CSS -->
     <link rel="stylesheet" href="https://cdn.datatables.net/1.11.4/css/dataTables.bootstrap5.min.css">
@@ -263,7 +334,6 @@
         integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
 @endpush
-
 @push('scripts')
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
         integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous">
