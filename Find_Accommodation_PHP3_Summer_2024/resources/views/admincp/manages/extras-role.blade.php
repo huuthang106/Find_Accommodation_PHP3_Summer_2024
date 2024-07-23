@@ -13,7 +13,7 @@
                     <div class="d-flex justify-content-between align-items-center header-title">
                         <h4 class="mb-3">Danh sách Role</h4>
                         <div class="btn-group">
-                            <button type="button" class="btn btn-danger me-2">Xóa tất cả</button>
+                            {{-- <button type="button" class="btn btn-danger me-2">Xóa tất cả</button> --}}
                             <button type="button" class="btn btn-primary mx-2">Thêm Role</button>
                         </div>
                     </div>
@@ -38,7 +38,7 @@
                             </thead>
                             <tbody>
                                 @foreach ($role as $item)
-                                    @if ($item->role != 0) <!-- Hiển thị những người dùng không có role 0 -->
+                                    @if ($item->role != 5) <!-- Hiển thị những người dùng không có role 0 -->
                                         <tr>
                                             <td><input type="checkbox"></td>
                                             <td>{{ $item->username }}</td>
@@ -60,6 +60,7 @@
                                     @endif
                                 @endforeach
                             </tbody>
+                            
                         </table>
                     </div>
                 </div>

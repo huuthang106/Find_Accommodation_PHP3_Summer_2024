@@ -29,30 +29,18 @@ class RoleAdminController extends Controller
     
     public function deleteRole($id)
     {
-        // Tìm bản ghi theo ID
-        $user = User::findOrFail($id);
+        $user = auth()->user();
+        $roleToDelete = user::findOrFail($id);
     
-        // Lấy ID của người dùng hiện tại (người dùng đang đăng nhập)
-        $currentUserId = auth()->id();
-        
-        // Kiểm tra nếu người dùng muốn xóa tài khoản của chính mình
-        if ($user->id === $currentUserId) {
-            return redirect()->route('show-role')->with('error', 'Bạn không thể xóa chính mình.');
+        // Chỉ cho phép admin xóa người khác và không tự xóa chính mình
+        if ($user->role == 0 && $user->id != $roleToDelete->id) {
+            $roleToDelete->role = 5; // Cập nhật role thành 5
+            $roleToDelete->save();
+    
+            return redirect()->route('quan-li-role')->with('success', 'Người dùng đã được ẩn.');
         }
     
-        // Kiểm tra role của người dùng hiện tại
-        $currentUserRole = User::findOrFail($currentUserId)->role;
-    
-        if ($currentUserRole !== 0) {
-            return redirect()->route('show-role')->with('error', 'Chỉ người dùng có role 0 mới có thể xóa người khác.');
-        }
-    
-        // Cập nhật trạng thái thành 5 (ẩn) nếu người dùng có role khác 0 và không phải chính mình
-        $user->role = 5;
-        $user->save();
-    
-        // Quay lại trang quản lý role với thông báo thành công
-        return redirect()->route('show-role')->with('success', 'Người dùng đã được ẩn.');
+        return redirect()->route('quan-li-role')->with('error', 'Bạn không có quyền xóa người dùng này.');
     }
     
     
