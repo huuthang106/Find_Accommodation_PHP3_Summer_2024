@@ -251,6 +251,46 @@ class UserController extends Controller
         });
         return view('page.users.profile-us', compact('user', 'rooms'));
     }
+    public function show_update_password()
+    {
+        return view('page.users.reset-password-us');
+    }
+    public function check_update_password(Request $request)
+    {
+        // Bắt lỗi
+        $request->validate([
+            'old_password' => 'required',
+            'password' => 'required|string|confirmed',
+        ], [
+            'old_password.required' => 'Vui lòng nhập mật khẩu cũ',
+            'password.required' => 'Vui lòng nhập mật khẩu mới',
+            'password.confirmed' => 'Mật khẩu nhập lại không khớp',
+        ]);
+
+        // Nhận người dùng được xác thực hiện tại
+        $user = Auth::user();
+
+        // Đảm bảo $user là một instance của model User
+        // Kiểm tra xem người dùng đã xác thực có phải là một instance hợp lệ của model User hay không
+        if (!$user instanceof User) {
+            return back()->withErrors(['user' => 'Người dùng không hợp lệ']);
+        }
+
+        // Kiểm tra xem mật khẩu cũ có khớp không
+        if (!Hash::check($request->old_password, $user->password)) {
+            return back()->withErrors(['old_password' => 'Mật khẩu cũ không chính xác']);
+        }
+
+        // Cập nhật mật khẩu người dùng
+        $user->password = Hash::make($request->password);
+        $user->save();
+
+        // Trả về phẩn hồi khi thành công
+        return back()->with([
+            'showAlert' => true,
+            'success' => 'Mật khẩu đã được thay đổi thành công'
+        ]);
+    }
     /**
      * Show the form for editing the specified resource.
      */
@@ -276,8 +316,6 @@ class UserController extends Controller
         $validatedData = $request->validate([
             'username' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users,email,' . $user->id,
-            'password' => 'nullable|min:6|max:15',
-            'password_confirmation' => 'nullable|same:password',
             'avatar' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
             'phone' => 'nullable|string|max:20',
             'address' => 'nullable|string|max:255',
@@ -287,9 +325,6 @@ class UserController extends Controller
             'email.required' => 'Vui lòng nhập địa chỉ email.',
             'email.email' => 'Địa chỉ email không hợp lệ.',
             'email.unique' => 'Địa chỉ email đã tồn tại trong hệ thống.',
-            'password.min' => 'Mật khẩu phải có ít nhất 6 ký tự.',
-            'password.max' => 'Mật khẩu không được vượt quá 15 ký tự.',
-            'password_confirmation.same' => 'Mật khẩu xác nhận không khớp với mật khẩu đã nhập.',
             'avatar.image' => 'File phải là hình ảnh.',
             'avatar.mimes' => 'Hình ảnh phải có định dạng: jpeg, png, jpg, gif.',
             'avatar.max' => 'Kích thước hình ảnh không được vượt quá 2MB.',
@@ -310,14 +345,6 @@ class UserController extends Controller
 
             // Lưu đường dẫn tương đối của ảnh vào dữ liệu đã xác thực
             $validatedData['avatar'] = $fileName;
-        }
-
-
-        // Xử lý password nếu được cung cấp
-        if (isset($validatedData['password'])) {
-            $validatedData['password'] = Hash::make($validatedData['password']);
-        } else {
-            unset($validatedData['password']);
         }
 
         // Cập nhật thông tin người dùng
@@ -352,7 +379,7 @@ class UserController extends Controller
             $room->category->name = Str::limit($room->category->name, 10);
             return $room;
         });
-        return view('page.users.proflie-us-other', compact('users','rooms'));
+        return view('page.users.proflie-us-other', compact('users', 'rooms'));
     }
 
     public function showAdmin()

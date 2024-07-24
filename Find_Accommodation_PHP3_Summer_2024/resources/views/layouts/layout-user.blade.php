@@ -6,6 +6,8 @@
     <!-- Required meta tags -->
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    {{-- Thư viện ShowAlert --}}
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
     @stack('styles')
 
 </head>
@@ -54,11 +56,11 @@
                                         <li class="nav-item pe-4">
                                             <a class="nav-link" href="#">Diễn đàn</a>
                                         </li>
-                                        @if(auth()->check() && in_array(auth()->user()->role, [0, 2, 3]))
-                                        <li class="nav-item pe-4">
-                                            <a class="nav-link" href="{{ route('posting-room') }}">Đăng bài</a>
-                                        </li>
-                                    @endif
+                                        @if (auth()->check() && in_array(auth()->user()->role, [0, 2, 3]))
+                                            <li class="nav-item pe-4">
+                                                <a class="nav-link" href="{{ route('posting-room') }}">Đăng bài</a>
+                                            </li>
+                                        @endif
                                     </ul>
 
                                     {{-- Khi chưa login sẽ hiển thị Đăng Ký/ Đăng nhập, khi login xong sẽ hiển thị Tên login --}}
@@ -81,6 +83,12 @@
                                                         class="dropdown-item notify-item">
                                                         <i class="mdi mdi-account-outline"></i>
                                                         <span>Hồ sơ</span>
+                                                    </a>
+                                                    <!-- item -->
+                                                    <a href="{{ route('pages-update-password') }}"
+                                                        class="dropdown-item notify-item">
+                                                        <i class="mdi mdi-account-outline"></i>
+                                                        <span>Đổi mật khẩu</span>
                                                     </a>
                                                     <div class="dropdown-divider"></div>
                                                     <!-- item -->

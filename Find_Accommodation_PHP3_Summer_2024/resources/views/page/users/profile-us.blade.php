@@ -136,10 +136,10 @@
                                                         <th>Tiêu đề</th>
                                                         <th>Giá</th>
                                                         <th>Số điện thoại</th>
-                                                        
+
                                                         <th>Loại phòng</th>
                                                         <th>Số lượng</th>
-                                                      
+
                                                         <th>Xem chi tiết</th>
                                                         <th>Chỉnh sửa</th>
                                                         <th>Xóa</th>
@@ -153,10 +153,10 @@
                                                             <td>{{ $item->title }}</td>
                                                             <td>{{ $item->price }}</td>
                                                             <td>{{ $item->phone }}</td>
-                                                         
+
                                                             <td>{{ $item->category->name }}</td>
                                                             <td>{{ $item->quantity }}</td>
-                                                        
+
                                                             <td><button class="btn btn-primary">Xem chi tiết</button>
                                                             </td>
                                                             <td><a href="{{ route('edit-posting', $item->id) }}"
@@ -240,7 +240,7 @@
                                             <small class="text-danger text-blod">{{ $message }}</small>
                                         @enderror
                                     </div>
-                                    <div class="mb-3">
+                                    {{-- <div class="mb-3">
                                         <label for="Password" class="form-label">Mật khẩu</label>
                                         <input type="password" class="form-control" id="Password" name="passsword"
                                             placeholder="6 - 15 Ký tự">
@@ -252,7 +252,7 @@
                                         @error('password_confirmation')
                                             <small class="text-danger text-blod">{{ $message }}</small>
                                         @enderror
-                                    </div>
+                                    </div> --}}
                                     <div class="mb-3">
                                         <label for="AboutMe" class="form-label">Mô tả</label>
                                         <textarea class="form-control" name="about_me" id="AboutMe" style="height: 125px;"
@@ -271,7 +271,6 @@
         {{-- Preview trước avatar nếu chưa có avatar --}}
 
         @push('styles')
-     
             <!-- DataTables CSS -->
             <link rel="stylesheet" href="https://cdn.datatables.net/1.11.4/css/dataTables.bootstrap5.min.css">
             <!-- Bootstrap CSS v5.2.1 -->
