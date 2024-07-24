@@ -130,8 +130,11 @@ Route::post('/logout', [IndexController::class, 'logout'])->name('logout');
 Route::get('/admin', [IndexAdminController::class, 'admin'])->name('admin');
 
 Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
+    require base_path('routes/admin/home-admin.php');
+    require base_path('routes/admin/notification-admin.php');
+    require base_path('routes/admin/user-admin.php');
     // Route::get('/home', [HomeAdminController::class, 'index'])->name('trang-quan-ly');
-    Route::get('/trang-quan-ly', [HomeAdminController::class, 'homeAdmin'])->name('trang-quan-ly');
+    
 
     Route::get('/tables-advanced', [NotificationAdminController::class, 'tables_advanced'])->name('tables-advanced');
 
