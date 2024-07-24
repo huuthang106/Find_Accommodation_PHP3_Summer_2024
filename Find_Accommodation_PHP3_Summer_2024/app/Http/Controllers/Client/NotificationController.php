@@ -85,4 +85,15 @@ class NotificationController extends Controller
         ]);
 
     }
+    public function notifyNewComment($userId, $commentId)
+    {
+        Notification::create([
+            'type' => 'Thông báo bình luận mới',
+            'data' => 'Bạn vừa nhận được một bình luận mới.',
+            'message' => 'Bạn vừa nhận được một bình luận mới.',
+            'user_id' => $userId,
+            'comment_id' => $commentId,
+            'status' => 2,
+        ]);
+    }
 }

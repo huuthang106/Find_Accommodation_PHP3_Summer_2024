@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Comment;
 use App\Models\Room;
+use App\Http\Controllers\Client\NotificationController;
 
 class CommentController extends Controller
 {
@@ -40,6 +41,10 @@ class CommentController extends Controller
         $comment->room_id = $request->room_id;
         $comment->parent_id = $request->parent_id;
         $comment->save();
+
+        // Tạo thông báo cho bình luận mới
+        $notificationController = new NotificationController();
+        $notificationController->notifyNewComment(auth()->id(), $comment->id);
 
         return response()->json([
             'success' => true,
