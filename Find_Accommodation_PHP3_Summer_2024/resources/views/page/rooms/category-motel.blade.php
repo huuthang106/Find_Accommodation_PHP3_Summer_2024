@@ -60,12 +60,11 @@
                 <li class="breadcrumb-item active" aria-current="page">Phòng trọ</li>
             </ol>
         </nav>
-        <h2 class="fw-bold">NHÀ NGUYÊN CĂN, CHUNG CƯ</h2>
+        <h2 class="fw-bold">{{$category->name}}</h2>
         <div class="container p-0">
             <div class="row">
                 <div class="col-lg-9 p-0 rounded-5">
                     <div class="p-3 mb-2 bg-light text-dark">
-
                         <div class="d-flex justify-content-between">
                             <p class="pt-2 text-bold fs-5 fw-bold">Tổng 1396 kết quả</p>
                             <div class="p-0 d-flex justify-content-evenly">
@@ -86,140 +85,63 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <th>
-                                        <div class="card mb-3
-                            bg-light text-dark">
-                                            <div class="div">
-                                                <div class="row g-0">
-                                                    <div class="col-md-4">
-                                                        <a href="#"><img
-                                                                src="https://tromoi.com/uploads/members/hiephoang/thang%208/17_08/nhung-dieu-bat-buoc-phai-nho-khi-tim-phong-01.jpg"
-                                                                class="img-fluid rounded-2" alt=""></a>
-                                                    </div>
-                                                    <div class="col-md-8">
-                                                        <div class="card-body">
-                                                            <a href="#" class="text-decoration-none custom-link">
-                                                                <p class="card-title fs-6 fw-bold">Cho thuê phòng để ở và
-                                                                    kết hợp bán
-                                                                    hàng
-                                                                    Online
-                                                                    (Nhà
-                                                                    gần cầu
-                                                                    Công
-                                                                    Lý)</p>
-                                                            </a>
-                                                            <p class="card-text fw-bold" style="color: #ff5c00">Liên hệ lấy
-                                                                giá</p>
-                                                            <div class="container p-0">
-                                                                <a href="#"><button type="button"
-                                                                        class="p-1 btn btn-secondary btn-sm">Phòng
-                                                                        trọ</button></a>
-                                                                <button type="button"
-                                                                    class="p-1 btn btn-secondary btn-sm">16m²</button>
+                                @if ($rooms->isEmpty())
+                                    <tr>
+                                        <td colspan="10" class="text-center">Không có dữ liệu</td>
+                                    </tr>
+                                @else
+                                    @foreach ($rooms as $room)
+                                        <tr>
+                                            
+                                            <th>
+                                               
+                                                <div class="card mb-3 bg-light text-dark">
+                                                    <a href="{{route('get-room',['id'=> $room->id])}}" class="text-decoration-none">
+                                                    <div class="div">
+                                                        <div class="row g-0">
+                                                            <div class="col-md-4">
+                                                             
+                                                                    <img src="https://tromoi.com/uploads/members/hiephoang/thang%208/17_08/nhung-dieu-bat-buoc-phai-nho-khi-tim-phong-01.jpg"
+                                                                        class="img-fluid rounded-2" alt="">
+                                                            
                                                             </div>
-                                                            <p class="card-text pt-3"><small class="text-muted"><i
-                                                                        class="fa-solid fa-location-dot"></i>
-                                                                    108/64A1 Trần Quang Diệu, P. 14, Q. 3, Hồ Chí
-                                                                    Minh</small></p>
+                                                            <div class="col-md-8">
+                                                                <div class="card-body">
+                                                                   
+                                                                   
+                                                                        <p class="card-title fs-6 fw-bold">
+                                                                            {{ $room->title }}</p>
+                                                                   
+                                                                    <p class="card-text fw-bold" style="color: #ff5c00">Liên
+                                                                        hệ lấy giá</p>
+                                                                    <div class="container p-0">
+                                                             
+                                                                            <button type="button"
+                                                                                class="p-1 btn btn-secondary btn-sm">
+                                                                                {{ $room->category->name }}
+                                                                            </button>
+                                                                  
+                                                                    </div>
+                                                                    <p class="card-text pt-3">
+                                                                        <small class="text-muted">
+                                                                            <i class="fa-solid fa-location-dot"></i>
+                                                                            {{ $room->address }}
+                                                                        </small>
+                                                                    </p>
+                                                                </div>
+                                                            </div>
                                                         </div>
                                                     </div>
+                                                </a>
                                                 </div>
-                                            </div>
-                                        </div>
-                                    </th>
-                                </tr>
-
-                                <tr>
-                                    <th>
-                                        <div class="card mb-3
-                            bg-light text-dark">
-                                            <div class="div">
-                                                <div class="row g-0">
-                                                    <div class="col-md-4">
-                                                        <a href="#"><img
-                                                                src="https://tromoi.com/uploads/members/hiephoang/thang%208/17_08/nhung-dieu-bat-buoc-phai-nho-khi-tim-phong-01.jpg"
-                                                                class="img-fluid rounded-2" alt=""></a>
-                                                    </div>
-                                                    <div class="col-md-8">
-                                                        <div class="card-body">
-                                                            <a href="#" class="text-decoration-none custom-link">
-                                                                <p class="card-title fs-6 fw-bold">Cho thuê phòng để ở và
-                                                                    kết hợp bán
-                                                                    hàng
-                                                                    Online
-                                                                    (Nhà
-                                                                    gần cầu
-                                                                    Công
-                                                                    Lý)</p>
-                                                            </a>
-                                                            <p class="card-text fw-bold" style="color: #ff5c00">Liên hệ lấy
-                                                                giá</p>
-                                                            <div class="container p-0">
-                                                                <a href="#"><button type="button"
-                                                                        class="p-1 btn btn-secondary btn-sm">Phòng
-                                                                        trọ</button></a>
-                                                                <button type="button"
-                                                                    class="p-1 btn btn-secondary btn-sm">16m²</button>
-                                                            </div>
-                                                            <p class="card-text pt-3"><small class="text-muted"><i
-                                                                        class="fa-solid fa-location-dot"></i>
-                                                                    108/64A1 Trần Quang Diệu, P. 14, Q. 3, Hồ Chí
-                                                                    Minh</small></p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </th>
-                                </tr>
-
-                                <tr>
-                                    <th>
-                                        <div class="card mb-3
-                            bg-light text-dark">
-                                            <div class="div">
-                                                <div class="row g-0">
-                                                    <div class="col-md-4">
-                                                        <a href="#"><img
-                                                                src="https://tromoi.com/uploads/members/hiephoang/thang%208/17_08/nhung-dieu-bat-buoc-phai-nho-khi-tim-phong-01.jpg"
-                                                                class="img-fluid rounded-2" alt=""></a>
-                                                    </div>
-                                                    <div class="col-md-8">
-                                                        <div class="card-body">
-                                                            <a href="#" class="text-decoration-none custom-link">
-                                                                <p class="card-title fs-6 fw-bold">Cho thuê phòng để ở và
-                                                                    kết hợp bán
-                                                                    hàng
-                                                                    Online
-                                                                    (Nhà
-                                                                    gần cầu
-                                                                    Công
-                                                                    Lý)</p>
-                                                            </a>
-                                                            <p class="card-text fw-bold" style="color: #ff5c00">Liên hệ lấy
-                                                                giá</p>
-                                                            <div class="container p-0">
-                                                                <a href="#"><button type="button"
-                                                                        class="p-1 btn btn-secondary btn-sm">Phòng
-                                                                        trọ</button></a>
-                                                                <button type="button"
-                                                                    class="p-1 btn btn-secondary btn-sm">16m²</button>
-                                                            </div>
-                                                            <p class="card-text pt-3"><small class="text-muted"><i
-                                                                        class="fa-solid fa-location-dot"></i>
-                                                                    108/64A1 Trần Quang Diệu, P. 14, Q. 3, Hồ Chí
-                                                                    Minh</small></p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </th>
-                                </tr>
+                                          
+                                            </th>
+                                           
+                                        </tr>
+                                    @endforeach
+                                @endif
                             </tbody>
                         </table>
-
                     </div>
                 </div>
 

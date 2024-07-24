@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Client;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Image;
 
 class ImageController extends Controller
 {
@@ -26,9 +27,28 @@ class ImageController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(Request $request,$id)
     {
-        //
+
+        //xử lý hình ảnh Nguyen Huu Thang
+        $request->validate([
+            'images.*' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+        ]);
+
+        $roomId =$id; // Thay thế bằng room_id thực tế
+
+        if ($request->hasfile('images')) {
+            foreach ($request->file('images') as $file) {
+                $name = time() . '_' . $file->getClientOriginalName();
+                $file->move(public_path('assets/images'), $name);
+                Image::create([
+                    'room_id' => $roomId,
+                    'image' => $name,
+                ]);
+            }
+        }
+
+        return back()->with('success', 'Hình ảnh được tải lên thành công');
     }
 
     /**

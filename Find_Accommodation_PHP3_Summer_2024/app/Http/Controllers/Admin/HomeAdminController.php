@@ -29,13 +29,20 @@ class HomeAdminController extends Controller
         return view('admincp.extras-contacts', compact('notificationCount', 'unreadNotifications'));
     }
     public function homeAdmin()
-    {
-       
-        $user = User::take(6)->get();
-        // Truyền dữ liệu tới view
-        return view('admincp.manages.home', compact('user'));
-        // return view('admincp.home');
-    }
+{
+    // Truy vấn lấy 6 người dùng có nhiều bài đăng nhất
+    $users = User::select('users.*')
+        ->leftJoin('rooms', 'users.id', '=', 'rooms.user_id')
+        ->selectRaw('COUNT(rooms.id) as post_count')
+        ->groupBy('users.id')
+        ->orderBy('post_count', 'desc')
+        ->take(6)
+        ->get();
+
+    // Truyền dữ liệu tới view
+    return view('admincp.manages.home', compact('users'));
+}
+
 
     /**
      * Show the form for creating a new resource.

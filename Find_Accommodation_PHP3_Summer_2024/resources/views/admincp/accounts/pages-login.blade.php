@@ -20,10 +20,10 @@
                                     <label for="emailaddress">Email</label>
                                     <input class="form-control" type="email" name="email" id="emailaddress"
                                         required="" placeholder="example@gmail.com">
-                                   
+
                                 </div>
                                 <div class="form-group">
-                                    <a href="page-recoverpw.html" class="text-muted float-right">Quên mật khẩu?</a>
+                                    <a href="{{route('pages-forget-password')}}" class="text-muted float-right">Quên mật khẩu?</a>
                                     <label for="password">Mật khẩu</label>
                                     <input class="form-control" type="password" name="password" required=""
                                         id="password" placeholder="Nhập mật khẩu">
@@ -31,8 +31,8 @@
                                         <small class="text-danger text-bold">{{ $message }}</small>
                                     @enderror
                                     @error('email')
-                                    <small class="text-danger text-blod">{{ $message }}</small>
-                                @enderror   
+                                        <small class="text-danger text-blod">{{ $message }}</small>
+                                    @enderror
                                 </div>
 
                                 <div class="form-group mb-4 pb-3">
@@ -49,13 +49,13 @@
                         <!-- end card-body -->
                     </div>
                     <!-- end card -->
-                    <div class="row mt-4">
+                    {{-- <div class="row mt-4">
                         <div class="col-sm-12 text-center">
                             <p class="text-muted mb-0">Bạn chưa có tài khoản? <a href="{{ route('pages-register-admin') }}"
                                     class="text-dark ml-1"><b>ĐĂNG KÝ</b></a>
                             </p>
                         </div>
-                    </div>
+                    </div> --}}
                 </div>
                 <!-- end col -->
             </div>

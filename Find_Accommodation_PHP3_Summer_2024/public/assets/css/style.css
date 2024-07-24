@@ -1,6 +1,6 @@
 .logo img {
     width: 85%;
-  
+
 }
 
 .headerTop {
@@ -38,9 +38,9 @@
 }
 
 .searchHeader {
-  
-    bottom: 110px;
-    margin-left: 100px;
+position: relative;
+  margin-top: -3%;
+
 }
 
 .tab-content {
@@ -86,7 +86,7 @@
 .main {
     background-color: rgb(237, 237, 237);
     border-radius: 7px;
-   
+
     /* margin-left: 14px; */
     padding: 1%;
 }
@@ -248,7 +248,8 @@
     height: 150px;
     border-radius: 500px;
 }
-.update-img{
+
+.update-img {
     width: 100%;
 }
 
@@ -324,3 +325,20 @@
     color: white;
     font-size: 14px;
 }
+
+/* Star CSS Avatar User */
+.avatar-img {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    /* Đảm bảo rằng hình ảnh luôn vừa khít trong khung */
+}
+/* nguyen huu thang */
+.nav-tabs{
+    position: relative;
+
+   margin-top: 4px;
+   --bs-nav-tabs-border-width: none;
+}
+
+/* End CSS Avatar User */

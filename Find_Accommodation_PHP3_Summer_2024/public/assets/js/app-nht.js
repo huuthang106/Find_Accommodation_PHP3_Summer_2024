@@ -15,9 +15,25 @@ document.getElementById('add-file').addEventListener('click', function () {
     newDiv.className = 'mb-3';
     newDiv.innerHTML = `
             <label for="img-room-${numberOfFileInputs + 1}" class="form-label">Hình ảnh</label>
-            <input type="file" class="form-control" id="img-room-${numberOfFileInputs + 1}" placeholder="6 - 15 Ký tự">
+             <input type="file" class="form-control" id="img-room-${numberOfFileInputs + 1}" name="images[]">
         `;
 
     // Thêm div mới vào container
     fileInputsContainer.appendChild(newDiv);
 });
+function previewImages(event, previewId) {
+    const files = event.target.files;
+    const preview = document.getElementById(previewId);
+    preview.innerHTML = ''; // Xóa nội dung cũ
+
+    for (let i = 0; i < files.length; i++) {
+        const file = files[i];
+        const reader = new FileReader();
+        reader.onload = function(e) {
+            const img = document.createElement('img');
+            img.src = e.target.result;
+            preview.appendChild(img);
+        }
+        reader.readAsDataURL(file);
+    }
+}

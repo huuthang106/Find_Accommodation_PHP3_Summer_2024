@@ -5,7 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Acreage extends Model
+class Areas extends Model
 {
     use HasFactory;
+    public function rooms()
+    {
+        return $this->hasMany(Room::class);
+    }
 }

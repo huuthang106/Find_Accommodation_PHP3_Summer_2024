@@ -22,7 +22,7 @@ return new class extends Migration {
             $table->string('latitude')->nullable();
             $table->integer('view')->default(0);
             $table->boolean('status')->default(1);
-            $table->foreignId('acreage_id')->nullable()->constrained('acreages')->onDelete('set null'); // Khóa ngoại với hành động onDelete set null cho acreages và cho phép null
+            $table->foreignId('area_id')->nullable()->constrained('areas')->onDelete('set null'); // Khóa ngoại với hành động onDelete set null cho acreages và cho phép null
             $table->foreignId('user_id')->constrained('users')->onDelete('cascade'); // Khóa ngoại với hành động on delete cascade
             $table->foreignId('price_id')->nullable()->constrained('prices')->onDelete('set null');
             $table->foreignId('category_id')->nullable()->constrained('categories')->onDelete('set null');

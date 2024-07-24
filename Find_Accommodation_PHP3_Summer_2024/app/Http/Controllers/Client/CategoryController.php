@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Client;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Category;
+use App\Models\Room;
 
 class CategoryController extends Controller
 {
@@ -16,7 +17,7 @@ class CategoryController extends Controller
         // Cái này là admin 
         // $category = Category::all();
         // dd($category);
-     
+
 
         // Cái này là user
         return view('page.rooms.category-motel');
@@ -69,4 +70,21 @@ class CategoryController extends Controller
     {
         //
     }
+
+    //Lay id cua category[Nguyen Thai Toan]
+    public function getIDCategory(string $id)
+    {
+        // Tìm danh sách rooms có category_id khớp với id đã cho
+        $rooms = Room::where('category_id', $id)->with('category')->get();
+        $category = Category::find($id);
+        // Trả về view với dữ liệu rooms
+        return view('page.rooms.category-motel', compact('rooms','category'));
+    }
+
+
+
+
+
+
+
 }

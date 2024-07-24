@@ -80,7 +80,7 @@
 
                             <!-- item-->
                             @foreach ($unreadNotifications as $item)
-                                <a href="{{ route('pages-notification-detail',$item->id)}}"
+                                <a href="{{ route('pages-notification-detail', $item->id) }}"
                                     class="dropdown-item notify-item">
                                     <div class="notify-icon bg-success"><i class="mdi mdi-comment-account-outline"></i>
                                     </div>
@@ -284,9 +284,9 @@
                         </a>
                     </li>
                     <li>
-                        <a href="{{ route('pages-notification') }}">
-                            <i class="mdi mdi-bell noti-icon"></i>
-                            <span> Thông báo </span>
+                        <a href="{{ route('pages-report') }}">
+                            <i class="fas fa-flag"></i>
+                            <span> Bảng Báo Cáo </span>
                         </a>
                     </li>
                     <li>
@@ -326,7 +326,31 @@
                                     <span>Quản lí chi tiết gói</span>
                                 </a>
                             </li>
+                            <li>
+                                <a href="{{ route('quan-li-blog') }}">
+                                    <i class="fas fa-money-check"></i>
+                                    <span>Quản lí blog</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{ route('quan-li-role') }}">
+                                    <i class="fas fa-money-check"></i>
+                                    <span>Quản lí role</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{ route('manages-user') }}">
+                                    <i class="fas fa-user"></i>
+                                    <span>Quản lí người dùng</span>
+                                </a>
+                            </li>
                         </ul>
+                    </li>
+                    <li>
+                        <a href="{{ route('pages-register-admin') }}">
+                            <i class="fas fa-address-card"></i>
+                            <span> Đăng ký thành viên </span>
+                        </a>
                     </li>
 
                     {{-- <li>
@@ -339,7 +363,7 @@
                             <li><a href="{{ route('tables-advanced') }}">Advanced Tables</a></li>
                         </ul>
                     </li> --}}
-                 
+
 
 
 
@@ -371,7 +395,7 @@
 
 
     <!-- Right Sidebar -->
-   
+
     <!-- /Right-bar -->
 
     <!-- Right bar overlay-->

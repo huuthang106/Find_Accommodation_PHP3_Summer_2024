@@ -7,7 +7,7 @@
                 <div class="card-header text-center">
                     <h5 class="card-title bg">Đăng bài</h5>
                 </div>
-                <form action="{{ route('show-posting-room') }}" method="POST">
+                <form action="{{ route('show-posting-room') }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="row">
                         <div class="tab-pane col-lg-6" id="">
@@ -74,6 +74,17 @@
                                         @enderror
                                     </div>
                                     <div class="mb-3">
+                                        <label for="area" class="form-label">Khu vực</label>
+                                        <select name="area_id" id="area_id" class="form-control">
+                                            @foreach ($areas as $item)
+                                                <option value="{{ $item->id }}">{{ $item->name }}</option>
+                                            @endforeach
+                                        </select>
+                                        @error('Category_id')
+                                            <div class="alert alert-danger">{{ $message }}</div>
+                                        @enderror
+                                    </div>
+                                    <div class="mb-3">
                                         <label for="quantity" class="form-label">Số lượng phòng trống</label>
                                         <input type="number" class="form-control" id="quantity" name="quantity"
                                             value="{{ old('quantity') }}">
@@ -84,7 +95,7 @@
                                     <div id="file-inputs">
                                         <div class="mb-3">
                                             <label for="img-room-1" class="form-label">Hình ảnh</label>
-                                            <input type="file" class="form-control" id="img-room-1" name="img_room_1">
+                                            <input type="file" class="form-control" id="img-room-1" name="images[]">
                                         </div>
                                     </div>
                                     <div class="mb-3">

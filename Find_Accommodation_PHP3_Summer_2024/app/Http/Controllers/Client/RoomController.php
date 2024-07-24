@@ -7,7 +7,10 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use App\Models\Room;
 use App\Models\Category;
+use App\Models\Areas;
+use App\Http\Controllers\Client\ImageController;
 use Illuminate\Support\Facades\Auth;
+use App\Htt\Controller\client\NofiController;
 
 class RoomController extends Controller
 {
@@ -28,6 +31,15 @@ class RoomController extends Controller
         });
         return view('index', compact('rooms'));
     }
+
+public function reportRoom($roomId)
+{
+    $room = Room::findOrFail($roomId);
+    $room->status = 1;
+    $room->save();
+
+    return redirect()->back()->with('success', 'Room status updated successfully.');
+}
 
     /**
      * Show the form for creating a new resource.
@@ -81,17 +93,18 @@ class RoomController extends Controller
         // $room = Room::where('id', $id)->first();;
         // return view('page.rooms.detail-room', compact('room'));
         $room = Room::where('id', $id)->first();
-        
+
         return redirect()->route('comments.index', ['id' => $id]);
     }
     public function page_posting()
     {
         $categories = Category::where('status', 1)->get();
+        $areas = Areas::where('status', 1)->get();
         $user = auth()->user();
-        return view('page.rooms.posting-page', compact('categories', 'user'));
+        return view('page.rooms.posting-page', compact('categories', 'user', 'areas'));
     }
 
-    public function check_post_room()
+    public function check_post_room(Request $request)
     {
         if (!auth()->check()) {
             return redirect()->route('login')->with('error', 'Bạn phải đăng nhập để đăng bài.');
@@ -111,7 +124,9 @@ class RoomController extends Controller
             'Phone' => 'required|regex:/^[0-9]{6,15}$/',
             'Address' => 'required',
             'Category_id' => 'required',
+            'area_id' => 'required', // Thêm dòng này để kiểm tra area_id
             'quantity' => 'required|integer|min:0',
+            'images.*' => 'image|mimes:jpeg,png,jpg,gif|max:2048', // Xác thực từng tệp hình ảnh
         ], [
             'Title.required' => 'Vui lòng nhập tiêu đề bài đăng.',
             'Description.required' => 'Vui lòng nhập mô tả.',
@@ -121,30 +136,67 @@ class RoomController extends Controller
             'Phone.regex' => 'Số điện thoại phải có từ 6 đến 15 chữ số.',
             'Address.required' => 'Vui lòng nhập địa chỉ.',
             'Category_id.required' => 'Vui lòng chọn loại.',
+            'area_id.required' => 'Vui lòng chọn khu vực.', // Thêm dòng này để thông báo lỗi cho area_id
             'quantity.required' => 'Vui lòng nhập số lượng phòng trống.',
             'quantity.integer' => 'Số lượng phòng trống phải là số nguyên.',
             'quantity.min' => 'Số lượng phòng trống phải lớn hơn hoặc bằng 0.',
+            'images.*.required' => 'Không bỏ trống.',
+            'images.*.image' => 'Tất cả các tệp phải là hình ảnh.',
+            'images.*.mimes' => 'Hình ảnh phải có định dạng jpeg, png, jpg, hoặc gif.',
+            'images.*.max' => 'Kích thước hình ảnh không được vượt quá 2048 kilobytes (2MB).',
         ]);
 
-        $data = request()->only('Title', 'Description', 'Price', 'Phone', 'Address', 'Category_id', 'quantity', 'user_id');
+        $data = $request->only('Title', 'Description', 'Price', 'Phone', 'Address', 'Category_id', 'quantity', 'area_id', 'user_id');
 
-        Room::create($data);
-        return redirect()->route('home');
+        // Tạo phòng nguyen huu thang xử lý hình ảnh
+        $room = Room::create($data);
+
+        // Kiểm tra xem có hình ảnh nào không
+        if ($request->hasFile('images') && count($request->file('images')) > 0) {
+            // Lưu hình ảnh
+            $imageController = new ImageController();
+            $imageController->store($request, $room->id);
+            $notificationController = new NotificationController;
+            $notificationController->notifiAddRoom($user_id,$room->id);
+            return redirect()->route('profileus')->with('success', 'Đăng bài thành công.');
+        } else {
+            // Xóa phòng nếu không có hình ảnh
+            $room->delete();
+
+            return redirect()->back()->with('error', 'Đăng bài thất bại');
+        }
+        
     }
 
-        public function page_edit_posting($id){
-        
-         if(Auth::check()){
-            $user = Auth::user();
-            $room = Room::find($id);  
-            
-            $categories = Category::where('status', 1)->get();  
-                return view('page.rooms.edit-posting-room',compact('categories', 'room','user'));
-         }else{
-            return redirect()->route('login')->with('error', 'Bạn phải đăng nhập để sửa bài đăng.');
-         }
+    public function page_edit_posting($id)
+    {
 
+        if (Auth::check()) {
+            $user = Auth::user();
+            $room = Room::find($id);
+
+            $categories = Category::where('status', 1)->get();
+            return view('page.rooms.edit-posting-room', compact('categories', 'room', 'user'));
+        } else {
+            return redirect()->route('login')->with('error', 'Bạn phải đăng nhập để sửa bài đăng.');
         }
+    }
+    //Phương thức xóa chuyển status==7 [Nguyen Thai Toan]
+    public function delete($id)
+    {
+        // Tìm room theo id
+        $room = Room::find($id);
+
+        // Kiểm tra nếu room không tồn tại
+        if (!$room) {
+            return abort(404, 'Room not found');
+        }
+
+        // Cập nhật status thành 7 để xóa mềm
+        $room->status = 7;
+        $room->save();
+        return redirect()->route('profileus')->with('success', 'Xóa thành công');
+    }
 
 
 }

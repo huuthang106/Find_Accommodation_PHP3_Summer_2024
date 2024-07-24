@@ -32,8 +32,8 @@
                                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                                     <ul class="navbar-nav me-auto mb-2 mb-lg-0 fw-bold">
                                         <li class="nav-item pe-4">
-                                            <a class="nav-link" aria-current="page"
-                                                href="{{ route('home') }}">Trang chủ</a>
+                                            <a class="nav-link" aria-current="page" href="{{ route('home') }}">Trang
+                                                chủ</a>
                                         </li>
                                         <li class="nav-item dropdown">
                                             <a class="nav-link dropdown-toggle" href="#" role="button"
@@ -41,13 +41,12 @@
                                                 Loại trọ
                                             </a>
                                             <ul class="dropdown-menu">
-                                            @foreach ($categories as $category)
-                                            
+                                                @foreach ($categories as $category)
                                                     <li><a class="dropdown-item"
-                                                            href="{{route('category-motel')}}">{{ $category->name }}</a></li>
-                                              
-                                            @endforeach
-                                        </ul>
+                                                            href="{{ route('category-motel-id', $category->id) }}">{{ $category->name }}</a>
+                                                    </li>
+                                                @endforeach
+                                            </ul>
                                         </li>
                                         <li class="nav-item pe-4">
                                             <a class="nav-link" href="#">Video review</a>
@@ -55,14 +54,17 @@
                                         <li class="nav-item pe-4">
                                             <a class="nav-link" href="#">Diễn đàn</a>
                                         </li>
+                                        @if(auth()->check() && in_array(auth()->user()->role, [0, 2, 3]))
                                         <li class="nav-item pe-4">
                                             <a class="nav-link" href="{{ route('posting-room') }}">Đăng bài</a>
                                         </li>
+                                    @endif
                                     </ul>
 
                                     {{-- Khi chưa login sẽ hiển thị Đăng Ký/ Đăng nhập, khi login xong sẽ hiển thị Tên login --}}
-                                    
-                                        @if (Auth::check())<ul class="list-unstyled topnav-menu float-right mb-0  p-1 rounded-3">
+
+                                    @if (Auth::check())
+                                        <ul class="list-unstyled topnav-menu float-right mb-0  p-1 rounded-3">
                                             <li class="dropdown notification-list">
                                                 <a class="nav-link dropdown-toggle nav-user mr-0 "
                                                     data-toggle="dropdown" href="#" role="button"
@@ -94,14 +96,15 @@
                                                 </div>
                                             </li>
                                         @else
-                                        <ul class="list-unstyled topnav-menu float-right mb-0 bg-primary p-1 rounded-3">
-                                            <li>
-                                                <button type="button" class="btn btn-primary p-0"
-                                                    data-bs-toggle="modal" data-bs-target="#loginModal">
-                                                    Đăng nhập/Đăng ký
-                                                </button>
-                                            </li>
-                                        @endif
+                                            <ul
+                                                class="list-unstyled topnav-menu float-right mb-0 bg-primary p-1 rounded-3">
+                                                <li>
+                                                    <button type="button" class="btn btn-primary p-0"
+                                                        data-bs-toggle="modal" data-bs-target="#loginModal">
+                                                        Đăng nhập/Đăng ký
+                                                    </button>
+                                                </li>
+                                    @endif
                                     </ul>
                                 </div>
                             </div>
@@ -130,7 +133,8 @@
                                                                 alt="" height="60" width="170"></span>
                                                     </a>
                                                 </div>
-                                                <form action="{{ route('login-users') }}" method="POST" class="p-2">
+                                                <form action="{{ route('login-users') }}" method="POST"
+                                                    class="p-2">
                                                     @csrf
                                                     <div class="mb-3">
                                                         <label for="emailaddress" class="form-label">Email</label>
@@ -138,13 +142,15 @@
                                                             id="emailaddress" required=""
                                                             placeholder="example@gmail.com">
                                                         @error('email')
-                                                            <small class="text-danger text-blod">{{ $message }}</small>
+                                                            <small
+                                                                class="text-danger text-blod">{{ $message }}</small>
                                                         @enderror
                                                     </div>
                                                     <div class="mb-3">
                                                         <label for="password" class="form-label">Mật khẩu</label>
                                                         <input class="form-control" name="password" type="password"
-                                                            required="" id="password" placeholder="Nhập mật khẩu">
+                                                            required="" id="password"
+                                                            placeholder="Nhập mật khẩu">
                                                         @error('password')
                                                             <small
                                                                 class="text-danger text-bold">{{ $message }}</small>
@@ -160,7 +166,8 @@
                                                         <button class="btn btn-primary w-100" type="submit">ĐĂNG
                                                             NHẬP</button>
                                                     </div>
-                                                    <a href="page-recoverpw.html"
+                                                    <a href="" id="showforgotpassModal" class="text-dark"
+                                                        data-bs-toggle="modal" data-bs-target="#forgotpassModal"
                                                         class="text-muted float-end text-decoration-none">Quên mật
                                                         khẩu?</a>
                                                 </form>
@@ -196,7 +203,8 @@
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
                     <div class="modal-header border-0">
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                            aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
                         <div class="text-center">
@@ -210,7 +218,8 @@
                                     @csrf
                                     <div class="mb-3">
                                         <label for="registerUsername" class="form-label">Tên</label>
-                                        <input class="form-control" name="username" type="text" id="registerUsername" required placeholder="Tên người dùng">
+                                        <input class="form-control" name="username" type="text"
+                                            id="registerUsername" required placeholder="Tên người dùng">
                                         @error('username')
                                             <small class="text-danger text-blod">{{ $message }}</small>
                                         @enderror
@@ -218,7 +227,8 @@
         
                                     <div class="mb-3">
                                         <label for="registerEmail" class="form-label">Email</label>
-                                        <input class="form-control" name="email" type="email" id="registerEmail" required placeholder="example@gmail.com">
+                                        <input class="form-control" name="email" type="email" id="registerEmail"
+                                            required placeholder="example@gmail.com">
                                         @error('email')
                                             <small class="text-danger text-blod">{{ $message }}</small>
                                         @enderror
@@ -233,7 +243,8 @@
                                     </div>
                                     <div class="mb-3">
                                         <label for="confirmPassword" class="form-label">Xác nhận mật khẩu</label>
-                                        <input class="form-control" name="password_confirmation" type="password" id="confirmPassword" required placeholder="Nhập lại mật khẩu">
+                                        <input class="form-control" name="password_confirmation" type="password"
+                                            id="confirmPassword" required placeholder="Nhập lại mật khẩu">
                                         @error('password_confirmation')
                                             <small class="text-danger text-blod">{{ $message }}</small>
                                         @enderror
@@ -262,7 +273,86 @@
                 </div>
             </div>
         </div>
-        
+        {{-- Modal Quên Mật Khẩu --}}
+        @if (session('showAlert'))
+            <script>
+                document.addEventListener('DOMContentLoaded', function() {
+                    setTimeout(function() {
+                        @if (session('success'))
+                            Swal.fire({
+                                icon: 'success',
+                                title: 'Thành công!',
+                                text: "{{ session('success') }}",
+                                timer: 5000,
+                                timerProgressBar: true,
+                                showConfirmButton: false
+                            });
+                        @endif
+
+                        @if (session('error'))
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'Lỗi!',
+                                text: "{{ session('error') }}",
+                                timer: 5000,
+                                timerProgressBar: true,
+                                showConfirmButton: false
+                            });
+                        @endif
+                    }); // Delay 500ms trước khi hiển thị alert
+                });
+            </script>
+        @endif
+        <div class="modal fade" id="forgotpassModal" tabindex="-1" aria-labelledby="forgotpassModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header border-0">
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                            aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="text-center">
+                            <a href="index.html">
+                                <span><img src="{{ asset('assets/images/logo3.png') }}" alt=""
+                                        height="60" width="170"></span>
+                            </a>
+                        </div>
+                        <div class="account-pages my-3 pt-2">
+                            <div class="container">
+                                <form action="{{ route('check-forget-password-us') }}" method="POST"
+                                    class="p-2">
+                                    @csrf
+                                    <div class="text-center">
+                                        <p class="text-muted w-75 mx-auto"> Nhập địa chỉ email của bạn và chúng tôi sẽ
+                                            gửi cho bạn
+                                            một email kèm theo hướng dẫn để đặt lại mật khẩu của bạn. </p>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="registerEmail" class="form-label">Email</label>
+                                        <input class="form-control" name="email" type="email" id=""
+                                            required placeholder="Nhập địa chỉ Email">
+                                        @error('email')
+                                            <small class="text-danger text-blod">{{ $message }}</small>
+                                        @enderror
+                                    </div>
+                                    <div class="mb-3 text-center">
+                                        <button class="btn btn-primary w-100" type="submit">XÁC NHẬN</button>
+                                    </div>
+                                </form>
+                                <div class="row mt-3">
+                                    <div class="col-sm-12 text-center">
+                                        <p class="text-muted mb-0">Bạn đã có tài khoản? <a href="#"
+                                                id="showLoginModal" class="text-dark" data-bs-toggle="modal"
+                                                data-bs-target="#loginModal"><b>ĐĂNG NHẬP</b></a></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
         {{-- start content --}}
         @yield('contentUs')
         {{-- end content --}}
@@ -270,7 +360,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-3">
-                        <img class="img-fluid" src="{{ asset('assets\images\logo.png') }}" alt="">
+                        <img class="img-fluid" src="{{ asset('assets\images\logo3.png') }}" alt="">
                         <span class="titleFooter">Tìm trọ nhanh,dễ tìm</span>
                     </div>
                     <div class="col-3 mt-5 newsFooter">
