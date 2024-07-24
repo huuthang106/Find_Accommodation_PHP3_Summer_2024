@@ -53,10 +53,10 @@
                                         <td>{{ $item->report->username }}</td>
                                         <td>
 
-                                            <a href="{{ route('pages-report-detail', ['id' => $item->id]) }}" type="button"
+                                            <a href="{{ route('admin.pages-report-detail', ['id' => $item->id]) }}" type="button"
                                                 class="btn btn-primary">Xem chi tiết</a>
 
-                                            <form action="{{ route('report.destroy', $item->id) }}" method="POST"
+                                            <form action="{{ route('admin.report.destroy', $item->id) }}" method="POST"
                                                 style="display:inline;">
                                                 @csrf
                                                 @method('DELETE')

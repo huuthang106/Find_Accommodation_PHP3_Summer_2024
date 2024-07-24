@@ -23,7 +23,7 @@
 
                                 </div>
                                 <div class="form-group">
-                                    <a href="{{route('pages-forget-password')}}" class="text-muted float-right">Quên mật khẩu?</a>
+                                    <a href="{{route('admin.pages-forget-password')}}" class="text-muted float-right">Quên mật khẩu?</a>
                                     <label for="password">Mật khẩu</label>
                                     <input class="form-control" type="password" name="password" required=""
                                         id="password" placeholder="Nhập mật khẩu">

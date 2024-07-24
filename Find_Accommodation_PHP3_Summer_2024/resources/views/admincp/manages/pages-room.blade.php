@@ -41,11 +41,11 @@
                                         <td>{{ Str::limit($item->title, 20) }}</td>
                                         <td>{{ $item->price }}</td>
                                         <td>{{ $item->user_id }}</td>
-                                        <td><a href="{{route('pages-room-detail',$item->id)}}" class="btn btn-primary">Xem chi
+                                        <td><a href="{{route('admin.pages-room-detail',$item->id)}}" class="btn btn-primary">Xem chi
                                                 tiết</a></td>
                                      
                                         <td>
-                                            <form action="{{ route('rooms.destroy', $item->id) }}" method="POST" style="display: inline;">
+                                            <form action="{{ route('admin.rooms.destroy', $item->id) }}" method="POST" style="display: inline;">
                                                 @csrf
                                                 @method('PUT')
                                                 <button type="submit" class="btn btn-danger" onclick="return confirm('Bạn có chắc chắn muốn ẩn phòng này không?');">Xóa</button>

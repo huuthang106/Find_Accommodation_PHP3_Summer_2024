@@ -121,7 +121,7 @@ class UserController extends Controller
         // Kiểm tra và lấy dữ liệu token
         $tokenData = ResetPasswordToken::where('token', $token)->first();
         if (!$tokenData) {
-            return redirect()->route('pages-forget-password')->with('error', 'Token không hợp lệ');
+            return redirect()->route('admin.pages-forget-password')->with('error', 'Token không hợp lệ');
         }
 
         // Lấy người dùng tương ứng với token
@@ -137,7 +137,7 @@ class UserController extends Controller
         // Xóa token sau khi cập nhật thành công
         $tokenData->delete();
 
-        return redirect()->route('pages-login-admin')->with('success', 'Mật khẩu đã được cập nhật thành công')->with('showAlert', true);
+        return redirect()->route('admin.pages-login-admin')->with('success', 'Mật khẩu đã được cập nhật thành công')->with('showAlert', true);
     }
     public function check_forget_password_us(Request $request)
     {

@@ -103,7 +103,7 @@ class Authenticate implements AuthenticatesRequests
             'Unauthenticated.',
             $guards,
             $request->expectsJson() ? null : $this->redirectTo($request),
-            // $request->expectsJson() ? null : route('pages-login-admin'),
+            // $request->expectsJson() ? null : route('admin.pages-login-admin'),
         );
     }
 

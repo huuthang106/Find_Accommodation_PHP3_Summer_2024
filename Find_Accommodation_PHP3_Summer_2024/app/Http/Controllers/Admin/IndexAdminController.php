@@ -98,7 +98,7 @@ class IndexAdminController extends Controller
             switch ($user->role) {
                 case 0:
                     // Trường hợp người dùng có status = 2, cho phép truy cập
-                    return redirect()->route('trang-quan-ly');
+                    return redirect()->route('admin.trang-quan-ly');
                 default:
                     // Các trường hợp khác, đăng xuất và thông báo lỗi
                     auth()->logout();
@@ -146,11 +146,11 @@ class IndexAdminController extends Controller
         User::create($data);
 
         // Redirect to the login page
-        return redirect()->route('manages-user');
+        return redirect()->route('admin.manages-user');
     }
 
     public function admin()
     {
-        return redirect()->route('pages-login-admin');
+        return redirect()->route('admin.pages-login-admin');
     }
 }

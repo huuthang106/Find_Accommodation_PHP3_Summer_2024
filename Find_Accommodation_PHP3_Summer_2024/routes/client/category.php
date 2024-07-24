@@ -19,3 +19,6 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\Client\AuthController;
 use App\Http\Controllers\Client\RegisterController;
 use App\Http\Controllers\Client\MemberregistrationController;
+// [VoTanLuon] Rpute xem loại trọ client
+Route::get('/loai-tro', [CategoryController::class, 'index'])->name('category-motel');
+Route::get('/loai-tro/{id}', [CategoryController::class, 'getIDCategory'])->name('category-motel-id');

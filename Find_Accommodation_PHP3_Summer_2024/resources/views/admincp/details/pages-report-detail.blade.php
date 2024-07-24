@@ -46,7 +46,7 @@
                                         </td>
                                         <td>{{ $item->report->username }}</td>
                                         <td>
-                                            <form action="{{ route('update-pages-report-detail', $item->id) }}"
+                                            <form action="{{ route('admin.update-pages-report-detail', $item->id) }}"
                                                 method="POST" style="display:inline;">
                                                 @csrf
                                                 <button type="submit" class="btn btn-primary">Xem</button>

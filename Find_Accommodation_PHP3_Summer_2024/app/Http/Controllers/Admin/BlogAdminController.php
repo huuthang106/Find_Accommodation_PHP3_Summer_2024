@@ -47,7 +47,7 @@ class BlogAdminController extends Controller
             'updated_at' => now(),
         ]);
     
-        return redirect()->route('quan-li-blog')->with('success', 'Blog đã được thêm thành công.');
+        return redirect()->route('admin.quan-li-blog')->with('success', 'Blog đã được thêm thành công.');
     }
 
     // Xóa blog
@@ -57,7 +57,7 @@ class BlogAdminController extends Controller
         $blog->status = 5;
         $blog->save();
 
-        return redirect()->route('quan-li-blog')->with('success', 'Blog đã được ẩn.');
+        return redirect()->route('admin.quan-li-blog')->with('success', 'Blog đã được ẩn.');
     }
     
     /**

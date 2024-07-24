@@ -1,4 +1,5 @@
 <?php
+
 use Illuminate\Support\Facades\Route;
 // controller admin
 use App\Http\Controllers\Admin\AcreageAdminController;
@@ -21,3 +22,11 @@ use App\Http\Controllers\Admin\RegisterAdminController;
 use App\Http\Controllers\Admin\ReportAdminController;
 use App\Http\Controllers\Admin\UserController as AdminUserController;
 
+Route::middleware('auth')->group(function () {
+    Route::get('/quan-ly-goi-dang-tin', [PriceListAdminController::class, 'ShowPriceList'])->name('goi-dang-tin');
+    Route::put('/price/{id}', [PriceListAdminController::class, 'destroy'])->name('tin.destroy'); //xóa gói tin
+    Route::get('/chi-tiet-goi-tin', [PriceListAdminController::class, 'getPriceListDetail'])->name('get-pricelist'); // showw gói tin ra
+    Route::get('/chi-tiet-goi-tin/chinh-sua-goi-tin/{id}', [PriceListAdminController::class, 'getPriceListID'])->name('post-pricelist');
+    Route::put('/chi-tiet-goi-tin/chinh-sua-goi-tin/{id}', [PriceListAdminController::class, 'update'])->name('put-pricelist');
+    Route::get('/goi-dang-tin', [PriceListAdminController::class, 'index'])->name('goi-dang-tin'); // router quản lí giá gói admin
+});

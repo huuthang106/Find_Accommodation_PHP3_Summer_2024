@@ -23,7 +23,7 @@
                                                                 alt="" height="60" width="170"></span>
                                                     </a>
                                                 </div>
-                                                <form action="{{ route('home') }}" class="p-2">
+                                                {{-- <form action="{{ route('trang-chu.home') }}" class="p-2"> --}}
                                                     <div class="mb-3">
                                                         <label for="emailaddress" class="form-label">Email</label>
                                                         <input class="form-control" type="email" id="emailaddress"

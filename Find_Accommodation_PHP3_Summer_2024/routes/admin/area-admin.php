@@ -1,4 +1,5 @@
 <?php
+
 use Illuminate\Support\Facades\Route;
 // controller admin
 use App\Http\Controllers\Admin\AcreageAdminController;
@@ -21,3 +22,5 @@ use App\Http\Controllers\Admin\RegisterAdminController;
 use App\Http\Controllers\Admin\ReportAdminController;
 use App\Http\Controllers\Admin\UserController as AdminUserController;
 
+Route::middleware('auth')->group(function () {
+});

@@ -19,3 +19,12 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\Client\AuthController;
 use App\Http\Controllers\Client\RegisterController;
 use App\Http\Controllers\Client\MemberregistrationController;
+
+Route::fallback(function () {
+    return redirect('/');
+});
+// start Nguyen Huu Thang
+Route::get('/', [RoomController::class, 'index'])->name('home');
+// start Nguyen Huu Thang
+// Route::get('/home', [RoomController::class, 'index'])->name('trang-chu.home');
+route::get('/trang-dang-bai', [RoomController::class, 'page_posting'])->name('posting-room');

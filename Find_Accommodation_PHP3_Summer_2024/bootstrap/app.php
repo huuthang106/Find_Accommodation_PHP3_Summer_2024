@@ -22,7 +22,6 @@ return Application::configure(basePath: dirname(__DIR__))
                 'location-admin.php',
                 'memberregistration-admin.php',
                 'notification-admin.php',
-                'profile-admin.php',
                 'price-list-admin.php',
                 'report-admin.php',
                 'room-admin.php',
@@ -41,7 +40,6 @@ return Application::configure(basePath: dirname(__DIR__))
                 'location.php',
                 'memberregistration.php',
                 'notification.php',
-                'profile.php',
                 'price-list.php',
                 'report.php',
                 'room.php',
@@ -52,8 +50,8 @@ return Application::configure(basePath: dirname(__DIR__))
             foreach ($adminRoute as $route) {
                 Route::middleware('web')->prefix('admin')->name('admin.')->group(base_path("routes/admin/{$route}"));
             }
-            foreach($userRoute as $route){
-                Route::middleware('web')->prefix('home')->name('admin.')->group(base_path("routes/client/{$route}"));
+            foreach ($userRoute as $route) {
+                Route::middleware('web')->prefix('')->group(base_path("routes/client/{$route}"));
             }
         },
 

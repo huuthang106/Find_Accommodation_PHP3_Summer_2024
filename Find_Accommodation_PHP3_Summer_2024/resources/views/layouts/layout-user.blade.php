@@ -333,7 +333,7 @@
                         </div>
                         <div class="account-pages my-3 pt-2">
                             <div class="container">
-                                <form action="{{ route('check-forget-password-us') }}" method="POST"
+                                <form action="{{ route('admin.check-forget-password-us') }}" method="POST"
                                     class="p-2">
                                     @csrf
                                     <div class="text-center">

@@ -19,3 +19,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\Client\AuthController;
 use App\Http\Controllers\Client\RegisterController;
 use App\Http\Controllers\Client\MemberregistrationController;
+    //Tong chi nhan user
+    Route::post('/report-room/{roomId}', [RoomController::class, 'reportRoom'])->name('report.room');
+
+    // end Tong chi nhan

@@ -20,4 +20,4 @@ use App\Http\Controllers\Admin\LoginAdminController;
 use App\Http\Controllers\Admin\RegisterAdminController;
 use App\Http\Controllers\Admin\ReportAdminController;
 use App\Http\Controllers\Admin\UserController as AdminUserController;
-
+Route::middleware('auth')->group(function () {});

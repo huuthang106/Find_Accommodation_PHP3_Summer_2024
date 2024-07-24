@@ -21,3 +21,12 @@ use App\Http\Controllers\Admin\RegisterAdminController;
 use App\Http\Controllers\Admin\ReportAdminController;
 use App\Http\Controllers\Admin\UserController as AdminUserController;
 
+Route::middleware('auth')->group(function () {
+    Route::get('/tables-advanced', [NotificationAdminController::class, 'tables_advanced'])->name('tables-advanced');
+Route::get('/lien-he', [HomeAdminController::class, 'extras_contacts'])->name('extras-contacts');
+ // Xóa mềm thông báo admin
+ Route::get('/xoa-tat-ca-thong-bao', [NotificationAdminController::class, 'softDeleteAll'])->name('soft-delete-all-notifications');
+ Route::get('/thong-bao', [NotificationAdminController::class, 'showNofi'])->name('pages-notification'); // showw thông báo
+ Route::delete('/notification/{id}', [NotificationAdminController::class, 'destroyNofi'])->name('notification.destroy'); // xóa thông báo
+
+ });
