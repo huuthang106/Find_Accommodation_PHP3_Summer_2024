@@ -76,9 +76,9 @@ class CategoryController extends Controller
     {
         // Tìm danh sách rooms có category_id khớp với id đã cho
         $rooms = Room::where('category_id', $id)->with('category')->get();
-
+        $category = Category::find($id);
         // Trả về view với dữ liệu rooms
-        return view('page.rooms.category-motel', compact('rooms'));
+        return view('page.rooms.category-motel', compact('rooms','category'));
     }
 
 

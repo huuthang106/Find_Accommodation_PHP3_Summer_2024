@@ -106,6 +106,11 @@ class IndexAdminController extends Controller
                         'password' => 'Tài khoảng hoặc mật khẩu không đúng',
                     ]);
             }
+        } else {
+            // Đăng nhập không thành công
+            return redirect()->back()->withErrors([
+                'password' => 'Tài khoản hoặc mật khẩu không đúng',
+            ]);
         }
     }
 

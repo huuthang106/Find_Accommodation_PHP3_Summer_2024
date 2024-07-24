@@ -338,8 +338,7 @@
                                     <span>Quản lí role</span>
                                 </a>
                             </li>
-                            
-                            
+                            <li>
                                 <a href="{{ route('manages-user') }}">
                                     <i class="fas fa-user"></i>
                                     <span>Quản lí người dùng</span>

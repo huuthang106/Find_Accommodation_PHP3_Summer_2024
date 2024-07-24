@@ -60,7 +60,7 @@
                 <li class="breadcrumb-item active" aria-current="page">Phòng trọ</li>
             </ol>
         </nav>
-        <h2 class="fw-bold">NHÀ NGUYÊN CĂN, CHUNG CƯ</h2>
+        <h2 class="fw-bold">{{$category->name}}</h2>
         <div class="container p-0">
             <div class="row">
                 <div class="col-lg-9 p-0 rounded-5">
@@ -92,32 +92,35 @@
                                 @else
                                     @foreach ($rooms as $room)
                                         <tr>
+                                            
                                             <th>
+                                               
                                                 <div class="card mb-3 bg-light text-dark">
+                                                    <a href="{{route('get-room',['id'=> $room->id])}}" class="text-decoration-none">
                                                     <div class="div">
                                                         <div class="row g-0">
                                                             <div class="col-md-4">
-                                                                <a href="#">
+                                                             
                                                                     <img src="https://tromoi.com/uploads/members/hiephoang/thang%208/17_08/nhung-dieu-bat-buoc-phai-nho-khi-tim-phong-01.jpg"
                                                                         class="img-fluid rounded-2" alt="">
-                                                                </a>
+                                                            
                                                             </div>
                                                             <div class="col-md-8">
                                                                 <div class="card-body">
-                                                                    <a href="#"
-                                                                        class="text-decoration-none custom-link">
+                                                                   
+                                                                   
                                                                         <p class="card-title fs-6 fw-bold">
                                                                             {{ $room->title }}</p>
-                                                                    </a>
+                                                                   
                                                                     <p class="card-text fw-bold" style="color: #ff5c00">Liên
                                                                         hệ lấy giá</p>
                                                                     <div class="container p-0">
-                                                                        <a href="#">
+                                                             
                                                                             <button type="button"
                                                                                 class="p-1 btn btn-secondary btn-sm">
                                                                                 {{ $room->category->name }}
                                                                             </button>
-                                                                        </a>
+                                                                  
                                                                     </div>
                                                                     <p class="card-text pt-3">
                                                                         <small class="text-muted">
@@ -129,8 +132,11 @@
                                                             </div>
                                                         </div>
                                                     </div>
+                                                </a>
                                                 </div>
+                                          
                                             </th>
+                                           
                                         </tr>
                                     @endforeach
                                 @endif

@@ -54,9 +54,11 @@
                                         <li class="nav-item pe-4">
                                             <a class="nav-link" href="#">Diễn đàn</a>
                                         </li>
+                                        @if(auth()->check() && in_array(auth()->user()->role, [0, 2, 3]))
                                         <li class="nav-item pe-4">
                                             <a class="nav-link" href="{{ route('posting-room') }}">Đăng bài</a>
                                         </li>
+                                    @endif
                                     </ul>
 
                                     {{-- Khi chưa login sẽ hiển thị Đăng Ký/ Đăng nhập, khi login xong sẽ hiển thị Tên login --}}
@@ -363,7 +365,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-3">
-                        <img class="img-fluid" src="{{ asset('assets\images\logo.png') }}" alt="">
+                        <img class="img-fluid" src="{{ asset('assets\images\logo3.png') }}" alt="">
                         <span class="titleFooter">Tìm trọ nhanh,dễ tìm</span>
                     </div>
                     <div class="col-3 mt-5 newsFooter">

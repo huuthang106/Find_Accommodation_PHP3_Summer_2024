@@ -33,7 +33,6 @@ class UserController extends Controller
             return redirect()->route('pages-404')->with('Thông Báo', 'Không tìm thấy người dùng.');
         }
         return view('admincp.accounts.extras-profile', compact('admin'));
-
     }
     public function update_profile_admin(Request $request, string $id)
     {
@@ -241,7 +240,7 @@ class UserController extends Controller
         if (!$user) {
             return redirect()->route('pages-404')->with('Thông Báo', 'Không tìm thấy người dùng.');
         }
-        $rooms = Room::where('status', '!=', 7)->get();
+        $rooms = Room::where('user_id', $user->id)->where('status', '!=', 7)->get();
         $rooms = $rooms->map(function ($room) {
             $room->title = Str::limit($room->title, 15);
             $room->address = Str::limit($room->address, 20);
@@ -310,7 +309,7 @@ class UserController extends Controller
             $file->move($destinationPath, $fileName);
 
             // Lưu đường dẫn tương đối của ảnh vào dữ liệu đã xác thực
-            $validatedData['avatar'] =$fileName ;
+            $validatedData['avatar'] = $fileName;
         }
 
 
@@ -344,7 +343,16 @@ class UserController extends Controller
     public function showHome(string $id)
     {
         $users = User::find($id);
-        return view('page.users.proflie-us-other', compact('users'));
+        $rooms = Room::where('user_id', $users->id)->where('status', '!=', 7)->get();
+        $rooms = $rooms->map(function ($room) {
+            $room->title = Str::limit($room->title, 15);
+            $room->address = Str::limit($room->address, 20);
+            $room->description = Str::limit($room->description, 10); // Giới hạn độ dài của description
+            $room->user->username = Str::limit($room->user->username, 10);
+            $room->category->name = Str::limit($room->category->name, 10);
+            return $room;
+        });
+        return view('page.users.proflie-us-other', compact('users','rooms'));
     }
 
     public function showAdmin()
@@ -352,5 +360,4 @@ class UserController extends Controller
         $users = User::whereIn('role', [1, 2])->get();
         return view('admincp.manages.pages-user', compact('users'));
     }
-
 }

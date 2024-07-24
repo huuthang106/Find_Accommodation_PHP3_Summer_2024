@@ -29,6 +29,13 @@ class AppServiceProvider extends ServiceProvider
             // dd( $categories   );     
             $view->with('categories', $categories);
         });
+        View::composer('index', function ($view) {
+            // Logic để lấy dữ liệu categories từ database
+            $categories = Category::where('status', 1)->get();
+            // Truyền dữ liệu categories vào view
+            // dd( $categories   );     
+            $view->with('categories', $categories);
+        });
         View::composer('layouts.app', function ($view) {
             $notificationCount = Notification::where('status', 1)->count();
             // Lấy thông báo chưa xem

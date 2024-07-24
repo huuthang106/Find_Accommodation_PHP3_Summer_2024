@@ -35,7 +35,7 @@
                                 style="color: #ffffff;"></i> 0985885475</a>
                     </div>
                 </div>
-                <div class="d-flex justify-content-end p-0 mt-2">
+                {{-- <div class="d-flex justify-content-end p-0 mt-2">
                     <form action="{{ route('report.room', $room->id) }}" method="POST">
                         @csrf
                         <input type="hidden" name="reason" value="Đã báo cáo vì nội dung không phù hợp"> <!-- Optional: Add a reason -->
@@ -43,7 +43,7 @@
                             <i class="fa-solid fa-phone" style="color: #ffffff;"></i> Báo Cáo
                         </button>
                     </form>
-                </div>
+                </div> --}}
                 
                 
                 

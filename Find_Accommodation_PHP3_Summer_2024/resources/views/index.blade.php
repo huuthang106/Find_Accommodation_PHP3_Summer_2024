@@ -133,17 +133,13 @@
                     <button class="nav-link active" id="all" data-bs-toggle="tab" data-bs-target="#all"
                         type="button" role="tab" aria-controls="home" aria-selected="true">Tất cả</button>
                 </li>
+                @foreach ($categories as $category)
                 <li class="nav-item" role="presentation">
-                    <button class="nav-link" id="homestay" data-bs-toggle="tab" data-bs-target="#homestay"
-                        type="button" role="tab" aria-controls="profile" aria-selected="false">Phòng
-                        trọ</button>
+                    <a  href="{{ route('category-motel-id', $category->id) }}" class="nav-link" id="homestay" data-bs-toggle="tab" data-bs-target="#homestay"
+                        type="button" role="tab" aria-controls="profile" aria-selected="false">{{ $category->name }}</a>
                 </li>
-                <li class="nav-item" role="presentation">
-                    <button class="nav-link" id="resort" data-bs-toggle="tab" data-bs-target="#resort"
-                        type="button" role="tab" aria-controls="contact" aria-selected="false">Nhà nguyên
-                        căn,
-                        chung cư</button>
-                </li>
+                @endforeach
+             
             </ul>
             <div class="tab-content" id="myTabContent">
                 <div class="tab-pane fade show active" id="all" role="tabpanel" aria-labelledby="all">
@@ -282,7 +278,7 @@
                 <div class="row mt-3 mainRoom">
                     @foreach ($rooms as $room)
                         <div class="col-3 mt-2">
-                            <a href="{{route('get-room',['id'=> $room->id])}}" class="text-decoration-none">
+                            <a href="{{route('get-room', $room->id)}}" class="text-decoration-none">
                                 <div class="card">
                                     <div class="bageVip">
                                         <img src="{{ asset('assets\images\448469911_476143361772862_3803638986442606747_n-min.jpg') }}"
@@ -421,31 +417,35 @@
                 <h4 class="textMain">Lựa chọn hot</h4>
                 <div class="row mt-3 mainRoom">
                     @foreach ($rooms as $room)
-                        <div class="col-3">
+                    <div class="col-3 mt-2">
+                        <a href="{{route('get-room',['id'=> $room->id])}}" class="text-decoration-none">
                             <div class="card">
                                 <div class="bageVip">
                                     <img src="{{ asset('assets\images\448469911_476143361772862_3803638986442606747_n-min.jpg') }}"
                                         class="card-img-top rounded" alt="...">
                                 </div>
                                 <div class="card-body">
-                                    <h5 class="card-title">Nhà trọ số 166 đường Cao...</h5>
-                                    <h6 class="card-text mt-3">Từ <span class="cardPrice">3.000.000
+                                    <h5 class="card-title">{{ $room->title }}</h5>
+                                    <h6 class="card-text mt-3">Từ <span class="cardPrice">{{ $room->price }}
                                             VNĐ</span></h6>
                                     <div class="d-flex mt-3">
                                         <div class="room">
-                                            <span>Phòng trọ</span>
+                                            @if (isset($room->category_id))
+                                                <span>{{ $room->category->name }}</span>
+                                            @endif
                                         </div>
                                         <div class="acreage">
                                             <span>12m2</span>
                                         </div>
                                     </div>
-                                    <p class="mt-3"><i class='bx bxs-map' style='color:#0a0a0a'></i>166 đường Cao
-                                        Thắng,Phường..
+                                    <p class="mt-3"><i class='bx bxs-map'
+                                            style='color:#0a0a0a'></i>{{ $room->address }}
                                     </p>
                                 </div>
                             </div>
-                        </div>
-                    @endforeach
+                        </a>
+                    </div>
+                @endforeach
                 </div>
 
                 <div class="row">
@@ -461,31 +461,35 @@
                 <h4 class="textMain">Lựa chọn đơn giản</h4>
                 <div class="row mt-3 mainRoom">
                     @foreach ($rooms as $room)
-                        <div class="col-3">
+                    <div class="col-3 mt-2">
+                        <a href="{{route('get-room',['id'=> $room->id])}}" class="text-decoration-none">
                             <div class="card">
                                 <div class="bageVip">
                                     <img src="{{ asset('assets\images\448469911_476143361772862_3803638986442606747_n-min.jpg') }}"
                                         class="card-img-top rounded" alt="...">
                                 </div>
                                 <div class="card-body">
-                                    <h5 class="card-title">Nhà trọ số 166 đường Cao...</h5>
-                                    <h6 class="card-text mt-3">Từ <span class="cardPrice">3.000.000
+                                    <h5 class="card-title">{{ $room->title }}</h5>
+                                    <h6 class="card-text mt-3">Từ <span class="cardPrice">{{ $room->price }}
                                             VNĐ</span></h6>
                                     <div class="d-flex mt-3">
                                         <div class="room">
-                                            <span>Phòng trọ</span>
+                                            @if (isset($room->category_id))
+                                                <span>{{ $room->category->name }}</span>
+                                            @endif
                                         </div>
                                         <div class="acreage">
                                             <span>12m2</span>
                                         </div>
                                     </div>
-                                    <p class="mt-3"><i class='bx bxs-map' style='color:#0a0a0a'></i>166 đường Cao
-                                        Thắng,Phường..
+                                    <p class="mt-3"><i class='bx bxs-map'
+                                            style='color:#0a0a0a'></i>{{ $room->address }}
                                     </p>
                                 </div>
                             </div>
-                        </div>
-                    @endforeach
+                        </a>
+                    </div>
+                @endforeach
 
                     <div class="row">
                         <div class="buttonView">

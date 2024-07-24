@@ -38,9 +38,9 @@
 }
 
 .searchHeader {
+position: relative;
+  margin-top: -3%;
 
-    bottom: 110px;
-    margin-left: 100px;
 }
 
 .tab-content {
@@ -332,6 +332,13 @@
     height: 150px;
     object-fit: cover;
     /* Đảm bảo rằng hình ảnh luôn vừa khít trong khung */
+}
+/* nguyen huu thang */
+.nav-tabs{
+    position: relative;
+
+   margin-top: 4px;
+   --bs-nav-tabs-border-width: none;
 }
 
 /* End CSS Avatar User */

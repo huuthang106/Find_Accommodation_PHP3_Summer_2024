@@ -18,7 +18,7 @@
             </div>
             <!-- end row -->
 
-            <div class="row">
+            {{-- <div class="row">
                 <div class="col-12">
                     <div>
                         <div class="card-box widget-inline">
@@ -63,10 +63,10 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> --}}
             <!--end row -->
 
-            <div class="row">
+            {{-- <div class="row">
                 <div class="col-lg-6">
                     <div class="card-box">
                         <h5 class="mt-0 font-14">Total Revenue</h5>
@@ -107,13 +107,13 @@
                     </div>
                 </div>
                 <!-- end col -->
-            </div>
+            </div> --}}
             <!-- end row -->
 
             <div class="row">
                 <div class="col-sm-12">
                     <div class="card-box">
-                        <h5 class="mt-0 font-14 mb-3">Liên Hệ</h5>
+                        <h5 class="mt-0 font-14 mb-3">Người dùng cống hiến</h5>
                         <div class="table-responsive">
                             <table id="myTable"
                                 class="table table-hover mails m-0 table table-actions-bar table-centered">
@@ -126,12 +126,13 @@
                                                 <label class="custom-control-label" for="action-checkbox">&nbsp;</label>
                                             </div>
                                         </th>
-                                        <th>ID</th>
+
                                         <th>Tên</th>
                                         <th>Email</th>
+                                        <th>Số điện thoại</th>
                                         <th>Địa Chỉ</th>
                                         <th>Số Bài Đăng</th>
-                                     
+
                                     </tr>
                                 </thead>
 
@@ -146,16 +147,18 @@
                                                 {{-- <img src="assets/images/users/avatar-2.jpg" alt="contact-img"
                                                      title="contact-img" class="rounded-circle avatar-sm">
                                             </td> --}}
-                                            <td>{{ $item->id}}</td>
+
                                             <td>{{ $item->username }}</td>
                                             <td><a href="#" class="text-muted">{{ $item->email }}</a></td>
+                                            <td>{{ $item->phone }}</td>
                                             <td>{{ $item->address }}</td>
-                                            <td><b><a href="" class="text-dark"><b>{{ $item->post_count }}</b></a></b></td>
-                                          
+                                            <td><b><a href=""
+                                                        class="text-dark"><b>{{ $item->post_count }}</b></a></b></td>
+
                                         </tr>
                                     @endforeach
                                 </tbody>
-                                
+
                             </table>
                         </div>
                     </div>
