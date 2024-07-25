@@ -46,7 +46,7 @@
                                             <ul class="dropdown-menu">
                                                 @foreach ($categories as $category)
                                                     <li><a class="dropdown-item"
-                                                            href="{{ route('category-motel-id', $category->id) }}">{{ $category->name }}</a>
+                                                            href="{{ route('category-motel-id', $category->id) }}">{{ Str::limit($category->name, 15) }}</a>
                                                     </li>
                                                 @endforeach
                                             </ul>
