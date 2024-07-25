@@ -29,11 +29,11 @@ function previewImages(event, previewId) {
     for (let i = 0; i < files.length; i++) {
         const file = files[i];
         const reader = new FileReader();
-        reader.onload = function(e) {
+        reader.onload = function (e) {
             const img = document.createElement('img');
             img.src = e.target.result;
             preview.appendChild(img);
         }
         reader.readAsDataURL(file);
     }
-}
+} 

@@ -8,6 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     {{-- Thư viện ShowAlert --}}
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     @stack('styles')
 
 </head>
@@ -45,7 +46,7 @@
                                             <ul class="dropdown-menu">
                                                 @foreach ($categories as $category)
                                                     <li><a class="dropdown-item"
-                                                            href="{{ route('category-motel-id', $category->id) }}">{{ $category->name }}</a>
+                                                            href="{{ route('category-motel-id', $category->id) }}">{{ Str::limit($category->name, 15) }}</a>
                                                     </li>
                                                 @endforeach
                                             </ul>
@@ -174,8 +175,8 @@
                                                         <button class="btn btn-primary w-100" type="submit">ĐĂNG
                                                             NHẬP</button>
                                                     </div>
-                                                    <a href="" id="showforgotpassModal" class="text-dark"
-                                                        data-bs-toggle="modal" data-bs-target="#forgotpassModal"
+                                                    <a href="" id="showforgotpassModal" data-bs-toggle="modal"
+                                                        data-bs-target="#forgotpassModal"
                                                         class="text-muted float-end text-decoration-none">Quên mật
                                                         khẩu?</a>
                                                 </form>
@@ -190,10 +191,10 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="row mt-3">
+                                        <div class="row ">
                                             <div class="col-sm-12 text-center">
                                                 <p class="text-muted mb-0">Bạn chưa có tài khoản? <a href="#"
-                                                        id="showRegisterModal" class="text-dark"
+                                                        id="showRegisterModal" class="text-decoration-none"
                                                         data-bs-toggle="modal" data-bs-target="#registerModal"><b>ĐĂNG
                                                             KÝ</b></a></p>
                                             </div>
@@ -272,7 +273,10 @@
                                 </div>
                                 <div class="row mt-3">
                                     <div class="col-sm-12 text-center">
-                                        <p class="text-muted mb-0">Bạn đã có tài khoản? <a href="#" id="showLoginModal" class="text-dark" data-bs-toggle="modal" data-bs-target="#loginModal"><b>ĐĂNG NHẬP</b></a></p>
+                                        <p class="text-muted mb-0">Bạn đã có tài khoản? <a href="#"
+                                                id="showLoginModal" class="text-decoration-none"
+                                                data-bs-toggle="modal" data-bs-target="#loginModal"><b>ĐĂNG
+                                                    NHẬP</b></a></p>
                                     </div>
                                 </div>
                             </div>
@@ -351,8 +355,9 @@
                                 <div class="row mt-3">
                                     <div class="col-sm-12 text-center">
                                         <p class="text-muted mb-0">Bạn đã có tài khoản? <a href="#"
-                                                id="showLoginModal" class="text-dark" data-bs-toggle="modal"
-                                                data-bs-target="#loginModal"><b>ĐĂNG NHẬP</b></a></p>
+                                                id="showLoginModal" class="text-decoration-none"
+                                                data-bs-toggle="modal" data-bs-target="#loginModal"><b>ĐĂNG
+                                                    NHẬP</b></a></p>
                                     </div>
                                 </div>
                             </div>

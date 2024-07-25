@@ -34,6 +34,11 @@
                 <p class="text-muted mt-2">
                     Xin chào tôi là {{ $user->username }}.
                 </p>
+                <div>
+                    @if ($user->role == 1)
+                    <a href="{{route('register-member')}}" class="btn btn-primary"><i class='bx bxs-message-square-add'></i> Đăng ký thành viên</a>
+                  @endif
+                </div>
             </div>
             <!-- end row -->
             <!-- end -->
@@ -157,7 +162,8 @@
                                                             <td>{{ $item->category->name }}</td>
                                                             <td>{{ $item->quantity }}</td>
 
-                                                            <td><button class="btn btn-primary">Xem chi tiết</button>
+                                                            <td><a href="{{ route('get-room', $item->id) }}"
+                                                                    class="btn btn-primary">Xem chi tiết</a>
                                                             </td>
                                                             <td><a href="{{ route('edit-posting', $item->id) }}"
                                                                     class="btn btn-primary">Chỉnh sửa</a></td>
@@ -271,6 +277,7 @@
         {{-- Preview trước avatar nếu chưa có avatar --}}
 
         @push('styles')
+
             <!-- DataTables CSS -->
             <link rel="stylesheet" href="https://cdn.datatables.net/1.11.4/css/dataTables.bootstrap5.min.css">
             <!-- Bootstrap CSS v5.2.1 -->

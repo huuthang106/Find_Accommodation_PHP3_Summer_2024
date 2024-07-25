@@ -1,4 +1,5 @@
 <?php
+
 use Illuminate\Support\Facades\Route;
 // controller admin
 use App\Http\Controllers\Admin\AcreageAdminController;
@@ -26,5 +27,5 @@ Route::get('/bai-viet/chi-tiet-bai-viet/{id}', [RoomAdminController::class, 'get
 
 Route::middleware('auth')->group(function () {
     Route::put('/rooms/{id}', [RoomAdminController::class, 'destroy'])->name('rooms.destroy'); // xóa phòng
-Route::get('/bai-viet', [RoomAdminController::class, 'index'])->name('pages-room'); // showw phòng ra 
+    Route::get('/bai-viet', [RoomAdminController::class, 'index'])->name('pages-room'); // showw phòng ra 
 });

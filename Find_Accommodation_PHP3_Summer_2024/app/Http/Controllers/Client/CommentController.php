@@ -19,7 +19,12 @@ class CommentController extends Controller
             ->with('user', 'replies.user')
             ->get();
         $room = Room::find($id);
-        return view('page.rooms.detail-room', compact('comments', 'room'));
+        // Lấy tất cả hình ảnh liên quan đến phòng này
+        $images = $room->images;
+
+        // Lấy một hình ảnh ngẫu nhiên
+        $randomImage = $images->isNotEmpty() ? $images->random() : null;
+        return view('page.rooms.detail-room', compact('comments', 'room','randomImage','images'));
     }
 
     /**

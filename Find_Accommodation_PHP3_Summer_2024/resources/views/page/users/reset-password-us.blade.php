@@ -2,7 +2,7 @@
 @section('titleUs', 'Trang chủ trọ nhanh')
 @section('contentUs')
     <!-- start  -->
-    <div class="background-content pb-3">
+    <div class="container-fluid background-content pb-3">
         <div class="row d-flex justify-content-center">
             <div class="col-5 bg-body mt-3 rounded">
                 <div class="card-header text-center mt-3">

@@ -384,7 +384,7 @@ class UserController extends Controller
 
     public function showAdmin()
     {
-        $users = User::whereIn('role', [1, 2])->get();
+        $users = User::whereIn('role', [1, 2])->orderBy('created_at','desc')->get();
         return view('admincp.manages.pages-user', compact('users'));
     }
 }

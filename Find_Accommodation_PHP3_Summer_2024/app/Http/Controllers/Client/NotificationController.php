@@ -85,15 +85,14 @@ class NotificationController extends Controller
         ]);
 
     }
-    public function notifyNewComment($userId, $commentId)
-    {
+    public function notifiUpdateRoom($userId,$roomId){
         Notification::create([
-            'type' => 'Thông báo bình luận mới',
-            'data' => 'Bạn vừa nhận được một bình luận mới.',
-            'message' => 'Bạn vừa nhận được một bình luận mới.',
+            'type' => 'Bạn vừa chỉnh sửa bài viết thành công.',
+            'data' => 'Bạn vừa chỉnh sửa bài viết thành công.',
+            'message' => 'Bạn vừa chỉnh sửa bài viết thành công.',
             'user_id' => $userId,
-            'comment_id' => $commentId,
-            'status' => 2,
+            'room_id' => $roomId,
+            'status' => 4,
         ]);
     }
 }

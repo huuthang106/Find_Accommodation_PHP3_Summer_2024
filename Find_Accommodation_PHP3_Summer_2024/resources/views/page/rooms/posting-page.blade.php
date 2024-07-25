@@ -1,7 +1,7 @@
 @extends('layouts.layout-user')
 @section('titleUs', 'Trang đăng trọ ')
 @section('contentUs')
-    <div class="background-content">
+    <div class="container-fluid background-content">
         <div class="row d-flex justify-content-center ">
             <div class="col-10 bg-body  mt-2 rounded p-2">
                 <div class="card-header text-center">
@@ -116,6 +116,7 @@
 @endsection
 
 @push('styles')
+
     <!-- DataTables CSS -->
     <link rel="stylesheet" href="https://cdn.datatables.net/1.11.4/css/dataTables.bootstrap5.min.css">
     <!-- Bootstrap CSS v5.2.1 -->
