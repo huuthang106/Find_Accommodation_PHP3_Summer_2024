@@ -13,7 +13,7 @@ class ReportAdminController extends Controller
     public function index()
     {
         // Lấy tất cả báo cáo từ cơ sở dữ liệu loại trừ các báo cáo có status = 5
-        $reports = Report::where('status', '!=', 5)->get();
+        $reports = Report::where('status', '!=', 5)->orderBy('created_at','desc')->get();
         // Duyệt qua mỗi report để giới hạn ký tự của title
         foreach ($reports as $item) {
             $item->room_title = Str::limit($item->room->title, 10);

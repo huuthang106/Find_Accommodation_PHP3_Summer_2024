@@ -15,7 +15,7 @@ class RoomAdminController extends Controller
     public function index()
     {
         //
-        $rooms = Room::where('status', '!=', 5)->get();
+        $rooms = Room::where('status', '!=', 5)->orderBy('created_at', 'desc')->get();
         return view('admincp.manages.pages-room', compact('rooms'));
     }
 
@@ -80,7 +80,8 @@ class RoomAdminController extends Controller
     {
         $roomDetail = Room::with('category', 'user')->find($id);
         // $categoryName = $roomDetail->category ? $roomDetail->category->name : null;
-        return view('admincp.details.pages-room-detail', compact('roomDetail'));
+        $images = $roomDetail->images;
+        return view('admincp.details.pages-room-detail', compact('roomDetail','images'));
     }
 
 }

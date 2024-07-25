@@ -25,7 +25,7 @@
                             <thead>
                                 <tr>
                                     <th>Tất cả <input type="checkbox"></th>
-                                    <th>STT</th>
+                                    {{-- <th>STT</th> --}}
                                     <th>Tiêu đề</th>
                                     <th>Giá</th>
                                     <th>Tên người đăng</th>
@@ -37,7 +37,7 @@
                                 @foreach ($rooms as $item)
                                     <tr>
                                         <th><input type="checkbox"></th>
-                                        <th>{{ $item->id }}</th>
+                                        {{-- <th>{{ $item->id }}</th> --}}
                                         <td>{{ Str::limit($item->title, 20) }}</td>
                                         <td>{{ $item->price }}</td>
                                         <td>{{ $item->user_id }}</td>
@@ -99,6 +99,8 @@
     <link href="{{ asset('assets/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css" id="bootstrap-stylesheet">
     <link href="{{ asset('assets/css/icons.min.css') }}" rel="stylesheet" type="text/css">
     <link href="{{ asset('assets/css/app.min.css') }}" rel="stylesheet" type="text/css" id="app-stylesheet">
+    <link rel="stylesheet" href="{{asset('assets/css/style-nht.css')}}">
+
 @endpush
 
 @push('scripts')
