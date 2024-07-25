@@ -1,9 +1,8 @@
 @extends('layouts.layout-user')
 @section('titleUs', 'Trang chủ trọ nhanh')
 @section('contentUs')
-    <div class="background-content">
+    <div class="container-fluid background-content">
         <div class="row d-flex justify-content-center">
-
             <div class="col-6 p-0">
                 <span class="item">
                     <a href="#" class="item-link text-decoration-none">Trang chủ</a>
@@ -16,7 +15,6 @@
                 </div>
                 <div class="hostel__detail--address">{{ $room->address }}
                 </div>
-
             </div>
             <div class="col-3 p-0">
                 <div class="div">
@@ -36,18 +34,14 @@
                     </div>
                 </div>
                 {{-- <div class="d-flex justify-content-end p-0 mt-2">
-                    <form action="{{ route('report.room', $room->id) }}" method="POST">
-                        @csrf
-                        <input type="hidden" name="reason" value="Đã báo cáo vì nội dung không phù hợp"> <!-- Optional: Add a reason -->
-                        <button type="submit" class="btn btn-danger p-2 text-light">
-                            <i class="fa-solid fa-phone" style="color: #ffffff;"></i> Báo Cáo
-                        </button>
-                    </form>
-                </div> --}}
-
-
-
-
+                        <form action="{{ route('report.room', $room->id) }}" method="POST">
+                            @csrf
+                            <input type="hidden" name="reason" value="Đã báo cáo vì nội dung không phù hợp"> <!-- Optional: Add a reason -->
+                            <button type="submit" class="btn btn-danger p-2 text-light">
+                                <i class="fa-solid fa-phone" style="color: #ffffff;"></i> Báo Cáo
+                            </button>
+                        </form>
+                    </div> --}}
             </div>
             <div class="row justify-content-center p-0 mt-3">
                 <div class="col-9 p-0 block-img">
@@ -109,7 +103,6 @@
                     </div>
                 </div>
             </div>
-
             <div class="row justify-content-center p-0 mt-4 ">
                 <div class="col-9 bg-body rounded p-4">
                     <h3>Giới thiệu</h3>
@@ -118,7 +111,6 @@
                     </p>
                 </div>
             </div>
-
             <div class="row justify-content-center p-0 mt-4">
                 <div class="col-9 bg-body rounded p-4">
                     <h3>Bình luận</h3>
@@ -200,7 +192,8 @@
                                                                             </p>
                                                                         </div>
                                                                     </div>
-                                                                    <p class="mt-3 mb-4 pb-2">{{ $reply->content }}</p>
+                                                                    <p class="mt-3 mb-4 pb-2">{{ $reply->content }}
+                                                                    </p>
                                                                     <div class="small d-flex justify-content-start">
                                                                         <a href="#!"
                                                                             class="d-flex align-items-center me-3 text-decoration-none text-primary like-btn">
@@ -252,18 +245,16 @@
                                 @endif
                             </div>
                         </div>
-
                         <!-- Nút Xem tất cả bình luận -->
                         @if ($comments->count() > 3)
                             <div class="row d-flex justify-content-center">
                                 <div class="col-md-12 text-center mt-3">
-                                    <button id="showAllCommentsBtn" class="btn btn-primary">Xem tất cả bình luận</button>
+                                    <button id="showAllCommentsBtn" class="btn btn-primary">Xem tất cả bình
+                                        luận</button>
                                 </div>
                             </div>
                         @endif
                     </div>
-
-
                     <!-- Form bình luận mới -->
                     <div class="card-footer py-3 border-0" style="background-color: #f8f9fa;">
                         <form id="commentForm" action="{{ route('comments.store') }}" method="POST"
@@ -294,12 +285,6 @@
                     </div>
                 </div>
             </div>
-
-
-
-
-
-
         </div>
         <div class="row justify-content-center p-0 mt-4 margin-botton">
             <div class="col-9 bg-body rounded p-4">
@@ -310,9 +295,6 @@
                     referrerpolicy="no-referrer-when-downgrade"></iframe>
             </div>
         </div>
-    </div>
-
-
     </div>
 @endsection
 
