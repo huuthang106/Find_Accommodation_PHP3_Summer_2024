@@ -11,7 +11,7 @@
                     <div class="d-flex justify-content-between align-items-center header-title">
                         <h4 class="mb-3">Danh sách Blog</h4>
                         <div class="btn-group">
-                            <a href="{{ route('blogs.create') }}" class="btn btn-primary mx-2">Thêm Blog</a>
+                            <a href="{{ route('admin.blogs.create') }}" class="btn btn-primary mx-2">Thêm Blog</a>
                             <button type="button" class="btn btn-danger me-2">Xóa tất cả</button>
                         
                         </div>
@@ -52,7 +52,7 @@
                                                 <td>{{ Str::limit($item->title, 15) }}</td>
                                                 <td>{{ Str::limit($item->description, 25)}}</td>           
                                                 <td>
-                                                    <form action="{{ route('delete-blog', $item->id) }}" method="POST" style="display: inline;">                                                        @csrf
+                                                    <form action="{{ route('admin.delete-blog', $item->id) }}" method="POST" style="display: inline;">                                                        @csrf
                                                         @method('DELETE') <!-- Đổi thành DELETE -->
                                                         <button type="submit" class="btn btn-danger" onclick="return confirm('Bạn có chắc chắn muốn ẩn gói tin này không?');">Xóa</button>
                                                     </form>

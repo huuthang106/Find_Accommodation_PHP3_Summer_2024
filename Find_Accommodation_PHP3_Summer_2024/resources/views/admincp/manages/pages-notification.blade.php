@@ -41,10 +41,10 @@
                                     <tr>
                                         <td>
 
-                                            <a href="{{ route('pages-notification-detail',['id'=>$item->id])  }}" type="button"
+                                            <a href="{{ route('admin.pages-notification-detail',['id'=>$item->id])  }}" type="button"
                                                 class="btn btn-primary">Xem chi tiết</a>
 
-                                            <form action="{{ route('notification.destroy', $item->id) }}" method="POST"
+                                            <form action="{{ route('admin.notification.destroy', $item->id) }}" method="POST"
                                                 style="display:inline;">
                                                 @csrf
                                                 @method('DELETE')

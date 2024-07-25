@@ -45,7 +45,7 @@
                                         <td>{{ $item->status == 1 ? 'Chưa xem' : 'Đã xem' }}</td>
                                         <td>{{ $item->created_at->format('d/m/Y H:i:s') }}</td>
                                         <td>
-                                            <form action="{{ route('update-pages-notification-detail', $item->id) }}"
+                                            <form action="{{ route('admin.update-pages-notification-detail', $item->id) }}"
                                                 method="POST" style="display:inline;">
                                                 @csrf
                                                 <button type="submit" class="btn btn-primary">Xem</button>

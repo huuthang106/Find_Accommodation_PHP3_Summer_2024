@@ -43,7 +43,7 @@
                                                 chi
                                                 tiết</a></td>
                                         <td>
-                                            <form action="{{ route('rooms.destroy', $item->id) }}" method="POST"
+                                            <form action="{{ route('admin.rooms.destroy', $item->id) }}" method="POST"
                                                 style="display: inline;">
                                                 @csrf
                                                 @method('PUT')

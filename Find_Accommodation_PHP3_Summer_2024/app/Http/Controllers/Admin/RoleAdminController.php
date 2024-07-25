@@ -37,10 +37,10 @@ class RoleAdminController extends Controller
             $roleToDelete->role = 5; // Cập nhật role thành 5
             $roleToDelete->save();
     
-            return redirect()->route('quan-li-role')->with('success', 'Người dùng đã được ẩn.');
+            return redirect()->route('admin.quan-li-role')->with('success', 'Người dùng đã được ẩn.');
         }
     
-        return redirect()->route('quan-li-role')->with('error', 'Bạn không có quyền xóa người dùng này.');
+        return redirect()->route('admin.quan-li-role')->with('error', 'Bạn không có quyền xóa người dùng này.');
     }
     
     

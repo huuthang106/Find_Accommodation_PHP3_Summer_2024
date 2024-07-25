@@ -46,7 +46,7 @@
                                             <td>{{ Str::limit($item->email, 25) }}</td>
                                             <td>
                                                 @if (auth()->id() !== $item->id && auth()->user()->role == 0) <!-- Kiểm tra quyền xóa -->
-                                                    <form action="{{ route('delete-role', $item->id) }}" method="POST" style="display: inline;">
+                                                    <form action="{{ route('admin.delete-role', $item->id) }}" method="POST" style="display: inline;">
                                                         @csrf
                                                         @method('DELETE')
                                                         <button type="submit" class="btn btn-danger" onclick="return confirm('Bạn có chắc chắn muốn ẩn người dùng này không?');">Xóa</button>

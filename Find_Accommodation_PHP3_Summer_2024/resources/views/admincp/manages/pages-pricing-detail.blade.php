@@ -60,8 +60,8 @@
                                                     {{ Str::limit($item->description, 10) }}
                                                 </td>
                                                 <td>
-                                                    <a href="{{ route('post-pricelist',['id'=> $item->id] ) }}" class="btn btn-primary">Chỉnh sửa</a>
-                                                    <form action="{{ route('tin.destroy', $item->id) }}" method="POST" style="display: inline;">
+                                                    <a href="{{ route('admin.post-pricelist',['id'=> $item->id] ) }}" class="btn btn-primary">Chỉnh sửa</a>
+                                                    <form action="{{ route('admin.tin.destroy', $item->id) }}" method="POST" style="display: inline;">
                                                         @csrf
                                                         @method('PUT')
                                                         <button type="submit" class="btn btn-danger" onclick="return confirm('Bạn có chắc chắn muốn ẩn gói tin này không?');">Xóa</button>

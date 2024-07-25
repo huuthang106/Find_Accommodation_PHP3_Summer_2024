@@ -152,7 +152,7 @@
                                 <h5 class="font-16 m-1">Chỉnh sửa hồ sơ</h5>
                             </div>
                             <div class="card-body">
-                                <form action="{{ route('chinh-sua-ho-so', ['id' => $admin->id]) }}" method="POST"
+                                <form action="{{ route('admin.chinh-sua-ho-so', ['id' => $admin->id]) }}" method="POST"
                                     role="form">
                                     @csrf
                                     @method('PUT')

@@ -34,6 +34,6 @@ class RegisterAdminController extends Controller
         $data = request()->all('username', 'email');
         $data['password'] = bcrypt(request('password'));
         User::create($data);
-        return redirect()->route('pages-login-admin');
+        return redirect()->route('admin.pages-login-admin');
     }
 }

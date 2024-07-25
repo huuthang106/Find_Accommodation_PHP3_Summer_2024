@@ -69,7 +69,7 @@
                         <div class="dropdown-item noti-title">
                             <h5 class="font-16 m-0">
                                 <span class="float-right">
-                                    <a href="{{ route('soft-delete-all-notifications') }}" class="text-dark">
+                                    <a href="{{ route('admin.soft-delete-all-notifications') }}" class="text-dark">
                                         <small>Xóa tất cả</small>
                                     </a>
                                 </span>Thông báo
@@ -80,7 +80,7 @@
 
                             <!-- item-->
                             @foreach ($unreadNotifications as $item)
-                                <a href="{{ route('pages-notification-detail', $item->id) }}"
+                                <a href="{{ route('admin.pages-notification-detail', $item->id) }}"
                                     class="dropdown-item notify-item">
                                     <div class="notify-icon bg-success"><i class="mdi mdi-comment-account-outline"></i>
                                     </div>
@@ -131,7 +131,7 @@
                         </div>
 
                         <!-- All-->
-                        <a href="{{ route('pages-notification') }}"
+                        <a href="{{ route('admin.pages-notification') }}"
                             class="dropdown-item text-primary text-center notify-item notify-all ">
                             Xem tất cả
                             <i class="fi-arrow-right"></i>
@@ -161,7 +161,7 @@
                         </div>
 
                         <!-- item-->
-                        <a href="{{ route('quan-li-ho-so') }}" class="dropdown-item notify-item">
+                        <a href="{{ route('admin.quan-li-ho-so') }}" class="dropdown-item notify-item">
                             <i class="mdi mdi-account-outline"></i>
                             <span>Hồ sơ</span>
                         </a>
@@ -278,13 +278,13 @@
                     <li class="menu-title">Navigation</li>
 
                     <li>
-                        <a href="{{ route('trang-quan-ly') }}">
+                        <a href="{{ route('admin.trang-quan-ly') }}">
                             <i class="ti-home"></i>
                             <span> Bảng điều khiển </span>
                         </a>
                     </li>
                     <li>
-                        <a href="{{ route('pages-report') }}">
+                        <a href="{{ route('admin.pages-report') }}">
                             <i class="fas fa-flag"></i>
                             <span> Bảng Báo Cáo </span>
                         </a>
@@ -297,13 +297,13 @@
                         </a>
                         <ul class="nav-second-level" aria-expanded="false">
                             <li>
-                                <a href="{{ route('pages-commet') }}">
+                                <a href="{{ route('admin.pages-commet') }}">
                                     <i class="fas fa-comment"></i>
                                     <span>Quản lí bình luận</span>
                                 </a>
                             </li>
                             <li>
-                                <a href="{{ route('pages-room') }}">
+                                <a href="{{ route('admin.pages-room') }}">
                                     <i class="fas fa-newspaper"></i>
                                     <span>Quản lí tin đăng</span>
                                 </a>
@@ -314,32 +314,32 @@
                                     <span>Quản lí đánh giá</span>
                                 </a>
                             </li> --}}
-                            <li>
-                                <a href="{{ route('goi-dang-tin') }}">
+                            {{-- <li>
+                                <a href="{{ route('admin.goi-dang-tin') }}">
                                     <i class="fas fa-money-check"></i>
                                     <span>Quản lí gói đăng tin</span>
                                 </a>
-                            </li>
+                            </li> --}}
                             <li>
-                                <a href="{{ route('get-pricelist') }}">
+                                <a href="{{ route('admin.get-pricelist') }}">
                                     <i class="fas fa-money-check"></i>
                                     <span>Quản lí chi tiết gói</span>
                                 </a>
                             </li>
                             <li>
-                                <a href="{{ route('quan-li-blog') }}">
+                                <a href="{{ route('admin.quan-li-blog') }}">
                                     <i class="fas fa-money-check"></i>
                                     <span>Quản lí blog</span>
                                 </a>
                             </li>
                             <li>
-                                <a href="{{ route('quan-li-role') }}">
+                                <a href="{{ route('admin.quan-li-role') }}">
                                     <i class="fas fa-money-check"></i>
                                     <span>Quản lí role</span>
                                 </a>
                             </li>
                             <li>
-                                <a href="{{ route('manages-user') }}">
+                                <a href="{{ route('admin.manages-user') }}">
                                     <i class="fas fa-user"></i>
                                     <span>Quản lí người dùng</span>
                                 </a>
@@ -347,7 +347,7 @@
                         </ul>
                     </li>
                     <li>
-                        <a href="{{ route('pages-register-admin') }}">
+                        <a href="{{ route('admin.pages-register-admin') }}">
                             <i class="fas fa-address-card"></i>
                             <span> Đăng ký thành viên </span>
                         </a>

@@ -63,7 +63,7 @@
                     <!-- end card -->
                     <div class="row mt-4">
                         <div class="col-sm-12 text-center">
-                            <p class="text-muted mb-0">Trở về <a href="{{ route('pages-login-admin') }}"
+                            <p class="text-muted mb-0">Trở về <a href="{{ route('admin.pages-login-admin') }}"
                                     class="text-dark ml-1"><b>ĐĂNG NHẬP</b></a></p>
                         </div>
                     </div>

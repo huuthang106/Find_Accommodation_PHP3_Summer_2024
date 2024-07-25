@@ -12,7 +12,7 @@
                         <h4 class="mb-3">Thùng rác bình luận</h4>
                         <div>
                             <button type="button" class="btn btn-danger">Xóa tất cả</button>
-                            <a href="{{ route('pages-commet') }}" class="btn btn-primary text-white me-2">
+                            <a href="{{ route('admin.pages-commet') }}" class="btn btn-primary text-white me-2">
                                 <i class="fas fa-arrow-left"></i>&nbsp;Trở lại danh sách
                             </a>
                         </div>

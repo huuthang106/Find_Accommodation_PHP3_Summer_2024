@@ -13,7 +13,7 @@
                         <div>
 
                             <button type="button" class="btn btn-danger">Xóa tất cả</button>
-                            <a href="{{ route('pages-trash-comment') }}" class="btn btn-primary text-white me-2">
+                            <a href="{{ route('admin.pages-trash-comment') }}" class="btn btn-primary text-white me-2">
                                 <i class="fas fa-trash-alt"></i>&nbsp;Thùng rác
                             </a>
                         </div>
