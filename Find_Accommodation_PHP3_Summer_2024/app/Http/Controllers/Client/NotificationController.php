@@ -85,4 +85,14 @@ class NotificationController extends Controller
         ]);
 
     }
+    public function notifiUpdateRoom($userId,$roomId){
+        Notification::create([
+            'type' => 'Bạn vừa chỉnh sửa bài viết thành công.',
+            'data' => 'Bạn vừa chỉnh sửa bài viết thành công.',
+            'message' => 'Bạn vừa chỉnh sửa bài viết thành công.',
+            'user_id' => $userId,
+            'room_id' => $roomId,
+            'status' => 4,
+        ]);
+    }
 }

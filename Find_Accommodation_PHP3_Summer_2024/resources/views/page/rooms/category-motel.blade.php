@@ -1,58 +1,7 @@
 @extends('layouts.layout-user')
 @section('titleUs', 'Trang chủ trọ nhanh')
 @section('contentUs')
-    <style>
-        /* Thiết lập kiểu checkbox */
-        .checkbox-container {
-            display: flex;
-            /* Sử dụng flexbox để xếp các phần tử trên cùng một hàng */
-            align-items: center;
-            /* Căn các phần tử theo chiều dọc */
-        }
-
-        .checkbox-container input[type="checkbox"] {
-            margin-right: 10px;
-            /* Khoảng cách giữa checkbox và văn bản */
-        }
-
-
-
-        /* Tăng kích thước của checkbox */
-        .custom-checkbox input[type="checkbox"] {
-            width: 20px;
-            /* Chiều rộng */
-            height: 20px;
-            /* Chiều cao */
-            margin-right: 5px;
-            /* Khoảng cách với nhãn */
-        }
-
-        /* Thiết lập kiểu của checkbox */
-        .custom-checkbox input[type="checkbox"] {
-            -webkit-appearance: none;
-            -moz-appearance: none;
-            appearance: none;
-            border: 1px solid #ccc;
-            border-radius: 3px;
-            outline: none;
-            cursor: pointer;
-        }
-
-        /* Tạo kiểu khi checkbox được checked */
-        .custom-checkbox input[type="checkbox"]:checked {
-            background-color: #007bff;
-            border-color: #007bff;
-        }
-
-        /* Ẩn checkbox mặc định và chỉnh sửa nhãn */
-        .custom-checkbox input[type="checkbox"]+label {
-            display: inline-block;
-            vertical-align: middle;
-            cursor: pointer;
-            font-weight: normal;
-            /* Cân chỉnh font-weight nếu cần */
-        }
-    </style>
+   
     <div class="container">
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
@@ -297,6 +246,58 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
         integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <style>
+            /* Thiết lập kiểu checkbox */
+            .checkbox-container {
+                display: flex;
+                /* Sử dụng flexbox để xếp các phần tử trên cùng một hàng */
+                align-items: center;
+                /* Căn các phần tử theo chiều dọc */
+            }
+    
+            .checkbox-container input[type="checkbox"] {
+                margin-right: 10px;
+                /* Khoảng cách giữa checkbox và văn bản */
+            }
+    
+    
+    
+            /* Tăng kích thước của checkbox */
+            .custom-checkbox input[type="checkbox"] {
+                width: 20px;
+                /* Chiều rộng */
+                height: 20px;
+                /* Chiều cao */
+                margin-right: 5px;
+                /* Khoảng cách với nhãn */
+            }
+    
+            /* Thiết lập kiểu của checkbox */
+            .custom-checkbox input[type="checkbox"] {
+                -webkit-appearance: none;
+                -moz-appearance: none;
+                appearance: none;
+                border: 1px solid #ccc;
+                border-radius: 3px;
+                outline: none;
+                cursor: pointer;
+            }
+    
+            /* Tạo kiểu khi checkbox được checked */
+            .custom-checkbox input[type="checkbox"]:checked {
+                background-color: #007bff;
+                border-color: #007bff;
+            }
+    
+            /* Ẩn checkbox mặc định và chỉnh sửa nhãn */
+            .custom-checkbox input[type="checkbox"]+label {
+                display: inline-block;
+                vertical-align: middle;
+                cursor: pointer;
+                font-weight: normal;
+                /* Cân chỉnh font-weight nếu cần */
+            }
+        </style>
 @endpush
 
 @push('scripts')

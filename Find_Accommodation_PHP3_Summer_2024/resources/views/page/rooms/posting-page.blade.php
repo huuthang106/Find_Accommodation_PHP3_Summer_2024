@@ -116,6 +116,7 @@
 @endsection
 
 @push('styles')
+
     <!-- DataTables CSS -->
     <link rel="stylesheet" href="https://cdn.datatables.net/1.11.4/css/dataTables.bootstrap5.min.css">
     <!-- Bootstrap CSS v5.2.1 -->

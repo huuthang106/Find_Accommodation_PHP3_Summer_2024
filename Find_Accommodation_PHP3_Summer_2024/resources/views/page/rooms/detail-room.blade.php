@@ -44,15 +44,41 @@
                         </button>
                     </form>
                 </div> --}}
-                
-                
-                
+
+
+
 
             </div>
             <div class="row justify-content-center p-0 mt-3">
-                <div class="col-9 p-0 "> <img class="img-fluid w-100 rounded"
-                        src="{{ asset('assets\images\448469911_476143361772862_3803638986442606747_n-min.jpg') }}"
-                        alt=""></div>
+                <div class="col-9 p-0 block-img">
+                    @if ($images)
+                    <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+                        <div class="carousel-inner">
+                            @foreach($images as $index => $item)
+                                <div class="carousel-item {{ $index === 0 ? 'active' : '' }}">
+                                    <img src="{{ asset('assets/images/' . $item->image) }}" class="d-block w-100"
+                                        alt="...">
+                                </div>
+                            @endforeach
+                        </div>
+                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls"
+                            data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Previous</span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls"
+                            data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Next</span>
+                        </button>
+                    </div>
+                    @else
+                        <img class="img-fluid w-100 rounded"
+                            src="{{ asset('assets\images\448469911_476143361772862_3803638986442606747_n-min.jpg') }}"
+                            alt="">
+                    @endif
+                </div>
+
             </div>
             <div class="row justify-content-center p-0 mt-4 ">
                 <div class="col-9 bg-body rounded p-4">
@@ -97,108 +123,145 @@
                 <div class="col-9 bg-body rounded p-4">
                     <h3>Bình luận</h3>
                     <div class="row d-flex justify-content-center">
-    <div class="col-md-12">
-        <!-- Phần bình luận chính -->
-        <div id="commentList">
-            @if ($comments->isNotEmpty())
-                @foreach ($comments as $index => $comment)
-                    @if (is_null($comment->parent_id))
-                        <div class="card mb-3 comment-card {{ $index >= 3 ? 'additional-comment' : '' }}" data-comment-id="{{ $comment->id }}" {{ $index >= 3 ? 'style=display:none;' : '' }}>
-                            <div class="card-body">
-                                <div class="d-flex flex-start align-items-center">
-                                    <img class="rounded-circle shadow-1-strong me-3" src="{{ asset('assets/images/clinh4.jpeg') }}" alt="avatar" width="60" height="60" />
-                                    <div>
-                                        <h6 class="fw-bold text-dark mb-1">{{ $comment->user->username }}</h6>
-                                        <p class="text-muted small mb-0">Đăng vào {{ $comment->created_at->format('d/m/Y H:i') }}</p>
-                                    </div>
-                                </div>
-                                <p class="mt-3 mb-4 pb-2">{{ $comment->content }}</p>
-                                <div class="small d-flex justify-content-start">
-                                    <a href="#!" class="d-flex align-items-center me-3 text-decoration-none text-primary like-btn">
-                                        <i class="far fa-thumbs-up me-2"></i>
-                                        <p class="mb-0">Thích</p>
-                                    </a>
-                                    <a href="#!" class="d-flex align-items-center me-3 text-decoration-none text-primary reply-btn" data-comment-id="{{ $comment->id }}">
-                                        <i class="far fa-comment-dots me-2"></i>
-                                        <p class="mb-0">Trả lời</p>
-                                    </a>
-                                </div>
-                                <div class="reply-form" id="reply-form-{{ $comment->id }}" style="display: none;">
-                                    <form action="{{ route('comments.store') }}" method="POST" class="reply-form-ajax">
-                                        @csrf
-                                        <input type="hidden" name="parent_id" value="{{ $comment->id }}">
-                                        <input type="hidden" name="room_id" value="{{ $room->id }}">
-                                        <div class="form-floating">
-                                            <textarea class="form-control border-primary rounded-3 shadow-sm" name="content" rows="3" placeholder="Nhập tin nhắn ở đây" required></textarea>
-                                            <label for="replyTextArea-{{ $comment->id }}">Tin nhắn</label>
-                                        </div>
-                                        <div class="d-flex justify-content-end mt-2">
-                                            <button type="submit" class="btn btn-primary btn-sm me-2">Đăng</button>
-                                            <button type="button" class="btn btn-outline-primary btn-sm cancel-reply">Hủy</button>
-                                        </div>
-                                    </form>
-                                </div>
-                                <!-- Replies -->
-                                <div class="replies mt-3">
-                                    @foreach ($comment->replies as $reply)
-                                        <div class="card ms-2 mb-3 comment-card" data-comment-id="{{ $reply->id }}">
-                                            <div class="card-body">
-                                                <div class="d-flex flex-start align-items-center">
-                                                    <img class="rounded-circle shadow-1-strong me-3" src="{{ asset('assets/images/clinh4.jpeg') }}" alt="avatar" width="50" height="50" />
-                                                    <div>
-                                                        <h6 class="fw-bold text-dark mb-1">{{ $reply->user->username }}</h6>
-                                                        <p class="text-muted small mb-0">Đăng vào {{ $reply->created_at->format('d/m/Y H:i') }}</p>
+                        <div class="col-md-12">
+                            <!-- Phần bình luận chính -->
+                            <div id="commentList">
+                                @if ($comments->isNotEmpty())
+                                    @foreach ($comments as $index => $comment)
+                                        @if (is_null($comment->parent_id))
+                                            <div class="card mb-3 comment-card {{ $index >= 3 ? 'additional-comment' : '' }}"
+                                                data-comment-id="{{ $comment->id }}"
+                                                {{ $index >= 3 ? 'style=display:none;' : '' }}>
+                                                <div class="card-body">
+                                                    <div class="d-flex flex-start align-items-center">
+                                                        <img class="rounded-circle shadow-1-strong me-3"
+                                                            src="{{ asset('assets/images/clinh4.jpeg') }}" alt="avatar"
+                                                            width="60" height="60" />
+                                                        <div>
+                                                            <h6 class="fw-bold text-dark mb-1">
+                                                                {{ $comment->user->username }}</h6>
+                                                            <p class="text-muted small mb-0">Đăng vào
+                                                                {{ $comment->created_at->format('d/m/Y H:i') }}</p>
+                                                        </div>
+                                                    </div>
+                                                    <p class="mt-3 mb-4 pb-2">{{ $comment->content }}</p>
+                                                    <div class="small d-flex justify-content-start">
+                                                        <a href="#!"
+                                                            class="d-flex align-items-center me-3 text-decoration-none text-primary like-btn">
+                                                            <i class="far fa-thumbs-up me-2"></i>
+                                                            <p class="mb-0">Thích</p>
+                                                        </a>
+                                                        <a href="#!"
+                                                            class="d-flex align-items-center me-3 text-decoration-none text-primary reply-btn"
+                                                            data-comment-id="{{ $comment->id }}">
+                                                            <i class="far fa-comment-dots me-2"></i>
+                                                            <p class="mb-0">Trả lời</p>
+                                                        </a>
+                                                    </div>
+                                                    <div class="reply-form" id="reply-form-{{ $comment->id }}"
+                                                        style="display: none;">
+                                                        <form action="{{ route('comments.store') }}" method="POST"
+                                                            class="reply-form-ajax">
+                                                            @csrf
+                                                            <input type="hidden" name="parent_id"
+                                                                value="{{ $comment->id }}">
+                                                            <input type="hidden" name="room_id"
+                                                                value="{{ $room->id }}">
+                                                            <div class="form-floating">
+                                                                <textarea class="form-control border-primary rounded-3 shadow-sm" name="content" rows="3"
+                                                                    placeholder="Nhập tin nhắn ở đây" required></textarea>
+                                                                <label for="replyTextArea-{{ $comment->id }}">Tin
+                                                                    nhắn</label>
+                                                            </div>
+                                                            <div class="d-flex justify-content-end mt-2">
+                                                                <button type="submit"
+                                                                    class="btn btn-primary btn-sm me-2">Đăng</button>
+                                                                <button type="button"
+                                                                    class="btn btn-outline-primary btn-sm cancel-reply">Hủy</button>
+                                                            </div>
+                                                        </form>
+                                                    </div>
+                                                    <!-- Replies -->
+                                                    <div class="replies mt-3">
+                                                        @foreach ($comment->replies as $reply)
+                                                            <div class="card ms-2 mb-3 comment-card"
+                                                                data-comment-id="{{ $reply->id }}">
+                                                                <div class="card-body">
+                                                                    <div class="d-flex flex-start align-items-center">
+                                                                        <img class="rounded-circle shadow-1-strong me-3"
+                                                                            src="{{ asset('assets/images/clinh4.jpeg') }}"
+                                                                            alt="avatar" width="50"
+                                                                            height="50" />
+                                                                        <div>
+                                                                            <h6 class="fw-bold text-dark mb-1">
+                                                                                {{ $reply->user->username }}</h6>
+                                                                            <p class="text-muted small mb-0">Đăng vào
+                                                                                {{ $reply->created_at->format('d/m/Y H:i') }}
+                                                                            </p>
+                                                                        </div>
+                                                                    </div>
+                                                                    <p class="mt-3 mb-4 pb-2">{{ $reply->content }}</p>
+                                                                    <div class="small d-flex justify-content-start">
+                                                                        <a href="#!"
+                                                                            class="d-flex align-items-center me-3 text-decoration-none text-primary like-btn">
+                                                                            <i class="far fa-thumbs-up me-2"></i>
+                                                                            <p class="mb-0">Thích</p>
+                                                                        </a>
+                                                                        <a href="#!"
+                                                                            class="d-flex align-items-center me-3 text-decoration-none text-primary reply-btn"
+                                                                            data-comment-id="{{ $reply->id }}">
+                                                                            <i class="far fa-comment-dots me-2"></i>
+                                                                            <p class="mb-0">Trả lời</p>
+                                                                        </a>
+                                                                    </div>
+                                                                    <div class="reply-form"
+                                                                        id="reply-form-{{ $reply->id }}"
+                                                                        style="display: none;">
+                                                                        <form action="{{ route('comments.store') }}"
+                                                                            method="POST" class="reply-form-ajax">
+                                                                            @csrf
+                                                                            <input type="hidden" name="parent_id"
+                                                                                value="{{ $reply->id }}">
+                                                                            <input type="hidden" name="room_id"
+                                                                                value="{{ $room->id }}">
+                                                                            <div class="form-floating">
+                                                                                <textarea class="form-control border-primary rounded-3 shadow-sm" name="content" rows="3"
+                                                                                    placeholder="Nhập tin nhắn ở đây" required></textarea>
+                                                                                <label
+                                                                                    for="replyTextArea-{{ $reply->id }}">Tin
+                                                                                    nhắn</label>
+                                                                            </div>
+                                                                            <div class="d-flex justify-content-end mt-2">
+                                                                                <button type="submit"
+                                                                                    class="btn btn-primary btn-sm me-2">Đăng</button>
+                                                                                <button type="button"
+                                                                                    class="btn btn-outline-primary btn-sm cancel-reply">Hủy</button>
+                                                                            </div>
+                                                                        </form>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        @endforeach
                                                     </div>
                                                 </div>
-                                                <p class="mt-3 mb-4 pb-2">{{ $reply->content }}</p>
-                                                <div class="small d-flex justify-content-start">
-                                                    <a href="#!" class="d-flex align-items-center me-3 text-decoration-none text-primary like-btn">
-                                                        <i class="far fa-thumbs-up me-2"></i>
-                                                        <p class="mb-0">Thích</p>
-                                                    </a>
-                                                    <a href="#!" class="d-flex align-items-center me-3 text-decoration-none text-primary reply-btn" data-comment-id="{{ $reply->id }}">
-                                                        <i class="far fa-comment-dots me-2"></i>
-                                                        <p class="mb-0">Trả lời</p>
-                                                    </a>
-                                                </div>
-                                                <div class="reply-form" id="reply-form-{{ $reply->id }}" style="display: none;">
-                                                    <form action="{{ route('comments.store') }}" method="POST" class="reply-form-ajax">
-                                                        @csrf
-                                                        <input type="hidden" name="parent_id" value="{{ $reply->id }}">
-                                                        <input type="hidden" name="room_id" value="{{ $room->id }}">
-                                                        <div class="form-floating">
-                                                            <textarea class="form-control border-primary rounded-3 shadow-sm" name="content" rows="3" placeholder="Nhập tin nhắn ở đây" required></textarea>
-                                                            <label for="replyTextArea-{{ $reply->id }}">Tin nhắn</label>
-                                                        </div>
-                                                        <div class="d-flex justify-content-end mt-2">
-                                                            <button type="submit" class="btn btn-primary btn-sm me-2">Đăng</button>
-                                                            <button type="button" class="btn btn-outline-primary btn-sm cancel-reply">Hủy</button>
-                                                        </div>
-                                                    </form>
-                                                </div>
                                             </div>
-                                        </div>
+                                        @endif
                                     @endforeach
-                                </div>
+                                @else
+                                    <p>Chưa có bình luận nào.</p>
+                                @endif
                             </div>
                         </div>
-                    @endif
-                @endforeach
-            @else
-                <p>Chưa có bình luận nào.</p>
-            @endif
-        </div>
-    </div>
 
-    <!-- Nút Xem tất cả bình luận -->
-    @if ($comments->count() > 3)
-    <div class="row d-flex justify-content-center">
-        <div class="col-md-12 text-center mt-3">
-            <button id="showAllCommentsBtn" class="btn btn-primary">Xem tất cả bình luận</button>
-        </div>
-    </div>
-    @endif
-</div>
+                        <!-- Nút Xem tất cả bình luận -->
+                        @if ($comments->count() > 3)
+                            <div class="row d-flex justify-content-center">
+                                <div class="col-md-12 text-center mt-3">
+                                    <button id="showAllCommentsBtn" class="btn btn-primary">Xem tất cả bình luận</button>
+                                </div>
+                            </div>
+                        @endif
+                    </div>
 
 
                     <!-- Form bình luận mới -->
