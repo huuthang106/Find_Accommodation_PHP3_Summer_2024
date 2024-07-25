@@ -1,0 +1,33 @@
+/* admin */
+.logo-box img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain; /* Đảm bảo giữ tỉ lệ hình ảnh */
+}
+
+.logo-lg img, .logo-sm img {
+    width: 100%; /* Đảm bảo hình ảnh chiếm toàn bộ chiều rộng của container */
+    height: auto; /* Chiều cao tự động theo tỉ lệ */
+}.carousel-inner img {
+    width: 100%;
+    height: auto;
+    /* Điều chỉnh chiều cao tự động để không bị cắt */
+    object-fit: cover;
+    /* Đảm bảo ảnh không bị méo, nhưng có thể bị cắt */
+}
+.modal-dialog {
+    background: rgba(0, 0, 0, 0); /* Nền trong suốt */
+}
+.modal-content {
+    background: transparent; /* Nội dung modal không có nền */
+    border: none;
+}
+.modal-edit{
+    width: 100%;
+ 
+}
+.carousel-item img {
+    height: 400px; /* Thay đổi chiều cao theo nhu cầu */
+    object-fit: contain; /* Đảm bảo hình ảnh không bị kéo giãn */
+    width: 100%; /* Đảm bảo hình ảnh chiếm toàn bộ chiều rộng */
+}

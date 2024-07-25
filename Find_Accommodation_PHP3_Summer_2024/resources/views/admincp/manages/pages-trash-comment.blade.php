@@ -48,14 +48,14 @@
                                         <td>{{ $comment->user->username }}</td>
                                         <td>{{ $comment->created_at }}</td>
                                         <td>
-                                            <form action="{{ route('comment.restore', $comment->id) }}" method="POST"
+                                            <form action="{{ route('admin.comment.restore', $comment->id) }}" method="POST"
                                                 style="display: inline;">
                                                 @csrf
                                                 @method('PUT')
                                                 <button type="submit" class="btn btn-success"
                                                     onclick="return confirm('Bạn có chắc chắn muốn khôi phục bình luận này không?');">Khôi phục</button>
                                             </form>
-                                            <form action="{{ route('comment.deletePermanent', $comment->id) }}" method="POST"
+                                            <form action="{{ route('admin.comment.deletePermanent', $comment->id) }}" method="POST"
                                                 style="display: inline;">
                                                 @csrf
                                                 @method('DELETE')
@@ -111,7 +111,7 @@
     <link href="{{ asset('assets/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css" id="bootstrap-stylesheet">
     <link href="{{ asset('assets/css/icons.min.css') }}" rel="stylesheet" type="text/css">
     <link href="{{ asset('assets/css/app.min.css') }}" rel="stylesheet" type="text/css" id="app-stylesheet">
-    <link rel="stylesheet" href="{{asset('assets/css/style-nht.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/css/admin-nht.css')}}">
 
 @endpush
 
