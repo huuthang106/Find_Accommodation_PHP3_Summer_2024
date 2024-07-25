@@ -4,9 +4,6 @@ namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-/**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Areas>
- */
 class AreasFactory extends Factory
 {
     /**
@@ -16,8 +13,22 @@ class AreasFactory extends Factory
      */
     public function definition(): array
     {
+        $cities = [
+            'Hà Nội',
+            'TP. Hồ Chí Minh',
+            'Đà Nẵng',
+            'Hải Phòng',
+            'Cần Thơ',
+            'Hạ Long',
+            'Huế',
+            'Nha Trang',
+            'Vũng Tàu',
+            'Thái Nguyên',
+        ];
+
         return [
-            'name' => $this->faker->city, // Sử dụng tên thành phố giả lập cho cột 'name'
+            'name' => $this->faker->randomElement($cities), // Lấy ngẫu nhiên tên thành phố từ danh sách
         ];
     }
 }
+

@@ -8,6 +8,7 @@ use App\Models\User;
 use App\Models\Category;
 use App\Models\Prices;
 use Faker\Factory as Faker;
+
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Room>
  */
@@ -21,24 +22,24 @@ class RoomFactory extends Factory
     public function definition(): array
     {
         $faker = Faker::create('vi_VN'); // Sử dụng ngôn ngữ tiếng Việt
+
         return [
-            //
-            'title' => $faker->sentence,
-            'description' => $faker->paragraph,
-            'price' => $faker->randomFloat(2, 50, 500), // Giá ngẫu nhiên từ 50 đến 500
-            'phone' => $faker->numerify('##########'), // Số điện thoại ngẫu nhiên 10 chữ số
-            'address' => $faker->city,
-            'quantity' => $faker->randomNumber(2),
-            'longitude' => $faker->longitude,
-            'latitude' => $faker->latitude,
-            'view' => $faker->numberBetween(0, 1000),
-            'status' => $faker->boolean(90), // 90% khả năng là true (hoạt động)
-            'area_id' => Areas::factory()->create()->id, // Tạo ngẫu nhiên một area và lấy id của nó
-            'user_id' => User::factory()->create()->id, // Tạo ngẫu nhiên một user và lấy id của nó
-            'price_id' => Prices::factory()->create()->id, // Tạo ngẫu nhiên một price và lấy id của nó
-            'category_id' => Category::factory()->create()->id, // Tạo ngẫu nhiên một category và lấy id của nó
-            'created_at' => $faker->dateTimeBetween('-1 year', 'now'), // Ngày tạo trong vòng 1 năm trở lại đây
-            'updated_at' => now(),
+            'title' => $faker->sentence(6, true), // Tiêu đề phòng bằng tiếng Việt
+            'description' => $faker->paragraph(3, true), // Mô tả phòng bằng tiếng Việt
+            'price' => $faker->randomFloat(2, 500000, 5000000), // Giá phòng
+            'phone' => $faker->numerify('##########'), // Số điện thoại
+            'address' => $faker->address, // Địa chỉ
+            'quantity' => $faker->numberBetween(1, 10), // Số lượng phòng
+            'longitude' => $faker->longitude, // Kinh độ
+            'latitude' => $faker->latitude, // Vĩ độ
+            'view' => $faker->numberBetween(0, 1000), // Số lượt xem
+            'status' => $faker->boolean(90), // Trạng thái (90% là true)
+            'user_id' => User::inRandomOrder()->first()->id, // Lấy người dùng ngẫu nhiên
+            'area_id' => Areas::inRandomOrder()->first()->id, // Lấy khu vực ngẫu nhiên
+            'price_id' => Prices::inRandomOrder()->first()->id, // Lấy giá ngẫu nhiên
+            'category_id' => Category::inRandomOrder()->first()->id, // Lấy loại phòng ngẫu nhiên
+            'created_at' => $faker->dateTimeBetween('-1 year', 'now'), // Ngày tạo
+            'updated_at' => now(), // Ngày cập nhật
         ];
     }
 }
