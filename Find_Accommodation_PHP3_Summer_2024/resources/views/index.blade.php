@@ -133,14 +133,15 @@
                     <button class="nav-link active" id="all" data-bs-toggle="tab" data-bs-target="#all"
                         type="button" role="tab" aria-controls="home" aria-selected="true">Tất cả</button>
                 </li>
-                @foreach ($categories as $category)
+                @foreach ($categories->sortByDesc('rooms_count')->take(3) as $category)
                     <li class="nav-item" role="presentation">
                         <a href="{{ route('category-motel-id', $category->id) }}" class="nav-link" id="homestay"
                             data-bs-toggle="tab" data-bs-target="#homestay" type="button" role="tab"
-                            aria-controls="profile" aria-selected="false">{{ $category->name }}</a>
+                            aria-controls="profile" aria-selected="false">
+                            {{ $category->name }}
+                        </a>
                     </li>
                 @endforeach
-
             </ul>
             <div class="tab-content" id="myTabContent">
                 <div class="tab-pane fade show active" id="all" role="tabpanel" aria-labelledby="all">

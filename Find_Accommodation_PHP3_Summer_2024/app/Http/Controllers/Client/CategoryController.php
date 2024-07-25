@@ -81,4 +81,7 @@ class CategoryController extends Controller
         // Trả về view với dữ liệu rooms
         return view('page.rooms.category-motel', compact('rooms', 'category'));
     }
+
+
+
 }

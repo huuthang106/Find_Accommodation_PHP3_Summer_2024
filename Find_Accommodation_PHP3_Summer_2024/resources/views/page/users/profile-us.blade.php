@@ -162,7 +162,8 @@
                                                             <td>{{ $item->category->name }}</td>
                                                             <td>{{ $item->quantity }}</td>
 
-                                                            <td><button class="btn btn-primary">Xem chi tiết</button>
+                                                            <td><a href="{{ route('get-room', $item->id) }}"
+                                                                    class="btn btn-primary">Xem chi tiết</a>
                                                             </td>
                                                             <td><a href="{{ route('edit-posting', $item->id) }}"
                                                                     class="btn btn-primary">Chỉnh sửa</a></td>
