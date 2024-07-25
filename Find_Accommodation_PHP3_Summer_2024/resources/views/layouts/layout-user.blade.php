@@ -175,8 +175,8 @@
                                                         <button class="btn btn-primary w-100" type="submit">ĐĂNG
                                                             NHẬP</button>
                                                     </div>
-                                                    <a href="" id="showforgotpassModal" class="text-dark"
-                                                        data-bs-toggle="modal" data-bs-target="#forgotpassModal"
+                                                    <a href="" id="showforgotpassModal" data-bs-toggle="modal"
+                                                        data-bs-target="#forgotpassModal"
                                                         class="text-muted float-end text-decoration-none">Quên mật
                                                         khẩu?</a>
                                                 </form>
@@ -194,7 +194,7 @@
                                         <div class="row mt-3">
                                             <div class="col-sm-12 text-center">
                                                 <p class="text-muted mb-0">Bạn chưa có tài khoản? <a href="#"
-                                                        id="showRegisterModal" class="text-dark"
+                                                        id="showRegisterModal" class="text-decoration-none"
                                                         data-bs-toggle="modal" data-bs-target="#registerModal"><b>ĐĂNG
                                                             KÝ</b></a></p>
                                             </div>
@@ -277,8 +277,9 @@
                                 <div class="row mt-3">
                                     <div class="col-sm-12 text-center">
                                         <p class="text-muted mb-0">Bạn đã có tài khoản? <a href="#"
-                                                id="showLoginModal" class="text-dark" data-bs-toggle="modal"
-                                                data-bs-target="#loginModal"><b>ĐĂNG NHẬP</b></a></p>
+                                                id="showLoginModal" class="text-decoration-none"
+                                                data-bs-toggle="modal" data-bs-target="#loginModal"><b>ĐĂNG
+                                                    NHẬP</b></a></p>
                                     </div>
                                 </div>
                             </div>
@@ -357,8 +358,9 @@
                                 <div class="row mt-3">
                                     <div class="col-sm-12 text-center">
                                         <p class="text-muted mb-0">Bạn đã có tài khoản? <a href="#"
-                                                id="showLoginModal" class="text-dark" data-bs-toggle="modal"
-                                                data-bs-target="#loginModal"><b>ĐĂNG NHẬP</b></a></p>
+                                                id="showLoginModal" class="text-decoration-none"
+                                                data-bs-toggle="modal" data-bs-target="#loginModal"><b>ĐĂNG
+                                                    NHẬP</b></a></p>
                                     </div>
                                 </div>
                             </div>
