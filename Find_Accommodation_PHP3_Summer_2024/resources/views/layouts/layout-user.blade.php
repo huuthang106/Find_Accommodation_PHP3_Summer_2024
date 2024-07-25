@@ -208,8 +208,7 @@
             </div>
         </div>
         <!-- Modal Đăng Ký -->
-        <div class="modal fade" id="registerModal" tabindex="-1" aria-labelledby="registerModalLabel"
-            aria-hidden="true">
+        <div class="modal fade" id="registerModal" tabindex="-1" aria-labelledby="registerModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
                     <div class="modal-header border-0">
@@ -219,8 +218,7 @@
                     <div class="modal-body">
                         <div class="text-center">
                             <a href="index.html">
-                                <span><img src="{{ asset('assets/images/logo3.png') }}" alt=""
-                                        height="60" width="170"></span>
+                                <span><img src="{{ asset('assets/images/logo3.png') }}" alt="" height="60" width="170"></span>
                             </a>
                         </div>
                         <div class="account-pages my-3 pt-2">
@@ -235,7 +233,7 @@
                                             <small class="text-danger text-blod">{{ $message }}</small>
                                         @enderror
                                     </div>
-
+        
                                     <div class="mb-3">
                                         <label for="registerEmail" class="form-label">Email</label>
                                         <input class="form-control" name="email" type="email" id="registerEmail"
@@ -244,11 +242,10 @@
                                             <small class="text-danger text-blod">{{ $message }}</small>
                                         @enderror
                                     </div>
-
+        
                                     <div class="mb-3">
                                         <label for="registerPassword" class="form-label">Mật khẩu</label>
-                                        <input class="form-control" name="password" type="password"
-                                            id="registerPassword" required placeholder="Nhập mật khẩu">
+                                        <input class="form-control" name="password" type="password" id="registerPassword" required placeholder="Nhập mật khẩu">
                                         @error('password')
                                             <small class="text-danger text-blod">{{ $message }}</small>
                                         @enderror
