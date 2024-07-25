@@ -23,14 +23,16 @@ class UserFactory extends Factory
      */
     public function definition(): array
     {
+        $faker = \Faker\Factory::create('vi_VN'); // Tạo Faker với locale tiếng Việt
+
         return [
-            'username' => $this->faker->userName(),
-            'email' => $this->faker->unique()->safeEmail(),
+            'username' => $faker->userName(),
+            'email' => $faker->unique()->safeEmail(),
             'password' => Hash::make('password'), // Mật khẩu mặc định là 'password'
-            'phone' => $this->faker->numberBetween(10, 13),
-            'address' => $this->faker->address(),
-            'role' => $this->faker->boolean(2), // 10% cơ hội là admin
-            'balance' => $this->faker->randomFloat(2, 0, 10000), // Số dư ngẫu nhiên từ 0 đến 10000 với 2 chữ số thập phân
+            'phone' => $faker->numerify('0##########'), // Giới hạn độ dài số điện thoại
+            'address' => $faker->address(),
+            'role' => $faker->boolean(10), // 10% cơ hội là admin
+            'balance' => $faker->randomFloat(2, 0, 10000), // Số dư ngẫu nhiên từ 0 đến 10000 với 2 chữ số thập phân
             'token' => Str::random(10), // Chuỗi ngẫu nhiên dài 10 ký tự
             'status' => 1,
             'provider' => null,

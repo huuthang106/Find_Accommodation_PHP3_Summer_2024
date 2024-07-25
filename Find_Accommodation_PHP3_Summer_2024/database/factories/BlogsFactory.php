@@ -4,12 +4,11 @@ namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 use App\Models\Blogs;
-/**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Blogs>
- */
+
 class BlogsFactory extends Factory
 {
     protected $model = Blogs::class;
+
     /**
      * Define the model's default state.
      *
@@ -17,11 +16,13 @@ class BlogsFactory extends Factory
      */
     public function definition(): array
     {
+        $faker = \Faker\Factory::create('vi_VN'); // Sử dụng ngôn ngữ tiếng Việt
+
         return [
-            'title' => $this->faker->sentence(6, true),
-            'description' => $this->faker->paragraph,
-            'user_id' => $this->faker->numberBetween(1, 10),
-            'status' => $this->faker->numberBetween(1, 4),  // Provide a default status value
+            'title' => $faker->sentence(6, true), // Tiêu đề bài viết
+            'description' => $faker->paragraph, // Mô tả bài viết
+            'user_id' => $faker->numberBetween(1, 10), // ID người dùng ngẫu nhiên
+            'status' => $faker->numberBetween(1, 4), // Trạng thái bài viết
             'created_at' => now(),
             'updated_at' => now(),
         ];

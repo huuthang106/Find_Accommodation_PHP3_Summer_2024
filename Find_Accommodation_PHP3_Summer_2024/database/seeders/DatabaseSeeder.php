@@ -2,16 +2,6 @@
 
 namespace Database\Seeders;
 
-use App\Models\User;
-use App\Models\Areas;
-use App\Models\Room;
-use App\Models\Category;
-use App\Models\Prices;
-use App\Models\PriceList;
-use App\Models\Notification;
-use App\Models\Blogs;
-use App\Models\Report;
-// use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -21,22 +11,30 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        User::factory(10)->create();
-        Areas::factory(1)->create();
-        Category::factory(10)->create();
-        Prices::factory(10)->create();
-        PriceList::factory(10)->create();
-        Room::factory(10)->create();
-        Notification::factory(10)->create();
-        Blogs::factory(10)->create();
-        Report::factory(10)->create();
-        // User::factory()->create([
-        //     'name' => 'Test User',
-        //     'email' => 'test@example.com',
-        // ]);
-        // $this->call([
-        //     // Userse::class,
-        //     // RoomSeeder::class,
-        // ]);
+        // Seed Users first to ensure user IDs are available for other seeds
+        $this->call(UserSeeder::class);
+
+        // Seed Areas to ensure area IDs are available for other seeds
+        $this->call(AreasSeeder::class);
+
+        // Seed Categories
+        $this->call(CategorySeeder::class);
+
+        // Seed Prices
+        $this->call(PricesSeeder::class);
+
+        // Seed PriceLists
+        $this->call(PriceListSeeder::class);
+
+        // Seed Rooms after all referenced tables are seeded
+        $this->call(RoomSeeder::class);
+
+        // Seed Notifications, Blogs, and Reports last
+        $this->call(NotificationSeeder::class);
+        $this->call(BlogsSeeder::class);
+        $this->call(ReportSeeder::class);
+
+        // Seed Comments last if it depends on Rooms and Users
+        $this->call(CommentSeeder::class);
     }
 }
