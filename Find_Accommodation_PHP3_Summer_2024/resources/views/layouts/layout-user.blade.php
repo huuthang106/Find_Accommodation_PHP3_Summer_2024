@@ -191,7 +191,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="row mt-3">
+                                        <div class="row ">
                                             <div class="col-sm-12 text-center">
                                                 <p class="text-muted mb-0">Bạn chưa có tài khoản? <a href="#"
                                                         id="showRegisterModal" class="text-decoration-none"
