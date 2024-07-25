@@ -23,29 +23,30 @@
                                                                 alt="" height="60" width="170"></span>
                                                     </a>
                                                 </div>
-                                                {{-- <form action="{{ route('trang-chu.home') }}" class="p-2"> --}}
-                                                <div class="mb-3">
-                                                    <label for="emailaddress" class="form-label">Email</label>
-                                                    <input class="form-control" type="email" id="emailaddress"
-                                                        required="" placeholder="example@gmail.com">
-                                                </div>
-                                                <div class="mb-3">
-                                                    <label for="password" class="form-label">Mật khẩu</label>
-                                                    <input class="form-control" type="password" required=""
-                                                        id="password" placeholder="Nhập mật khẩu">
-                                                </div>
-                                                <div class="mb-3 pb-3 form-check">
-                                                    <input type="checkbox" class="form-check-input" id="checkbox-signin">
-                                                    <label class="form-check-label" for="checkbox-signin">Ghi
-                                                        nhớ tài khoản?</label>
-                                                </div>
-                                                <div class="mb-3 text-center">
-                                                    <button class="btn btn-primary w-100" type="submit">ĐĂNG
-                                                        NHẬP</button>
-                                                </div>
-                                                <a href="page-recoverpw.html"
-                                                    class="text-muted float-end text-decoration-none">Quên mật
-                                                    khẩu?</a>
+                                                <form action="{{ route('home') }}" class="p-2">
+                                                    <div class="mb-3">
+                                                        <label for="emailaddress" class="form-label">Email</label>
+                                                        <input class="form-control" type="email" id="emailaddress"
+                                                            required="" placeholder="example@gmail.com">
+                                                    </div>
+                                                    <div class="mb-3">
+                                                        <label for="password" class="form-label">Mật khẩu</label>
+                                                        <input class="form-control" type="password" required=""
+                                                            id="password" placeholder="Nhập mật khẩu">
+                                                    </div>
+                                                    <div class="mb-3 pb-3 form-check">
+                                                        <input type="checkbox" class="form-check-input"
+                                                            id="checkbox-signin">
+                                                        <label class="form-check-label" for="checkbox-signin">Ghi
+                                                            nhớ tài khoản?</label>
+                                                    </div>
+                                                    <div class="mb-3 text-center">
+                                                        <button class="btn btn-primary w-100" type="submit">ĐĂNG
+                                                            NHẬP</button>
+                                                    </div>
+                                                    <a href="page-recoverpw.html"
+                                                        class="text-muted float-end text-decoration-none">Quên mật
+                                                        khẩu?</a>
                                                 </form>
                                             </div>
                                         </div>
@@ -227,48 +228,6 @@
                         </div>
                     </div>
                 </div>
-                {{-- <div class="tab-pane fade" id="resort" role="tabpanel" aria-labelledby="resort">
-                    <div class="row mt-3">
-                        <div class="col-3">
-                            <div class="input-group">
-                                <div class="input-group-text">
-                                    <i class='bx bxs-map' style='color:#06b2ee'></i>
-                                </div>
-                                <select class="form-select" name="" id="">
-                                    <option value="" accesskey="">Địa điểm</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="col-3">
-                            <div class="input-group">
-                                <div class="input-group-text">
-                                    <i class='bx bx-dollar' style='color:#06b2ee'></i>
-                                </div>
-                                <select class="form-select" name="" id="">
-                                    <option value="" accesskey="">Giá</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="col-3">
-                            <div class="input-group">
-                                <div class="input-group-text">
-                                    <i class='bx bxs-filter-alt' style='color:#06b2ee'></i>
-                                </div>
-                                <select class="form-select" name="" id="">
-                                    <option value="" accesskey="">Diện tích</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="col-3">
-                            <div class="input-group">
-                                <div class="buttonSearch">
-                                    <span class="textSearch">Tìm kiếm</span>
-                                    <i class='bx bx-search' style='color:#fdf9f9'></i>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div> --}}
             </div>
         </div>
     </header>
@@ -282,8 +241,16 @@
                             <a href="{{ route('get-room', $room->id) }}" class="text-decoration-none">
                                 <div class="card">
                                     <div class="bageVip">
-                                        <img src="{{ asset('assets\images\448469911_476143361772862_3803638986442606747_n-min.jpg') }}"
-                                            class="card-img-top rounded" alt="...">
+                                        @if ($room->randomImage)
+                                            <div class="image-container">
+                                                <img src="{{ asset('assets/images/' . $room->randomImage) }}"
+                                                    class="card-img-top rounded" alt="Room Image">
+                                            </div>
+                                        @else
+                                            <!-- Hình ảnh mặc định nếu không có hình ảnh -->
+                                            <img src="{{ asset('assets\images\448469911_476143361772862_3803638986442606747_n-min.jpg') }}"
+                                                class="card-img-top rounded" alt="...">
+                                        @endif
                                     </div>
                                     <div class="card-body">
                                         <h5 class="card-title">{{ $room->title }}</h5>
@@ -422,8 +389,16 @@
                             <a href="{{ route('get-room', ['id' => $room->id]) }}" class="text-decoration-none">
                                 <div class="card">
                                     <div class="bageVip">
-                                        <img src="{{ asset('assets\images\448469911_476143361772862_3803638986442606747_n-min.jpg') }}"
-                                            class="card-img-top rounded" alt="...">
+                                        @if ($room->randomImage)
+                                            <div class="image-container">
+                                                <img src="{{ asset('assets/images/' . $room->randomImage) }}"
+                                                    class="card-img-top rounded" alt="Room Image">
+                                            </div>
+                                        @else
+                                            <!-- Hình ảnh mặc định nếu không có hình ảnh -->
+                                            <img src="{{ asset('assets\images\448469911_476143361772862_3803638986442606747_n-min.jpg') }}"
+                                                class="card-img-top rounded" alt="...">
+                                        @endif
                                     </div>
                                     <div class="card-body">
                                         <h5 class="card-title">{{ $room->title }}</h5>
@@ -466,8 +441,16 @@
                             <a href="{{ route('get-room', ['id' => $room->id]) }}" class="text-decoration-none">
                                 <div class="card">
                                     <div class="bageVip">
-                                        <img src="{{ asset('assets\images\448469911_476143361772862_3803638986442606747_n-min.jpg') }}"
-                                            class="card-img-top rounded" alt="...">
+                                        @if ($room->randomImage)
+                                            <div class="image-container">
+                                                <img src="{{ asset('assets/images/' . $room->randomImage) }}"
+                                                    class="card-img-top rounded" alt="Room Image">
+                                            </div>
+                                        @else
+                                            <!-- Hình ảnh mặc định nếu không có hình ảnh -->
+                                            <img src="{{ asset('assets\images\448469911_476143361772862_3803638986442606747_n-min.jpg') }}"
+                                                class="card-img-top rounded" alt="...">
+                                        @endif
                                     </div>
                                     <div class="card-body">
                                         <h5 class="card-title">{{ $room->title }}</h5>

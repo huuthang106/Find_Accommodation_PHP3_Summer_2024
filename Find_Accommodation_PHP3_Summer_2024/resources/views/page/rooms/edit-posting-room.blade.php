@@ -8,8 +8,9 @@
                 <div class="card-header text-center">
                     <h5 class="card-title bg">Chỉnh sửa bài viết </h5>
                 </div>
-                <form action="{{ route('show-posting-room') }}" method="POST">
+                <form action="{{ route('update-posting', $room->id) }}" method="POST" enctype="multipart/form-data">
                     @csrf
+                    @method('PUT')
                     <div class="row">
                         <div class="tab-pane col-lg-6" id="">
                             <!-- Personal-Information -->
@@ -66,7 +67,7 @@
                                     <div class="mb-3">
                                         <label for="Category_id" class="form-label">Loại</label>
                                         <select name="Category_id" id="Category_id" class="form-control">
-                                            
+
                                             @foreach ($categories as $item)
                                                 <option value="{{ $item->id }}"
                                                     {{ old('Category_id', $room->category_id) == $item->id ? 'selected' : '' }}>
@@ -89,14 +90,20 @@
                                     <div id="file-inputs">
                                         <div class="mb-3">
                                             <label for="img-room-1" class="form-label">Hình ảnh</label>
-                                            <input type="file" class="form-control" id="img-room-1" name="img_room_1">
+                                            <input type="file" class="form-control" id="img-room-1" name="images[]">
                                         </div>
                                     </div>
-                                    <div class="mb-3">
-                                        <input type="text" hidden class="form-control" id="user_id" name="user_id"
-                                            placeholder="6 - 15 Ký tự" value="{{ $user }}">
+
+                                    <div class="row" id="old-images-container">
+                                        @foreach ($room->images as $item)
+                                            <div  class="col-3 image-wrapper">
+                                                <img src="{{ asset('assets/images/'.$item->image) }}" class="card-img-top  old-image" alt="Old Image">
+                                                {{-- <button type="button" class="delete-btn" data-image-id="{{ $item->id }}">×</button> --}}
+                                            </div>
+                                        @endforeach
                                     </div>
-                                    <button type="button" id="add-file" class="btn btn-primary">+</button>
+
+                                    <button type="button" id="add-file" class="btn btn-primary ">+</button>
                                 </div>
                             </div>
                             <!-- Personal-Information -->
@@ -135,4 +142,82 @@
     <!-- jQuery -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    {{-- Nút thêm thanh input up hình --}}
+    {{-- <script src="{{asset('assets/js/app-nht.js')}}"></script> --}}
+    <script>
+        document.getElementById('add-file').addEventListener('click', function() {
+            // Đếm số lượng input hiện tại
+            const fileInputsContainer = document.getElementById('file-inputs');
+            const numberOfFileInputs = fileInputsContainer.getElementsByTagName('input').length;
+
+            // Tạo một div mới chứa input file mới
+            const newDiv = document.createElement('div');
+            newDiv.className = 'mb-3';
+            newDiv.innerHTML = `
+                <label for="img-room-${numberOfFileInputs + 1}" class="form-label">Hình ảnh</label>
+                 <input type="file" class="form-control" id="img-room-${numberOfFileInputs + 1}" name="images[]">
+            `;
+
+            // Thêm div mới vào container
+            fileInputsContainer.appendChild(newDiv);
+        });
+    </script>
+
+
+    {{-- <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Giả sử bạn có một endpoint để lấy danh sách hình ảnh
+            fetch('/edit-posting')
+                .then(response => response.json())
+                .then(data => {
+                    var container = document.getElementById('old-images-container');
+
+                    data.images.forEach(function(image) {
+                        var imageWrapper = document.createElement('div');
+                        imageWrapper.classList.add('image-wrapper');
+
+                        var img = document.createElement('img');
+                        img.src = image.url;
+                        img.classList.add('old-image');
+
+                        var deleteBtn = document.createElement('button');
+                        deleteBtn.classList.add('delete-btn');
+                        deleteBtn.innerHTML = '&times;'; // Dấu "X"
+                        deleteBtn.addEventListener('click', function() {
+                            // Xóa hình ảnh từ giao diện
+                            imageWrapper.remove();
+
+                            // Gửi yêu cầu xóa đến server
+                            fetch('/delete-image', {
+                                    method: 'POST',
+                                    headers: {
+                                        'Content-Type': 'application/json'
+                                    },
+                                    body: JSON.stringify({
+                                        id: image.id
+                                    })
+                                })
+                                .then(response => response.json())
+                                .then(data => {
+                                    if (data.success) {
+                                        console.log('Image deleted successfully');
+                                    } else {
+                                        console.error('Error deleting image');
+                                    }
+                                })
+                                .catch(error => {
+                                    console.error('Error:', error);
+                                });
+                        });
+
+                        imageWrapper.appendChild(img);
+                        imageWrapper.appendChild(deleteBtn);
+                        container.appendChild(imageWrapper);
+                    });
+                })
+                .catch(error => {
+                    console.error('Error fetching images:', error);
+                });
+        });
+    </script> --}}
 @endpush

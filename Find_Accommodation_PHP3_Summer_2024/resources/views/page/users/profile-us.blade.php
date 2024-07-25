@@ -34,6 +34,11 @@
                 <p class="text-muted mt-2">
                     Xin chào tôi là {{ $user->username }}.
                 </p>
+                <div>
+                    @if ($user->role == 1)
+                    <a href="{{route('register-member')}}" class="btn btn-primary"><i class='bx bxs-message-square-add'></i> Đăng ký thành viên</a>
+                  @endif
+                </div>
             </div>
             <!-- end row -->
             <!-- end -->
@@ -272,6 +277,7 @@
         {{-- Preview trước avatar nếu chưa có avatar --}}
 
         @push('styles')
+
             <!-- DataTables CSS -->
             <link rel="stylesheet" href="https://cdn.datatables.net/1.11.4/css/dataTables.bootstrap5.min.css">
             <!-- Bootstrap CSS v5.2.1 -->

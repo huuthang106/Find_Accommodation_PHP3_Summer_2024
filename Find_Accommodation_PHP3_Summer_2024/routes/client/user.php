@@ -59,4 +59,5 @@ Route::group(['prefix' => 'tai-khoan', 'middleware' => 'auth'], function () {
     // Nguyen Huu Thang user
     Route::post('/xu-ly-dang-bai', [RoomController::class, 'check_post_room'])->name('show-posting-room');
     Route::get('/chinh-sua-bai-viet/{id}', [RoomController::class, 'page_edit_posting'])->name('edit-posting');
+    route::PUT('/xu-ly-cap-nhat-phong/{id}',[RoomController::class, 'update_post_room'])->name('update-posting');
 });

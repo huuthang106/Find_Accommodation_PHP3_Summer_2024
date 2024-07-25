@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Client;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Image;
-
+use Illuminate\Support\Facades\File;
 class ImageController extends Controller
 {
     /**
@@ -50,6 +50,27 @@ class ImageController extends Controller
 
         return back()->with('success', 'Hình ảnh được tải lên thành công');
     }
+    public function delete($roomId)
+    {
+        // Get images associated with the room
+        $images = Image::where('room_id', $roomId)->get();
+
+        // Iterate over each image
+        foreach ($images as $image) {
+            $imagePath = public_path('assets/images/' . $image->image);
+
+            // Delete the image file from the storage
+            if (File::exists($imagePath)) {
+                File::delete($imagePath);
+            }
+
+            // Delete the image record from the database
+            $image->delete();
+        }
+
+        return back()->with('success', 'Hình ảnh được xóa thành công');
+    }
+
 
     /**
      * Display the specified resource.

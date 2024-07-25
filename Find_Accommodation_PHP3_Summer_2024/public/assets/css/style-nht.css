@@ -1,12 +1,13 @@
-
 /* css Nguyen Huu Thang */
-.button-login{
-    font-size:17px;
+.button-login {
+    font-size: 17px;
 }
-.logo-img{
+
+.logo-img {
     margin-left: -19%;
 }
-.background-content{
+
+.background-content {
     background: #f4f4f4;
 }
 
@@ -18,12 +19,14 @@
     text-transform: uppercase;
     color: #0045a8;
 }
+
 .hostel__detail--tags {
     display: flex;
     flex-wrap: wrap;
     gap: 8px;
     margin: 12px 0;
 }
+
 .hostel__detail--tags .item {
     line-height: 1;
     padding: 6px 8px;
@@ -31,28 +34,101 @@
     border-radius: 6px;
     background: #ebecec;
 }
-.header{
+
+.header {
     max-width: 1190px;
 }
-.headerTop{
+
+.headerTop {
     margin: 0;
 }
+
 .hostel__detail--tags .item.vip {
     color: #fff;
     background: #e01020;
 }
 
-.text-orange{
+.text-orange {
     color: rgb(255, 92, 0);
 }
-.btn-orange{
+
+.btn-orange {
     background: rgb(255, 92, 0);
 }
-.margin-botton{
+
+.margin-botton {
     margin-bottom: 2%;
 }
+
 .preview-image img {
     max-width: 100%;
     max-height: 200px;
     margin-top: 10px;
+}
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.image-container {
+    height: 200px;
+    /* Điều chỉnh chiều cao hình ảnh */
+    overflow: hidden;
+}
+
+.card-img-top {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /* Đảm bảo hình ảnh không bị méo */
+}
+
+.image-fit {
+    width: 100%;
+    height: auto;
+    /* Hoặc chiều cao cố định mà bạn mong muốn */
+    object-fit: cover;
+    /* Chọn 'cover' để đảm bảo hình ảnh luôn lấp đầy khu vực chứa mà không bị kéo dãn */
+}
+
+.carousel-inner img {
+    width: 100%;
+    height: auto;
+    /* Điều chỉnh chiều cao tự động để không bị cắt */
+    object-fit: cover;
+    /* Đảm bảo ảnh không bị méo, nhưng có thể bị cắt */
+}
+.modal-dialog {
+    background: rgba(0, 0, 0, 0); /* Nền trong suốt */
+}
+.modal-content {
+    background: transparent; /* Nội dung modal không có nền */
+    border: none;
+}
+.modal-edit{
+    width: 100%;
+ 
+}
+.carousel-item img {
+    height: 400px; /* Thay đổi chiều cao theo nhu cầu */
+    object-fit: cover; /* Đảm bảo hình ảnh không bị kéo giãn */
+    width: 100%; /* Đảm bảo hình ảnh chiếm toàn bộ chiều rộng */
+}
+/* admin */
+.logo-box img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain; /* Đảm bảo giữ tỉ lệ hình ảnh */
+}
+
+.logo-lg img, .logo-sm img {
+    width: 100%; /* Đảm bảo hình ảnh chiếm toàn bộ chiều rộng của container */
+    height: auto; /* Chiều cao tự động theo tỉ lệ */
 }

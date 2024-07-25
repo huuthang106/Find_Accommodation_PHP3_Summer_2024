@@ -19,7 +19,7 @@ class Room extends Model
     }
     public function acreages()
     {
-        return $this->belongsTo(Acreage::class, 'acreages_id');
+        return $this->belongsTo(Areas::class, 'area_id');
     }
     protected $fillable = [
         'Title',
@@ -35,5 +35,8 @@ class Room extends Model
     public function comments()
     {
         return $this->hasMany(Comment::class);
+    }
+    public function images(){
+        return $this->hasMany(Image::class);
     }
 }

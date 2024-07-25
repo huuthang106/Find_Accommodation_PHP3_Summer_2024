@@ -109,6 +109,8 @@
     <link href="{{ asset('assets/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css" id="bootstrap-stylesheet">
     <link href="{{ asset('assets/css/icons.min.css') }}" rel="stylesheet" type="text/css">
     <link href="{{ asset('assets/css/app.min.css') }}" rel="stylesheet" type="text/css" id="app-stylesheet">
+    <link rel="stylesheet" href="{{asset('assets/css/style-nht.css')}}">
+
 @endpush
 
 @push('scripts')
