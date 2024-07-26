@@ -14,20 +14,19 @@ return new class extends Migration {
             $table->id();
             $table->string('title');
             $table->longText('description');
-            $table->float('price',10,2);
-            $table->string('phone',13);
+            $table->float('price', 10, 2);
+            $table->string('phone', 20); // Thay đổi kích thước cột 'phone' nếu cần
             $table->string('address');
             $table->integer('quantity')->nullable();
             $table->string('longitude')->nullable();
             $table->string('latitude')->nullable();
             $table->integer('view')->default(0);
             $table->boolean('status')->default(1);
-            $table->foreignId('area_id')->nullable()->constrained('areas')->onDelete('set null'); // Khóa ngoại với hành động onDelete set null cho acreages và cho phép null
-            $table->foreignId('user_id')->constrained('users')->onDelete('cascade'); // Khóa ngoại với hành động on delete cascade
+            $table->foreignId('area_id')->nullable()->constrained('areas')->onDelete('set null');
+            $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
             $table->foreignId('price_id')->nullable()->constrained('prices')->onDelete('set null');
             $table->foreignId('category_id')->nullable()->constrained('categories')->onDelete('set null');
-            $table->timestamps(); // tự tạo create_at và update_at
-
+            $table->timestamps();
         });
     }
 

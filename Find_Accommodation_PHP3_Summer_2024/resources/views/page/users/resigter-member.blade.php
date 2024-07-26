@@ -2,7 +2,7 @@
 @section('titleUs', 'Trang chủ trọ nhanh')
 @section('contentUs')
     <!-- start  -->
-    <div class="background-content">
+    <div class="container-fluid background-content">
         <div class="row d-flex justify-content-center ">
             <div class="col-10 bg-body  mt-2 rounded p-2">
                 <div class="card-header text-center">
@@ -101,25 +101,25 @@
                                         @error('images.*')
                                             <div class="alert alert-danger mt-1">{{ $message }}</div>
                                         @enderror
+                                    </div>                            <div class="row">
+                                        <div class="col-3">
+                                            <div id="preview-img-1" class="preview-image card-img"></div>
+                                        </div>
+        
+                                        <div class="col-3">
+                                            <div id="preview-img-2" class="preview-image card-img"></div>
+                                        </div>
+        
+                                        <div class="col-3">
+                                            <div id="preview-img-3" class="preview-image card-img"></div>
+                                        </div>
+        
                                     </div>
 
                                 </div>
                                 <!-- Personal-Information -->
                             </div>
-                            <div class="row">
-                                <div class="col-3">
-                                    <div id="preview-img-1" class="preview-image card-img"></div>
-                                </div>
 
-                                <div class="col-3">
-                                    <div id="preview-img-2" class="preview-image card-img"></div>
-                                </div>
-
-                                <div class="col-3">
-                                    <div id="preview-img-3" class="preview-image card-img"></div>
-                                </div>
-
-                            </div>
                         </div>
                     </div>
                     <button type="submit" class="btn btn-primary">Lưu</button>

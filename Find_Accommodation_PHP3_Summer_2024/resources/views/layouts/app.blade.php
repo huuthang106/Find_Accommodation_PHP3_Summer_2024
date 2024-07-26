@@ -204,7 +204,7 @@
                     </span>
                     <span class="logo-sm">
                         <!-- <span class="logo-lg-text-dark">S</span> -->
-                        <img src="{{ asset('assets/images/logo-sm.png') }}" alt="" height="22">
+                        <img src="{{ asset('assets/images/logo3.png') }}" alt="" height="22">
                     </span>
                 </a>
 

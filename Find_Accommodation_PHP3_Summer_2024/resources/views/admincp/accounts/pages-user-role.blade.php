@@ -20,14 +20,14 @@
                         @csrf
                         <div class="form-group">
                             <label for="username">Tên</label>
-                            <input class="form-control" type="text" name="username" required="" placeholder="Văn A">
+                            <input type="text" class="form-control" type="text" name="username" required="" placeholder="Văn A">
                             @error('username')
                                 <small class="text-danger text-blod">{{ $message }}</small>
                             @enderror
                         </div>
                         <div class="form-group">
                             <label for="emailaddress">Email</label>
-                            <input class="form-control" type="email" name="email" id="emailaddress" required=""
+                            <input type="email" class="form-control" type="email" name="email" id="emailaddress" required=""
                                 placeholder="vana@gmail.com">
                             @error('email')
                                 <small class="text-danger text-blod">{{ $message }}</small>
@@ -108,8 +108,7 @@
     <link href="{{ asset('assets/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css" id="bootstrap-stylesheet">
     <link href="{{ asset('assets/css/icons.min.css') }}" rel="stylesheet" type="text/css">
     <link href="{{ asset('assets/css/app.min.css') }}" rel="stylesheet" type="text/css" id="app-stylesheet">
-    <link rel="stylesheet" href="{{asset('assets/css/style-nht.css')}}">
-
+    <link rel="stylesheet" href="{{ asset('assets/css/style-nht.css') }}">
 @endpush
 
 @push('scripts')

@@ -4,7 +4,8 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\blogs; 
+use App\Models\blogs;
+use Illuminate\Support\Facades\Auth;
 
 class BlogAdminController extends Controller
 {
@@ -14,10 +15,10 @@ class BlogAdminController extends Controller
     public function index()
     {
         //
-       
+
     }
-   // app/Http/Controllers/BlogController.php
-   public function Showblog()
+    // app/Http/Controllers/BlogController.php
+    public function Showblog()
     {
         $blog = Blogs::where('status', '!=', 5)->get();
         return view('admincp.manages.extras-blog', compact('blog'));
@@ -32,21 +33,22 @@ class BlogAdminController extends Controller
     // Xử lý việc lưu blog mới vào cơ sở dữ liệu
     public function store(Request $request)
     {
+        $user = Auth::id();
         $validatedData = $request->validate([
             'title' => 'required|string|max:255',
             'description' => 'required|string',
-            'user_id' => 'required|integer|exists:users,id',
+
         ]);
-    
+
         Blogs::create([
             'title' => $validatedData['title'],
             'description' => $validatedData['description'],
-            'user_id' => $validatedData['user_id'],
             'status' => 1,  // Provide a default value for status
+            'user_id' => $user,
             'created_at' => now(),
             'updated_at' => now(),
         ]);
-    
+
         return redirect()->route('admin.quan-li-blog')->with('success', 'Blog đã được thêm thành công.');
     }
 
@@ -59,11 +61,11 @@ class BlogAdminController extends Controller
 
         return redirect()->route('admin.quan-li-blog')->with('success', 'Blog đã được ẩn.');
     }
-    
+
     /**
      * Show the form for creating a new resource.
      */
- 
+
 
     /**
      * Display the specified resource.

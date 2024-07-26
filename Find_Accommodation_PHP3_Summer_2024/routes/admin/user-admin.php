@@ -34,8 +34,8 @@ Route::post('/lay-lai-mat-khau', [UserController::class, 'check_forget_password_
 Route::get('/dang-nhap', [IndexAdminController::class, 'pages_login'])->name('pages-login-admin');
 Route::post('/dang-nhap', [IndexAdminController::class, 'check_login']);
 // Đăng ký admin
-Route::get('/admin/dang-ky', [IndexAdminController::class, 'pages_register'])->name('pages-register-admin');
-Route::post('/admin/dang-ky', [IndexAdminController::class, 'check_register'])->name('check-register');
+Route::get('/dang-ky', [IndexAdminController::class, 'pages_register'])->name('pages-register-admin');
+Route::post('/dang-ky', [IndexAdminController::class, 'check_register'])->name('check-register');
 // Đăng xuất admin
 Route::post('/logout', [IndexController::class, 'logout'])->name('logout');
 // Login trước khi vào trang admin

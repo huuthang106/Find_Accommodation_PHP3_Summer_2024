@@ -4,7 +4,7 @@
 @section('content')
 <div class="container">
     <h2>Thêm Blog Mới</h2>
-    <form action="{{ route('blogs.store') }}" method="POST">
+    <form action="{{ route('admin.blogs.store') }}" method="POST">
         @csrf
         <div class="mb-3">
             <label for="title" class="form-label">Tiêu đề</label>
@@ -14,10 +14,7 @@
             <label for="description" class="form-label">Mô tả</label>
             <textarea class="form-control" id="description" name="description" rows="4" required></textarea>
         </div>
-        <div class="mb-3">
-            <label for="user_id" class="form-label">Người dùng</label>
-            <input type="number" class="form-control" id="user_id" name="user_id" required>
-        </div>
+      
         <button type="submit" class="btn btn-primary">Lưu</button>
     </form>
 </div>
@@ -35,7 +32,7 @@
     <link href="{{ asset('assets/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css" id="bootstrap-stylesheet">
     <link href="{{ asset('assets/css/icons.min.css') }}" rel="stylesheet" type="text/css">
     <link href="{{ asset('assets/css/app.min.css') }}" rel="stylesheet" type="text/css" id="app-stylesheet">
-    <link rel="stylesheet" href="{{asset('assets/css/style-nht.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/css/admin-nht.css')}}">
 
 @endpush
 
