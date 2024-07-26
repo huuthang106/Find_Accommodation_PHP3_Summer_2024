@@ -18,11 +18,11 @@
             </div>
             <div class="col-3 p-0">
                 <div class="div">
-                    <div class="p-0 d-flex justify-content-end">
+                    {{-- <div class="p-0 d-flex justify-content-end">
                         <p class="p-0">giá từ</p>
-                    </div>
-                    <div class="d-flex justify-content-end p-0">
-                        <p class="fw-bold text-orange"><span class="fs-4">{{ $room->price }}</span>
+                    </div> --}}
+                    <div class="d-flex justify-content-end p-0 mt-5">
+                        <p class="fw-bold text-orange">giá từ <span class="fs-4">{{ $room->price }}</span>
                             VND/tháng</p>
                     </div>
                     <div class="d-flex justify-content-end p-0">

@@ -18,6 +18,8 @@ class CommentController extends Controller
             ->with('user', 'replies.user')
             ->get();
         $room = Room::find($id);
+           // Format lại giá trị của trường price
+    $room->price = number_format($room->price, 0, ',', '.');
         // Lấy tất cả hình ảnh liên quan đến phòng này
         $images = $room->images;
 

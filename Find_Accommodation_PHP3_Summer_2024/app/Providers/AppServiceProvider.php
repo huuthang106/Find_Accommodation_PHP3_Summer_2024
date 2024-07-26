@@ -42,7 +42,7 @@ class AppServiceProvider extends ServiceProvider
             $view->with('categories', $categories);
         });
         View::composer('layouts.app', function ($view) {
-            $notificationCount = Notification::where('status', 1)->count();
+            $notificationCount = Notification::where('status', 1)->orderBy('created_at','desc')->count();
             // Lấy thông báo chưa xem
             $unreadNotifications = Notification::where('status', 1)->get();
             $view->with('notificationCount', $notificationCount);

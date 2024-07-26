@@ -27,6 +27,7 @@ class RoomController extends Controller
         $rooms = $rooms->map(function ($room) {
             $room->title = Str::limit($room->title, 20);
             $room->address = Str::limit($room->address, 20);
+            $room->price = number_format($room->price, 0, ',', '.');
             // Sử dụng toán tử Elvis để lấy hình ảnh ngẫu nhiên nếu có
             // isNotEmpty()một phương thức của Collection giúp kiểm tra tính đầy đủ của tập hợp một cách nhanh chóng và rõ ràng
             $room->randomImage = $room->images->isNotEmpty() ? $room->images->random()->image : null;
