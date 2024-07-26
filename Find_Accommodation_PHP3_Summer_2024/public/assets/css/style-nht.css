@@ -55,6 +55,9 @@
 .btn-orange {
     background: rgb(255, 92, 0);
 }
+.btn-orange:hover{
+    background: rgb(210, 92, 24);
+}
 
 .margin-botton {
     margin-bottom: 2%;

@@ -130,14 +130,15 @@
         <div class="container searchHeader">
             <ul class="nav nav-tabs" id="myTab" role="tablist">
                 <li class="nav-item" role="presentation">
-                    <button class="nav-link active" id="all" data-bs-toggle="tab" data-bs-target="#all"
-                        type="button" role="tab" aria-controls="home" aria-selected="true">Tất cả</button>
+                    <a href="{{ route('home') }}" class="nav-link active" id="all" data-bs-toggle="tab" data-bs-target="#all"
+                        type="button" role="tab" aria-controls="home" aria-selected="true">Tất cả</a>
                 </li>
                 @foreach ($categories->sortByDesc('rooms_count')->take(3) as $category)
                     <li class="nav-item" role="presentation">
-                        <a href="{{ route('category-motel-id', $category->id) }}" class="nav-link" id="homestay"
-                            data-bs-toggle="tab" data-bs-target="#homestay" type="button" role="tab"
-                            aria-controls="profile" aria-selected="false">
+                        {{-- cái này của thẻ a bên dưới  id="homestay"
+                        data-bs-toggle="tab" data-bs-target="#homestay" type="button" role="tab"
+                        aria-controls="profile" aria-selected="false" --}}
+                        <a href="{{ route('category-motel-id', $category->id) }}" class="nav-link">
                             {{ $category->name }}
                         </a>
                     </li>
