@@ -50,9 +50,9 @@ class ReportAdminController extends Controller
             $reports->status = 0;
             $reports->save();
 
-            return redirect()->route('pages-report')->with(['success' => 'Thông báo đã được cập nhật.', 'showAlert' => true, 'reportId' => $id]);
+            return redirect()->route('admin.pages-report')->with(['success' => 'Thông báo đã được cập nhật.', 'showAlert' => true, 'reportId' => $id]);
         }
 
-        return redirect()->route('pages-report')->with(['error' => 'Thông báo không tồn tại.', 'showAlert' => false]);
+        return redirect()->route('admin.pages-report')->with(['error' => 'Thông báo không tồn tại.', 'showAlert' => false]);
     }
 }

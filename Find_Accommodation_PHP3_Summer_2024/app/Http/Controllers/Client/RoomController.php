@@ -23,6 +23,7 @@ class RoomController extends Controller
     {
         //
         $rooms = Room::where('status', 1)->orderBy('created_at', 'desc')->take(20)->get();
+        
         // Giới hạn tiêu đề chỉ lấy 10 ký tự đầu tiên
         $rooms = $rooms->map(function ($room) {
             $room->title = Str::limit($room->title, 20);
