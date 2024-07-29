@@ -25,7 +25,7 @@ use App\Http\Controllers\Client\MemberregistrationController;
 
 // VoTanLuon Start
 //Login user mhuy
-Route::get('/login', [AuthController::class, 'pages_login'])->name('login');
+Route::get('/login', [AuthController::class, 'pages_login'])->name('login')->middleware('guest');
 Route::post('/login-check', [AuthController::class, 'check_login'])->name('login-users');
 // Register user
 Route::get('/register', [RegisterController::class, 'pages_register'])->name('register-user');

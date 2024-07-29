@@ -71,7 +71,7 @@
             <div class="modal fade modal-edit" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
                 aria-hidden="true">
                 <div class="modal-dialog modal-lg">
-                    <div class="modal-content">
+                    <div class="modal-content edit-modal">
                         <div class="modal-header border-0">
                             <button type="button " class="close btn-close"  data-dismiss="modal" aria-label="Close">
                                
