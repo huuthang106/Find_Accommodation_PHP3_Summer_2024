@@ -11,7 +11,20 @@ $(document).ready(function () {
         e.preventDefault();
         var form = $(this);
         var commentId = form.find('input[name="parent_id"]').val();
-        
+
+        if (!userIsLoggedIn) { // Kiểm tra nếu người dùng chưa đăng nhập
+            Swal.fire({
+                title: 'Bạn chưa đăng nhập',
+                text: 'Vui lòng đăng nhập để thực hiện hành động này.',
+                icon: 'warning',
+                confirmButtonText: 'Đăng nhập',
+                preConfirm: () => {
+                    window.location.href = '/login'; // Chuyển hướng đến trang đăng nhập
+                }
+            });
+            return;
+        }
+
         $.ajax({
             type: 'POST',
             url: form.attr('action'),
@@ -49,29 +62,50 @@ $(document).ready(function () {
                         // Nếu không có phần replies, thêm vào sau bình luận chính
                         $('#commentList').find('[data-comment-id="' + commentId + '"]').append('<div class="replies mt-3">' + newReply + '</div>');
                     }
-                    
+
                     // Xóa nội dung trong ô nhập liệu sau khi gửi thành công
                     form.find('textarea[name="content"]').val('');
                     // Ẩn form trả lời sau khi gửi
                     form.closest('.reply-form').hide();
                 } else {
-                    alert('Có lỗi xảy ra. Vui lòng thử lại.');
+                    Swal.fire({
+                        title: 'Có lỗi xảy ra',
+                        text: 'Vui lòng thử lại.',
+                        icon: 'error',
+                        confirmButtonText: 'OK'
+                    });
                 }
             },
             error: function (xhr, status, error) {
                 console.error('Có lỗi xảy ra:', error);
-                alert('Có lỗi xảy ra. Vui lòng thử lại.');
+                Swal.fire({
+                    title: 'Có lỗi xảy ra',
+                    text: 'Vui lòng thử lại.',
+                    icon: 'error',
+                    confirmButtonText: 'OK'
+                });
             }
         });
     });
 
-
-
     $('#commentForm').submit(function (e) {
         e.preventDefault(); // Ngăn chặn hành vi mặc định của form gửi đi
-    
+
         var form = $(this);
-        
+
+        if (!userIsLoggedIn) { // Kiểm tra nếu người dùng chưa đăng nhập
+            Swal.fire({
+                title: 'Bạn chưa đăng nhập',
+                text: 'Vui lòng đăng nhập để thực hiện hành động này.',
+                icon: 'warning',
+                confirmButtonText: 'Đăng nhập',
+                preConfirm: () => {
+                    window.location.href = '/login'; // Chuyển hướng đến trang đăng nhập
+                }
+            });
+            return;
+        }
+
         $.ajax({
             type: 'POST',
             url: form.attr('action'),
@@ -80,20 +114,27 @@ $(document).ready(function () {
                 if (response.success) {
                     location.reload(); // Tải lại trang để cập nhật bình luận mới
                 } else {
-                    // Xử lý lỗi nếu có
-                    alert('Có lỗi xảy ra. Vui lòng thử lại.');
+                    Swal.fire({
+                        title: 'Có lỗi xảy ra',
+                        text: 'Vui lòng thử lại.',
+                        icon: 'error',
+                        confirmButtonText: 'OK'
+                    });
                 }
             },
             error: function (xhr, status, error) {
                 console.error('Có lỗi xảy ra:', error);
-                alert('Có lỗi xảy ra. Vui lòng thử lại.');
+                Swal.fire({
+                    title: 'Có lỗi xảy ra',
+                    text: 'Vui lòng thử lại.',
+                    icon: 'error',
+                    confirmButtonText: 'OK'
+                });
             }
         });
     });
-    
 
-
-     $(document).on('click', '#showAllCommentsBtn', function(e) {
+    $(document).on('click', '#showAllCommentsBtn', function(e) {
         e.preventDefault();
 
         let additionalComments = $('.additional-comment');
@@ -119,3 +160,4 @@ $(document).ready(function () {
         }
     });
 });
+
