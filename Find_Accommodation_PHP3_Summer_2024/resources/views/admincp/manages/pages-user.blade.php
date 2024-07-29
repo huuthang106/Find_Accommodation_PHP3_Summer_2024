@@ -9,7 +9,7 @@
             <div class="row">
                 <div class="col-12">
                     <div class="d-flex justify-content-between align-items-center header-title">
-                        <h4 class="mb-3">Danh sách người đăng</h4>
+                        <h4 class="mb-3">Danh sách người dùng</h4>
                         <button type="button" class="btn btn-danger">Xóa tất cả</button>
                     </div>
                 </div>
@@ -99,8 +99,7 @@
     <link href="{{ asset('assets/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css" id="bootstrap-stylesheet">
     <link href="{{ asset('assets/css/icons.min.css') }}" rel="stylesheet" type="text/css">
     <link href="{{ asset('assets/css/app.min.css') }}" rel="stylesheet" type="text/css" id="app-stylesheet">
-    <link rel="stylesheet" href="{{asset('assets/css/admin-nht.css')}}">
-
+    <link rel="stylesheet" href="{{ asset('assets/css/admin-nht.css') }}">
 @endpush
 
 @push('scripts')
