@@ -9,8 +9,8 @@
             <div class="row">
                 <div class="col-12">
                     <div class="d-flex justify-content-between align-items-center header-title">
-                        <h4 class="mb-3">Danh sách người đăng</h4>
-                        {{-- <button type="button" class="btn btn-danger">Xóa tất cả</button> --}}
+                        <h4 class="mb-3">Danh sách người dùng</h4>
+                        <button type="button" class="btn btn-danger">Xóa tất cả</button>
                     </div>
                 </div>
             </div>
