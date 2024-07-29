@@ -286,19 +286,19 @@
                                 <div class="card">
                                     <div class="bageVip">
                                         @if ($room->randomImage)
-                                        <div class="image-container">
-                                            <img src="{{ asset('assets/images/' . $room->randomImage) }}"
-                                                class="card-img-top rounded" alt="Room Image">
-                                        </div>
+                                            <div class="image-container">
+                                                <img src="{{ asset('assets/images/' . $room->randomImage) }}"
+                                                    class="card-img-top rounded" alt="Room Image">
+                                            </div>
                                         @else
-                                          <!-- Hình ảnh mặc định nếu không có hình ảnh -->
+                                            <!-- Hình ảnh mặc định nếu không có hình ảnh -->
                                             <img src="{{ asset('assets\images\448469911_476143361772862_3803638986442606747_n-min.jpg') }}"
                                                 class="card-img-top rounded" alt="...">
                                         @endif
                                     </div>
                                     <div class="card-body">
-                                        <h5 class="card-title">{{ $room->title }}</h5>
-                                        <h6 class="card-text mt-3">Từ <span class="cardPrice">{{ $room->price }}
+                                        <h5 class="card-title fs-5">{{ $room->title }}</h5>
+                                        <h6 class="card-text mt-3 fs-6">Từ <span class="cardPrice">{{ $room->price }}
                                                 VNĐ</span></h6>
                                         <div class="d-flex mt-3">
                                             <div class="room">
@@ -310,10 +310,10 @@
                                                 <span>12m2</span>
                                             </div>
                                         </div>
-                                        <p class="mt-3"><i class='bx bxs-map'
-                                                style='color:#0a0a0a'></i>{{ $room->address }}
-                                        </p>
+                                        <p class="mt-3 text-muted fs-7"><i class='bx bxs-map'
+                                                style='color:#0a0a0a'></i>{{ $room->address }}</p>
                                     </div>
+
                                 </div>
                             </a>
                         </div>
@@ -434,12 +434,12 @@
                                 <div class="card">
                                     <div class="bageVip">
                                         @if ($room->randomImage)
-                                        <div class="image-container">
-                                            <img src="{{ asset('assets/images/' . $room->randomImage) }}"
-                                                class="card-img-top rounded" alt="Room Image">
-                                        </div>
+                                            <div class="image-container">
+                                                <img src="{{ asset('assets/images/' . $room->randomImage) }}"
+                                                    class="card-img-top rounded" alt="Room Image">
+                                            </div>
                                         @else
-                                          <!-- Hình ảnh mặc định nếu không có hình ảnh -->
+                                            <!-- Hình ảnh mặc định nếu không có hình ảnh -->
                                             <img src="{{ asset('assets\images\448469911_476143361772862_3803638986442606747_n-min.jpg') }}"
                                                 class="card-img-top rounded" alt="...">
                                         @endif
@@ -486,12 +486,12 @@
                                 <div class="card">
                                     <div class="bageVip">
                                         @if ($room->randomImage)
-                                        <div class="image-container">
-                                            <img src="{{ asset('assets/images/' . $room->randomImage) }}"
-                                                class="card-img-top rounded" alt="Room Image">
-                                        </div>
+                                            <div class="image-container">
+                                                <img src="{{ asset('assets/images/' . $room->randomImage) }}"
+                                                    class="card-img-top rounded" alt="Room Image">
+                                            </div>
                                         @else
-                                          <!-- Hình ảnh mặc định nếu không có hình ảnh -->
+                                            <!-- Hình ảnh mặc định nếu không có hình ảnh -->
                                             <img src="{{ asset('assets\images\448469911_476143361772862_3803638986442606747_n-min.jpg') }}"
                                                 class="card-img-top rounded" alt="...">
                                         @endif
