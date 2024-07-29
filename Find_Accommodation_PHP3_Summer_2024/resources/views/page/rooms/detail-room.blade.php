@@ -103,7 +103,7 @@
                     </div>
                     <div class="row p-3">
                         <div class="col-3">Ngày đăng:</div>
-                        <div class="col-9">{{ $room->created_at }}</div>
+                        <div class="col-9">{{ $room->created_at->format('d-m-Y') }}</div>
                     </div>
                 </div>
             </div>
