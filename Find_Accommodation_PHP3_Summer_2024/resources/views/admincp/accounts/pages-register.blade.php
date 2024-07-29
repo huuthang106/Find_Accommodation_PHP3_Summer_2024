@@ -13,7 +13,7 @@
                                             height="100" width="150"></span>
                                 </a>
                             </div>
-                            <form action="" class="p-2" method="POST" role="form">
+                            <form action="{{ route('admin.check-register') }}" class="p-2" method="POST" role="form">
                                 @csrf
                                 <div class="form-group">
                                     <label for="username">Tên</label>
