@@ -53,46 +53,24 @@
                                         <td>{{ $item->report->username }}</td>
                                         <td>
 
-                                            <a href="{{ route('admin.pages-report-detail', ['id' => $item->id]) }}" type="button"
+                                            {{-- <a href="{{ route('admin.pages-report-detail', ['id' => $item->id]) }}" type="button"
+                                                class="btn btn-primary">Xem chi tiết</a> --}}
+                                            <a href="{{ route('admin.pages-report-detail', ['id' => $item->id]) }}"
                                                 class="btn btn-primary">Xem chi tiết</a>
 
-                                            <form action="{{ route('admin.report.destroy', $item->id) }}" method="POST"
+                                            <form id="delete-form-{{ $item->id }}"
+                                                action="{{ route('admin.report.destroy', $item->id) }}" method="POST"
                                                 style="display:inline;">
                                                 @csrf
                                                 @method('DELETE')
-                                                <button type="submit" class="btn btn-danger"
-                                                    onclick="return confirm('Bạn có chắc chắn muốn xóa thông báo này không?');">Xóa</button>
+                                                <button type="button" class="btn btn-danger"
+                                                    onclick="confirmDelete({{ $item->id }});">Xóa</button>
                                             </form>
                                             @if (session('showAlert'))
                                                 <script>
-                                                    document.addEventListener('DOMContentLoaded', function() {
-                                                        setTimeout(function() {
-                                                            @if (session('success'))
-                                                                Swal.fire({
-                                                                    icon: 'success',
-                                                                    title: 'Thành công!',
-                                                                    text: "{{ session('success') }}",
-                                                                    timer: 5000,
-                                                                    timerProgressBar: true,
-                                                                    showConfirmButton: false
-                                                                });
-                                                            @endif
-
-                                                            @if (session('error'))
-                                                                Swal.fire({
-                                                                    icon: 'error',
-                                                                    title: 'Lỗi!',
-                                                                    text: "{{ session('error') }}",
-                                                                    timer: 5000,
-                                                                    timerProgressBar: true,
-                                                                    showConfirmButton: false
-                                                                });
-                                                            @endif
-                                                        }); // Delay 500ms trước khi hiển thị alert
-                                                    });
+                                                    var showAlert = @json(session('showAlert'));
                                                 </script>
                                             @endif
-
                                         </td>
                                     </tr>
                                 @endforeach
@@ -135,8 +113,7 @@
     <link href="{{ asset('assets/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css" id="bootstrap-stylesheet">
     <link href="{{ asset('assets/css/icons.min.css') }}" rel="stylesheet" type="text/css">
     <link href="{{ asset('assets/css/app.min.css') }}" rel="stylesheet" type="text/css" id="app-stylesheet">
-    <link rel="stylesheet" href="{{asset('assets/css/admin-nht.css')}}">
-
+    <link rel="stylesheet" href="{{ asset('assets/css/admin-nht.css') }}">
 @endpush
 
 @push('scripts')
@@ -180,6 +157,7 @@
     <!-- Required datatable js -->
     <script src="{{ asset('assets\libs\datatables\jquery.dataTables.min.js') }}"></script>
     <script src="{{ asset('assets\libs\datatables\dataTables.bootstrap4.min.js') }}"></script>
-    {{-- SweetAlert2 --}}
+    <!-- Show Alert -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="{{ asset('assets\js\show-alert.js') }}" text="text/javascript"></script>
 @endpush

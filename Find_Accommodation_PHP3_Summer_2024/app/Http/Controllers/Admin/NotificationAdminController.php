@@ -49,11 +49,11 @@ class NotificationAdminController extends Controller
     {
         // Tìm thông báo theo id
         $notifications = Notification::findOrFail($id);
-        if (!$notifications) {
-            return redirect()->route('admin.notifications.index')->with('showAlert', [
-                'not_found' => 'Thông báo không tồn tại.'
-            ]);
-        }
+        // if (!$notifications) {
+        //     return redirect()->route('admin.notifications.index')->with('showAlert', [
+        //         'not_found' => 'Thông báo không tồn tại.'
+        //     ]);
+        // }
         // Cập nhật trạng thái thông báo (ví dụ: đánh dấu là đã đọc)
         $notifications->status = Self::status_da_xem;; // hoặc trạng thái khác phù hợp với ứng dụng của bạn
         $notifications->save();

@@ -28,5 +28,6 @@ Route::middleware('auth')->group(function () {
     Route::get('/bang-bao-cao/{id}', [ReportAdminController::class, 'showReport'])->name('pages-report-detail');
     // [VoTanLuon] Router xóa mềm Báo Cáo
     Route::delete('/bang-bao-cao/{id}', [ReportAdminController::class, 'destroyReport'])->name('report.destroy');
-    Route::post('/chi-tiet-bao-cao/cap-nhat/{id}', [ReportAdminController::class, 'updateReport'])->name('update-pages-report-detail');
+    // Route xem trang chi tiết thông báo và đổi trạng thái đã xem hoặc chưa xem
+    Route::get('chi-tiet-bao-cao/{id}', [ReportAdminController::class, 'viewAndChangeStatus'])->name('pages-report-detail');
 });
