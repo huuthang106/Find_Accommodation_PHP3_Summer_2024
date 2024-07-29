@@ -13,7 +13,7 @@ class CommentAdminController extends Controller
      */
     public function index()
     {
-        $comments = Comment::with(['user', 'room'])->where('status', 1)->get();
+        $comments = Comment::with(['user', 'room'])->where('status', 1)->orderByDesc('id')->get();
         return view('admincp.manages.pages-comment', compact('comments'));
     }
 
@@ -96,6 +96,4 @@ class CommentAdminController extends Controller
         }
         return redirect()->back()->with('error', 'Không tìm thấy bình luận.');
     }
-
-
 }
