@@ -5,7 +5,7 @@
         <div class="row d-flex justify-content-center">
             <div class="col-6 p-0">
                 <span class="item">
-                    <a href="#" class="item-link text-decoration-none">Trang chủ</a>
+                    <a href="{{ route('home') }}" class="item-link text-decoration-none">Trang chủ</a>
                 </span>
                 <div class="hostel__detail">
                     <h1 class="box-title">{{ $room->title }}</h1>
@@ -137,7 +137,9 @@
                                                             <h6 class="fw-bold text-dark mb-1">
                                                                 {{ $comment->user->username }}</h6>
                                                             <p class="text-muted small mb-0">Đăng vào
-                                                                {{ $comment->created_at->format('d/m/Y H:i') }}</p>
+                                                                {{ \Carbon\Carbon::parse($comment->created_at)->timezone('Asia/Ho_Chi_Minh')->format('d/m/Y H:i') }}
+                                                            </p>
+
                                                         </div>
                                                     </div>
                                                     <p class="mt-3 mb-4 pb-2">{{ $comment->content }}</p>
@@ -192,8 +194,10 @@
                                                                             <h6 class="fw-bold text-dark mb-1">
                                                                                 {{ $reply->user->username }}</h6>
                                                                             <p class="text-muted small mb-0">Đăng vào
-                                                                                {{ $reply->created_at->format('d/m/Y H:i') }}
+                                                                                {{ \Carbon\Carbon::parse($reply->created_at)->timezone('Asia/Ho_Chi_Minh')->format('d/m/Y H:i') }}
                                                                             </p>
+
+
                                                                         </div>
                                                                     </div>
                                                                     <p class="mt-3 mb-4 pb-2">{{ $reply->content }}
@@ -289,6 +293,7 @@
                     </div>
                 </div>
             </div>
+
         </div>
         <div class="row justify-content-center p-0 mt-4 margin-botton">
             <div class="col-9 bg-body rounded p-4">
@@ -300,6 +305,7 @@
             </div>
         </div>
     </div>
+
 @endsection
 
 @push('styles')
@@ -319,10 +325,16 @@
 
 @push('scripts')
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
         integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous">
     </script>
+    <script>
+        var userIsLoggedIn = @json(auth()->check());
+    </script>
+
     <script src="{{ asset('assets\js\comment.js') }}"></script>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
         integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous">
     </script>

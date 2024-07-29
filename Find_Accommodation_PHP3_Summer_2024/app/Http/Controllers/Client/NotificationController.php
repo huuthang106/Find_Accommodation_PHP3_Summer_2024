@@ -63,7 +63,8 @@ class NotificationController extends Controller
     {
         //
     }
-    public function notifiAddRoom($userId,$roomId){
+    public function notifiAddRoom($userId, $roomId)
+    {
         Notification::create([
             'type' => 'Thông báo đăng bài',
             'data' => 'Bạn vừa đăng bài thành công.',
@@ -74,7 +75,8 @@ class NotificationController extends Controller
         ]);
 
     }
-    public function notifiMemberregistration($userId,$memberregistration_id){
+    public function notifiMemberregistration($userId, $memberregistration_id)
+    {
         Notification::create([
             'type' => 'Thông báo đăng ký thành viên',
             'data' => 'Bạn vừa đăng ký thành viên thành công.',
@@ -85,7 +87,8 @@ class NotificationController extends Controller
         ]);
 
     }
-    public function notifiUpdateRoom($userId,$roomId){
+    public function notifiUpdateRoom($userId, $roomId)
+    {
         Notification::create([
             'type' => 'Bạn vừa chỉnh sửa bài viết thành công.',
             'data' => 'Bạn vừa chỉnh sửa bài viết thành công.',
@@ -95,4 +98,16 @@ class NotificationController extends Controller
             'status' => 4,
         ]);
     }
+    public function notifyNewComment($userId, $commentId)
+    {
+        Notification::create([
+            'type' => 'Thông báo bình luận mới',
+            'data' => 'Bạn vừa có một bình luận mới.',
+            'message' => 'Bạn vừa có một bình luận mới.',
+            'user_id' => $userId,
+            'comment_id' => $commentId,
+            'status' => 1,
+        ]);
+    }
+
 }

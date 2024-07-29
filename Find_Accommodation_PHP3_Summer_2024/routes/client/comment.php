@@ -21,7 +21,8 @@ use App\Http\Controllers\Client\RegisterController;
 use App\Http\Controllers\Client\MemberregistrationController;
 Route::group(['prefix' => 'bai-viet'], function () {
     //binh luan mhuy
-    Route::post('/comments', [CommentController::class, 'store'])->middleware('auth')->name('comments.store');
+    Route::post('/comments/store', [CommentController::class, 'store'])->middleware('auth')->name('comments.store');
+
     Route::get('/xem-bai-viet/{id}/', [CommentController::class, 'index'])->name('comments.index');
     Route::get('/rooms/{id}/comments/all', [CommentController::class, 'showAll'])->name('comments.showAll');
 

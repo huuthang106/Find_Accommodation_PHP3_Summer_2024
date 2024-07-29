@@ -17,16 +17,20 @@ class CommentController extends Controller
     {
         $comments = Comment::where('room_id', $id)
             ->with('user', 'replies.user')
+            ->orderBy('created_at', 'desc') // Sắp xếp bình luận mới nhất lên đầu
             ->get();
+
         $room = Room::find($id);
-           // Format lại giá trị của trường price
-    $room->price = number_format($room->price, 0, ',', '.');
+        // Format lại giá trị của trường price
+        $room->price = number_format($room->price, 0, ',', '.');
+
         // Lấy tất cả hình ảnh liên quan đến phòng này
         $images = $room->images;
 
         // Lấy một hình ảnh ngẫu nhiên
         $randomImage = $images->isNotEmpty() ? $images->random() : null;
-        return view('page.rooms.detail-room', compact('comments', 'room','randomImage','images'));
+
+        return view('page.rooms.detail-room', compact('comments', 'room', 'randomImage', 'images'));
     }
 
     /**
