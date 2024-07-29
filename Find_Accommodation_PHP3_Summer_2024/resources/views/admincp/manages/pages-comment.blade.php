@@ -12,7 +12,7 @@
                         <h4 class="mb-3">Danh sách bình luận</h4>
                         <div>
 
-                            <button type="button" class="btn btn-danger">Xóa tất cả</button>
+                            {{-- <button type="button" class="btn btn-danger">Xóa tất cả</button> --}}
                             <a href="{{ route('admin.pages-trash-comment') }}" class="btn btn-primary text-white me-2">
                                 <i class="fas fa-trash-alt"></i>&nbsp;Thùng rác
                             </a>

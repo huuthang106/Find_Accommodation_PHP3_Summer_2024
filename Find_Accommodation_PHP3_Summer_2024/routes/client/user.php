@@ -54,6 +54,14 @@ Route::group(['prefix' => 'tai-khoan', 'middleware' => 'auth'], function () {
     // [VoTanLuon] Route trang chỉnh sửa thông tin tài khoản người dùng 
     Route::put('/thong-tin-tai-khoan/{id}', [UserController::class, 'update'])->name('chinh-sua-thong-tin');
     Route::put('/cap-nhat-mat-khau', [UserController::class, 'check_update_password'])->name('check_update_password');
+// routes/web.php
+
+
+
+
+
+    // Route::get('/profile-us', [UserController::class, 'profile'])->name('profile-us');
+
     // Nguyen Thai Toan user
     Route::get('/xoa-bai-dang/{id}', [RoomController::class, 'delete'])->name('delete-posting');
     // Nguyen Huu Thang user

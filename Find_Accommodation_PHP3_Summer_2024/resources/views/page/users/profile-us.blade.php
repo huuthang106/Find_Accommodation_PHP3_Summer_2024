@@ -65,12 +65,16 @@
                                         <h5 class="card-title">Thông Tin Cá Nhân</h5>
                                     </div>
                                     <div class="card-body">
-                                        <div class="mb-4">
+                                        {{-- <div class="mb-4">
                                             <strong>Số dư</strong>
                                             <br>
-                                            <p class="text-muted mb-0">{{ number_format($user->balance, 0, ',', '.') }}đ
+                                            <p id="balance" class="text-muted mb-0 balance">
+                                                {{ number_format($user->balance, 0, ',', '.') }}đ
                                             </p>
-                                        </div>
+                                            <button id="toggleBalance" type="button">
+                                                <i class="fas fa-eye"></i>
+                                            </button>
+                                        </div> --}}
                                         <div class="mb-4">
                                             <strong>Họ và Tên</strong>
                                             <br>
@@ -291,6 +295,7 @@
             <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
                 integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
                 crossorigin="anonymous" referrerpolicy="no-referrer" />
+                <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
         @endpush
         @push('scripts')
             <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
@@ -314,6 +319,12 @@
             <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
             <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
             <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+              <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+              <style>
+                .balance {
+                    display: none; /* Số tiền bị ẩn mặc định */
+                }
+            </style>
             <script>
                 document.addEventListener('DOMContentLoaded', function() {
                     const avatarInput = document.getElementById('avatar');
@@ -334,6 +345,22 @@
                             avatarPreview.innerHTML = '';
                         }
                     });
+                });
+            </script>
+              <script>
+                document.getElementById('toggleBalance').addEventListener('click', function() {
+                    var balanceElement = document.getElementById('balance');
+                    var iconElement = this.querySelector('i');
+        
+                    if (balanceElement.style.display === 'none') {
+                        balanceElement.style.display = 'block';
+                        iconElement.classList.remove('fa-eye');
+                        iconElement.classList.add('fa-eye-slash');
+                    } else {
+                        balanceElement.style.display = 'none';
+                        iconElement.classList.remove('fa-eye-slash');
+                        iconElement.classList.add('fa-eye');
+                    }
                 });
             </script>
         @endpush
