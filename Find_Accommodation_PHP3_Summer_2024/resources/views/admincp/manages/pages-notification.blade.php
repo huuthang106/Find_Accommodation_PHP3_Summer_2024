@@ -27,61 +27,57 @@
                                             <label class="custom-control-label" for="action-checkbox">&nbsp;</label>
                                         </div>
                                     </th>
-                                    <th>Thao tác</th>
                                     <th>Loại</th>
                                     <th>Dữ liệu</th>
                                     <th>Nội dung</th>
                                     <th>Trạng thái</th>
                                     <th>Ngày</th>
-                                   
+                                    <th>Thao tác</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @foreach ($notification as $item)
                                     <tr>
                                         <td>
-
-                                            <a href="{{ route('admin.pages-notification-detail',['id'=>$item->id])  }}" type="button"
-                                                class="btn btn-primary">Xem chi tiết</a>
-
-                                            <form action="{{ route('admin.notification.destroy', $item->id) }}" method="POST"
-                                                style="display:inline;">
-                                                @csrf
-                                                @method('DELETE')
-                                                <button type="submit" class="btn btn-danger"
-                                                    onclick="return confirm('Bạn có chắc chắn muốn xóa thông báo này không?');">Xóa</button>
-                                            </form>
-                                        </td>
-                                        <td>
                                             <div class="checkbox checkbox-primary mr-2 float-left">
                                                 <input id="checkbox{{ $item->id }}" type="checkbox">
                                                 <label for="checkbox{{ $item->id }}"></label>
                                             </div>
                                         </td>
-                                        <td>{{ $item->type }}</td>
-                                        <td>{{ $item->data }}</td>
-                                        <td>{{ $item->message }}</td>
+                                        <td>{{ $item->type_limit }}</td>
+                                        <td>{{ $item->data_limit }}</td>
+                                        <td>{{ $item->message_limit }}</td>
                                         <td>{{ $item->status == 1 ? 'Chưa xem' : 'Đã xem' }}</td>
                                         <td>{{ $item->created_at->format('d/m/Y H:i:s') }}</td>
-
+                                        <td>
+                                            {{-- <a href="{{ route('admin.notification.view.detail', ['id' => $item->id]) }}"
+                                                type="button" class="btn btn-primary">Xem chi tiết</a> --}}
+                                            <a href="{{ route('admin.pages-notification-detail', ['id' => $item->id]) }}"
+                                                class="btn btn-primary">Xem chi tiết</a>
+                                            <form id="delete-form-{{ $item->id }}"
+                                                action="{{ route('admin.notification.destroy', $item->id) }}" method="POST"
+                                                style="display:inline;">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="button" class="btn btn-danger"
+                                                    onclick="confirmDelete({{ $item->id }});">Xóa</button>
+                                            </form>
+                                            @if (session('showAlert'))
+                                                <script>
+                                                    var showAlert = @json(session('showAlert'));
+                                                </script>
+                                            @endif
+                                        </td>
                                     </tr>
                                 @endforeach
                             </tbody>
                         </table>
-                        <!-- Hiển thị phân trang -->
-                        <div class="pagination mt-3">
-                            {{ $notification->links() }}
-                        </div>
                     </div>
                 </div>
             </div>
-
             <!-- end row -->
         </div>
         <!-- end container-fluid -->
-
-
-
         <!-- Footer Start -->
         <footer class="footer">
             <div class="container-fluid">
@@ -93,7 +89,6 @@
             </div>
         </footer>
         <!-- end Footer -->
-
     </div>
 @endsection
 @push('styles')
@@ -109,8 +104,8 @@
     <link href="{{ asset('assets/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css" id="bootstrap-stylesheet">
     <link href="{{ asset('assets/css/icons.min.css') }}" rel="stylesheet" type="text/css">
     <link href="{{ asset('assets/css/app.min.css') }}" rel="stylesheet" type="text/css" id="app-stylesheet">
-    <link rel="stylesheet" href="{{asset('assets/css/admin-nht.css')}}">
-
+    <link rel="stylesheet" href="{{ asset('assets/css/admin-nht.css') }}">
+    <link href="{{ asset('assets/css/style.css') }}" rel="stylesheet" type="text/css" id="app-stylesheet">
 @endpush
 
 @push('scripts')
@@ -154,4 +149,7 @@
     <!-- Required datatable js -->
     <script src="{{ asset('assets\libs\datatables\jquery.dataTables.min.js') }}"></script>
     <script src="{{ asset('assets\libs\datatables\dataTables.bootstrap4.min.js') }}"></script>
+    <!-- Show Alert -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="{{ asset('assets\js\show-alert.js') }}" text="text/javascript"></script>
 @endpush

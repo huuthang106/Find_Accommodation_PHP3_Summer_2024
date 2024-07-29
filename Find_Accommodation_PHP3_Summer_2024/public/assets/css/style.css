@@ -354,3 +354,13 @@
     color: #000;
 }
 /* End CSS Avatar User */
+/* End CSS Avatar User */
+
+/* VoTanLuon Star CSS Xuống Hàng Chữ */
+
+.textwarp td {
+    word-wrap: break-word;
+    white-space: normal;
+}
+
+/* VoTanLuon End CSS Xuống Hàng Chữ */

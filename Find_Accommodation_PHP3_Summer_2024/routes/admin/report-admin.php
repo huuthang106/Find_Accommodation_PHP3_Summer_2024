@@ -24,13 +24,9 @@ use App\Http\Controllers\Admin\UserController as AdminUserController;
 
 Route::middleware('auth')->group(function () {
     // [VoTanLuon] Router hiển thị chi tiết báo cáo
-Route::get('/bang-bao-cao', [ReportAdminController::class, 'index'])->name('pages-report');
-Route::get('/bang-bao-cao/{id}', [ReportAdminController::class, 'showReport'])->name('pages-report-detail');
-// [VoTanLuon] Router xóa mềm Báo Cáo
-Route::delete('/bang-bao-cao/{id}', [ReportAdminController::class, 'destroyReport'])->name('report.destroy');
-Route::post('/chi-tiet-bao-cao/cap-nhat/{id}', [ReportAdminController::class, 'updateReport'])->name('update-pages-report-detail');
-// Router chi tiết thông báo admin
-Route::get('/trang-chi-tiet-thong-bao/{id}', [NotificationAdminController::class, 'show'])->name('pages-notification-detail');
-// Router Đã xem thông báo admin
-Route::post('/trang-chi-tiet-thong-bao/cap-nhat/{id}', [NotificationAdminController::class, 'update'])->name('update-pages-notification-detail');
+    Route::get('/bang-bao-cao', [ReportAdminController::class, 'index'])->name('pages-report');
+    Route::get('/bang-bao-cao/{id}', [ReportAdminController::class, 'showReport'])->name('pages-report-detail');
+    // [VoTanLuon] Router xóa mềm Báo Cáo
+    Route::delete('/bang-bao-cao/{id}', [ReportAdminController::class, 'destroyReport'])->name('report.destroy');
+    Route::post('/chi-tiet-bao-cao/cap-nhat/{id}', [ReportAdminController::class, 'updateReport'])->name('update-pages-report-detail');
 });
