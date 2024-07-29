@@ -65,12 +65,7 @@
                                     <h5 class="card-title">Thông Tin Cá Nhân</h5>
                                 </div>
                                 <div class="card-body">
-                                    <div class="mb-4">
-                                        <strong>Số dư</strong>
-                                        <br>
-                                        <p class="text-muted mb-0">{{ number_format($user->balance, 0, ',', '.') }}đ
-                                        </p>
-                                    </div>
+
                                     <div class="card-body">
                                         <div class="mb-4">
                                             <strong>Số dư</strong>
@@ -78,9 +73,9 @@
                                             <p id="balance" class="text-muted mb-0 balance">
                                                 {{ number_format($user->balance, 0, ',', '.') }}đ
                                             </p>
-                                          
+
                                         </div>
-                                        
+
                                         <div class="mb-4">
                                             <strong>Họ và Tên</strong>
                                             <br>
@@ -330,25 +325,24 @@
     <!-- jQuery -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
-            <!-- DataTables CSS -->
-            <link rel="stylesheet" href="https://cdn.datatables.net/1.11.4/css/dataTables.bootstrap5.min.css">
-            <!-- Bootstrap CSS v5.2.1 -->
-            <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
-                integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
-                crossorigin="anonymous" />
-            <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-            <link href="{{ asset('assets\css\style.css') }}" rel="stylesheet" type="text/css" id="app-stylesheet">
-            <link href="{{ asset('assets\css\style-nht.css') }}" rel="stylesheet" type="text/css" id="app-stylesheet">
-            {{-- cdn icon --}}
-            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
-                integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
-                crossorigin="anonymous" referrerpolicy="no-referrer" />
-                <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-        @endpush
-        @push('scripts')
-            <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
-                integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous">
-            </script>
+    <!-- DataTables CSS -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.11.4/css/dataTables.bootstrap5.min.css">
+    <!-- Bootstrap CSS v5.2.1 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous" />
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link href="{{ asset('assets\css\style.css') }}" rel="stylesheet" type="text/css" id="app-stylesheet">
+    <link href="{{ asset('assets\css\style-nht.css') }}" rel="stylesheet" type="text/css" id="app-stylesheet">
+    {{-- cdn icon --}}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+        integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+@endpush
+@push('scripts')
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+        integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous">
+    </script>
 
     <!-- Ngôn ngữ tiếng Việt cho DataTables -->
     <script src="https://cdn.datatables.net/plug-ins/1.11.4/i18n/Vietnamese.json"></script>
@@ -359,6 +353,28 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
+                    const avatarInput = document.getElementById('avatar');
+                    const avatarPreview = document.getElementById('avatar-preview');
+
+                    avatarInput.addEventListener('change', function(e) {
+                                const file = e.target.files[0];
+                                if (file) {
+                                    const reader = new FileReader();
+
+                                    <
+                                    !--Ngôn ngữ tiếng Việt cho DataTables-- >
+                                    <
+                                    script src = "https://cdn.datatables.net/plug-ins/1.11.4/i18n/Vietnamese.json" >
+    </>
+    <script src="{{ asset('assets\js\app-nht.js') }}"></script>
+    {{-- dropdow nut profile --}}
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    {{-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"> --}}
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
             const avatarInput = document.getElementById('avatar');
             const avatarPreview = document.getElementById('avatar-preview');
 
@@ -367,36 +383,16 @@
                 if (file) {
                     const reader = new FileReader();
 
-            <!-- Ngôn ngữ tiếng Việt cho DataTables -->
-            <script src="https://cdn.datatables.net/plug-ins/1.11.4/i18n/Vietnamese.json"></script>
-            <script src="{{ asset('assets\js\app-nht.js') }}"></script>
-            {{-- dropdow nut profile --}}
-            <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-            <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
-            <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-              {{-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"> --}}
-            
-            <script>
-                document.addEventListener('DOMContentLoaded', function() {
-                    const avatarInput = document.getElementById('avatar');
-                    const avatarPreview = document.getElementById('avatar-preview');
+                    reader.onload = function(e) {
+                        avatarPreview.innerHTML =
+                            `<img src="${e.target.result}" alt="Avatar Preview" class="img-thumbnail" style="max-width: 100px;">`;
+                    }
 
-                    avatarInput.addEventListener('change', function(e) {
-                        const file = e.target.files[0];
-                        if (file) {
-                            const reader = new FileReader();
-
-                            reader.onload = function(e) {
-                                avatarPreview.innerHTML =
-                                    `<img src="${e.target.result}" alt="Avatar Preview" class="img-thumbnail" style="max-width: 100px;">`;
-                            }
-
-                            reader.readAsDataURL(file);
-                        } else {
-                            avatarPreview.innerHTML = '';
-                        }
-                    });
-                });
-            </script>
-             
-        @endpush
+                    reader.readAsDataURL(file);
+                } else {
+                    avatarPreview.innerHTML = '';
+                }
+            });
+        });
+    </script>
+@endpush
