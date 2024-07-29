@@ -38,8 +38,8 @@
 }
 
 .searchHeader {
-position: relative;
-  margin-top: -3%;
+    position: relative;
+    margin-top: -6%;
 
 }
 
@@ -333,12 +333,24 @@ position: relative;
     object-fit: cover;
     /* Đảm bảo rằng hình ảnh luôn vừa khít trong khung */
 }
+
 /* nguyen huu thang */
-.nav-tabs{
+.nav-tabs {
     position: relative;
 
-   margin-top: 4px;
-   --bs-nav-tabs-border-width: none;
+    margin-top: 4px;
+    --bs-nav-tabs-border-width: none;
 }
+.hover-nav-item a{
+   color: #fff;
+}
+.hover-nav-item:hover {
+    background-color: #f7f7f7;
+    border-top-left-radius: var(--bs-nav-tabs-border-radius);
+    border-top-right-radius: var(--bs-nav-tabs-border-radius);
 
+}
+.hover-nav-item a:hover{
+    color: #000;
+}
 /* End CSS Avatar User */

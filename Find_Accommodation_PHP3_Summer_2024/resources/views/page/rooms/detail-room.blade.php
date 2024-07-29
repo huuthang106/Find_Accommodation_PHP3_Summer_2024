@@ -45,38 +45,77 @@
             </div>
             <div class="row justify-content-center p-0 mt-3">
                 <div class="col-9 p-0 block-img">
-
-                    <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
-                        <div class="carousel-inner">
-                            @if ($images->isNotEmpty())
-                                @foreach ($images as $index => $item)
-                                    <div class="carousel-item {{ $index === 0 ? 'active' : '' }}">
-                                        <img src="{{ asset('assets/images/' . $item->image) }}" class="d-block w-100"
-                                            alt="...">
-                                    </div>
-                                @endforeach
-                            @else
-                                <div class="carousel-item active">
-                                    <img class="d-block w-100"
-                                        src="{{ asset('assets\images\448469911_476143361772862_3803638986442606747_n-min.jpg') }}"
-                                        alt="">
-                                </div>
-                            @endif
+                    @if ($images->isNotEmpty())
+                        @foreach ($images as $index => $item)
+                            <div class="carousel-item {{ $index === 0 ? 'active' : '' }}">
+                                <img src="{{ asset('assets/images/' . $item->image) }}" class="d-block w-100"
+                                    alt="...">
+                            </div>
+                        @endforeach
+                    @else
+                        <div class="carousel-item active">
+                            <img class="d-block w-100"
+                                src="{{ asset('assets\images\448469911_476143361772862_3803638986442606747_n-min.jpg') }}"
+                                alt="">
                         </div>
-                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls"
-                            data-bs-slide="prev">
-                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                            <span class="visually-hidden">Previous</span>
-                        </button>
-                        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls"
-                            data-bs-slide="next">
-                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                            <span class="visually-hidden">Next</span>
-                        </button>
-                    </div>
-
+                    @endif
+                    {{-- @if ($images->isNotEmpty()) --}}
+                  
+                        {{-- @endif --}}
                 </div>
-
+                <button type="button" class="btn btn-primary m-2 fixed-button" data-toggle="modal"
+                data-target="#exampleModal"><i class="fas fa-image"></i> Xem tất cả ảnh
+        </button>
+            </div>
+            <!-- Modal -->
+            <div class="modal fade modal-edit" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                        <div class="modal-header border-0">
+                            <button type="button " class="close btn-close"  data-dismiss="modal" aria-label="Close">
+                               
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
+                                <div class="carousel-inner">
+                                    @if ($images->isNotEmpty())
+                                        @foreach ($images as $index => $item)
+                                            <div class="carousel-item {{ $index === 0 ? 'active' : '' }}">
+                                                <img src="{{ asset('assets/images/' . $item->image) }}"
+                                                    class="d-block w-100" alt="...">
+                                            </div>
+                                        @endforeach
+                                    @else
+                                        <div class="carousel-item active">
+                                            <img src="{{ asset('assets\images\448469911_476143361772862_3803638986442606747_n-min.jpg') }}"
+                                                class="d-block w-100" alt="...">
+                                        </div>
+                                        <div class="carousel-item">
+                                            <img src="{{ asset('assets\images\448469911_476143361772862_3803638986442606747_n-min.jpg') }}"
+                                                class="d-block w-100" alt="...">
+                                        </div>
+                                        <div class="carousel-item">
+                                            <img src="{{ asset('assets\images\448469911_476143361772862_3803638986442606747_n-min.jpg') }}"
+                                                class="d-block w-100" alt="...">
+                                        </div>
+                                    @endif
+                                </div>
+                                <a class="carousel-control-prev" href="#carouselExampleSlidesOnly" role="button"
+                                    data-slide="prev">
+                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                    <span class="sr-only">Previous</span>
+                                </a>
+                                <a class="carousel-control-next" href="#carouselExampleSlidesOnly" role="button"
+                                    data-slide="next">
+                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                    <span class="sr-only">Next</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
             <div class="row justify-content-center p-0 mt-4 ">
                 <div class="col-9 bg-body rounded p-4">

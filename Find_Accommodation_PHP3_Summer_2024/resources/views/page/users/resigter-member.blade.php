@@ -32,7 +32,7 @@
                                         @enderror
                                     </div>
                                     <div class="mb-3">
-                                        <label for="idenerregistra_number" class="form-label">Số căng cước</label>
+                                        <label for="idenerregistra_number" class="form-label">Số căn cước</label>
                                         <input type="text" class="form-control" id="idenerregistra_number"
                                             name="idenerregistra_number" placeholder="Nhập giá"
                                             value="{{ old('idenerregistra_number') }}">
@@ -68,9 +68,12 @@
                             <div class="card">
                                 <div class="card-body">
                                     <div class="mb-3">
-                                        <label for="img-1" class="form-label">Mặt trước căng cước</label>
+                                        <label for="img-1" class="form-label">Mặt trước căn cước</label>
                                         <input type="file" class="form-control" name="images[]" id="img-1" multiple
                                             onchange="previewImages(event, 'preview-img-1')">
+                                        <div class="col-3">
+                                            <div id="preview-img-1" class="preview-image card-img"></div>
+                                        </div>
                                         @error('images')
                                             <div class="alert alert-danger mt-1">{{ $message }}</div>
                                         @enderror
@@ -80,9 +83,13 @@
                                     </div>
 
                                     <div class="mb-3">
-                                        <label for="img-2" class="form-label">Mặt sau căng cước</label>
+                                        <label for="img-2" class="form-label">Mặt sau căn cước</label>
                                         <input type="file" class="form-control" name="images[]" id="img-2" multiple
                                             onchange="previewImages(event, 'preview-img-2')">
+                                            
+                                        <div class="col-3">
+                                            <div id="preview-img-2" class="preview-image card-img"></div>
+                                        </div>
                                         @error('images')
                                             <div class="alert alert-danger mt-1">{{ $message }}</div>
                                         @enderror
@@ -95,25 +102,22 @@
                                         <label for="img-3" class="form-label">Ảnh chân dung</label>
                                         <input type="file" class="form-control" name="images[]" id="img-3" multiple
                                             onchange="previewImages(event, 'preview-img-3')">
+                                            <div class="col-3">
+                                                <div id="preview-img-3" class="preview-image card-img"></div>
+                                            </div>
                                         @error('images')
                                             <div class="alert alert-danger mt-1">{{ $message }}</div>
                                         @enderror
                                         @error('images.*')
                                             <div class="alert alert-danger mt-1">{{ $message }}</div>
                                         @enderror
-                                    </div>                            <div class="row">
-                                        <div class="col-3">
-                                            <div id="preview-img-1" class="preview-image card-img"></div>
-                                        </div>
-        
-                                        <div class="col-3">
-                                            <div id="preview-img-2" class="preview-image card-img"></div>
-                                        </div>
-        
-                                        <div class="col-3">
-                                            <div id="preview-img-3" class="preview-image card-img"></div>
-                                        </div>
-        
+                                    </div>
+                                    <div class="row d-flex justify-content-center">
+
+
+
+                                     
+
                                     </div>
 
                                 </div>
@@ -122,7 +126,7 @@
 
                         </div>
                     </div>
-                    <button type="submit" class="btn btn-primary">Lưu</button>
+                    <button type="submit" class="btn form-control btn-primary">Lưu</button>
                 </form>
             </div>
         </div>
@@ -130,7 +134,6 @@
 @endsection
 
 @push('styles')
-
     <!-- DataTables CSS -->
     <link rel="stylesheet" href="https://cdn.datatables.net/1.11.4/css/dataTables.bootstrap5.min.css">
     <!-- Bootstrap CSS v5.2.1 -->
