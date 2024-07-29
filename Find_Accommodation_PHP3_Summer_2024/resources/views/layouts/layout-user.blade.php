@@ -372,7 +372,7 @@
         {{-- start content --}}
         @yield('contentUs')
         {{-- end content --}}
-        <footer class="mt-4">
+        <footer class="mt-5">
             <div class="container">
                 <div class="row">
                     <div class="col-3">
