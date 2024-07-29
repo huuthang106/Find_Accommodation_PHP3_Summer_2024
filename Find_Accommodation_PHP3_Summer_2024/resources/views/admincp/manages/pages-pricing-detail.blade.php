@@ -24,7 +24,7 @@
                             style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                             <thead>
                                 <tr>
-                                
+
                                     <th>Tất cả <input type="checkbox"></th>
                                     <th>STT</th>
                                     <th>Loại gói</th>
@@ -35,42 +35,45 @@
                                     <th>Nội dung</th>
                                     <th>Thao tác</th>
 
-                                    <tbody>
-                                        @foreach ($price as $item)
-                                            <tr>
-                                               
-                                                <th><input type="checkbox"></th>
-                                                <th>{{ $item->id }}</th>
-                                                <td>
-                                                    @if ($item->status == 1)
-                                                        Gói Tiết Kiệm
-                                                    @elseif($item->status == 2)
-                                                        Gói Nâng Cao
-                                                    @elseif($item->status == 3)
-                                                        Gói Cao Cấp
-                                                    @endif
-                                                </td>
-                                                <td>
-                                                    {{ number_format($item->price, 0, ',', '.') }}đ
-                                                </td>
-                                                <td>{{ Str::limit($item->Support, 20) }}</td>
-                                                <td>{{ $item->Video_Posting }}</td>
-                                                <td>{{ Str::limit($item->Post_Posting, 15) }}</td>
-                                                <td>
-                                                    {{ Str::limit($item->description, 10) }}
-                                                </td>
-                                                <td>
-                                                    <a href="{{ route('admin.post-pricelist',['id'=> $item->id] ) }}" class="btn btn-primary">Chỉnh sửa</a>
-                                                    <form action="{{ route('admin.tin.destroy', $item->id) }}" method="POST" style="display: inline;">
-                                                        @csrf
-                                                        @method('PUT')
-                                                        <button type="submit" class="btn btn-danger" onclick="return confirm('Bạn có chắc chắn muốn ẩn gói tin này không?');">Xóa</button>
-                                                    </form>
-                                                </td>
-                                            </tr>
-                                        @endforeach
-                                    </tbody>
-                                    
+                            <tbody>
+                                @foreach ($price as $item)
+                                    <tr>
+
+                                        <th><input type="checkbox"></th>
+                                        <th>{{ $item->id }}</th>
+                                        <td>
+                                            @if ($item->status == 1)
+                                                Gói Tiết Kiệm
+                                            @elseif($item->status == 2)
+                                                Gói Nâng Cao
+                                            @elseif($item->status == 3)
+                                                Gói Cao Cấp
+                                            @endif
+                                        </td>
+                                        <td>
+                                            {{ number_format($item->price, 0, ',', '.') }}đ
+                                        </td>
+                                        <td>{{ Str::limit($item->Support, 20) }}</td>
+                                        <td>{{ $item->Video_Posting }}</td>
+                                        <td>{{ Str::limit($item->Post_Posting, 15) }}</td>
+                                        <td>
+                                            {{ Str::limit($item->description, 10) }}
+                                        </td>
+                                        <td>
+                                            <a href="{{ route('admin.post-pricelist', $item->id) }}"
+                                                class="btn btn-primary">Chỉnh sửa</a>
+                                            <form action="{{ route('admin.tin.destroy', $item->id) }}" method="POST"
+                                                style="display: inline;">
+                                                @csrf
+                                                @method('PUT')
+                                                <button type="submit" class="btn btn-danger"
+                                                    onclick="return confirm('Bạn có chắc chắn muốn ẩn gói tin này không?');">Xóa</button>
+                                            </form>
+                                        </td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
+
                         </table>
 
                     </div>
@@ -115,8 +118,7 @@
     <link href="{{ asset('assets/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css" id="bootstrap-stylesheet">
     <link href="{{ asset('assets/css/icons.min.css') }}" rel="stylesheet" type="text/css">
     <link href="{{ asset('assets/css/app.min.css') }}" rel="stylesheet" type="text/css" id="app-stylesheet">
-    <link rel="stylesheet" href="{{asset('assets/css/admin-nht.css')}}">
-
+    <link rel="stylesheet" href="{{ asset('assets/css/admin-nht.css') }}">
 @endpush
 
 @push('scripts')
