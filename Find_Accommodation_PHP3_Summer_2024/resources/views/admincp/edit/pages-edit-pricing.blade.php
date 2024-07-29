@@ -11,8 +11,8 @@
                             <div class="col-12">
                                 <h4 class="text-center text-primary">CHỈNH SỬA GÓI TIN</h4>
                             </div>
-                            <form action="{{ route('put-pricelist', $priceList->id) }}" method="POST" id="yourFormId"
-                                class="p-2">
+                            <form action="{{ route('admin.put-pricing-detail', $priceList->id) }}" method="POST"
+                                id="yourFormId" class="p-2">
                                 @csrf
                                 @method('PUT')
 
@@ -70,7 +70,7 @@
 
                     <div class="row mt-4">
                         <div class="col-sm-12 text-center">
-                            <a href="{{ route('get-pricelist') }}" class="btn btn-secondary"><b>Quay về</b></a>
+                            <a href="{{ route('admin.get-pricelist') }}" class="btn btn-secondary"><b>Quay về</b></a>
                         </div>
                     </div>
 
@@ -96,8 +96,7 @@
     <link href="{{ asset('assets/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css" id="bootstrap-stylesheet">
     <link href="{{ asset('assets/css/icons.min.css') }}" rel="stylesheet" type="text/css">
     <link href="{{ asset('assets/css/app.min.css') }}" rel="stylesheet" type="text/css" id="app-stylesheet">
-    <link rel="stylesheet" href="{{asset('assets/css/style-nht.css')}}">
-
+    <link rel="stylesheet" href="{{ asset('assets/css/style-nht.css') }}">
 @endpush
 
 @push('scripts')
