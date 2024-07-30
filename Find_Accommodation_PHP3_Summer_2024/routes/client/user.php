@@ -20,12 +20,12 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\Client\AuthController;
 use App\Http\Controllers\Client\RegisterController;
 use App\Http\Controllers\Client\MemberregistrationController;
-
+use App\Http\Middleware\RedirectIfNotAuthenticated;
 
 
 // VoTanLuon Start
 //Login user mhuy
-Route::get('/login', [AuthController::class, 'pages_login'])->name('login')->middleware('guest');
+Route::get('/login', [AuthController::class, 'pages_login'])->name('login');
 Route::post('/login-check', [AuthController::class, 'check_login'])->name('login-users');
 // Register user
 Route::get('/register', [RegisterController::class, 'pages_register'])->name('register-user');
@@ -38,7 +38,7 @@ Route::post('/thay-doi-mat-khau/{token}', [UserController::class, 'check_reset_p
 Route::get('/ho-so-nguoi-khac/{id}', [UserController::class, 'showHome'])->name('profile-other');
 
 // Nguyen Huu Thang 
-Route::get('/login', [HomeController::class, 'login'])->name('login');
+Route::get('/login', [HomeController::class, 'login'])->name('login')->middleware('user_check_login');
 
 
 Route::post('/logout', [IndexController::class, 'logout'])->name('logout');
