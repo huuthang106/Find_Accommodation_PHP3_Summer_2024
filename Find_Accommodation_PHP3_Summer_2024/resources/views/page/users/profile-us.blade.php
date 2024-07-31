@@ -340,6 +340,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 @endpush
 @push('scripts')
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
         integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous">
     </script>
@@ -348,27 +349,13 @@
     <script src="https://cdn.datatables.net/plug-ins/1.11.4/i18n/Vietnamese.json"></script>
     <script src="{{ asset('assets\js\app-nht.js') }}"></script>
     {{-- dropdow nut profile --}}
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-                    const avatarInput = document.getElementById('avatar');
-                    const avatarPreview = document.getElementById('avatar-preview');
 
-                    avatarInput.addEventListener('change', function(e) {
-                                const file = e.target.files[0];
-                                if (file) {
-                                    const reader = new FileReader();
-
-                                    <
-                                    !--Ngôn ngữ tiếng Việt cho DataTables-- >
-                                    <
-                                    script src = "https://cdn.datatables.net/plug-ins/1.11.4/i18n/Vietnamese.json" >
-    </>
     <script src="{{ asset('assets\js\app-nht.js') }}"></script>
     {{-- dropdow nut profile --}}
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     {{-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"> --}}
@@ -391,6 +378,31 @@
                     reader.readAsDataURL(file);
                 } else {
                     avatarPreview.innerHTML = '';
+                }
+            });
+        });
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const avatarInput = document.getElementById('avatar');
+            const avatarPreview = document.getElementById('avatar-preview');
+
+            avatarInput.addEventListener('change', function(e) {
+                const file = e.target.files[0];
+                if (file) {
+                    const reader = new FileReader();
+                    reader.onload = function(event) {
+                        avatarPreview.innerHTML = '<img src="' + event.target.result +
+                            '" alt="Avatar Preview" class="img-thumbnail">';
+                    };
+                    reader.readAsDataURL(file);
+                }
+            });
+
+            // Ngôn ngữ tiếng Việt cho DataTables
+            $('#example').DataTable({
+                "language": {
+                    "url": "https://cdn.datatables.net/plug-ins/1.11.4/i18n/Vietnamese.json"
                 }
             });
         });
