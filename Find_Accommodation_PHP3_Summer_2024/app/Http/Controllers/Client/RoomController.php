@@ -104,6 +104,7 @@ class RoomController extends Controller
     }
     public function page_posting()
     {
+        // paginate dung de phan trang
         $categories = Category::where('status', 1)->get();
         $areas = Areas::where('status', 1)->get();
         $user = auth()->user();

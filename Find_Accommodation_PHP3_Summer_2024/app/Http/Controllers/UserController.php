@@ -41,7 +41,7 @@ class UserController extends Controller
 
         // Xem Admin có tồn tại
         if (!$admin) {
-            return redirect()->route('quan-li-ho-so', ['id' => $admin->id])->with('Lỗi', 'Tài khoản không tồn tại');
+            return redirect()->route('admin.quan-li-ho-so', ['id' => $admin->id])->with('Lỗi', 'Tài khoản không tồn tại');
         }
         // Bắt lỗi dữ liệu
         $request->validate([
@@ -59,7 +59,7 @@ class UserController extends Controller
         $admin->update($request->all());
 
         // Chuyển hướng sau khi cập nhật thành công
-        return redirect()->route('quan-li-ho-so', ['id' => $admin->id])->with('Thành công', 'Thông tin đã được cập nhật');
+        return redirect()->route('admin.quan-li-ho-so', ['id' => $admin->id])->with('Thành công', 'Thông tin đã được cập nhật');
     }
     public function forget_password()
     {
