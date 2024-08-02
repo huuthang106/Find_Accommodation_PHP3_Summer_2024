@@ -8,10 +8,10 @@
                 <div class="card-header text-center">
                     <h5 class="card-title bg">Đăng bài</h5>
                 </div>
-                <form action="{{ route('check-register-member') }}" method="POST" enctype="multipart/form-data">
+                <form action="{{ route('check-register-member') }}" id="ocr-form" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="row">
-                        <div class="tab-pane col-lg-6" id="">
+                        <div class="tab-pane col-lg-6">
                             <!-- Personal-Information -->
                             <div class="card">
                                 <div class="card-body">
@@ -61,9 +61,9 @@
                                     </div>
                                 </div>
                             </div>
-                            <!-- Personal-Information -->
+                            <!-- Personal-Information -->   
                         </div>
-                        <div class="tab-pane col-lg-6" id="">
+                        <div class="tab-pane col-lg-6">
                             <!-- Personal-Information -->
                             <div class="card">
                                 <div class="card-body">
@@ -86,7 +86,6 @@
                                         <label for="img-2" class="form-label">Mặt sau căn cước</label>
                                         <input type="file" class="form-control" name="images[]" id="img-2" multiple
                                             onchange="previewImages(event, 'preview-img-2')">
-                                            
                                         <div class="col-3">
                                             <div id="preview-img-2" class="preview-image card-img"></div>
                                         </div>
@@ -98,32 +97,23 @@
                                         @enderror
                                     </div>
 
-                                    <div class="mb-3">
+                                    {{-- <div class="mb-3">
                                         <label for="img-3" class="form-label">Ảnh chân dung</label>
                                         <input type="file" class="form-control" name="images[]" id="img-3" multiple
                                             onchange="previewImages(event, 'preview-img-3')">
-                                            <div class="col-3">
-                                                <div id="preview-img-3" class="preview-image card-img"></div>
-                                            </div>
+                                        <div class="col-3">
+                                            <div id="preview-img-3" class="preview-image card-img"></div>
+                                        </div>
                                         @error('images')
                                             <div class="alert alert-danger mt-1">{{ $message }}</div>
                                         @enderror
                                         @error('images.*')
                                             <div class="alert alert-danger mt-1">{{ $message }}</div>
                                         @enderror
-                                    </div>
-                                    <div class="row d-flex justify-content-center">
-
-
-
-                                     
-
-                                    </div>
-
+                                    </div> --}}
                                 </div>
-                                <!-- Personal-Information -->
                             </div>
-
+                            <!-- Personal-Information -->
                         </div>
                     </div>
                     <button type="submit" class="btn form-control btn-primary">Lưu</button>
@@ -149,6 +139,8 @@
 @endpush
 
 @push('scripts')
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
         integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous">
     </script>
@@ -156,8 +148,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
         integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous">
     </script>
-    <!-- jQuery -->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
 
     <!-- DataTables JavaScript -->
     <script src="https://cdn.datatables.net/1.11.4/js/jquery.dataTables.min.js"></script>
@@ -165,9 +156,33 @@
 
     <!-- Ngôn ngữ tiếng Việt cho DataTables -->
     <script src="https://cdn.datatables.net/plug-ins/1.11.4/i18n/Vietnamese.json"></script>
-    <script src="{{ asset('assets\js\app-nht.js') }}"></script>
+    <script src="{{ asset('assets/js/app-nht.js') }}"></script>
+    <script src="{{ asset('assets/js/api-nht.js') }}"></script>
     {{-- dropdow nut profile --}}
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+@endpush
+@push('scripts')
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <!-- Popper.js và Bootstrap -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+        integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
+        integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous">
+    </script>
+
+    <!-- DataTables JavaScript -->
+    <script src="https://cdn.datatables.net/1.11.4/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.11.4/js/dataTables.bootstrap5.min.js"></script>
+
+    <!-- Ngôn ngữ tiếng Việt cho DataTables -->
+    <script src="https://cdn.datatables.net/plug-ins/1.11.4/i18n/Vietnamese.json"></script>
+
+    <!-- Tệp JavaScript tùy chỉnh của bạn -->
+    <script src="{{ asset('assets/js/app-nht.js') }}"></script>
+    <script src="{{ asset('assets/js/api-nht.js') }}"></script>
 @endpush

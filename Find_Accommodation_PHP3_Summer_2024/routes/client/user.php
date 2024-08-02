@@ -21,6 +21,7 @@ use App\Http\Controllers\Client\AuthController;
 use App\Http\Controllers\Client\RegisterController;
 use App\Http\Controllers\Client\MemberregistrationController;
 use App\Http\Middleware\RedirectIfNotAuthenticated;
+use App\Http\Controllers\Client\OCRController;
 
 
 // VoTanLuon Start
@@ -54,6 +55,8 @@ Route::group(['prefix' => 'tai-khoan', 'middleware' => 'auth'], function () {
     // [VoTanLuon] Route trang chỉnh sửa thông tin tài khoản người dùng 
     Route::put('/thong-tin-tai-khoan/{id}', [UserController::class, 'update'])->name('chinh-sua-thong-tin');
     Route::put('/cap-nhat-mat-khau', [UserController::class, 'check_update_password'])->name('check_update_password');
+
+// Route::post('/ocr', [OCRController::class, 'processOCR']);
 // routes/web.php
 
 
