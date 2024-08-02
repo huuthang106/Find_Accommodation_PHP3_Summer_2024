@@ -147,53 +147,83 @@ class MemberregistrationController extends Controller
         //     return redirect()->back()->with('error', 'Đã xảy ra lỗi: ' . $e->getMessage());
         // }
 
-          // Xác thực đầu vào
-          $request->validate([
-            'images.*' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
+        // Xác thực đầu vào
+        // $request->validate([
+        //     'images.*' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
+        // ]);
+
+        // try {
+        //     // Kiểm tra xem có file nào được tải lên không
+        //     if ($request->hasFile('images')) {
+        //         // Lấy tất cả các file
+        //         $files = $request->file('images');
+
+        //         // Tạo mảng để chứa các đối tượng cURL file
+        //         $cFiles = [];
+        //         foreach ($files as $index => $file) {
+        //             $cFiles["file[$index]"] = new \CURLFile($file->getRealPath(), $file->getMimeType(), $file->getClientOriginalName());
+        //         }
+
+        //         // Khởi tạo cURL
+        //         $curl = curl_init();
+        //         curl_setopt_array($curl, [
+        //             CURLOPT_URL => "https://api.fpt.ai/dmp/checkface/v1",
+        //             CURLOPT_RETURNTRANSFER => true,
+        //             CURLOPT_POST => true,
+        //             CURLOPT_POSTFIELDS => $cFiles,
+        //             CURLOPT_HTTPHEADER => [
+        //                 "api_key: KqNocx5pH0H7oNq9HVq0JatzmwqfkpwY"
+        //             ],
+        //             CURLOPT_SSL_VERIFYPEER => false, // Bỏ qua xác thực SSL
+        //             CURLOPT_SSL_VERIFYHOST => false, // Bỏ qua xác thực SSL
+        //         ]);
+
+        //         // Thực thi cURL
+        //         $response = curl_exec($curl);
+        //         $err = curl_error($curl);
+        //         curl_close($curl);
+
+        //         // Xử lý phản hồi
+        //         if ($err) {
+        //             // dd(  $files );
+        //             // dd($err);
+        //             return redirect()->back()->with('error', "cURL Error #:" . $err);
+        //         } else {
+        //             $responseData = json_decode($response, true);
+        //             // dd($cFiles);
+        //             dd($responseData);
+        //             return redirect()->back()->with('success', 'Dữ liệu đã được gửi thành công!')->with('response', $responseData);
+        //         }
+        //     } else {
+        //         return redirect()->back()->with('error', 'Không có hình ảnh nào được tải lên.');
+        //     }
+        // } catch (\Exception $e) {
+        //     return redirect()->back()->with('error', 'Đã xảy ra lỗi: ' . $e->getMessage());
+        // }
+        $request->validate([
+            'images' => 'required|array|size:2',
+            'images.*' => 'required|image|mimes:jpeg,png,jpg|max:2048',
         ]);
 
         try {
-            // Kiểm tra xem có file nào được tải lên không
             if ($request->hasFile('images')) {
-                // Lấy tất cả các file
                 $files = $request->file('images');
 
-                // Tạo mảng để chứa các đối tượng cURL file
-                $cFiles = [];
-                foreach ($files as $index => $file) {
-                    $cFiles["file[$index]"] = new \CURLFile($file->getRealPath(), $file->getMimeType(), $file->getClientOriginalName());
+                if (count($files) !== 2) {
+                    return redirect()->back()->with('error', 'Vui lòng tải lên đúng 2 hình ảnh.');
                 }
 
-                // Khởi tạo cURL
-                $curl = curl_init();
-                curl_setopt_array($curl, [
-                    CURLOPT_URL => "https://api.fpt.ai/dmp/checkface/v1",
-                    CURLOPT_RETURNTRANSFER => true,
-                    CURLOPT_POST => true,
-                    CURLOPT_POSTFIELDS => $cFiles,
-                    CURLOPT_HTTPHEADER => [
-                        "api_key: KqNocx5pH0H7oNq9HVq0JatzmwqfkpwY"
-                    ],
-                    CURLOPT_SSL_VERIFYPEER => false, // Bỏ qua xác thực SSL
-                    CURLOPT_SSL_VERIFYHOST => false, // Bỏ qua xác thực SSL
-                ]);
+                $response = Http::withOptions([
+                    'verify' => false, // Bỏ qua xác thực SSL
+                ])->withHeaders([
+                    'api_key' => 'IJYRzZuKSxsklVxSezA7X0msF2tsLdE6'
+                ])->attach('file[]', fopen($files[0]->getRealPath(), 'r'), $files[0]->getClientOriginalName())
+                    ->attach('file[]', fopen($files[1]->getRealPath(), 'r'), $files[1]->getClientOriginalName())
+                    ->post('https://api.fpt.ai/dmp/checkface/v1');
 
-                // Thực thi cURL
-                $response = curl_exec($curl);
-                $err = curl_error($curl);
-                curl_close($curl);
-
-                // Xử lý phản hồi
-                if ($err) {
-                    // dd(  $files );
-                    // dd($err);
-                    return redirect()->back()->with('error', "cURL Error #:" . $err);
-                } else {
-                    $responseData = json_decode($response, true);
-                    // dd($cFiles);
-                    dd($responseData);
-                    return redirect()->back()->with('success', 'Dữ liệu đã được gửi thành công!')->with('response', $responseData);
-                }
+                $responseData = $response->json();
+                // dd($responseData);
+                return redirect()->back()->with('success', 'Dữ liệu đã được gửi thành công!')->with('response', $responseData);
             } else {
                 return redirect()->back()->with('error', 'Không có hình ảnh nào được tải lên.');
             }

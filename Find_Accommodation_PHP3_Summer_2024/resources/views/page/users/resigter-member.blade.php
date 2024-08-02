@@ -61,7 +61,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <!-- Personal-Information -->   
+                            <!-- Personal-Information -->
                         </div>
                         <div class="tab-pane col-lg-6">
                             <!-- Personal-Information -->
@@ -77,9 +77,6 @@
                                         @error('images')
                                             <div class="alert alert-danger mt-1">{{ $message }}</div>
                                         @enderror
-                                        @error('images.*')
-                                            <div class="alert alert-danger mt-1">{{ $message }}</div>
-                                        @enderror
                                     </div>
 
                                     <div class="mb-3">
@@ -92,31 +89,51 @@
                                         @error('images')
                                             <div class="alert alert-danger mt-1">{{ $message }}</div>
                                         @enderror
-                                        @error('images.*')
-                                            <div class="alert alert-danger mt-1">{{ $message }}</div>
-                                        @enderror
                                     </div>
-
-                                    {{-- <div class="mb-3">
-                                        <label for="img-3" class="form-label">Ảnh chân dung</label>
-                                        <input type="file" class="form-control" name="images[]" id="img-3" multiple
-                                            onchange="previewImages(event, 'preview-img-3')">
-                                        <div class="col-3">
-                                            <div id="preview-img-3" class="preview-image card-img"></div>
-                                        </div>
-                                        @error('images')
-                                            <div class="alert alert-danger mt-1">{{ $message }}</div>
-                                        @enderror
-                                        @error('images.*')
-                                            <div class="alert alert-danger mt-1">{{ $message }}</div>
-                                        @enderror
-                                    </div> --}}
                                 </div>
                             </div>
                             <!-- Personal-Information -->
                         </div>
                     </div>
                     <button type="submit" class="btn form-control btn-primary">Lưu</button>
+                    @if (session('success'))
+                        <div class="alert alert-success">
+                            {{ session('success') }}
+                        </div>
+                    @endif
+
+                    @if (session('error'))
+                        <div class="alert alert-danger">
+                            {{ session('error') }}
+                        </div>
+                    @endif
+
+                    @if (session('response'))
+                        @php
+                            $response = session('response');
+                        @endphp
+                        <div class="alert alert-info">
+                            <strong>Response Data:</strong>
+                            <table class="table table-bordered mt-3">
+                                <thead>
+                                    <tr>
+                                        <th>Key</th>
+                                        <th>Value</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Mức Độ Giống (%)</td>
+                                        <td>{{ $response['data']['similarity'] ?? 'N/A' }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Hai Ảnh Giống Nhau</td>
+                                        <td>{{ $response['data']['isMatch'] ? 'Giống Nhau' : 'Không Giống' }}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    @endif
                 </form>
             </div>
         </div>
