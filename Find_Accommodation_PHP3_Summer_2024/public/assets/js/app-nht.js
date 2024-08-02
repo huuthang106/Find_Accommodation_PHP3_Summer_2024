@@ -32,6 +32,7 @@ function previewImages(event, previewId) {
         reader.onload = function (e) {
             const img = document.createElement('img');
             img.src = e.target.result;
+            img.classList.add('img-resigter'); // Thêm class img-register
             preview.appendChild(img);
         }
         reader.readAsDataURL(file);

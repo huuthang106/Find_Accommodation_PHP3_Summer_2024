@@ -41,7 +41,7 @@ class UserController extends Controller
 
         // Xem Admin có tồn tại
         if (!$admin) {
-            return redirect()->route('quan-li-ho-so', ['id' => $admin->id])->with('Lỗi', 'Tài khoản không tồn tại');
+            return redirect()->route('admin.quan-li-ho-so', ['id' => $admin->id])->with('Lỗi', 'Tài khoản không tồn tại');
         }
         // Bắt lỗi dữ liệu
         $request->validate([
@@ -59,7 +59,7 @@ class UserController extends Controller
         $admin->update($request->all());
 
         // Chuyển hướng sau khi cập nhật thành công
-        return redirect()->route('quan-li-ho-so', ['id' => $admin->id])->with('Thành công', 'Thông tin đã được cập nhật');
+        return redirect()->route('admin.quan-li-ho-so', ['id' => $admin->id])->with('Thành công', 'Thông tin đã được cập nhật');
     }
     public function forget_password()
     {
@@ -141,77 +141,82 @@ class UserController extends Controller
     }
     public function check_forget_password_us(Request $request)
     {
-        // Hàm để vận hành đổi mật khẩu và tạo token
-        // Bắt lổi mail
+        // Xác thực dữ liệu yêu cầu
         $request->validate([
-            'email' => 'required | exists:users'
+            'email' => 'required|email|exists:users,email'
         ], [
             'email.required' => 'Vui lòng nhập thông tin Email',
             'email.email' => 'Định dạng Email không hợp lệ',
             'email.exists' => 'Email không tồn tại trong hệ thống'
         ]);
-        // Truy vấn
+    
+        // Truy vấn người dùng
         $admin = User::where('email', $request->email)->first();
-        // dd($admin);
+        
+        // Tạo token ngẫu nhiên
         $token = Str::random(40);
-        $tokenData = [
-            'email' => $admin->email,
-            'token' => $token
-        ];
-        // dd($tokenData);
-        // Tạo hoặc cập nhật token trong bảng password_reset_tokens
+        
+        // Cập nhật hoặc tạo mới token trong bảng password_reset_tokens
         ResetPasswordToken::updateOrCreate(
             ['email' => $request->email], // Điều kiện tìm kiếm
             ['token' => $token, 'updated_at' => now()] // Cập nhật hoặc tạo mới
         );
+        
         // Gửi email
         try {
             Mail::to($request->email)->send(new ForgotPasswordUs($admin, $token));
-            return redirect()->back()->with('success', 'Đã gửi email khôi phục mật khẩu. Vui lòng kiểm tra hộp thư của bạn.')->with('showAlert', true);
+            return redirect()->route('login')->with([
+                'success' => 'Đã gửi email khôi phục mật khẩu. Vui lòng kiểm tra hộp thư của bạn.',
+                'showAlert' => true
+            ]);
         } catch (\Exception $e) {
-            return redirect()->back()->with('error', 'Gửi không thành công: ' . $e->getMessage())->with('showAlert', true);
+            return redirect()->back()->with([
+                'error' => 'Gửi không thành công: ' . $e->getMessage(),
+                'showAlert' => true
+            ]);
         }
     }
+    
     public function reset_password_us($token)
     {
         $tokenData = ResetPasswordToken::CheckToken($token);
         // $admin = User::where('email', $tokenData->email)->firstOrFail();
         return view('page.reset-password', compact('tokenData', 'token'));
     }
-    public function check_reset_password_us(Request $request, $token)
-    {
-        // Xác thực dữ liệu yêu cầu
-        $request->validate(
-            [
-                'password' => 'required|confirmed',
-            ],
-            [
-                'password.required' => 'Vui lòng nhập mật khẩu',
-                'password.confirmed' => 'Mật khẩu không trùng khớp'
-            ]
-        );
+    // Trong UserController
+public function check_reset_password_us(Request $request, $token)
+{
+    // Xác thực dữ liệu yêu cầu
+    $request->validate([
+        'password' => 'required|confirmed',
+    ], [
+        'password.required' => 'Vui lòng nhập mật khẩu',
+        'password.confirmed' => 'Mật khẩu không trùng khớp'
+    ]);
 
-        // Kiểm tra và lấy dữ liệu token
-        $tokenData = ResetPasswordToken::where('token', $token)->first();
-        if (!$tokenData) {
-            return redirect()->route('home')->with('error', 'Token không hợp lệ')->with('showAlert', true);
-        }
-
-        // Lấy người dùng tương ứng với token
-        $users = User::where('email', $tokenData->email)->first();
-        if (!$users) {
-            return redirect()->route('home')->with('error', 'Tài khoản không tồn tại')->with('showAlert', true);
-        }
-
-        // Cập nhật mật khẩu
-        $users->password = bcrypt($request->input('password'));
-        $users->save();
-
-        // Xóa token sau khi cập nhật thành công
-        $tokenData->delete();
-
-        return redirect()->route('home')->with('success', 'Mật khẩu đã được cập nhật thành công')->with('showAlert', true);
+    // Kiểm tra và lấy dữ liệu token
+    $tokenData = ResetPasswordToken::where('token', $token)->first();
+    if (!$tokenData) {
+        return redirect()->route('home')->with('error', 'Token không hợp lệ')->with('showAlert', true);
     }
+
+    // Lấy người dùng tương ứng với token
+    $user = User::where('email', $tokenData->email)->first();
+    if (!$user) {
+        return redirect()->route('home')->with('error', 'Tài khoản không tồn tại')->with('showAlert', true);
+    }
+
+    // Cập nhật mật khẩu
+    $user->password = bcrypt($request->input('password'));
+    $user->save();
+
+    // Xóa token sau khi cập nhật thành công
+    $tokenData->delete();
+
+    // Chuyển hướng đến trang đăng nhập sau khi cập nhật mật khẩu thành công
+    return redirect()->route('login')->with('success', 'Mật khẩu đã được cập nhật thành công')->with('showAlert', true);
+}
+
     /**
      * Show the form for creating a new resource.
      */
@@ -286,7 +291,7 @@ class UserController extends Controller
         $user->save();
 
         // Trả về phẩn hồi khi thành công
-        return back()->with([
+        return redirect()->route('profileus')->with([
             'showAlert' => true,
             'success' => 'Mật khẩu đã được thay đổi thành công'
         ]);

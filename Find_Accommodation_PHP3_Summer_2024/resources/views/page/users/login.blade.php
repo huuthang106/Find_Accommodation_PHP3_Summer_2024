@@ -2,67 +2,67 @@
 @section('titleUs', 'Trang chủ trọ nhanh')
 @section('contentUs')
 
-    <div class="row">
-        <div class="col-lg-9 modal-dialog modal-dialog-centered"> <!-- Thêm class này -->
-            <div class="modal-content">
+    <div class="container-fluid">
+   <div class="row">
+    <div class="col-lg-9 modal-dialog modal-dialog-centered"> <!-- Thêm class này -->
+        <div class="modal-content">
 
-                <div class="modal-body">
-                    <div class="account-pages my-3 pt-2">
-                        <div class="container">
-                            <div class="row justify-content-center">
-                                <div class="col-md-12 col-lg-12">
-                                    <div class="card">
-                                        <div class="card-body">
-                                           
-                                            <form action="{{ route('login-users') }}" method="POST" class="p-2">
-                                                @csrf
-                                                <div class="mb-3">
-                                                    <label for="emailaddress" class="form-label">Email</label>
-                                                    <input class="form-control" name="email" type="email"
-                                                        id="emailaddress" required="" placeholder="example@gmail.com">
-                                                    @error('email')
-                                                        <small class="text-danger text-blod">{{ $message }}</small>
-                                                    @enderror
-                                                </div>
-                                                <div class="mb-3">
-                                                    <label for="password" class="form-label">Mật khẩu</label>
-                                                    <input class="form-control" name="password" type="password"
-                                                        required="" id="password" placeholder="Nhập mật khẩu">
-                                                    @error('password')
-                                                        <small class="text-danger text-bold">{{ $message }}</small>
-                                                    @enderror
-                                                </div>
-                                                <div class="mb-3 pb-3 form-check">
-                                                    <input type="checkbox" class="form-check-input" id="checkbox-signin">
-                                                    <label class="form-check-label" for="checkbox-signin">Ghi
-                                                        nhớ tài khoản?</label>
-                                                </div>
-                                                <div class="mb-3 text-center">
-                                                    <button class="btn btn-primary w-100" type="submit">ĐĂNG
-                                                        NHẬP</button>
-                                                </div>
-                                                <a href="page-recoverpw.html"
-                                                    class="text-muted float-end text-decoration-none">Quên mật
-                                                    khẩu?</a>
-                                            </form>
-                                            <div class="mb-3 text-center">
-                                                <hr>
-                                                <button class="btn btn-danger w-100 mb-2" type="button">
-                                                    <i class="fab fa-google"></i> Đăng nhập bằng Google
-                                                </button>
-                                                <button class="btn btn-primary w-100" type="button">
-                                                    <i class="fab fa-facebook-f"></i> Đăng nhập bằng Facebook
-                                                </button>
+            <div class="modal-body">
+                <div class="account-pages my-3 pt-2">
+                    <div class="container">
+                        <div class="row justify-content-center">
+                            <div class="col-md-12 col-lg-12">
+                                <div class="card">
+                                    <div class="card-body">
+                                       
+                                        <form action="{{ route('login-users') }}" method="POST" class="p-2">
+                                            @csrf
+                                            <div class="mb-3">
+                                                <label for="emailaddress" class="form-label">Email</label>
+                                                <input class="form-control" name="email" type="email"
+                                                    id="emailaddress" required="" placeholder="example@gmail.com">
+                                                @error('email')
+                                                    <small class="text-danger text-blod">{{ $message }}</small>
+                                                @enderror
                                             </div>
+                                            <div class="mb-3">
+                                                <label for="password" class="form-label">Mật khẩu</label>
+                                                <input class="form-control" name="password" type="password"
+                                                    required="" id="password" placeholder="Nhập mật khẩu">
+                                                @error('password')
+                                                    <small class="text-danger text-bold">{{ $message }}</small>
+                                                @enderror
+                                            </div>
+                                            <div class="mb-3 pb-3 form-check">
+                                                <input type="checkbox" class="form-check-input" id="checkbox-signin">
+                                                <label class="form-check-label" for="checkbox-signin">Ghi
+                                                    nhớ tài khoản?</label>
+                                            </div>
+                                            <div class="mb-3 text-center">
+                                                <button class="btn btn-primary w-100" type="submit">ĐĂNG
+                                                    NHẬP</button>
+                                            </div>
+                                            <a href="page-recoverpw.html"
+                                                class="text-muted float-end text-decoration-none">Quên mật
+                                                khẩu?</a>
+                                        </form>
+                                        <div class="mb-3 text-center">
+                                            <hr>
+                                            <button class="btn btn-danger w-100 mb-2" type="button">
+                                                <i class="fab fa-google"></i> Đăng nhập bằng Google
+                                            </button>
+                                            <button class="btn btn-primary w-100" type="button">
+                                                <i class="fab fa-facebook-f"></i> Đăng nhập bằng Facebook
+                                            </button>
                                         </div>
                                     </div>
-                                    <div class="row mt-3">
-                                        <div class="col-sm-12 text-center">
-                                            <p class="text-muted mb-0">Bạn chưa có tài khoản? <a href="#"
-                                                    id="showRegisterModal" class="text-dark" data-bs-toggle="modal"
-                                                    data-bs-target="#registerModal"><b>ĐĂNG
-                                                        KÝ</b></a></p>
-                                        </div>
+                                </div>
+                                <div class="row mt-3">
+                                    <div class="col-sm-12 text-center">
+                                        <p class="text-muted mb-0">Bạn chưa có tài khoản? <a href="#"
+                                                id="showRegisterModal" class="text-dark" data-bs-toggle="modal"
+                                                data-bs-target="#registerModal"><b>ĐĂNG
+                                                    KÝ</b></a></p>
                                     </div>
                                 </div>
                             </div>
@@ -71,6 +71,8 @@
                 </div>
             </div>
         </div>
+    </div>
+   </div>
     </div>
 
 @endsection

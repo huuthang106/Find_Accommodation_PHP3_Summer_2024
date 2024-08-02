@@ -23,6 +23,7 @@ class RoomController extends Controller
     {
         //
         $rooms = Room::where('status', 1)->orderBy('created_at', 'desc')->take(20)->get();
+
         // Giới hạn tiêu đề chỉ lấy 10 ký tự đầu tiên
         $rooms = $rooms->map(function ($room) {
             $room->title = Str::limit($room->title, 20);
@@ -103,6 +104,7 @@ class RoomController extends Controller
     }
     public function page_posting()
     {
+        // paginate dung de phan trang
         $categories = Category::where('status', 1)->get();
         $areas = Areas::where('status', 1)->get();
         $user = auth()->user();
@@ -131,6 +133,7 @@ class RoomController extends Controller
             'Category_id' => 'required',
             'area_id' => 'required', // Thêm dòng này để kiểm tra area_id
             'quantity' => 'required|integer|min:0',
+            'images' => 'required',
             'images.*' => 'image|mimes:jpeg,png,jpg,gif|max:2048', // Xác thực từng tệp hình ảnh
         ], [
             'Title.required' => 'Vui lòng nhập tiêu đề bài đăng.',
@@ -145,7 +148,7 @@ class RoomController extends Controller
             'quantity.required' => 'Vui lòng nhập số lượng phòng trống.',
             'quantity.integer' => 'Số lượng phòng trống phải là số nguyên.',
             'quantity.min' => 'Số lượng phòng trống phải lớn hơn hoặc bằng 0.',
-            'images.*.required' => 'Không bỏ trống.',
+            'images.required' => 'Hình ảnh không được trống.',
             'images.*.image' => 'Tất cả các tệp phải là hình ảnh.',
             'images.*.mimes' => 'Hình ảnh phải có định dạng jpeg, png, jpg, hoặc gif.',
             'images.*.max' => 'Kích thước hình ảnh không được vượt quá 2048 kilobytes (2MB).',

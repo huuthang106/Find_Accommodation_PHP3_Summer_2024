@@ -12,7 +12,7 @@
                         <h4 class="mb-3">Danh sách bình luận</h4>
                         <div>
 
-                            <button type="button" class="btn btn-danger">Xóa tất cả</button>
+                            {{-- <button type="button" class="btn btn-danger">Xóa tất cả</button> --}}
                             <a href="{{ route('admin.pages-trash-comment') }}" class="btn btn-primary text-white me-2">
                                 <i class="fas fa-trash-alt"></i>&nbsp;Thùng rác
                             </a>
@@ -47,7 +47,10 @@
                                         <td>{{ $comment->content }}</td>
                                         <td>{{ $comment->room->title }}</td>
                                         <td>{{ $comment->user->username }}</td>
-                                        <td>{{ $comment->created_at }}</td>
+                                        {{-- <td>{{ $comment->created_at }}</td> --}}
+                                        <td>
+                                            {{ \Carbon\Carbon::parse($comment->created_at)->timezone('Asia/Ho_Chi_Minh')->format('d/m/Y H:i') }}
+                                        </td>
                                         <td>
                                             <form action="{{ route('admin.comment.destroy', $comment->id) }}" method="POST"
                                                 style="display: inline;">
@@ -105,8 +108,7 @@
     <link href="{{ asset('assets/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css" id="bootstrap-stylesheet">
     <link href="{{ asset('assets/css/icons.min.css') }}" rel="stylesheet" type="text/css">
     <link href="{{ asset('assets/css/app.min.css') }}" rel="stylesheet" type="text/css" id="app-stylesheet">
-    <link rel="stylesheet" href="{{asset('assets/css/admin-nht.css')}}">
-
+    <link rel="stylesheet" href="{{ asset('assets/css/admin-nht.css') }}">
 @endpush
 
 @push('scripts')

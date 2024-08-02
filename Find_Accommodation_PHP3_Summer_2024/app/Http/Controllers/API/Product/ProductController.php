@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Controllers\Client;
+namespace App\Http\Controllers\API\Product;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-class HomeController extends Controller
+use Validator;
+class ProductController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -61,8 +61,5 @@ class HomeController extends Controller
     public function destroy(string $id)
     {
         //
-    }
-    public function login(){
-        return view('page.users.login');
     }
 }

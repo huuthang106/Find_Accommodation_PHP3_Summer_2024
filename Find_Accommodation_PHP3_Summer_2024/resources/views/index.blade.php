@@ -128,13 +128,14 @@
             <img class="img-fluid" src="{{ asset('assets\images\43e7a13d3d2d9e73c73c.jpg') }}" alt="">
         </div>
         <div class="container searchHeader">
-            <ul class="nav nav-tabs" id="myTab" role="tablist">
-                <li class="nav-item" role="presentation">
-                    <a href="{{ route('home') }}" class="nav-link active" id="all" data-bs-toggle="tab" data-bs-target="#all"
-                        type="button" role="tab" aria-controls="home" aria-selected="true">Tất cả</a>
+            <ul class="nav nav-tabs border-bottom" id="myTab" role="tablist">
+                <li class="nav-item hover-nav-item" role="presentation">
+                    <a href="{{ route('home') }}" class="nav-link active" id="all" data-bs-toggle="tab"
+                        data-bs-target="#all" type="button" role="tab" aria-controls="home"
+                        aria-selected="true">Tất cả</a>
                 </li>
                 @foreach ($categories->sortByDesc('rooms_count')->take(3) as $category)
-                    <li class="nav-item" role="presentation">
+                    <li class="nav-item hover-nav-item" role="presentation">
                         {{-- cái này của thẻ a bên dưới  id="homestay"
                         data-bs-toggle="tab" data-bs-target="#homestay" type="button" role="tab"
                         aria-controls="profile" aria-selected="false" --}}
@@ -144,8 +145,51 @@
                     </li>
                 @endforeach
             </ul>
-            <div class="tab-content" id="myTabContent">
-                <div class="tab-pane fade show active" id="all" role="tabpanel" aria-labelledby="all">
+            <div class="tab-content " id="myTabContent">
+                <div class="tab-pane fade show active ms-5" id="all" role="tabpanel" aria-labelledby="all">
+                    <div class="row mt-3 d-flex justify-content-center">
+                        <div class="col-3">
+                            <div class="input-group">
+                                <div class="input-group-text">
+                                    <i class='bx bxs-map' style='color:#06b2ee'></i>
+                                </div>
+                                <select class="form-select" name="" id="">
+                                    <option value="" accesskey="">Địa điểm</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-3">
+                            <div class="input-group">
+                                <div class="input-group-text">
+                                    <i class='bx bx-dollar' style='color:#06b2ee'></i>
+                                </div>
+                                <select class="form-select" name="" id="">
+                                    <option value="" accesskey="">Giá</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-3">
+                            <div class="input-group">
+                                <div class="input-group-text">
+                                    <i class='bx bxs-filter-alt' style='color:#06b2ee'></i>
+                                </div>
+                                <select class="form-select" name="" id="">
+                                    <option value="" accesskey="">Diện tích</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-3">
+                            <div class="input-group">
+
+                                <div class="buttonSearch ">
+                                    <span class="textSearch">Tìm kiếm</span>
+                                    <i class='bx bx-search' style='color:#fdf9f9'></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {{-- <div class="tab-pane fade" id="homestay" role="tabpanel" aria-labelledby="homestay">
                     <div class="row mt-3">
                         <div class="col-3">
                             <div class="input-group">
@@ -186,8 +230,8 @@
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="tab-pane fade" id="homestay" role="tabpanel" aria-labelledby="homestay">
+                </div> --}}
+                {{-- <div class="tab-pane fade" id="resort" role="tabpanel" aria-labelledby="resort">
                     <div class="row mt-3">
                         <div class="col-3">
                             <div class="input-group">
@@ -228,7 +272,7 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> --}}
             </div>
         </div>
     </header>
@@ -254,8 +298,8 @@
                                         @endif
                                     </div>
                                     <div class="card-body">
-                                        <h5 class="card-title">{{ $room->title }}</h5>
-                                        <h6 class="card-text mt-3">Từ <span class="cardPrice">{{ $room->price }}
+                                        <h5 class="card-title fs-5">{{ $room->title }}</h5>
+                                        <h6 class="card-text mt-3 fs-6">Từ <span class="cardPrice">{{ $room->price }}
                                                 VNĐ</span></h6>
                                         <div class="d-flex mt-3">
                                             <div class="room">
@@ -267,10 +311,10 @@
                                                 <span>12m2</span>
                                             </div>
                                         </div>
-                                        <p class="mt-3"><i class='bx bxs-map'
-                                                style='color:#0a0a0a'></i>{{ $room->address }}
-                                        </p>
+                                        <p class="mt-3 text-muted fs-7"><i class='bx bxs-map'
+                                                style='color:#0a0a0a'></i>{{ $room->address }}</p>
                                     </div>
+
                                 </div>
                             </a>
                         </div>

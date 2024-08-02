@@ -6,13 +6,14 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
+
 class RegisterController extends Controller
 {
-    //
     public function pages_register()
     {
         return view('layouts.layout-user');
     }
+
     public function check_register()
     {
         // Bắt lỗi
@@ -30,9 +31,17 @@ class RegisterController extends Controller
             'password_confirmation.required' => 'Vui lòng nhập lại mật khẩu để xác nhận.',
             'password_confirmation.same' => 'Mật khẩu xác nhận không khớp với mật khẩu đã nhập.',
         ]);
+
         $data = request()->all('username', 'email');
         $data['password'] = bcrypt(request('password'));
-        User::create($data);
+
+        // Tạo người dùng mới
+        $user = User::create($data);
+
+        // Đăng nhập người dùng mới
+        Auth::login($user);
+
+        // Chuyển hướng đến trang chính
         return redirect()->route('home');
     }
 }

@@ -57,12 +57,12 @@
                                 <h5 class="card-title">Thông Tin Cá Nhân</h5>
                             </div>
                             <div class="card-body">
-                                <div class="mb-4">
+                                {{-- <div class="mb-4">
                                     <strong>Số dư</strong>
                                     <br>
                                     <p class="text-muted mb-0">{{ number_format($users->balance, 0, ',', '.') }}đ
                                     </p>
-                                </div>
+                                </div> --}}
                                 <div class="mb-4">
                                     <strong>Họ và Tên</strong>
                                     <br>

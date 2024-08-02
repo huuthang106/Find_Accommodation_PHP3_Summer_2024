@@ -10,10 +10,15 @@ use Illuminate\Support\Str;
 class ReportAdminController extends Controller
 {
     //
+    // Biến xóa mềm = 5
+    const status_soft_delete = 5;
+    // Biến Đã Xem = 0
+    const status_da_xem = 0;
+    // Biến Chưa Xem = 1;
     public function index()
     {
         // Lấy tất cả báo cáo từ cơ sở dữ liệu loại trừ các báo cáo có status = 5
-        $reports = Report::where('status', '!=', 5)->orderBy('created_at','desc')->get();
+        $reports = Report::where('status', '!=', Self::status_soft_delete)->orderByDesc('id')->get();
         // Duyệt qua mỗi report để giới hạn ký tự của title
         foreach ($reports as $item) {
             $item->room_title = Str::limit($item->room->title, 10);
@@ -33,26 +38,28 @@ class ReportAdminController extends Controller
     {
         $reports = Report::find($id);
         if ($reports) {
-            $reports->status = 5; // Đánh dấu thông báo là đã xóa
+            $reports->status = Self::status_soft_delete; // Đánh dấu thông báo là đã xóa
             $reports->save();
-            return redirect()->back()->with(['success' => 'Thông báo đã được xóa thành công.', 'showAlert' => true]);
+            return redirect()->route('admin.pages-report')->with('showAlert', [
+                'success' => 'Thông báo đã được xóa'
+            ]);
         }
         return redirect()->back()->with(['error' => 'Không tìm thấy thông báo.', 'showAlert' => true]);
     }
-    public function updateReport(Request $request, string $id)
+    public function viewAndChangeStatus($id)
     {
-        // Lấy thông báo dựa trên ID
-        $reports = Report::find($id);
+        // Tìm báo cáo theo id
+        $reports = Report::findOrFail($id);
+        // if (!$reports) {
+        //     return redirect()->route('admin.notifications.index')->with('showAlert', [
+        //         'not_found' => 'Thông báo không tồn tại.'
+        //     ]);
+        // }
+        // Cập nhật trạng thái thông báo (ví dụ: đánh dấu là đã đọc)
+        $reports->status = Self::status_da_xem;; // hoặc trạng thái khác phù hợp với ứng dụng của bạn
+        $reports->save();
 
-        // Kiểm tra xem thông báo có tồn tại không
-        if ($reports) {
-            // Cập nhật trạng thái báo cáo
-            $reports->status = 0;
-            $reports->save();
-
-            return redirect()->route('pages-report')->with(['success' => 'Thông báo đã được cập nhật.', 'showAlert' => true, 'reportId' => $id]);
-        }
-
-        return redirect()->route('pages-report')->with(['error' => 'Thông báo không tồn tại.', 'showAlert' => false]);
+        // Hiển thị trang chi tiết thông báo
+        return view('admincp.details.pages-report-detail', compact('reports'), ['id' => $id]);
     }
 }

@@ -98,10 +98,16 @@
                                             <input type="file" class="form-control" id="img-room-1" name="images[]">
                                         </div>
                                     </div>
-                                    <div class="mb-3">
+                                    {{-- <div class="mb-3">
                                         <input type="text" hidden class="form-control" id="user_id" name="user_id"
                                             placeholder="6 - 15 Ký tự" value="{{ $user }}">
-                                    </div>
+                                    </div> --}}
+                                    @error('images')
+                                    <div class="alert alert-danger">{{ $message }}</div>
+                                @enderror
+                                    @error('images.*')
+                                    <div class="alert alert-danger">{{ $message }}</div>
+                                @enderror
                                     <button type="button" id="add-file" class="btn btn-primary">+</button>
                                 </div>
                             </div>

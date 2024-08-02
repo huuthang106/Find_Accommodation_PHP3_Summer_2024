@@ -5,7 +5,7 @@
         <div class="row d-flex justify-content-center">
             <div class="col-6 p-0">
                 <span class="item">
-                    <a href="#" class="item-link text-decoration-none">Trang chủ</a>
+                    <a href="{{ route('home') }}" class="item-link text-decoration-none">Trang chủ</a>
                 </span>
                 <div class="hostel__detail">
                     <h1 class="box-title">{{ $room->title }}</h1>
@@ -45,38 +45,77 @@
             </div>
             <div class="row justify-content-center p-0 mt-3">
                 <div class="col-9 p-0 block-img">
-
-                    <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
-                        <div class="carousel-inner">
-                            @if ($images->isNotEmpty())
-                                @foreach ($images as $index => $item)
-                                    <div class="carousel-item {{ $index === 0 ? 'active' : '' }}">
-                                        <img src="{{ asset('assets/images/' . $item->image) }}" class="d-block w-100"
-                                            alt="...">
-                                    </div>
-                                @endforeach
-                            @else
-                                <div class="carousel-item active">
-                                    <img class="d-block w-100"
-                                        src="{{ asset('assets\images\448469911_476143361772862_3803638986442606747_n-min.jpg') }}"
-                                        alt="">
-                                </div>
-                            @endif
+                    @if ($images->isNotEmpty())
+                        @foreach ($images as $index => $item)
+                            <div class="carousel-item {{ $index === 0 ? 'active' : '' }}">
+                                <img src="{{ asset('assets/images/' . $item->image) }}" class="d-block w-100"
+                                    alt="...">
+                            </div>
+                        @endforeach
+                    @else
+                        <div class="carousel-item active">
+                            <img class="d-block w-100"
+                                src="{{ asset('assets\images\448469911_476143361772862_3803638986442606747_n-min.jpg') }}"
+                                alt="">
                         </div>
-                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls"
-                            data-bs-slide="prev">
-                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                            <span class="visually-hidden">Previous</span>
-                        </button>
-                        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls"
-                            data-bs-slide="next">
-                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                            <span class="visually-hidden">Next</span>
-                        </button>
-                    </div>
-
+                    @endif
+                    {{-- @if ($images->isNotEmpty()) --}}
+                  
+                        {{-- @endif --}}
                 </div>
-
+                <button type="button" class="btn btn-primary m-2 fixed-button" data-toggle="modal"
+                data-target="#exampleModal"><i class="fas fa-image"></i> Xem tất cả ảnh
+        </button>
+            </div>
+            <!-- Modal -->
+            <div class="modal fade modal-edit" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content edit-modal">
+                        <div class="modal-header border-0">
+                            <button type="button " class="close btn-close"  data-dismiss="modal" aria-label="Close">
+                               
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
+                                <div class="carousel-inner">
+                                    @if ($images->isNotEmpty())
+                                        @foreach ($images as $index => $item)
+                                            <div class="carousel-item {{ $index === 0 ? 'active' : '' }}">
+                                                <img src="{{ asset('assets/images/' . $item->image) }}"
+                                                    class="d-block w-100" alt="...">
+                                            </div>
+                                        @endforeach
+                                    @else
+                                        <div class="carousel-item active">
+                                            <img src="{{ asset('assets\images\448469911_476143361772862_3803638986442606747_n-min.jpg') }}"
+                                                class="d-block w-100" alt="...">
+                                        </div>
+                                        <div class="carousel-item">
+                                            <img src="{{ asset('assets\images\448469911_476143361772862_3803638986442606747_n-min.jpg') }}"
+                                                class="d-block w-100" alt="...">
+                                        </div>
+                                        <div class="carousel-item">
+                                            <img src="{{ asset('assets\images\448469911_476143361772862_3803638986442606747_n-min.jpg') }}"
+                                                class="d-block w-100" alt="...">
+                                        </div>
+                                    @endif
+                                </div>
+                                <a class="carousel-control-prev" href="#carouselExampleSlidesOnly" role="button"
+                                    data-slide="prev">
+                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                    <span class="sr-only">Previous</span>
+                                </a>
+                                <a class="carousel-control-next" href="#carouselExampleSlidesOnly" role="button"
+                                    data-slide="next">
+                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                    <span class="sr-only">Next</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
             <div class="row justify-content-center p-0 mt-4 ">
                 <div class="col-9 bg-body rounded p-4">
@@ -137,7 +176,9 @@
                                                             <h6 class="fw-bold text-dark mb-1">
                                                                 {{ $comment->user->username }}</h6>
                                                             <p class="text-muted small mb-0">Đăng vào
-                                                                {{ $comment->created_at->format('d/m/Y H:i') }}</p>
+                                                                {{ \Carbon\Carbon::parse($comment->created_at)->timezone('Asia/Ho_Chi_Minh')->format('d/m/Y H:i') }}
+                                                            </p>
+
                                                         </div>
                                                     </div>
                                                     <p class="mt-3 mb-4 pb-2">{{ $comment->content }}</p>
@@ -192,8 +233,10 @@
                                                                             <h6 class="fw-bold text-dark mb-1">
                                                                                 {{ $reply->user->username }}</h6>
                                                                             <p class="text-muted small mb-0">Đăng vào
-                                                                                {{ $reply->created_at->format('d/m/Y H:i') }}
+                                                                                {{ \Carbon\Carbon::parse($reply->created_at)->timezone('Asia/Ho_Chi_Minh')->format('d/m/Y H:i') }}
                                                                             </p>
+
+
                                                                         </div>
                                                                     </div>
                                                                     <p class="mt-3 mb-4 pb-2">{{ $reply->content }}
@@ -289,6 +332,7 @@
                     </div>
                 </div>
             </div>
+
         </div>
         <div class="row justify-content-center p-0 mt-4 margin-botton">
             <div class="col-9 bg-body rounded p-4">
@@ -300,6 +344,7 @@
             </div>
         </div>
     </div>
+
 @endsection
 
 @push('styles')
@@ -319,10 +364,16 @@
 
 @push('scripts')
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
         integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous">
     </script>
+    <script>
+        var userIsLoggedIn = @json(auth()->check());
+    </script>
+
     <script src="{{ asset('assets\js\comment.js') }}"></script>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
         integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous">
     </script>

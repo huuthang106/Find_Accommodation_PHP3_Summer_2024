@@ -7,8 +7,13 @@
             <!-- start  -->
             <div class="row">
                 <div class="col-12">
-                    <div>
-                        <h4 class="header-title mb-3">Chi Tiết Báo Cáo</h4>
+                    <div class="d-flex justify-content-between align-items-center header-title">
+                        <h4 class="mb-3">Chi Tiết Báo Cáo</h4>
+                        <div>
+                            <a href="{{ route('admin.pages-report') }}" class="btn btn-primary text-white me-2">
+                                <i class="fas fa-reply"></i>&nbsp;Quay lại
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -35,34 +40,35 @@
                                     <th>Thao tác</th>
                                 </tr>
                             </thead>
+                            <tbody>
+                                <tr>
+                                    <td style="word-wrap: break-word; white-space: normal;">{{ $reports->message }}</td>
+                                    <td>{{ $reports->status == 1 ? 'Chưa xem' : 'Đã xem' }}</td>
+                                    <td>{{ $reports->user->username }}</td>
+                                    <td style="word-wrap: break-word; white-space: normal;">{{ $reports->room->title }}
+                                    </td>
+                                    <td>{{ $reports->report->username }}</td>
+                                    <td>
+                                        <form id="delete-form-{{ $reports->id }}"
+                                            action="{{ route('admin.report.destroy', $reports->id) }}" method="POST"
+                                            style="display:inline;">
+                                            @csrf
+                                            @method('DELETE')
+                                            {{-- <button type="submit" class="btn btn-primary">Xem</button> --}}
+                                            <button type="button" class="btn btn-danger"
+                                                onclick="confirmDelete({{ $reports->id }});">Xóa</button>
+                                            {{-- <button type="submit" class="btn btn-danger">Xóa</button> --}}
+                                        </form>
+                                        @if (session('showLink'))
+                                            <div class="alert alert-success mt-3">
+                                                <a href="{{ route('report.show', ['id' => session('reportId')]) }}">Xem
+                                                    báo cáo đã cập nhật</a>
+                                            </div>
+                                        @endif
 
-                            @foreach ($reports as $item)
-                                <tbody>
-                                    <tr>
-                                        <td style="word-wrap: break-word; white-space: normal;">{{ $item->message }}</td>
-                                        <td>{{ $item->status == 1 ? 'Chưa xem' : 'Đã xem' }}</td>
-                                        <td>{{ $item->user->username }}</td>
-                                        <td style="word-wrap: break-word; white-space: normal;">{{ $item->room->title }}
-                                        </td>
-                                        <td>{{ $item->report->username }}</td>
-                                        <td>
-                                            <form action="{{ route('admin.update-pages-report-detail', $item->id) }}"
-                                                method="POST" style="display:inline;">
-                                                @csrf
-                                                <button type="submit" class="btn btn-primary">Xem</button>
-                                                {{-- <button type="submit" class="btn btn-danger">Xóa</button> --}}
-                                            </form>
-                                            @if (session('showLink'))
-                                                <div class="alert alert-success mt-3">
-                                                    <a href="{{ route('report.show', ['id' => session('reportId')]) }}">Xem
-                                                        báo cáo đã cập nhật</a>
-                                                </div>
-                                            @endif
-
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            @endforeach
+                                    </td>
+                                </tr>
+                            </tbody>
                         </table>
 
                     </div>
@@ -104,8 +110,7 @@
     <link href="{{ asset('assets/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css" id="bootstrap-stylesheet">
     <link href="{{ asset('assets/css/icons.min.css') }}" rel="stylesheet" type="text/css">
     <link href="{{ asset('assets/css/app.min.css') }}" rel="stylesheet" type="text/css" id="app-stylesheet">
-    <link rel="stylesheet" href="{{asset('assets/css/admin-nht.css')}}">
-
+    <link rel="stylesheet" href="{{ asset('assets/css/admin-nht.css') }}">
 @endpush
 
 @push('scripts')
@@ -149,4 +154,7 @@
     <!-- Required datatable js -->
     <script src="{{ asset('assets\libs\datatables\jquery.dataTables.min.js') }}"></script>
     <script src="{{ asset('assets\libs\datatables\dataTables.bootstrap4.min.js') }}"></script>
+    <!-- Show Alert -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="{{ asset('assets\js\show-alert.js') }}" text="text/javascript"></script>
 @endpush
