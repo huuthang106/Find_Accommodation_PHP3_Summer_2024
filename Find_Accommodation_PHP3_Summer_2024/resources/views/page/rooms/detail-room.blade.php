@@ -1,7 +1,7 @@
 @extends('layouts.layout-user')
 @section('titleUs', 'Trang chủ trọ nhanh')
 @section('contentUs')
-    <div class="container-fluid background-content">
+    <div class="container-fluid mapCustom">
         <div class="row d-flex justify-content-center">
             <div class="col-6 p-0">
                 <span class="item">
@@ -332,9 +332,8 @@
                     </div>
                 </div>
             </div>
-
         </div>
-        <div class="row justify-content-center p-0 mt-4 margin-botton">
+        <div class="row justify-content-center mt-4">
             <div class="col-9 bg-body rounded p-4">
                 <h3>Đường đi</h3>
                 <iframe
@@ -344,7 +343,6 @@
             </div>
         </div>
     </div>
-
 @endsection
 
 @push('styles')
