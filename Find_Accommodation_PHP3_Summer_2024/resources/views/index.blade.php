@@ -2,8 +2,6 @@
 @section('titleUs', 'Trang chủ trọ nhanh')
 @section('contentUs')
     <header>
-
-
         <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered"> <!-- Thêm class này -->
                 <div class="modal-content">
@@ -324,7 +322,6 @@
                 <div class="row">
                     <div class="buttonView">
                         <span>Xem tất cả </span>
-
                     </div>
                 </div>
             </div>
@@ -332,13 +329,13 @@
             <section class="mt-5">
                 <div class="bg bg-primary mainFull">
                     <h4 class="text-center textSectionTwo">TRẢI NGHIỆM CÙNG TRỌ MỚI</h4>
-                    <div class="d-flex justify-content-center align-content-center">
+                    {{-- <div class="d-flex justify-content-center align-content-center">
                         <button class="btn btn-light me-3">Tất cả</button>
                         <button class="btn btn-light me-3">Cần Thơ</button>
                         <button class="btn btn-light me-3">Tp.Hồ Chí Minh</button>
                         <button class="btn btn-light me-3">Bình Dương</button>
                         <button class="btn btn-light">An Giang</button>
-                    </div>
+                    </div> --}}
                     <div class="container mt-3">
                         <div class="row">
                             <div class="col-3">
@@ -472,11 +469,9 @@
                 <div class="row">
                     <div class="buttonView">
                         <span>Xem tất cả </span>
-
                     </div>
                 </div>
             </div>
-
 
             <div class="main  mt-5">
                 <h4 class="textMain">Lựa chọn đơn giản</h4>
@@ -519,15 +514,12 @@
                             </a>
                         </div>
                     @endforeach
-
-                    <div class="row">
-                        <div class="buttonView">
-                            <span>Xem tất cả </span>
-
-                        </div>
+                </div>
+                <div class="row">
+                    <div class="buttonView">
+                        <span>Xem tất cả </span>
                     </div>
                 </div>
-
                 <section class="mt-4">
                     <h4 class="text-center text-uppercase evaluateTitle">Đánh giá của người sử dụng</h4>
                     <div class="container mt-4">

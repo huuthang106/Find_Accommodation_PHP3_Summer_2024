@@ -60,12 +60,12 @@
                         </div>
                     @endif
                     {{-- @if ($images->isNotEmpty()) --}}
-                  
-                        {{-- @endif --}}
+
+                    {{-- @endif --}}
                 </div>
                 <button type="button" class="btn btn-primary m-2 fixed-button" data-toggle="modal"
-                data-target="#exampleModal"><i class="fas fa-image"></i> Xem tất cả ảnh
-        </button>
+                    data-target="#exampleModal"><i class="fas fa-image"></i> Xem tất cả ảnh
+                </button>
             </div>
             <!-- Modal -->
             <div class="modal fade modal-edit" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
@@ -73,8 +73,8 @@
                 <div class="modal-dialog modal-lg">
                     <div class="modal-content edit-modal">
                         <div class="modal-header border-0">
-                            <button type="button " class="close btn-close"  data-dismiss="modal" aria-label="Close">
-                               
+                            <button type="button " class="close btn-close" data-dismiss="modal" aria-label="Close">
+
                             </button>
                         </div>
                         <div class="modal-body">
@@ -130,7 +130,7 @@
                     </div>
                     <div class="row rounded-top background-content p-3">
                         <div class="col-3">Loại:</div>
-                        <div class="col-9">Trọ</div>
+                        <div class="col-9">{{ $room->category->name }}</div>
                     </div>
                     <div class="row p-3">
                         <div class="col-3">Người đăng:</div>
