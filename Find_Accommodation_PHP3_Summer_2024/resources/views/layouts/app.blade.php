@@ -9,6 +9,7 @@
     <meta content="Coderthemes" name="author">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="csrf-token" content="{{ csrf_token() }}" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
     @stack('styles')
 
 
@@ -165,7 +166,10 @@
                             <i class="mdi mdi-account-outline"></i>
                             <span>Hồ sơ</span>
                         </a>
-
+                        <a href="{{ route('admin.pages-change-password-admin') }}" class="dropdown-item notify-item">
+                            <i class="mdi mdi-account-outline"></i>
+                            <span>Đổi mật khẩu</span>
+                        </a>
 
 
 
@@ -402,6 +406,8 @@
     <!-- Right bar overlay-->
     <div class="rightbar-overlay"></div>
     @stack('scripts')
+    {{-- SweetAlert2 --}}
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </body>
 
 </html>

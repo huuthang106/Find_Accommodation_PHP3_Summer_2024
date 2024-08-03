@@ -46,14 +46,12 @@ class UserController extends Controller
         // Bắt lỗi dữ liệu
         $request->validate([
             'username' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255',
-            'password_confirmation' => 'same:password',
+            'email' => 'required|string|email|max:255'
         ], [
             'username.required' => 'Vui lòng nhập tên người dùng.',
             'email.required' => 'Vui lòng nhập địa chỉ email.',
             'email.email' => 'Địa chỉ email không hợp lệ.',
-            'email.unique' => 'Địa chỉ email đã tồn tại trong hệ thống.',
-            'password_confirmation.same' => 'Mật khẩu xác nhận không khớp với mật khẩu đã nhập.',
+            'email.unique' => 'Địa chỉ email đã tồn tại trong hệ thống.'
         ]);
         // Cập nhật thông tin Admin
         $admin->update($request->all());
@@ -149,19 +147,19 @@ class UserController extends Controller
             'email.email' => 'Định dạng Email không hợp lệ',
             'email.exists' => 'Email không tồn tại trong hệ thống'
         ]);
-    
+
         // Truy vấn người dùng
         $admin = User::where('email', $request->email)->first();
-        
+
         // Tạo token ngẫu nhiên
         $token = Str::random(40);
-        
+
         // Cập nhật hoặc tạo mới token trong bảng password_reset_tokens
         ResetPasswordToken::updateOrCreate(
             ['email' => $request->email], // Điều kiện tìm kiếm
             ['token' => $token, 'updated_at' => now()] // Cập nhật hoặc tạo mới
         );
-        
+
         // Gửi email
         try {
             Mail::to($request->email)->send(new ForgotPasswordUs($admin, $token));
@@ -176,7 +174,7 @@ class UserController extends Controller
             ]);
         }
     }
-    
+
     public function reset_password_us($token)
     {
         $tokenData = ResetPasswordToken::CheckToken($token);
@@ -184,38 +182,38 @@ class UserController extends Controller
         return view('page.reset-password', compact('tokenData', 'token'));
     }
     // Trong UserController
-public function check_reset_password_us(Request $request, $token)
-{
-    // Xác thực dữ liệu yêu cầu
-    $request->validate([
-        'password' => 'required|confirmed',
-    ], [
-        'password.required' => 'Vui lòng nhập mật khẩu',
-        'password.confirmed' => 'Mật khẩu không trùng khớp'
-    ]);
+    public function check_reset_password_us(Request $request, $token)
+    {
+        // Xác thực dữ liệu yêu cầu
+        $request->validate([
+            'password' => 'required|confirmed',
+        ], [
+            'password.required' => 'Vui lòng nhập mật khẩu',
+            'password.confirmed' => 'Mật khẩu không trùng khớp'
+        ]);
 
-    // Kiểm tra và lấy dữ liệu token
-    $tokenData = ResetPasswordToken::where('token', $token)->first();
-    if (!$tokenData) {
-        return redirect()->route('home')->with('error', 'Token không hợp lệ')->with('showAlert', true);
+        // Kiểm tra và lấy dữ liệu token
+        $tokenData = ResetPasswordToken::where('token', $token)->first();
+        if (!$tokenData) {
+            return redirect()->route('home')->with('error', 'Token không hợp lệ')->with('showAlert', true);
+        }
+
+        // Lấy người dùng tương ứng với token
+        $user = User::where('email', $tokenData->email)->first();
+        if (!$user) {
+            return redirect()->route('home')->with('error', 'Tài khoản không tồn tại')->with('showAlert', true);
+        }
+
+        // Cập nhật mật khẩu
+        $user->password = bcrypt($request->input('password'));
+        $user->save();
+
+        // Xóa token sau khi cập nhật thành công
+        $tokenData->delete();
+
+        // Chuyển hướng đến trang đăng nhập sau khi cập nhật mật khẩu thành công
+        return redirect()->route('login')->with('success', 'Mật khẩu đã được cập nhật thành công')->with('showAlert', true);
     }
-
-    // Lấy người dùng tương ứng với token
-    $user = User::where('email', $tokenData->email)->first();
-    if (!$user) {
-        return redirect()->route('home')->with('error', 'Tài khoản không tồn tại')->with('showAlert', true);
-    }
-
-    // Cập nhật mật khẩu
-    $user->password = bcrypt($request->input('password'));
-    $user->save();
-
-    // Xóa token sau khi cập nhật thành công
-    $tokenData->delete();
-
-    // Chuyển hướng đến trang đăng nhập sau khi cập nhật mật khẩu thành công
-    return redirect()->route('login')->with('success', 'Mật khẩu đã được cập nhật thành công')->with('showAlert', true);
-}
 
     /**
      * Show the form for creating a new resource.
@@ -389,7 +387,45 @@ public function check_reset_password_us(Request $request, $token)
 
     public function showAdmin()
     {
-        $users = User::whereIn('role', [1, 2])->orderBy('created_at','desc')->get();
+        $users = User::whereIn('role', [1, 2])->orderBy('created_at', 'desc')->get();
         return view('admincp.manages.pages-user', compact('users'));
+    }
+    // Trang Thay đổi mật khẩu của Admin
+    public function change_password_admin()
+    {
+        // $user = auth()->user(); // Hoặc lấy người dùng từ cơ sở dữ liệu
+        return view('admincp.accounts.pages-change-password');
+    }
+    // Xử lý thay đổi mật khẩu của Admin
+    public function check_change_passsword_admin(Request $request)
+    {
+        // Bắt lỗi
+        $request->validate([
+            'old_password' => 'required',
+            'password' => 'required|string|confirmed',
+        ], [
+            'old_password.required' => 'Vui lòng nhập mật khẩu cũ',
+            'password.required' => 'Vui lòng nhập mật khẩu mới',
+            'password.confirmed' => 'Mật khẩu nhập lại không khớp',
+        ]);
+        // Nhận người dùng được xác thực hiện tại
+        $user = Auth::user();
+        // Đảm bảo $user là một instance của model Admin
+        // Kiểm tra xem người dùng đã xác thực có phải là một instance hợp lệ của model User hay không
+        if (!$user instanceof User) {
+            return back()->withErrors(['user' => 'Người dùng không hợp lệ']);
+        }
+        // dd($user);
+        // Kiểm tra xem mật khẩu cũ có khớp không
+        if (!Hash::check($request->old_password, $user->password)) {
+            return back()->withErrors(['old_password' => 'Mật khẩu cũ không chính xác']);
+        }
+
+        // Cập nhật mật khẩu người dùng
+        $user->password = Hash::make($request->password);
+        $user->save();
+
+        // Trả về phẩn hồi khi thành công
+        return redirect()->route('admin.quan-li-ho-so')->with(['success' => 'Cập nhật thành công.', 'showAlert' => true]);
     }
 }
