@@ -20,3 +20,8 @@ use App\Http\Controllers\Client\AuthController;
 use App\Http\Controllers\Client\RegisterController;
 use App\Http\Controllers\Client\MemberregistrationController;
 Route::get('/xem-phong/{id}', [RoomController::class, 'getRoomID'])->name('get-room');
+Route::get('/tim-kiem', [RoomController::class, 'search'])->name('rooms.search');
+// routes/web.php
+
+
+

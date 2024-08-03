@@ -21,20 +21,19 @@ class RoomController extends Controller
 
     public function index()
     {
-        //
         $rooms = Room::where('status', 1)->orderBy('created_at', 'desc')->take(20)->get();
-        // Giới hạn tiêu đề chỉ lấy 10 ký tự đầu tiên
         $rooms = $rooms->map(function ($room) {
             $room->title = Str::limit($room->title, 20);
             $room->address = Str::limit($room->address, 20);
             $room->price = number_format($room->price, 0, ',', '.');
-            // Sử dụng toán tử Elvis để lấy hình ảnh ngẫu nhiên nếu có
-            // isNotEmpty()một phương thức của Collection giúp kiểm tra tính đầy đủ của tập hợp một cách nhanh chóng và rõ ràng
             $room->randomImage = $room->images->isNotEmpty() ? $room->images->random()->image : null;
             return $room;
         });
 
-        return view('index', compact('rooms'));
+        $categories = Category::all();
+        $areas = Areas::all(); // Lấy danh sách các khu vực
+
+        return view('index', compact('rooms', 'categories', 'areas'));
     }
 
     public function reportRoom($roomId)
@@ -272,4 +271,40 @@ class RoomController extends Controller
         $room->save();
         return redirect()->route('profileus')->with('success', 'Xóa thành công');
     }
+    
+    public function search(Request $request)
+    {
+        $query = Room::query();
+
+       
+    if ($request->filled('diadiem')) {
+        $query->where('area_id', $request->diadiem);
+    }
+
+    if ($request->filled('gia')) {
+        $query->where('price', '<=', $request->gia);
+    }
+
+    if ($request->filled('dientich')) {
+        // Thêm điều kiện tìm kiếm theo diện tích nếu cần
+        // $query->where('area', $request->dientich);
+    }
+
+        $rooms = $query->where('status', 1)->orderBy('created_at', 'desc')->take(20)->get();
+        $totalRooms = $query->where('status', 1)->count();
+
+        $rooms = $rooms->map(function ($room) {
+            $room->title = Str::limit($room->title, 20);
+            $room->address = Str::limit($room->address, 20);
+            $room->price = number_format($room->price, 0, ',', '.');
+            $room->randomImage = $room->images->isNotEmpty() ? $room->images->random()->image : null;
+            return $room;
+        });
+
+        $categories = Category::all();
+        $areas = Areas::all();
+
+        return view('page.rooms.search-room', compact('rooms', 'categories', 'areas', 'totalRooms'));
+    }
+
 }

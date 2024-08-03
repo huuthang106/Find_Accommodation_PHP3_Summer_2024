@@ -128,152 +128,68 @@
             <img class="img-fluid" src="{{ asset('assets\images\43e7a13d3d2d9e73c73c.jpg') }}" alt="">
         </div>
         <div class="container searchHeader">
-            <ul class="nav nav-tabs" id="myTab" role="tablist">
-                <li class="nav-item" role="presentation">
-                    <a href="{{ route('home') }}" class="nav-link active" id="all" data-bs-toggle="tab"
-                        data-bs-target="#all" type="button" role="tab" aria-controls="home"
-                        aria-selected="true">Tất cả</a>
-                </li>
-                @foreach ($categories->sortByDesc('rooms_count')->take(3) as $category)
+            <form action="{{ route('rooms.search') }}" method="GET">
+                <ul class="nav nav-tabs" id="myTab" role="tablist">
                     <li class="nav-item" role="presentation">
-                        {{-- cái này của thẻ a bên dưới  id="homestay"
-                        data-bs-toggle="tab" data-bs-target="#homestay" type="button" role="tab"
-                        aria-controls="profile" aria-selected="false" --}}
-                        <a href="{{ route('category-motel-id', $category->id) }}" class="nav-link">
-                            {{ $category->name }}
-                        </a>
+                        <a href="{{ route('home') }}" class="nav-link active" id="all" data-bs-toggle="tab"
+                            data-bs-target="#all" type="button" role="tab" aria-controls="home"
+                            aria-selected="true">Tất cả</a>
                     </li>
-                @endforeach
-            </ul>
-            <div class="tab-content" id="myTabContent">
-                <div class="tab-pane fade show active" id="all" role="tabpanel" aria-labelledby="all">
-                    <div class="row mt-3">
-                        <div class="col-3">
-                            <div class="input-group">
-                                <div class="input-group-text">
-                                    <i class='bx bxs-map' style='color:#06b2ee'></i>
-                                </div>
-                                <select class="form-select" name="" id="">
-                                    <option value="" accesskey="">Địa điểm</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="col-3">
-                            <div class="input-group">
-                                <div class="input-group-text">
-                                    <i class='bx bx-dollar' style='color:#06b2ee'></i>
-                                </div>
-                                <select class="form-select" name="" id="">
-                                    <option value="" accesskey="">Giá</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="col-3">
-                            <div class="input-group">
-                                <div class="input-group-text">
-                                    <i class='bx bxs-filter-alt' style='color:#06b2ee'></i>
-                                </div>
-                                <select class="form-select" name="" id="">
-                                    <option value="" accesskey="">Diện tích</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="col-3">
-                            <div class="input-group">
-                                <div class="buttonSearch">
-                                    <span class="textSearch">Tìm kiếm</span>
-                                    <i class='bx bx-search' style='color:#fdf9f9'></i>
+                    @foreach ($categories->sortByDesc('rooms_count')->take(3) as $category)
+                        <li class="nav-item" role="presentation">
+                            <a href="{{ route('category-motel-id', $category->id) }}" class="nav-link">
+                                {{ $category->name }}
+                            </a>
+                        </li>
+                    @endforeach
+                </ul>
+                <div class="tab-content" id="myTabContent">
+                    <div class="tab-pane fade show active" id="all" role="tabpanel" aria-labelledby="all">
+                        <div class="row mt-3">
+                            <div class="col-3">
+                                <div class="input-group">
+                                    <div class="input-group-text">
+                                        <i class='bx bxs-map' style='color:#06b2ee'></i>
+                                    </div>
+                                    <select class="form-select" name="diadiem" id="diadiem">
+                                        <option value="">Địa điểm</option>
+                                        @foreach ($areas as $area)
+                                            <option value="{{ $area->id }}">{{ $area->name }}</option>
+                                        @endforeach
+                                    </select>
                                 </div>
                             </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="tab-pane fade" id="homestay" role="tabpanel" aria-labelledby="homestay">
-                    <div class="row mt-3">
-                        <div class="col-3">
-                            <div class="input-group">
-                                <div class="input-group-text">
-                                    <i class='bx bxs-map' style='color:#06b2ee'></i>
+                            <div class="col-3">
+                                <div class="input-group">
+                                    <div class="input-group-text">
+                                        <i class='bx bx-dollar' style='color:#06b2ee'></i>
+                                    </div>
+                                    <input type="text" class="form-control" name="gia" placeholder="Giá">
                                 </div>
-                                <select class="form-select" name="" id="">
-                                    <option value="" accesskey="">Địa điểm</option>
-                                </select>
                             </div>
-                        </div>
-                        <div class="col-3">
-                            <div class="input-group">
-                                <div class="input-group-text">
-                                    <i class='bx bx-dollar' style='color:#06b2ee'></i>
+                            <div class="col-3">
+                                <div class="input-group">
+                                    <div class="input-group-text">
+                                        <i class='bx bxs-filter-alt' style='color:#06b2ee'></i>
+                                    </div>
+                                    <input type="text" class="form-control" name="dientich" placeholder="Diện tích">
                                 </div>
-                                <select class="form-select" name="" id="">
-                                    <option value="" accesskey="">Giá</option>
-                                </select>
                             </div>
-                        </div>
-                        <div class="col-3">
-                            <div class="input-group">
-                                <div class="input-group-text">
-                                    <i class='bx bxs-filter-alt' style='color:#06b2ee'></i>
-                                </div>
-                                <select class="form-select" name="" id="">
-                                    <option value="" accesskey="">Diện tích</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="col-3">
-                            <div class="input-group">
-                                <div class="buttonSearch">
-                                    <span class="textSearch">Tìm kiếm</span>
-                                    <i class='bx bx-search' style='color:#fdf9f9'></i>
+                            <div class="col-3">
+                                <div class="input-group">
+                                    <button type="submit" class="btn btn-primary buttonSearch">
+                                        <span class="textSearch">Tìm kiếm</span>
+                                        <i class='bx bx-search' style='color:#fdf9f9'></i>
+                                    </button>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                {{-- <div class="tab-pane fade" id="resort" role="tabpanel" aria-labelledby="resort">
-                    <div class="row mt-3">
-                        <div class="col-3">
-                            <div class="input-group">
-                                <div class="input-group-text">
-                                    <i class='bx bxs-map' style='color:#06b2ee'></i>
-                                </div>
-                                <select class="form-select" name="" id="">
-                                    <option value="" accesskey="">Địa điểm</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="col-3">
-                            <div class="input-group">
-                                <div class="input-group-text">
-                                    <i class='bx bx-dollar' style='color:#06b2ee'></i>
-                                </div>
-                                <select class="form-select" name="" id="">
-                                    <option value="" accesskey="">Giá</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="col-3">
-                            <div class="input-group">
-                                <div class="input-group-text">
-                                    <i class='bx bxs-filter-alt' style='color:#06b2ee'></i>
-                                </div>
-                                <select class="form-select" name="" id="">
-                                    <option value="" accesskey="">Diện tích</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="col-3">
-                            <div class="input-group">
-                                <div class="buttonSearch">
-                                    <span class="textSearch">Tìm kiếm</span>
-                                    <i class='bx bx-search' style='color:#fdf9f9'></i>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div> --}}
-            </div>
+            </form>
+
         </div>
+
     </header>
     <section class="sectionMain">
         <div class="container">
