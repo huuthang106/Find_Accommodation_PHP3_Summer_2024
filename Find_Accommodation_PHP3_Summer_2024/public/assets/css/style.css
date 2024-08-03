@@ -170,7 +170,7 @@
     border: 2px solid #030281;
     border-radius: 6px;
     margin-top: 15px;
-    margin-left: 2%;
+    margin-left: 3%;
 }
 
 .buttonView span {
@@ -341,18 +341,22 @@
     margin-top: 4px;
     --bs-nav-tabs-border-width: none;
 }
-.hover-nav-item a{
-   color: #fff;
+
+.hover-nav-item a {
+    color: #fff;
 }
+
 .hover-nav-item:hover {
     background-color: #f7f7f7;
     border-top-left-radius: var(--bs-nav-tabs-border-radius);
     border-top-right-radius: var(--bs-nav-tabs-border-radius);
 
 }
-.hover-nav-item a:hover{
+
+.hover-nav-item a:hover {
     color: #000;
 }
+
 /* End CSS Avatar User */
 /* End CSS Avatar User */
 
