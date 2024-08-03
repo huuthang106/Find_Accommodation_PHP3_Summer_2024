@@ -333,12 +333,12 @@
                                     <span>Quản lí blog</span>
                                 </a>
                             </li>
-                            <li>
+                            {{-- <li>
                                 <a href="{{ route('admin.quan-li-role') }}">
                                     <i class="fas fa-money-check"></i>
                                     <span>Quản lí role</span>
                                 </a>
-                            </li>
+                            </li> --}}
                             <li>
                                 <a href="{{ route('admin.manages-user') }}">
                                     <i class="fas fa-user"></i>
@@ -350,7 +350,7 @@
                     <li>
                         <a href="{{ route('admin.pages-register-admin') }}">
                             <i class="fas fa-address-card"></i>
-                            <span> Đăng ký thành viên </span>
+                            <span> Thêm thành viên </span>
                         </a>
                     </li>
 
