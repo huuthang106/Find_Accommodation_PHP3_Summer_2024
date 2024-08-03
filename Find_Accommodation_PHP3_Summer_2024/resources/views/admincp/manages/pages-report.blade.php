@@ -29,9 +29,9 @@
                                     </th>
                                     <th>Thông báo</th>
                                     <th>Trạng thái</th>
-                                    <th>ID Khách hàng</th>
-                                    <th>ID Phòng</th>
-                                    <th>ID Người báo cáo</th>
+                                    <th>Tên khách hàng</th>
+                                    <th>Tên phòng</th>
+                                    <th>Tên người báo cáo</th>
                                     <th>Thao tác</th>
                                 </tr>
                             </thead>

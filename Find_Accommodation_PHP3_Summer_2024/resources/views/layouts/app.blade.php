@@ -304,49 +304,49 @@
                             <li>
                                 <a href="{{ route('admin.pages-commet') }}">
                                     <i class="fas fa-comment"></i>
-                                    <span>Quản lí bình luận</span>
+                                    <span>Quản lý bình luận</span>
                                 </a>
                             </li>
                             <li>
                                 <a href="{{ route('admin.pages-room') }}">
                                     <i class="fas fa-newspaper"></i>
-                                    <span>Quản lí tin đăng</span>
+                                    <span>Quản lý tin đăng</span>
                                 </a>
                             </li>
                             {{-- <li>
                                 <a href="{{ route('pages-evaluate') }}">
                                     <i class="fas fa-money-check"></i>
-                                    <span>Quản lí đánh giá</span>
+                                    <span>Quản lý đánh giá</span>
                                 </a>
                             </li> --}}
                             {{-- <li>
                                 <a href="{{ route('admin.goi-dang-tin') }}">
                                     <i class="fas fa-money-check"></i>
-                                    <span>Quản lí gói đăng tin</span>
+                                    <span>Quản lý gói đăng tin</span>
                                 </a>
                             </li> --}}
                             <li>
                                 <a href="{{ route('admin.get-pricelist') }}">
                                     <i class="fas fa-money-check"></i>
-                                    <span>Quản lí chi tiết gói</span>
+                                    <span>Quản lý chi tiết gói</span>
                                 </a>
                             </li>
                             <li>
                                 <a href="{{ route('admin.quan-li-blog') }}">
                                     <i class="fas fa-money-check"></i>
-                                    <span>Quản lí blog</span>
+                                    <span>Quản lý blog</span>
                                 </a>
                             </li>
                             {{-- <li>
                                 <a href="{{ route('admin.quan-li-role') }}">
                                     <i class="fas fa-money-check"></i>
-                                    <span>Quản lí role</span>
+                                    <span>Quản lý role</span>
                                 </a>
                             </li> --}}
                             <li>
                                 <a href="{{ route('admin.manages-user') }}">
                                     <i class="fas fa-user"></i>
-                                    <span>Quản lí người dùng</span>
+                                    <span>Quản lý người dùng</span>
                                 </a>
                             </li>
                         </ul>
