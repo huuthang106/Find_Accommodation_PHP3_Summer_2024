@@ -57,7 +57,7 @@ Route::group(['prefix' => 'tai-khoan', 'middleware' => 'auth'], function () {
     Route::put('/cap-nhat-mat-khau', [UserController::class, 'check_update_password'])->name('check_update_password');
     // nguyen huu thang
     Route::get('/xac-nhan', [MemberregistrationController::class, 'page_confirm'])->name('page_confirm');
-    Route::POST('/xac-nhan', [MemberregistrationController::class, 'confirm'])->name('confirm');
+    Route::PUT('/xac-nhan/{id}', [MemberregistrationController::class, 'confirm'])->name('confirm');
 // Route::post('/ocr', [OCRController::class, 'processOCR']);
 // routes/web.php
 

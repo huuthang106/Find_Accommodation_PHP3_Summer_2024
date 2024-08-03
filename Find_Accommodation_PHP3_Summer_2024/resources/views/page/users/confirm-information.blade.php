@@ -8,8 +8,9 @@
                 <div class="card-header text-center">
                     <h5 class="card-title bg">Xác nhận thông tin</h5>
                 </div>
-                <form action="{{ route('confirm') }}" id="ocr-form" method="POST" enctype="multipart/form-data">
+                <form action="{{ route('confirm',$memberregistration->id ) }}" id="ocr-form" method="POST" enctype="multipart/form-data">
                     @csrf
+                    @method('PUT')
                     <div class="row">
                         <div class="tab-pane col-lg-12">
                             <!-- Personal-Information -->
@@ -18,7 +19,7 @@
                                     <div class="mb-3">
                                         <label for="fullname" class="form-label">Họ và tên</label>
                                         <input type="text" class="form-control" id="fullname" name="fullname"
-                                            value="{{ $frontIDRecognition['data'][0]['name'] ?? old('fullname') }}">
+                                            value="{{ $memberregistration->fullname ?? old('fullname') }}">
                                         @error('fullname')
                                             <div class="alert alert-danger mt-1">{{ $message }}</div>
                                         @enderror
@@ -26,7 +27,7 @@
                                     <div class="mb-3">
                                         <label for="description" class="form-label">Mô tả</label>
                                         <textarea class="form-control" id="description" name="description" style="height: 125px;"
-                                            placeholder="Nhập mô tả bản thân (Nếu có).">{{ $description ?? old('description') }}</textarea>
+                                            placeholder="Nhập mô tả bản thân (Nếu có).">{{ $memberregistration->description ?? old('description') }}</textarea>
                                         @error('description')
                                             <div class="alert alert-danger mt-1">{{ $message }}</div>
                                         @enderror
@@ -35,7 +36,7 @@
                                         <label for="idenerregistra_number" class="form-label">Số căn cước</label>
                                         <input type="text" class="form-control" id="idenerregistra_number"
                                             name="idenerregistra_number" placeholder="Nhập giá"
-                                            value="{{ $frontIDRecognition['data'][0]['id'] ?? old('idenerregistra_number') }}">
+                                            value="{{ $memberregistration->idenerregistra_number ?? old('idenerregistra_number') }}">
                                         @error('idenerregistra_number')
                                             <div class="alert alert-danger mt-1">{{ $message }}</div>
                                         @enderror
@@ -43,7 +44,8 @@
                                     <div class="mb-3">
                                         <label for="phone" class="form-label">Số điện thoại</label>
                                         <input type="text" class="form-control" id="phone" name="phone"
-                                            placeholder="6 - 15 Ký tự" value="{{ $phone ?? old('phone') }}">
+                                            placeholder="6 - 15 Ký tự"
+                                            value="{{ $memberregistration->phone ?? old('phone') }}">
                                         @error('phone')
                                             <div class="alert alert-danger mt-1">{{ $message }}</div>
                                         @enderror
@@ -51,22 +53,17 @@
                                     <div class="mb-3">
                                         <label for="gender" class="form-label">Giới tính</label>
                                         <select name="gender" class="form-control" id="gender">
-                                            <option value="1" {{ ($frontIDRecognition['data'][0]['sex'] ?? '') == 'NAM' ? 'selected' : '' }}>Nam</option>
-                                            <option value="2" {{ ($frontIDRecognition['data'][0]['sex'] ?? '') == 'NỮ' ? 'selected' : '' }}>Nữ</option>
-                                            <option value="3">Khác</option>
+                                            <option value="1" {{ $memberregistration->gender == 1 ? 'selected' : '' }}>
+                                                Nam</option>
+                                            <option value="2"
+                                                {{ $memberregistration->gender == 2 ? 'selected' : '' }}>Nữ</option>
+                                           
                                         </select>
                                         @error('gender')
                                             <div class="alert alert-danger mt-1">{{ $message }}</div>
                                         @enderror
                                     </div>
-                                    <div class="mb-3">
-                                        <label for="image_paths" class="form-label">Đường dẫn ảnh</label>
-                                        <ul>
-                                            @foreach (session('file_paths', []) as $path)
-                                                <li><img src="{{ asset($path) }}" alt="Image" style="width: 150px; height: auto;"></li>
-                                            @endforeach
-                                        </ul>
-                                    </div>
+                                    
                                 </div>
                             </div>
                             <!-- Personal-Information -->
