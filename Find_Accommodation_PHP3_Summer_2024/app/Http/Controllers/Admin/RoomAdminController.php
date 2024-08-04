@@ -12,12 +12,7 @@ class RoomAdminController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
-    {
-        //
-        $rooms = Room::where('status', '!=', 5)->orderBy('created_at', 'desc')->get();
-        return view('admincp.manages.pages-room', compact('rooms'));
-    }
+    
 
     /**
      * Show the form for creating a new resource.
@@ -65,6 +60,12 @@ class RoomAdminController extends Controller
     /**
      * Remove the specified resource from storage.
      */
+    public function index()
+    {
+        //
+        $rooms = Room::where('status', '!=', 5)->orderBy('created_at', 'desc')->get();
+        return view('admincp.manages.pages-room', compact('rooms'));
+    }
     public function destroy(string $id)
     {
         $room = Room::find($id);

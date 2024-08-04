@@ -301,13 +301,13 @@
                             <span class="menu-arrow"></span>
                         </a>
                         <ul class="nav-second-level" aria-expanded="false">
-                            <li>
+                            <li class="{{ request()->is('admin/thung-rac*') ? 'mm-active' : '' }}">
                                 <a href="{{ route('admin.pages-commet') }}">
                                     <i class="fas fa-comment"></i>
                                     <span>Quản lý bình luận</span>
                                 </a>
                             </li>
-                            <li>
+                            <li class="{{ request()->is('admin/bai-viet*') ? 'mm-active' : '' }}">
                                 <a href="{{ route('admin.pages-room') }}">
                                     <i class="fas fa-newspaper"></i>
                                     <span>Quản lý tin đăng</span>
@@ -331,7 +331,8 @@
                                     <span>Quản lý chi tiết gói</span>
                                 </a>
                             </li>
-                            <li>
+
+                            <li class="{{ request()->is('admin/blogs*') ? 'mm-active' : '' }}">
                                 <a href="{{ route('admin.quan-li-blog') }}">
                                     <i class="fas fa-money-check"></i>
                                     <span>Quản lý blog</span>
