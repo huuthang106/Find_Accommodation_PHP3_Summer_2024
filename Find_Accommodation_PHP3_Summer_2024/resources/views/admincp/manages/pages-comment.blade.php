@@ -34,7 +34,6 @@
                                     <th>STT</th>
                                     <th>Nội dung</th>
                                     <th>Tên bài viết</th>
-                                    <th>Tên người dùng</th>
                                     <th>Ngày bình luận</th>
                                     <th>Chức năng</th>
                                 </tr>
@@ -44,17 +43,19 @@
                                     <tr>
                                         <td><input type="checkbox"></td>
                                         <td>{{ $comment->id }}</td>
-                                        <td>{{ $comment->content }}</td>
-                                        <td>{{ $comment->room->title }}</td>
-                                        <td>{{ $comment->user->username }}</td>
+                                        <td>{{ $comment->content }}<br><small>người đăng:
+                                                {{ $comment->user->username }}</small>
+                                        </td>
+                                        <td>
+                                            {{ $comment->room->title }}
+                                        </td>
                                         <td>{{ $comment->created_at }}</td>
                                         <td>
                                             <form action="{{ route('admin.comment.destroy', $comment->id) }}" method="POST"
                                                 style="display: inline;">
                                                 @csrf
                                                 @method('PUT')
-                                                <button type="submit" class="btn btn-danger"
-                                                    onclick="return confirm('Bạn có chắc chắn muốn ẩn bình luận này không?');">Xóa</button>
+                                                <button type="submit" class="btn btn-danger">Xóa</button>
                                             </form>
                                         </td>
                                     </tr>
@@ -64,6 +65,7 @@
                     </div>
                 </div>
             </div>
+
 
 
         </div>
@@ -105,12 +107,14 @@
     <link href="{{ asset('assets/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css" id="bootstrap-stylesheet">
     <link href="{{ asset('assets/css/icons.min.css') }}" rel="stylesheet" type="text/css">
     <link href="{{ asset('assets/css/app.min.css') }}" rel="stylesheet" type="text/css" id="app-stylesheet">
-    <link rel="stylesheet" href="{{asset('assets/css/admin-nht.css')}}">
-
+    <link rel="stylesheet" href="{{ asset('assets/css/admin-nht.css') }}">
 @endpush
 
 @push('scripts')
     <!-- Vendor js -->
+    <!-- SweetAlert2 CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
     <script src="{{ asset('assets/js/vendor.min.js') }}"></script>
 
     <script src="{{ asset('assets/libs/morris-js/morris.min.js') }}"></script>
@@ -150,4 +154,5 @@
     <!-- Required datatable js -->
     <script src="{{ asset('assets\libs\datatables\jquery.dataTables.min.js') }}"></script>
     <script src="{{ asset('assets\libs\datatables\dataTables.bootstrap4.min.js') }}"></script>
+    <script src="{{ asset('assets\js\comment.js') }}"></script>
 @endpush

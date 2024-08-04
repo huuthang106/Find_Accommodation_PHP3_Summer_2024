@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Client;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\CommentRequest;
 use Illuminate\Http\Request;
 use App\Models\Comment;
 use App\Models\Room;
@@ -17,17 +18,13 @@ class CommentController extends Controller
     {
         $comments = Comment::where('room_id', $id)
             ->with('user', 'replies.user')
-            ->orderBy('created_at', 'desc') // Sắp xếp bình luận mới nhất lên đầu
+            ->orderBy('created_at', 'desc')
             ->get();
 
         $room = Room::find($id);
-        // Format lại giá trị của trường price
         $room->price = number_format($room->price, 0, ',', '.');
-
-        // Lấy tất cả hình ảnh liên quan đến phòng này
         $images = $room->images;
 
-        // Lấy một hình ảnh ngẫu nhiên
         $randomImage = $images->isNotEmpty() ? $images->random() : null;
 
         return view('page.rooms.detail-room', compact('comments', 'room', 'randomImage', 'images'));
@@ -44,7 +41,7 @@ class CommentController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(CommentRequest $request)
     {
         $comment = new Comment();
         $comment->content = $request->content;
@@ -53,7 +50,6 @@ class CommentController extends Controller
         $comment->parent_id = $request->parent_id;
         $comment->save();
 
-        // Tạo thông báo cho bình luận mới
         $notificationController = new NotificationController();
         $notificationController->notifyNewComment(auth()->id(), $comment->id);
 
@@ -71,9 +67,6 @@ class CommentController extends Controller
     }
 
 
-
-
-    // app/Http/Controllers/Client/CommentController.php
     public function showAll($id)
     {
         $comments = Comment::where('room_id', $id)->get();
