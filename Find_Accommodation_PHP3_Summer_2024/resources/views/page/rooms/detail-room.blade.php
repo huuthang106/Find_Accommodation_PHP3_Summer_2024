@@ -31,7 +31,7 @@
                                 class='bx bx-file'></i>
                             Xem hồ sơ</a>
                         <a href="#" class="btn btn-orange p-3 text-light"><i class="fa-solid fa-phone"
-                                style="color: #ffffff;"></i> 0985885475</a>
+                                style="color: #ffffff;"></i> {{$room->user->phone}}</a>
                     </div>
                 </div>
                 {{-- <div class="d-flex justify-content-end p-0 mt-2">
@@ -127,7 +127,7 @@
                     </div>
                     <div class="row p-3">
                         <div class="col-3">Giá:</div>
-                        <div class="col-9">{{ $room->price }}</div>
+                        <div class="col-9">{{ $room->price }} VNĐ</div>
                     </div>
                     <div class="row rounded-top background-content p-3">
                         <div class="col-3">Loại:</div>
