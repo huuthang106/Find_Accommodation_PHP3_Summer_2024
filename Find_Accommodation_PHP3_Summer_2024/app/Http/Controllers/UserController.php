@@ -384,6 +384,33 @@ class UserController extends Controller
         });
         return view('page.users.proflie-us-other', compact('users', 'rooms'));
     }
+    // public function showpfadmin()
+    // {
+    //     $user = Auth::user(); // Lấy thông tin người dùng hiện tại
+    
+    //     // Kiểm tra nếu không tìm thấy người dùng
+    //     if (!$user) {
+    //         return redirect()->route('pages-404')->with('Thông Báo', 'Không tìm thấy người dùng.');
+    //     }
+    
+    //     // Lấy các phòng liên quan đến người dùng hiện tại
+    //     $rooms = Room::where('user_id', $user->id)->where('status', '!=', 7)->get();
+    //     $rooms = $rooms->map(function ($room) {
+    //         $room->title = Str::limit($room->title, 15);
+    //         $room->address = Str::limit($room->address, 20);
+    //         $room->description = Str::limit($room->description, 10); // Giới hạn độ dài của description
+    //         if ($room->user) {
+    //             $room->user->username = Str::limit($room->user->username, 10);
+    //         }
+    //         if ($room->category) {
+    //             $room->category->name = Str::limit($room->category->name, 10);
+    //         }
+    //         return $room;
+    //     });
+    
+    //     // Truyền dữ liệu $user và $rooms vào view
+    //     return view('admincp.accounts.extras-profile', compact('user', 'rooms'));
+    // }
 
     public function showAdmin()
     {
@@ -429,3 +456,4 @@ class UserController extends Controller
         return redirect()->route('admin.quan-li-ho-so')->with(['success' => 'Cập nhật thành công.', 'showAlert' => true]);
     }
 }
+

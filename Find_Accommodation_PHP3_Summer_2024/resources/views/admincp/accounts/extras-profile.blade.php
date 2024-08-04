@@ -13,10 +13,18 @@
                     <div class="p-0 text-center">
                         <div class="member-card">
                             <div class="avatar-xxl member-thumb mb-2 center-page mx-auto">
-                                <img src="{{ asset('assets\images\users\avatar-3.jpg') }}"
-                                    class="rounded-circle img-thumbnail" alt="profile-image">
+                                @if ($admin->avatar)
+                                    {{-- Nếu có avatar sẽ hiển thị avatar --}}
+                                    <img src="{{ asset('assets/images/users/' . $admin->avatar) }}"
+                                         class="rounded-circle img-thumbnail avatar-img" alt="profile-image" width="150" height="auto">
+                                @else
+                                    {{-- còn chưa có sẽ hiển thị 1 avatar cứng --}}
+                                    <img src="{{ asset('assets/images/users/avatar-user.png') }}"
+                                         class="rounded-circle img-thumbnail avatar-img" alt="profile-image" width="150" height="auto">
+                                @endif
                                 <i class="mdi mdi-star-circle member-star text-success" title="verified user"></i>
                             </div>
+                            
 
                             <div class="">
                                 <h5 class="mt-3">{{ $admin->username }}</h5>

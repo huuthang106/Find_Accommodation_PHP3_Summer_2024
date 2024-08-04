@@ -6,6 +6,8 @@ use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\View;
 use App\Models\Category;
 use App\Models\Notification;
+use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -47,6 +49,10 @@ class AppServiceProvider extends ServiceProvider
             $unreadNotifications = Notification::where('status', 1)->orderByDesc('id')->get();
             $view->with('notificationCount', $notificationCount);
             $view->with('unreadNotifications', $unreadNotifications);
+        });
+        View::composer('layouts.app', function ($view) {
+            $admin = Auth::user();
+            $view->with('admin', $admin);
         });
     }
 }
