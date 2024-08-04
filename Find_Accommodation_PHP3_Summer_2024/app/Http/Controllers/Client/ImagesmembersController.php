@@ -34,7 +34,7 @@ class ImagesmembersController extends Controller
             'images.*' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
 
-        $memberregistration_id = $id; // Thay thế bằng room_id thực tế
+        $memberregistration_id = $id; // id của bản đăng ký thành viên 
 
         if ($request->hasfile('images')) {
             foreach ($request->file('images') as $file) {

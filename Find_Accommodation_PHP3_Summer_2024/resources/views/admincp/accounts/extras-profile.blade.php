@@ -171,19 +171,6 @@
                                             <small class="text-danger text-blod">{{ $message }}</small>
                                         @enderror
                                     </div>
-                                    <div class="mb-3">
-                                        <label for="Password" class="form-label">Mật khẩu</label>
-                                        <input type="password" class="form-control" id="Password" name="passsword"
-                                            placeholder="6 - 15 Ký tự">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="RePassword">Nhập lại mật khẩu</label>
-                                        <input type="password" placeholder="6 - 15 Ký tự" name="password_confirmation"
-                                            id="RePassword" class="form-control">
-                                        @error('password_confirmation')
-                                            <small class="text-danger text-blod">{{ $message }}</small>
-                                        @enderror
-                                    </div>
                                     <div class="form-group">
                                         <label for="AboutMe">Mô tả</label>
                                         <textarea style="height: 125px" id="AboutMe" class="form-control" placeholder="Nhập mô tả bản thân (Nếu có)."></textarea>
@@ -191,6 +178,18 @@
                                     <button class="btn btn-primary waves-effect waves-light width-md"
                                         type="submit">Lưu</button>
                                 </form>
+                                @if (session('showAlert'))
+                                    <script>
+                                        var showAlert = {
+                                            @if (session('success'))
+                                                success: "{{ session('success') }}",
+                                            @endif
+                                            @if (session('error'))
+                                                error: "{{ session('error') }}",
+                                            @endif
+                                        };
+                                    </script>
+                                @endif
                             </div>
                         </div>
                         <!-- Personal-Information -->
@@ -272,4 +271,7 @@
     <!-- Required datatable js -->
     <script src="{{ asset('assets\libs\datatables\jquery.dataTables.min.js') }}"></script>
     <script src="{{ asset('assets\libs\datatables\dataTables.bootstrap4.min.js') }}"></script>
+    <!-- Show Alert -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="{{ asset('assets\js\show-alert.js') }}" text="text/javascript"></script>
 @endpush

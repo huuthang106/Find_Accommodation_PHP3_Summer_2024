@@ -1,4 +1,5 @@
 <?php
+
 use Illuminate\Support\Facades\Route;
 // controller admin
 use App\Http\Controllers\Admin\AcreageAdminController;
@@ -43,13 +44,15 @@ Route::get('/', [IndexAdminController::class, 'admin'])->name('admin');
 
 
 Route::middleware('auth')->group(function () {
-// [VoTanLuon] Router hiển thị chỉnh sửa tài khoản Admin
-Route::get('/quan-li-ho-so', [UserController::class, 'index'])->middleware('auth')->name('quan-li-ho-so');
-route::put('/quan-li-ho-so/{id}', [UserController::class, 'update_profile_admin'])->name('chinh-sua-ho-so');
-// start Thai Toan 
-Route::get('/quan-ly-nguoi-dung', [UserController::class, 'showAdmin'])->name('manages-user');
-// end Thai Toan
-Route::get('/extras-profile', [UserController::class, 'index'])->name('extras-profile');
-Route::get('/role', [RoleAdminController::class, 'ShowRole'])->name('quan-li-role');
-Route::delete('/delete-role/{id}', [RoleAdminController::class, 'deleteRole'])->name('delete-role');
+    // [VoTanLuon] Router hiển thị chỉnh sửa tài khoản Admin
+    Route::get('/quan-li-ho-so', [UserController::class, 'index'])->name('quan-li-ho-so');
+    route::put('/quan-li-ho-so/{id}', [UserController::class, 'update_profile_admin'])->name('chinh-sua-ho-so');
+    Route::get('/doi-mat-khau', [UserController::class, 'change_password_admin'])->name('pages-change-password-admin');
+    Route::put('/doi-mat-khau/admin', [UserController::class, 'check_change_passsword_admin'])->name('check-change-password-admin');
+    // start Thai Toan 
+    Route::get('/quan-ly-nguoi-dung', [UserController::class, 'showAdmin'])->name('manages-user');
+    // end Thai Toan
+    Route::get('/extras-profile', [UserController::class, 'index'])->name('extras-profile');
+    Route::get('/role', [RoleAdminController::class, 'ShowRole'])->name('quan-li-role');
+    Route::delete('/delete-role/{id}', [RoleAdminController::class, 'deleteRole'])->name('delete-role');
 });

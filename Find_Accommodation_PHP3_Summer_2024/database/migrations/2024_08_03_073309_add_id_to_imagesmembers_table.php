@@ -11,11 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('imagesmembers', function (Blueprint $table) {
-            $table->id();
-            $table->string('filename');
-            $table->foreignId('memberregistration_id')->constrained('memberregistrations');
-            $table->timestamps();
+        Schema::table('imagesmembers', function (Blueprint $table) {
+            //
+            $table->id(); // Tạo cột id tự động tăng
+            $table->string('idenerregistra_number');
         });
     }
 
@@ -24,6 +23,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('imagesmembers');
+        Schema::table('imagesmembers', function (Blueprint $table) {
+            //
+        });
     }
 };

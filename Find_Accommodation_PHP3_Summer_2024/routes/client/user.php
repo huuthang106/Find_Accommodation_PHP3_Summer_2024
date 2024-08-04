@@ -55,7 +55,9 @@ Route::group(['prefix' => 'tai-khoan', 'middleware' => 'auth'], function () {
     // [VoTanLuon] Route trang chỉnh sửa thông tin tài khoản người dùng 
     Route::put('/thong-tin-tai-khoan/{id}', [UserController::class, 'update'])->name('chinh-sua-thong-tin');
     Route::put('/cap-nhat-mat-khau', [UserController::class, 'check_update_password'])->name('check_update_password');
-
+    // nguyen huu thang
+    Route::get('/xac-nhan', [MemberregistrationController::class, 'page_confirm'])->name('page_confirm');
+    Route::PUT('/xac-nhan/{id}', [MemberregistrationController::class, 'confirm'])->name('confirm');
 // Route::post('/ocr', [OCRController::class, 'processOCR']);
 // routes/web.php
 
