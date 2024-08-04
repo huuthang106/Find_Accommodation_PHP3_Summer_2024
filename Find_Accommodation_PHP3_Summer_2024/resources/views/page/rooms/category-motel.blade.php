@@ -5,8 +5,8 @@
     <div class="container">
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="{{ route('home') }}">Trang chủ</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Phòng trọ</li>
+                <li class="breadcrumb-item"><a href="{{ route('home') }}" class="text-decoration-none text-secondary">Trang chủ</a></li>
+                <li class="breadcrumb-item active" aria-current="page"><a href="{{ route('category-motel-id', $category->id) }}" class="text-decoration-none text-dark">{{$category->name}}</a></li>
             </ol>
         </nav>
         <h2 class="fw-bold">{{$category->name}}</h2>

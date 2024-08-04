@@ -3,9 +3,10 @@
 @section('contentUs')
     <div class="container-fluid mapCustom">
         <div class="row d-flex justify-content-center">
-            <div class="col-6 p-0">
+            <div class="col-6 p-0 mt-2">
                 <span class="item">
-                    <a href="{{ route('home') }}" class="item-link text-decoration-none">Trang chủ</a>
+                    <a href="{{ route('home') }}" class="item-link text-decoration-none text-secondary">Trang chủ</a> /
+                    <a href="{{ route('get-room', $room->id) }}" class="item-link text-decoration-none text-dark">{{ $room->title }}</a>
                 </span>
                 <div class="hostel__detail">
                     <h1 class="box-title">{{ $room->title }}</h1>

@@ -142,8 +142,8 @@
                     @endforeach
                 </ul>
                 <div class="tab-content" id="myTabContent">
-                    <div class="tab-pane fade show active" id="all" role="tabpanel" aria-labelledby="all">
-                        <div class="row mt-3">
+                    <div class="tab-pane fade show active ms-5" id="all" role="tabpanel" aria-labelledby="all">
+                        <div class="row mt-3 d-flex justify-content-center">
                             <div class="col-3">
                                 <div class="input-group">
                                     <div class="input-group-text">
@@ -162,7 +162,9 @@
                                     <div class="input-group-text">
                                         <i class='bx bx-dollar' style='color:#06b2ee'></i>
                                     </div>
-                                    <input type="text" class="form-control" name="gia" placeholder="Giá">
+                                    <select class="form-select" name="gia" id="">
+                                        <option value="" accesskey="">Giá</option>
+                                    </select>
                                 </div>
                             </div>
                             <div class="col-3">
@@ -170,7 +172,9 @@
                                     <div class="input-group-text">
                                         <i class='bx bxs-filter-alt' style='color:#06b2ee'></i>
                                     </div>
-                                    <input type="text" class="form-control" name="dientich" placeholder="Diện tích">
+                                    <select class="form-select" name="diện tích" id="">
+                                        <option value="" accesskey="">Diện tích</option>
+                                    </select>
                                 </div>
                             </div>
                             <div class="col-3">
