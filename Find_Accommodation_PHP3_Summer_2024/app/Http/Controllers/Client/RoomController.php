@@ -19,22 +19,24 @@ class RoomController extends Controller
      */
 
 
-    public function index()
-    {
-        $rooms = Room::where('status', 1)->orderBy('created_at', 'desc')->take(20)->get();
-        $rooms = $rooms->map(function ($room) {
-            $room->title = Str::limit($room->title, 20);
-            $room->address = Str::limit($room->address, 20);
-            $room->price = number_format($room->price, 0, ',', '.');
-            $room->randomImage = $room->images->isNotEmpty() ? $room->images->random()->image : null;
-            return $room;
-        });
-
-        $categories = Category::all();
-        $areas = Areas::all(); // Lấy danh sách các khu vực
-
-        return view('index', compact('rooms', 'categories', 'areas'));
-    }
+     public function index()
+     {
+         $rooms = Room::where('status', 1)
+             ->orderBy('created_at', 'desc')
+             ->take(20)
+             ->get()
+             ->map(function ($room) {
+                 $room->price = number_format($room->price, 0, ',', '.');
+                 $room->randomImage = $room->images->isNotEmpty() ? $room->images->random()->image : null;
+                 return $room;
+             });
+     
+         $categories = Category::all();
+         $areas = Areas::all(); // Lấy danh sách các khu vực
+     
+         return view('index', compact('rooms', 'categories', 'areas'));
+     }
+     
 
     public function reportRoom($roomId)
     {
@@ -288,8 +290,6 @@ class RoomController extends Controller
     }
 
     if ($request->filled('dientich')) {
-        // Thêm điều kiện tìm kiếm theo diện tích nếu cần
-        // $query->where('area', $request->dientich);
     }
 
         $rooms = $query->where('status', 1)->orderBy('created_at', 'desc')->take(20)->get();
