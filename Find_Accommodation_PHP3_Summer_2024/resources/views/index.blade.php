@@ -208,32 +208,34 @@
                                             </div>
                                         @else
                                             <!-- Hình ảnh mặc định nếu không có hình ảnh -->
-                                            <img src="{{ asset('assets\images\448469911_476143361772862_3803638986442606747_n-min.jpg') }}"
+                                            <img src="{{ asset('assets/images/448469911_476143361772862_3803638986442606747_n-min.jpg') }}"
                                                 class="card-img-top rounded" alt="...">
                                         @endif
                                     </div>
                                     <div class="card-body">
-                                        <h5 class="card-title fs-5">{{ $room->title }}</h5>
+                                        <h5 class="card-title custom-title">{{ $room->title }}</h5>
                                         <h6 class="card-text mt-3 fs-6">Từ <span class="cardPrice">{{ $room->price }}
                                                 VNĐ</span></h6>
                                         <div class="d-flex mt-3">
                                             <div class="room">
                                                 @if (isset($room->category_id))
-                                                    <span>{{ $room->category->name }}</span>
+                                                    <span class="fs-6">{{ $room->category->name }}</span>
                                                 @endif
                                             </div>
                                             <div class="acreage">
                                                 <span>12m2</span>
                                             </div>
                                         </div>
-                                        <p class="mt-3 text-muted fs-7"><i class='bx bxs-map'
-                                                style='color:#0a0a0a'></i>{{ $room->address }}</p>
+                                        <p class="mt-3 text-muted custom-address">
+                                            <i class='bx bxs-map' style='color:#0a0a0a'></i>
+                                            <span>{{ $room->address }}</span>
+                                        </p>
                                     </div>
-
                                 </div>
                             </a>
                         </div>
                     @endforeach
+
                 </div>
 
                 <div class="row">
@@ -346,7 +348,7 @@
                 <div class="row mt-3 mainRoom">
                     @foreach ($rooms as $room)
                         <div class="col-3 mt-2">
-                            <a href="{{ route('get-room', ['id' => $room->id]) }}" class="text-decoration-none">
+                            <a href="{{ route('get-room', $room->id) }}" class="text-decoration-none">
                                 <div class="card">
                                     <div class="bageVip">
                                         @if ($room->randomImage)
@@ -356,32 +358,34 @@
                                             </div>
                                         @else
                                             <!-- Hình ảnh mặc định nếu không có hình ảnh -->
-                                            <img src="{{ asset('assets\images\448469911_476143361772862_3803638986442606747_n-min.jpg') }}"
+                                            <img src="{{ asset('assets/images/448469911_476143361772862_3803638986442606747_n-min.jpg') }}"
                                                 class="card-img-top rounded" alt="...">
                                         @endif
                                     </div>
                                     <div class="card-body">
-                                        <h5 class="card-title">{{ $room->title }}</h5>
-                                        <h6 class="card-text mt-3">Từ <span class="cardPrice">{{ $room->price }}
+                                        <h5 class="card-title custom-title">{{ $room->title }}</h5>
+                                        <h6 class="card-text mt-3 fs-6">Từ <span class="cardPrice">{{ $room->price }}
                                                 VNĐ</span></h6>
                                         <div class="d-flex mt-3">
                                             <div class="room">
                                                 @if (isset($room->category_id))
-                                                    <span>{{ $room->category->name }}</span>
+                                                    <span class="fs-6">{{ $room->category->name }}</span>
                                                 @endif
                                             </div>
                                             <div class="acreage">
                                                 <span>12m2</span>
                                             </div>
                                         </div>
-                                        <p class="mt-3"><i class='bx bxs-map'
-                                                style='color:#0a0a0a'></i>{{ $room->address }}
+                                        <p class="mt-3 text-muted custom-address">
+                                            <i class='bx bxs-map' style='color:#0a0a0a'></i>
+                                            <span>{{ $room->address }}</span>
                                         </p>
                                     </div>
                                 </div>
                             </a>
                         </div>
                     @endforeach
+
                 </div>
 
                 <div class="row">
@@ -413,7 +417,7 @@
                                         @endif
                                     </div>
                                     <div class="card-body">
-                                        <h5 class="card-title">{{ $room->title }}</h5>
+                                        <h5 class="card-title custom-title">{{ $room->title }}</h5>
                                         <h6 class="card-text mt-3">Từ <span class="cardPrice">{{ $room->price }}
                                                 VNĐ</span></h6>
                                         <div class="d-flex mt-3">
@@ -426,7 +430,7 @@
                                                 <span>12m2</span>
                                             </div>
                                         </div>
-                                        <p class="mt-3"><i class='bx bxs-map'
+                                        <p class="mt-3"><i class='bx bxs-map custom-address'
                                                 style='color:#0a0a0a'></i>{{ $room->address }}
                                         </p>
                                     </div>
@@ -707,6 +711,18 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
         integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+
+.card-title {
+    font-size: 1.10rem;
+}
+
+
+        .custom-address span {
+            font-size: 0.75rem;
+            /* Điều chỉnh kích thước chữ nhỏ hơn */
+        }
+    </style>
 @endpush
 
 @push('scripts')
