@@ -80,8 +80,134 @@
             <div class="col-lg-3">
                 <div class="mb-2 bg-light text-dark">
                     <div class="p-1 fs-5 text-primary"><i class="fa-solid fa-filter"></i> Lọc kết quả </div>
+
                     <div class="accordion border-0" id="accordionPanelsStayOpenExample">
-                        <!-- Accordion items here -->
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="panelsStayOpen-headingOne">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true"
+                                    aria-controls="panelsStayOpen-collapseOne">
+                                    Tiện nghi
+                                </button>
+                            </h2>
+                            <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show"
+                                aria-labelledby="panelsStayOpen-headingOne">
+                                <div class="accordion-body">
+                                    <div class="">
+                                        <div class="checkbox-container">
+                                            <input type="checkbox" id="checkbox">
+                                            <label for="checkbox">Gác lửng</label>
+                                        </div>
+                                        <div class="checkbox-container">
+                                            <input type="checkbox" id="checkbox">
+                                            <label for="checkbox">Wifi</label>
+                                        </div>
+                                        <div class="checkbox-container">
+                                            <input type="checkbox" id="checkbox">
+                                            <label for="checkbox">Vệ sinh trong</label>
+                                        </div>
+                                        <div class="checkbox-container">
+                                            <input type="checkbox" id="checkbox">
+                                            <label for="checkbox">Phòng tắm</label>
+                                        </div>
+                                        <div class="checkbox-container">
+                                            <input type="checkbox" id="checkbox">
+                                            <label for="checkbox">Bình nước nóng</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="panelsStayOpen-headingTwo">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#panelsStayOpen-collapseTwo" aria-expanded="false"
+                                    aria-controls="panelsStayOpen-collapseTwo">
+                                    Môi trường xung quanh
+                                </button>
+                            </h2>
+                            <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse show"
+                                aria-labelledby="panelsStayOpen-headingTwo">
+                                <div class="accordion-body">
+                                    <div class="">
+                                        <div class="checkbox-container">
+                                            <input type="checkbox" id="checkbox">
+                                            <label for="checkbox">Chợ</label>
+                                        </div>
+                                        <div class="checkbox-container">
+                                            <input type="checkbox" id="checkbox">
+                                            <label for="checkbox">Siêu thị</label>
+                                        </div>
+                                        <div class="checkbox-container">
+                                            <input type="checkbox" id="checkbox">
+                                            <label for="checkbox">Bệnh viện</label>
+                                        </div>
+                                        <div class="checkbox-container">
+                                            <input type="checkbox" id="checkbox">
+                                            <label for="checkbox">Trường học</label>
+                                        </div>
+                                        <div class="checkbox-container">
+                                            <input type="checkbox" id="checkbox">
+                                            <label for="checkbox">Công viên</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="panelsStayOpen-headingThree">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#panelsStayOpen-collapseThree" aria-expanded="false"
+                                    aria-controls="panelsStayOpen-collapseThree">
+                                    Đối tượng
+                                </button>
+                            </h2>
+                            <div id="panelsStayOpen-collapseThree" class="accordion-collapse collapse show"
+                                aria-labelledby="panelsStayOpen-headingThree">
+                                <div class="accordion-body">
+                                    <div class="">
+                                        <div class="checkbox-container">
+                                            <input type="checkbox" id="checkbox">
+                                            <label for="checkbox">Đi học</label>
+                                        </div>
+                                        <div class="checkbox-container">
+                                            <input type="checkbox" id="checkbox">
+                                            <label for="checkbox">Đi làm</label>
+                                        </div>
+                                        <div class="checkbox-container">
+                                            <input type="checkbox" id="checkbox">
+                                            <label for="checkbox">Gia đình</label>
+                                        </div>
+                                        <div class="checkbox-container">
+                                            <input type="checkbox" id="checkbox">
+                                            <label for="checkbox">Cặp đôi</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <h2 class="accordion-header" id="panelsStayOpen-headingFour">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#panelsStayOpen-collapseFour" aria-expanded="false"
+                                    aria-controls="panelsStayOpen-collapseFour">
+                                    Video Review
+                                </button>
+                            </h2>
+                            <div id="panelsStayOpen-collapseFour" class="accordion-collapse collapse show"
+                                aria-labelledby="panelsStayOpen-headingFour">
+                                <div class="accordion-body">
+                                    <div class="">
+                                        <div class="checkbox-container">
+                                            <input type="checkbox" id="checkbox">
+                                            <label for="checkbox">Có</label>
+                                        </div>
+                                        <div class="checkbox-container">
+                                            <input type="checkbox" id="checkbox">
+                                            <label for="checkbox">Không</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
