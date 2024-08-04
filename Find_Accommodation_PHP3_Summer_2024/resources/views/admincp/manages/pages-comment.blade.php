@@ -43,13 +43,13 @@
                                     <tr>
                                         <td><input type="checkbox"></td>
                                         <td>{{ $comment->id }}</td>
-                                        <td>{{ $comment->content }}</td>
-                                        <td>{{ $comment->room->title }}</td>
-                                        <td>{{ $comment->user->username }}</td>
-                                        {{-- <td>{{ $comment->created_at }}</td> --}}
-                                        <td>
-                                            {{ \Carbon\Carbon::parse($comment->created_at)->timezone('Asia/Ho_Chi_Minh')->format('d/m/Y H:i') }}
+                                        <td>{{ $comment->content }}<br><small>người đăng:
+                                                {{ $comment->user->username }}</small>
                                         </td>
+                                        <td>
+                                            {{ $comment->room->title }}
+                                        </td>
+                                        <td>{{ $comment->created_at }}</td>
                                         <td>
                                             <form action="{{ route('admin.comment.destroy', $comment->id) }}" method="POST"
                                                 style="display: inline;">
@@ -154,5 +154,5 @@
     <!-- Required datatable js -->
     <script src="{{ asset('assets\libs\datatables\jquery.dataTables.min.js') }}"></script>
     <script src="{{ asset('assets\libs\datatables\dataTables.bootstrap4.min.js') }}"></script>
-    <script src="{{ asset('assets\js\comment.js') }}"></script>
+    <script src="{{ asset('assets\js\comment-admin.js') }}"></script>
 @endpush

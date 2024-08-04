@@ -280,7 +280,7 @@
 
                 <ul class="metismenu" id="side-menu">
 
-                    <li class="menu-title">Navigation</li>
+                    <li class="menu-title">Bảng điều khiển</li>
 
                     <li>
                         <a href="{{ route('admin.trang-quan-ly') }}">

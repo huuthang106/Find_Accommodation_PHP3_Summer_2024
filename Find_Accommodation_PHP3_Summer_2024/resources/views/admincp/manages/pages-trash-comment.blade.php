@@ -160,6 +160,6 @@
     <!-- Required datatable js -->
     <script src="{{ asset('assets\libs\datatables\jquery.dataTables.min.js') }}"></script>
     <script src="{{ asset('assets\libs\datatables\dataTables.bootstrap4.min.js') }}"></script>
-   <script src="{{ asset('assets\js\comment.js') }}"></script>
+   <script src="{{ asset('assets\js\comment-admin.js') }}"></script>
         
 @endpush
