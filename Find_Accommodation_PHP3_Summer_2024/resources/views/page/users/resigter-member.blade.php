@@ -6,7 +6,7 @@
         <div class="row d-flex justify-content-center ">
             <div class="col-10 bg-body  mt-2 rounded p-2">
                 <div class="card-header text-center">
-                    <h5 class="card-title bg">Đăng bài</h5>
+                    <h5 class="card-title bg">Đăng ký thành viên</h5>
                 </div>
                 <form action="{{ route('check-register-member') }}" id="ocr-form" method="POST" enctype="multipart/form-data">
                     @csrf

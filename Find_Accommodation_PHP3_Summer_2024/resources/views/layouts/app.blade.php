@@ -303,6 +303,12 @@
                         </a>
                     </li>
                     <li>
+                        <a href="{{ route('admin.duyet-don') }}">
+                            <i class="fas fa-money-check"></i>
+                            <span> Duyệt đơn </span>
+                        </a>
+                    </li>
+                    <li>
                         <a href="{{ route('admin.pages-report') }}">
                             <i class="fas fa-flag"></i>
                             <span> Bảng Báo Cáo </span>
@@ -315,7 +321,7 @@
                             <span class="menu-arrow"></span>
                         </a>
                         <ul class="nav-second-level" aria-expanded="false">
-                            <li class="{{ request()->is('admin/thung-rac*') ? 'mm-active' : '' }}">
+                            <li class="{{ request()->is('admin/thung-rac') ? 'mm-active' : '' }}">
                                 <a href="{{ route('admin.pages-commet') }}">
                                     <i class="fas fa-comment"></i>
                                     <span>Quản lý bình luận</span>
