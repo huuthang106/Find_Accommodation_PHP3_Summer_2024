@@ -34,7 +34,6 @@
                                     <th>STT</th>
                                     <th>Nội dung</th>
                                     <th>Tên bài viết</th>
-                                    <th>Tên người dùng</th>
                                     <th>Ngày bình luận</th>
                                     <th>Chức năng</th>
                                 </tr>
@@ -56,8 +55,7 @@
                                                 style="display: inline;">
                                                 @csrf
                                                 @method('PUT')
-                                                <button type="submit" class="btn btn-danger"
-                                                    onclick="return confirm('Bạn có chắc chắn muốn ẩn bình luận này không?');">Xóa</button>
+                                                <button type="submit" class="btn btn-danger">Xóa</button>
                                             </form>
                                         </td>
                                     </tr>
@@ -67,6 +65,7 @@
                     </div>
                 </div>
             </div>
+
 
 
         </div>
@@ -113,6 +112,9 @@
 
 @push('scripts')
     <!-- Vendor js -->
+    <!-- SweetAlert2 CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
     <script src="{{ asset('assets/js/vendor.min.js') }}"></script>
 
     <script src="{{ asset('assets/libs/morris-js/morris.min.js') }}"></script>
@@ -152,4 +154,5 @@
     <!-- Required datatable js -->
     <script src="{{ asset('assets\libs\datatables\jquery.dataTables.min.js') }}"></script>
     <script src="{{ asset('assets\libs\datatables\dataTables.bootstrap4.min.js') }}"></script>
+    <script src="{{ asset('assets\js\comment.js') }}"></script>
 @endpush
