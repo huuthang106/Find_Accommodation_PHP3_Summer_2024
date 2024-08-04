@@ -29,7 +29,7 @@ Route::get('/login', [AuthController::class, 'pages_login'])->name('login');
 Route::post('/login-check', [AuthController::class, 'check_login'])->name('login-users');
 // Register user
 Route::get('/register', [RegisterController::class, 'pages_register'])->name('register-user');
-Route::post('/register', [RegisterController::class, 'check_register']);
+Route::post('/register', [RegisterController::class, 'check_register'])->name('register-check');
 //
 // Đổi Mật Khẩu User
 Route::get('/thay-doi-mat-khau/{token}', [UserController::class, 'reset_password_us'])->name('pages-reset-password-us');
