@@ -109,73 +109,26 @@
                                                 <div id="preview-img-3" class="preview-image card-img"></div>
                                             </div>
                                         </div>
-
                                         @error('images')
                                             <div class="alert alert-danger mt-1">{{ $message }}</div>
                                         @enderror
                                     </div>
-                                    {{-- <div class="mb-3">
-                                        <label for="phone" class="form-label">Số điện thoại</label>
-                                        <input type="text" class="form-control" id="phone" name="phone"
-                                            placeholder="Số điện thoại" value="{{ old('phone') }}">
-                                        @error('phone')
-                                            <div class="alert alert-danger mt-1">{{ $message }}</div>
-                                        @enderror
-                                    </div>
-                                    <div class="mb-3">
-                                        <label for="description" class="form-label">Mô tả</label>
-                                        <textarea class="form-control" id="description" name="description" style="height: 125px;"
-                                            placeholder="Nhập mô tả bản thân (Nếu có).">{{ old('description') }}</textarea>
-                                        @error('description')
-                                            <div class="alert alert-danger mt-1">{{ $message }}</div>
-                                        @enderror
-                                    </div> --}}
-
                                 </div>
                             </div>
                             <!-- Personal-Information -->
                         </div>
                     </div>
                     <button type="submit" class="btn form-control btn-primary">Lưu</button>
-                    {{-- @if (session('success'))
-                        <div class="alert alert-success">
-                            {{ session('success') }}
-                        </div>
-                    @endif
-
-                    @if (session('error'))
-                        <div class="alert alert-danger">
-                            {{ session('error') }}
-                        </div>
-                    @endif --}}
-
-                    {{-- @if (session('response'))
-                        @php
-                            $response = session('response');
-                        @endphp
-                        <div class="alert alert-info">
-                            <strong>Response Data:</strong>
-                            <table class="table table-bordered mt-3">
-                                <thead>
-                                    <tr>
-                                        <th>Key</th>
-                                        <th>Value</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>Mức Độ Giống (%)</td>
-                                        <td>{{ $response['data']['similarity'] ?? 'N/A' }}</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Hai Ảnh Giống Nhau</td>
-                                        <td>{{ $response['data']['isMatch'] ? 'Giống Nhau' : 'Không Giống' }}</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    @endif --}}
                 </form>
+                {{-- @if (session('showAlert'))
+                    <script>
+                        var showAlert = @json(session('showAlert'));
+                        // Kiểm tra các thông báo
+                        if (typeof showAlert !== 'undefined') {
+                            console.log(showAlert); // Kiểm tra giá trị showAlert
+                        }
+                    </script>
+                @endif --}}
             </div>
         </div>
     </div>
@@ -243,4 +196,7 @@
     <!-- Tệp JavaScript tùy chỉnh của bạn -->
     <script src="{{ asset('assets/js/app-nht.js') }}"></script>
     <script src="{{ asset('assets/js/api-nht.js') }}"></script>
+    <!-- Show Alert -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="{{ asset('assets\js\show-alert.js') }}" text="text/javascript"></script>
 @endpush

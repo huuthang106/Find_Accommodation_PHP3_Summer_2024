@@ -290,6 +290,15 @@
                                 </div>
                                 <button type="submit" class="btn btn-primary">Lưu</button>
                             </form>
+                            @if (session('showAlert'))
+                                <script>
+                                    var showAlert = @json(session('showAlert'));
+                                    // Kiểm tra các thông báo
+                                    if (typeof showAlert !== 'undefined') {
+                                        console.log(showAlert); // Kiểm tra giá trị showAlert
+                                    }
+                                </script>
+                            @endif
                         </div>
                     </div>
                     <!-- Personal-Information -->
@@ -349,13 +358,13 @@
     <script src="https://cdn.datatables.net/plug-ins/1.11.4/i18n/Vietnamese.json"></script>
     <script src="{{ asset('assets\js\app-nht.js') }}"></script>
     {{-- dropdow nut profile --}}
-    
+
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
     <script src="{{ asset('assets\js\app-nht.js') }}"></script>
     {{-- dropdow nut profile --}}
-    
+
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     {{-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"> --}}
@@ -407,4 +416,7 @@
             });
         });
     </script>
+    <!-- Show Alert -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="{{ asset('assets\js\show-alert.js') }}" text="text/javascript"></script>
 @endpush

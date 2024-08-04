@@ -36,5 +36,6 @@ class DatabaseSeeder extends Seeder
 
         // Seed Comments last if it depends on Rooms and Users
         $this->call(CommentSeeder::class);
+        $this->call(MemberregistrationSeeder::class);
     }
 }
