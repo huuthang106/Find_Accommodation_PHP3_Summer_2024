@@ -30,7 +30,7 @@
                             style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                             <thead>
                                 <tr>
-                                    <th>Tất cả <input type="checkbox"></th>
+
                                     <th>STT</th>
                                     <th>Nội dung</th>
                                     <th>Tên bài viết</th>
@@ -42,7 +42,7 @@
                             <tbody>
                                 @foreach ($comments as $comment)
                                     <tr>
-                                        <td><input type="checkbox"></td>
+
                                         <td>{{ $comment->id }}</td>
                                         <td>{{ $comment->content }}</td>
                                         <td>{{ $comment->room->title }}</td>
