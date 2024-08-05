@@ -20,7 +20,8 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\Client\AuthController;
 use App\Http\Controllers\Client\RegisterController;
 use App\Http\Controllers\Client\MemberregistrationController;
-
+use App\Http\Middleware\RedirectIfNotAuthenticated;
+use App\Http\Controllers\Client\OCRController;
 
 
 // VoTanLuon Start
@@ -38,7 +39,7 @@ Route::post('/thay-doi-mat-khau/{token}', [UserController::class, 'check_reset_p
 Route::get('/ho-so-nguoi-khac/{id}', [UserController::class, 'showHome'])->name('profile-other');
 
 // Nguyen Huu Thang 
-Route::get('/login', [HomeController::class, 'login'])->name('login');
+Route::get('/login', [HomeController::class, 'login'])->name('login')->middleware('user_check_login');
 
 
 Route::post('/logout', [IndexController::class, 'logout'])->name('logout');
@@ -54,6 +55,18 @@ Route::group(['prefix' => 'tai-khoan', 'middleware' => 'auth'], function () {
     // [VoTanLuon] Route trang chỉnh sửa thông tin tài khoản người dùng 
     Route::put('/thong-tin-tai-khoan/{id}', [UserController::class, 'update'])->name('chinh-sua-thong-tin');
     Route::put('/cap-nhat-mat-khau', [UserController::class, 'check_update_password'])->name('check_update_password');
+    // nguyen huu thang
+    Route::get('/xac-nhan', [MemberregistrationController::class, 'page_confirm'])->name('page_confirm');
+    Route::PUT('/xac-nhan/{id}', [MemberregistrationController::class, 'confirm'])->name('confirm');
+// Route::post('/ocr', [OCRController::class, 'processOCR']);
+// routes/web.php
+
+
+
+
+
+    // Route::get('/profile-us', [UserController::class, 'profile'])->name('profile-us');
+
     // Nguyen Thai Toan user
     Route::get('/xoa-bai-dang/{id}', [RoomController::class, 'delete'])->name('delete-posting');
     // Nguyen Huu Thang user

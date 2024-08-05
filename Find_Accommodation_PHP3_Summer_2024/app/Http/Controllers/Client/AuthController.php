@@ -31,6 +31,7 @@ class AuthController extends Controller
 
         if (auth()->attempt($credentials)) {
             // Authentication passed
+            // dd(Auth::check());
             return redirect()->route('home');
         }
 

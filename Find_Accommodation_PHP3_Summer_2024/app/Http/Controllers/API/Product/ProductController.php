@@ -1,12 +1,11 @@
 <?php
 
-namespace App\Http\Controllers\Client;
+namespace App\Http\Controllers\API\Product;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\Imagesmember;
-
-class ImagesmembersController extends Controller
+use Validator;
+class ProductController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -27,27 +26,9 @@ class ImagesmembersController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request, $id)
+    public function store(Request $request)
     {
         //
-        $request->validate([
-            'images.*' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
-        ]);
-
-        $memberregistration_id = $id; // id của bản đăng ký thành viên 
-
-        if ($request->hasfile('images')) {
-            foreach ($request->file('images') as $file) {
-                $name = time() . '_' . $file->getClientOriginalName();
-                $file->move(public_path('assets/images/imagesmembers'), $name);
-                Imagesmember::create([
-                    'memberregistration_id' => $memberregistration_id,
-                    'filename' => $name,
-                ]);
-            }
-        }
-
-        return back()->with('success', 'Hình ảnh được tải lên thành công');
     }
 
     /**

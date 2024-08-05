@@ -12,9 +12,10 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('imagesmembers', function (Blueprint $table) {
-          
-                $table->string('filename');
-                $table->foreignId('memberregistration_id')->constrained('memberregistrations');
+            $table->id();
+            $table->string('filename');
+            $table->foreignId('memberregistration_id')->constrained('memberregistrations');
+            // $table->string('idenerregistra_number');
             $table->timestamps();
         });
     }

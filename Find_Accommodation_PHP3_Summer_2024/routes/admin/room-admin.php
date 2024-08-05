@@ -24,8 +24,8 @@ use App\Http\Controllers\Admin\UserController as AdminUserController;
 
 
 Route::get('/bai-viet/chi-tiet-bai-viet/{id}', [RoomAdminController::class, 'getRoomID'])->name('pages-room-detail');
-
 Route::middleware('auth')->group(function () {
+    
     Route::put('/rooms/{id}', [RoomAdminController::class, 'destroy'])->name('rooms.destroy'); // xóa phòng
     Route::get('/bai-viet', [RoomAdminController::class, 'index'])->name('pages-room'); // showw phòng ra 
 });

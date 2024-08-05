@@ -16,19 +16,20 @@
 
             <div class="row">
                 <div class="col-12">
-                    <form action="" class="p-2" method="POST" role="form">
+                    <form action="{{ route('admin.check-register') }}" class="p-2" method="POST" role="form">
                         @csrf
                         <div class="form-group">
                             <label for="username">Tên</label>
-                            <input type="text" class="form-control" type="text" name="username" required="" placeholder="Văn A">
+                            <input type="text" class="form-control" type="text" name="username" required=""
+                                placeholder="Văn A">
                             @error('username')
                                 <small class="text-danger text-blod">{{ $message }}</small>
                             @enderror
                         </div>
                         <div class="form-group">
                             <label for="emailaddress">Email</label>
-                            <input type="email" class="form-control" type="email" name="email" id="emailaddress" required=""
-                                placeholder="vana@gmail.com">
+                            <input type="email" class="form-control" type="email" name="email" id="emailaddress"
+                                required="" placeholder="vana@gmail.com">
                             @error('email')
                                 <small class="text-danger text-blod">{{ $message }}</small>
                             @enderror
@@ -57,7 +58,7 @@
                             <label for="repassword">Nhập lại mật khẩu</label>
                             <input class="form-control" type="password" name="password_confirmation" required=""
                                 id="password_confirmation" placeholder="Nhập lại mật khẩu">
-                            @error('repassword')
+                            @error('password_confirmation')
                                 <small class="text-danger text-blod">{{ $message }}</small>
                             @enderror
                         </div>

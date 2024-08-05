@@ -1,90 +1,74 @@
 @extends('layouts.app')
-@section('titleAdmin', 'Thông Báo | TÌM TRỌ')
+@section('titleAdmin', 'Thay Đổi Mật Khẩu | TRỌ NHANH')
 @section('content')
-    <div class="content">
-        <!-- Start container-fluid -->
-        <div class="container-fluid">
-
-            <!-- start  -->
-            <div class="row">
-                <div class="col-12">
-                    <div class="d-flex justify-content-between align-items-center header-title">
-                        <h4 class="mb-3">Danh sách người dùng</h4>
-                        <button type="button" class="btn btn-danger">Xóa tất cả</button>
-                    </div>
+    <!-- ============================================================== -->
+    <!-- Start Page Content here -->
+    <!-- ============================================================== -->
+    <!-- Start container-fluid -->
+    <div class="container-fluid">
+        <div class="row pt-3">
+            <div class="col-12">
+                <div>
+                    <h4 class="header-title mb-3">Thay Đổi Mật Khẩu</h4>
                 </div>
             </div>
-
-            <!-- end row -->
-
-            <div class="row mt-3">
-                <div class="col-12">
-                    <div class='table-responsive'>
-                        <table id="datatable" class="table table-bordered dt-responsive nowrap"
-                            style="border-collapse: collapse; border-spacing: 0; width: 100%;">
-                            <thead>
-                                <tr>
-                                    <th>Tất cả <input type="checkbox"></th>
-                                    {{-- <th>STT</th> --}}
-                                    <th>Tên người đăng</th>
-                                    <th>Ngày đăng ký</th>
-                                    <th>Xem chi tiết</th>
-                                    <th>Chức Năng</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @foreach ($users as $item)
-                                    <tr>
-                                        <th><input type="checkbox"></th>
-                                        {{-- <th>{{ $item->id }}</th> --}}
-                                        <td>{{ $item->username }}</td>
-                                        <td>{{ $item->created_at->format('d/m/Y') }}</td>
-                                        <td><a href="{{ route('profile-other', $item->id) }}" class="btn btn-primary">Xem
-                                                chi
-                                                tiết</a></td>
-                                        <td>
-                                            <form action="{{ route('admin.rooms.destroy', $item->id) }}" method="POST"
-                                                style="display: inline;">
-                                                @csrf
-                                                @method('PUT')
-                                                <button type="submit" class="btn btn-danger"
-                                                    onclick="return confirm('Bạn có chắc chắn muốn ẩn phòng này không?');">Xóa</button>
-                                            </form>
-                                        </td>
-                                    </tr>
-                                @endforeach
-                            </tbody>
-                        </table>
-                    </div>
-                    <!-- end -->
-                </div>
-            </div>
-
-
-            <!-- end row -->
-
-
-
-            <!-- end row -->
-
         </div>
-        <!-- end container-fluid -->
-
-
-
-        <!-- Footer Start -->
-        <footer class="footer">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-md-12">
-                        2017 - 2020 &copy; Simple theme by <a href="">Coderthemes</a>
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="card-box">
+                    <div class="card-body">
+                        <form action="{{ route('admin.check-change-password-admin') }}" method="POST">
+                            @csrf
+                            @method('PUT')
+                            <div class="mb-3">
+                                <label for="OldPassword" class="form-label">Mật khẩu cũ</label>
+                                <input type="password" class="form-control" id="OldPassword" name="old_password"
+                                    placeholder="Nhập mật khẩu cũ">
+                                @error('old_password')
+                                    <small class="text-danger">{{ $message }}</small>
+                                @enderror
+                            </div>
+                            <div class="mb-3">
+                                <label for="Password" class="form-label">Mật khẩu mới</label>
+                                <input type="password" class="form-control" id="Password" name="password"
+                                    placeholder="Nhập mật khẩu mới">
+                                @error('password')
+                                    <small class="text-danger">{{ $message }}</small>
+                                @enderror
+                            </div>
+                            <div class="mb-3">
+                                <label for="RePassword" class="form-label">Nhập lại mật khẩu</label>
+                                <input type="password" class="form-control" id="RePassword" name="password_confirmation"
+                                    placeholder="Nhập lại mật khẩu">
+                                @error('password_confirmation')
+                                    <small class="text-danger text-bold">{{ $message }}</small>
+                                @enderror
+                            </div>
+                            <div class="">
+                                <button type="submit" class="btn btn-primary w-100">Lưu</button>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>
-        </footer>
-        <!-- end Footer -->
-
+        </div>
+        <!-- end row -->
     </div>
+    <!-- end container-fluid -->
+    <!-- Footer Start -->
+    <footer class="footer">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12">
+                    2024 &copy; by <a href="">TRỌ NHANH</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- end Footer -->
+    <!-- end content -->
+    </div>
+    <!-- END content-page -->
 @endsection
 @push('styles')
     <!-- App favicon -->
@@ -143,4 +127,7 @@
     <!-- Required datatable js -->
     <script src="{{ asset('assets\libs\datatables\jquery.dataTables.min.js') }}"></script>
     <script src="{{ asset('assets\libs\datatables\dataTables.bootstrap4.min.js') }}"></script>
+    <!-- Show Alert -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="{{ asset('assets\js\show-alert.js') }}" text="text/javascript"></script>
 @endpush

@@ -16,11 +16,11 @@ class PriceListAdminController extends Controller
         //
         $price = PriceList::where('status', '!=', 5)->take(3)->get();
         return view('admincp.manages.extras-pricing', compact('price'));
-     
+
     }
-   
-    
-    
+
+
+
 
     public function ShowPriceList()
     {
@@ -29,7 +29,7 @@ class PriceListAdminController extends Controller
 
         return view('admincp.extras-pricing', compact('price'));
     }
-    
+
     /**
      * Remove the specified resource from storage.
      */
@@ -120,7 +120,7 @@ class PriceListAdminController extends Controller
         $priceList->save();
 
         // Redirect về trang danh sách hoặc trang chi tiết (tuỳ theo yêu cầu của bạn)
-        return redirect()->route('post-pricelist', ['id' => $priceList->id])
-            ->with('success', 'Cập nhật giá thành công');
+        return redirect()->route('admin.get-pricelist')
+            ->with('success', 'Cập nhật thành công');
     }
 }

@@ -55,7 +55,8 @@
 .btn-orange {
     background: rgb(255, 92, 0);
 }
-.btn-orange:hover{
+
+.btn-orange:hover {
     background: rgb(210, 92, 24);
 }
 
@@ -67,6 +68,7 @@
     max-width: 100%;
     max-height: 200px;
     margin-top: 10px;
+    object-fit: fill;
 }
 
 .row {
@@ -101,3 +103,110 @@
     /* Chọn 'cover' để đảm bảo hình ảnh luôn lấp đầy khu vực chứa mà không bị kéo dãn */
 }
 
+.img-register {
+    height: 134px;
+    /* Chiều cao cố định */
+    object-fit: cover;
+    /* Đảm bảo hình ảnh được căn chỉnh để vừa với container */
+    border-radius: 10px;
+    display: block;
+    margin: 5px 0;
+    /* Khoảng cách giữa các ảnh */
+}
+
+.preview-image {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    padding: 2%;
+    /* Khoảng cách giữa các col-3 */
+}
+
+.preview-image .col-3 {
+    flex: 0 0 23%;
+    /* Đảm bảo mỗi .col-3 chiếm 23% chiều rộng để có khoảng cách giữa các cột */
+    box-sizing: border-box;
+}
+
+/* user */
+
+
+.fixed-button {
+    position: fixed;
+    width: 15%;
+    bottom: 20px;
+    /* Khoảng cách từ đáy màn hình */
+    right: 20px;
+    /* Khoảng cách từ bên phải màn hình */
+    z-index: 1000;
+    /* Đảm bảo nút nằm trên các phần tử khác */
+    background-color: #007bff;
+    /* Màu nền của nút */
+    border: none;
+    /* Loại bỏ viền */
+    border-radius: 50px;
+    /* Bo tròn các góc của nút */
+    padding: 10px 20px;
+    /* Khoảng cách bên trong nút */
+    color: #fff;
+    /* Màu chữ */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    /* Hiệu ứng bóng đổ */
+    transition: background-color 0.3s ease;
+    /* Hiệu ứng chuyển màu nền khi hover */
+}
+
+.fixed-button:hover {
+    background-color: #0056b3;
+    /* Màu nền khi hover */
+}
+
+.logo-box img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    /* Đảm bảo giữ tỉ lệ hình ảnh */
+}
+
+.logo-lg img,
+.logo-sm img {
+    width: 100%;
+    /* Đảm bảo hình ảnh chiếm toàn bộ chiều rộng của container */
+    height: auto;
+    /* Chiều cao tự động theo tỉ lệ */
+}
+
+.carousel-inner img {
+    width: 100%;
+    height: auto;
+    /* Điều chỉnh chiều cao tự động để không bị cắt */
+    object-fit: cover;
+    /* Đảm bảo ảnh không bị méo, nhưng có thể bị cắt */
+}
+
+.edit-modal {
+    background: rgba(0, 0, 0, 0);
+    /* Nền trong suốt */
+}
+
+.edit-modal {
+    background: transparent;
+    /* Nội dung modal không có nền */
+    border: none;
+}
+
+.modal-edit {
+    width: 100%;
+
+}
+
+.carousel-item img {
+    height: 400px;
+    /* Thay đổi chiều cao theo nhu cầu */
+    object-fit: contain;
+    /* Đảm bảo hình ảnh không bị kéo giãn */
+    width: 100%;
+    /* Đảm bảo hình ảnh chiếm toàn bộ chiều rộng */
+}
+
+/* Tạo kiểu cho nút */

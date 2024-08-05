@@ -7,14 +7,19 @@
             <!-- start  -->
             <div class="row">
                 <div class="col-12">
-                    <div>
-                        <h4 class="header-title mb-3">Chi Tiết Thông Báo</h4>
+                    <div class="d-flex justify-content-between align-items-center header-title">
+                        <h4 class="mb-3">Chi Tiết Thông Báo</h4>
+                        <div>
+                            <a href="{{ route('admin.pages-notification') }}" class="btn btn-primary text-white me-2">
+                                <i class="fas fa-reply"></i>&nbsp;Quay lại
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
             <!-- end row -->
 
-            <div class="row">
+            <div class="row mt-3">
                 <div class="col-12">
                     <div class="table-responsive">
                         {{-- <h5 class="font-14">Default Example</h5> --}}
@@ -35,26 +40,28 @@
                                     <th>Thao tác</th>
                                 </tr>
                             </thead>
-
-                            @foreach ($notifications as $item)
-                                <tbody>
-                                    <tr>
-                                        <td>{{ $item->type }}</td>
-                                        <td>{{ $item->data }}</td>
-                                        <td>{{ $item->message }}</td>
-                                        <td>{{ $item->status == 1 ? 'Chưa xem' : 'Đã xem' }}</td>
-                                        <td>{{ $item->created_at->format('d/m/Y H:i:s') }}</td>
-                                        <td>
-                                            <form action="{{ route('admin.update-pages-notification-detail', $item->id) }}"
-                                                method="POST" style="display:inline;">
-                                                @csrf
-                                                <button type="submit" class="btn btn-primary">Xem</button>
-                                                <button type="submit" class="btn btn-danger">Xóa</button>
-                                            </form>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            @endforeach
+                            <tbody>
+                                <tr>
+                                    <td class="textwarp" style="word-wrap: break-word; white-space: normal;">
+                                        {{ $notifications->type }}</td>
+                                    <td class="textwarp" style="word-wrap: break-word; white-space: normal;">
+                                        {{ $notifications->data }}</td>
+                                    <td class="textwarp" style="word-wrap: break-word; white-space: normal;">
+                                        {{ $notifications->message }}</td>
+                                    <td>{{ $notifications->status == 1 ? 'Chưa xem' : 'Đã xem' }}</td>
+                                    <td>{{ $notifications->created_at->format('d/m/Y H:i:s') }}</td>
+                                    <td>
+                                        <form id="delete-form-{{ $notifications->id }}"
+                                            action="{{ route('admin.notification.destroy', $notifications->id) }}"
+                                            method="POST" style="display:inline;">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="button" class="btn btn-danger"
+                                                onclick="confirmDelete({{ $notifications->id }});">Xóa</button>
+                                        </form>
+                                    </td>
+                                </tr>
+                            </tbody>
                         </table>
 
                     </div>
@@ -92,12 +99,12 @@
     <link href="{{ asset('assets/libs/datatables/responsive.bootstrap4.css') }}" rel="stylesheet" type="text/css">
     <link href="{{ asset('assets/libs/datatables/select.bootstrap4.css') }} "rel="stylesheet" type="text/css">
     <!-- App css -->
+    <link href="{{ asset('assets/css/style.css') }}" rel="stylesheet" type="text/css" id="app-stylesheet">
     <link rel="stylesheet" href="{{ asset('assets/css/style-admin.css') }}" type="text/css" id='styleadmin-stylesheet'>
     <link href="{{ asset('assets/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css" id="bootstrap-stylesheet">
     <link href="{{ asset('assets/css/icons.min.css') }}" rel="stylesheet" type="text/css">
     <link href="{{ asset('assets/css/app.min.css') }}" rel="stylesheet" type="text/css" id="app-stylesheet">
-    <link rel="stylesheet" href="{{asset('assets/css/admin-nht.css')}}">
-
+    <link rel="stylesheet" href="{{ asset('assets/css/admin-nht.css') }}">
 @endpush
 
 @push('scripts')
@@ -141,4 +148,7 @@
     <!-- Required datatable js -->
     <script src="{{ asset('assets\libs\datatables\jquery.dataTables.min.js') }}"></script>
     <script src="{{ asset('assets\libs\datatables\dataTables.bootstrap4.min.js') }}"></script>
+    <!-- Show Alert -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="{{ asset('assets\js\show-alert.js') }}" text="text/javascript"></script>
 @endpush

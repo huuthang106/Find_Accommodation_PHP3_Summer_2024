@@ -5,55 +5,73 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Notification;
+use Illuminate\Support\Str;
 
 class NotificationAdminController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
-    {
-        // Lấy tất cả thông báo từ cơ sở dữ liệu và phân trang
-        $notification = Notification::paginate(10);
-
-        // foreach ($thongbao as $item) {
-        //     dd($item);
-        // }
-
-    
-
-        // Truyền dữ liệu tới view
-        return view('admincp.manages.pages-notification', compact('notification'));
-    }
+    // Biến xóa mềm = 5
+    const status_soft_delete = 5;
+    // Biến Đã Xem = 0
+    const status_da_xem = 0;
+    // Biến Chưa Xem = 1;
     public function showNofi()
     {
         // Lấy tất cả thông báo từ cơ sở dữ liệu và phân trang, loại trừ các thông báo có status = 5
-        $notification = Notification::where('status', '!=', 5)->paginate(10);
-    
+        $notification = Notification::where('status', '!=', Self::status_soft_delete)->orderByDesc('id')->get();
+        // Duyệt qua mỗi report để giới hạn ký tự của title
+        foreach ($notification as $item) {
+            $item->type_limit = Str::limit($item->type, 15);
+            $item->data_limit = Str::limit($item->data, 15);
+            $item->message_limit = Str::limit($item->message, 15);
+        }
         // Truyền dữ liệu tới view
         return view('admincp.manages.pages-notification', compact('notification'));
     }
-    
     public function destroyNofi(string $id)
     {
         $notification = Notification::find($id);
         if ($notification) {
-            $notification->status = 5; // Đánh dấu thông báo là đã xóa
+            $notification->status = Self::status_soft_delete; // Đánh dấu thông báo là đã xóa
             $notification->save();
-            return redirect()->back()->with('success', 'Thông báo đã được ẩn thành công.');
+            // return redirect()->back()->with('success', 'Thông báo đã được ẩn thành công.');
+            return redirect()->route('admin.pages-notification')->with('showAlert', [
+                'success' => 'Thông báo đã được xóa'
+            ]);
         }
-        return redirect()->back()->with('error', 'Không tìm thấy thông báo.');
+        return redirect()->back()->with('showAlert', [
+            'not_found' => 'Thông báo không tồn tại.'
+        ]);
     }
-    
-
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
+    public function viewAndChangeStatus($id)
     {
-        //
-    }
+        // Tìm thông báo theo id
+        $notifications = Notification::findOrFail($id);
+        // if (!$notifications) {
+        //     return redirect()->route('admin.notifications.index')->with('showAlert', [
+        //         'not_found' => 'Thông báo không tồn tại.'
+        //     ]);
+        // }
+        // Cập nhật trạng thái thông báo (ví dụ: đánh dấu là đã đọc)
+        $notifications->status = Self::status_da_xem;; // hoặc trạng thái khác phù hợp với ứng dụng của bạn
+        $notifications->save();
 
+        // Hiển thị trang chi tiết thông báo
+        return view('admincp.details.pages-notification-detail', compact('notifications'), ['id' => $id]);
+    }
+    public function softDeleteAll()
+    {
+        // Cập nhật trạng thái của tất cả các thông báo thành 5 để ẩn đi
+        Notification::query()->update(['status' => Self::status_soft_delete]);
+
+        // Redirect về trang trước đó hoặc trang chủ
+        // return back()->with('success', 'Đã xóa mềm tất cả các thông báo.');
+        return redirect()->route('admin.pages-notification')->with('showAlert', [
+            'success' => 'Thông báo đã được xóa'
+        ]);
+    }
     /**
      * Store a newly created resource in storage.
      */
@@ -61,19 +79,9 @@ class NotificationAdminController extends Controller
     {
         //
     }
-
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
-    {
-        $notifications = Notification::where('id', $id)->get();
-
-     
-        // Hiển thị giao diện Chi tiết thông báo admin
-        return view('admincp.details.pages-notification-detail', compact('notifications'));
-    }
-
     /**
      * Show the form for editing the specified resource.
      */
@@ -81,45 +89,13 @@ class NotificationAdminController extends Controller
     {
         //
     }
-
     /**
      * Update the specified resource in storage.
      */
     public function update(Request $request, string $id)
     {
-        // Lấy thông báo dựa trên ID
-        $notifications = Notification::find($id);
-
-        // Kiểm tra xem thông báo có tồn tại không
-        if ($notifications) {
-            // Cập nhật trạng thái thông báo
-            $notifications->status = 0;
-            $notifications->save();
-
-            return redirect()->route('pages-notification')->with('success', 'Thông báo đã được cập nhật.');
-        }
-
-        return redirect()->route('pages-notification')->with('error', 'Thông báo không tồn tại.');
+        //
     }
-
-    public function softDeleteAll()
-    {
-        // Cập nhật trạng thái của tất cả các thông báo thành 3 để ẩn đi
-        Notification::query()->update(['status' => 3]);
-
-        // Redirect về trang trước đó hoặc trang chủ
-        return back()->with('success', 'Đã xóa mềm tất cả các thông báo.');
-    }
-
-    // public function deleteAll()
-    // {
-    //     // Xóa 
-    //     Notification::query()->delete();
-
-    //     // Redirect về trang trước đó hoặc trang chủ
-    //     return back()->with('success', 'Đã xóa ');
-    // }
-
     /**
      * Remove the specified resource from storage.
      */
@@ -129,7 +105,7 @@ class NotificationAdminController extends Controller
     }
     public function tables_advanced()
     {
-     
+
         return view('admincp.tables-advanced');
     }
 }

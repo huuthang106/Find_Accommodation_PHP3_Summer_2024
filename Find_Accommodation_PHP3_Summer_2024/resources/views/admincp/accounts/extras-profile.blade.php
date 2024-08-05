@@ -3,10 +3,8 @@
 @section('content')
 
     <div class="content">
-
         <!-- Start container-fluid -->
         <div class="container-fluid">
-
             <!-- start  -->
             <div class="row">
                 <div class="col-md-12">
@@ -28,25 +26,19 @@
                                     </div>
                                 @endif
                             </div>
-
                             <p class="text-muted mt-2">
                                 Xin chào tôi là {{ $admin->username }}.
                             </p>
-
                             <button type="button" class="btn btn-primary mt-2 mr-1">Theo dõi</button>
                             <button type="button" class="btn btn-teal mt-2">Nhắn tin</button>
-
                         </div>
-
                     </div>
                     <!-- end card-box -->
-
                 </div>
                 <!-- end col -->
             </div>
             <!-- end row -->
             <!-- end -->
-
             <div class="mt-5">
                 <ul class="nav nav-tabs tabs-bordered">
                     <li class="nav-item">
@@ -60,7 +52,6 @@
                         </a>
                     </li>
                 </ul>
-
                 <div class="tab-content">
                     <div class="tab-pane active" id="home-b1">
                         <div class="row">
@@ -97,13 +88,7 @@
                                             <p class="text-muted mb-0">{{ $admin->address }}</p>
                                         </div>
                                     </div>
-                                </div>
-
-                                <!-- Personal-Information -->
-
-                                <!-- Social -->
-                                <div class="panel card panel-fill">
-                                    <div class="card-header">
+                                    <div class="card-header mt-5">
                                         <h5 class="font-16 m-1">Mạng xã hội</h5>
                                     </div>
                                     <div class="card-body">
@@ -126,9 +111,8 @@
                                         </ul>
                                     </div>
                                 </div>
-                                <!-- Social -->
+                                <!-- Personal-Information -->
                             </div>
-
                             <div class="col-lg-8">
                                 <!-- Personal-Information -->
                                 <div class="panel card panel-fill">
@@ -139,10 +123,9 @@
 
                                     </div>
                                 </div>
+
                                 <!-- Personal-Information -->
-
                             </div>
-
                         </div>
                     </div>
                     <div class="tab-pane" id="profile-b1">
@@ -188,19 +171,6 @@
                                             <small class="text-danger text-blod">{{ $message }}</small>
                                         @enderror
                                     </div>
-                                    <div class="mb-3">
-                                        <label for="Password" class="form-label">Mật khẩu</label>
-                                        <input type="password" class="form-control" id="Password" name="passsword"
-                                            placeholder="6 - 15 Ký tự">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="RePassword">Nhập lại mật khẩu</label>
-                                        <input type="password" placeholder="6 - 15 Ký tự" name="password_confirmation"
-                                            id="RePassword" class="form-control">
-                                        @error('password_confirmation')
-                                            <small class="text-danger text-blod">{{ $message }}</small>
-                                        @enderror
-                                    </div>
                                     <div class="form-group">
                                         <label for="AboutMe">Mô tả</label>
                                         <textarea style="height: 125px" id="AboutMe" class="form-control" placeholder="Nhập mô tả bản thân (Nếu có)."></textarea>
@@ -208,31 +178,39 @@
                                     <button class="btn btn-primary waves-effect waves-light width-md"
                                         type="submit">Lưu</button>
                                 </form>
-
+                                @if (session('showAlert'))
+                                    <script>
+                                        var showAlert = {
+                                            @if (session('success'))
+                                                success: "{{ session('success') }}",
+                                            @endif
+                                            @if (session('error'))
+                                                error: "{{ session('error') }}",
+                                            @endif
+                                        };
+                                    </script>
+                                @endif
                             </div>
                         </div>
                         <!-- Personal-Information -->
                     </div>
                 </div>
             </div>
-
         </div>
         <!-- end container-fluid -->
-
-
-
-        <!-- Footer Start -->
-        <footer class="footer">
+    </div>
+    <!-- Footer Start -->
+    <div class="col-lg-12">
+        <footer class="footer mt-5">
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-md-12">
-                        2024 &copy; by <a href="">Tìm Trọ</a>
+                        2024 &copy; by <a href="">Tìm Trọ hhhhhhhhhhhx</a>
                     </div>
                 </div>
             </div>
         </footer>
         <!-- end Footer -->
-
     </div>
 @endsection
 @push('styles')
@@ -249,8 +227,7 @@
         id="bootstrap-stylesheet">
     <link href="{{ asset('assets/css/icons.min.css') }}" rel="stylesheet" type="text/css">
     <link href="{{ asset('assets/css/app.min.css') }}" rel="stylesheet" type="text/css" id="app-stylesheet">
-    <link rel="stylesheet" href="{{asset('assets/css/style-nht.css')}}">
-
+    <link rel="stylesheet" href="{{ asset('assets/css/style-nht.css') }}">
 @endpush
 
 @push('scripts')
@@ -294,4 +271,7 @@
     <!-- Required datatable js -->
     <script src="{{ asset('assets\libs\datatables\jquery.dataTables.min.js') }}"></script>
     <script src="{{ asset('assets\libs\datatables\dataTables.bootstrap4.min.js') }}"></script>
+    <!-- Show Alert -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="{{ asset('assets\js\show-alert.js') }}" text="text/javascript"></script>
 @endpush

@@ -369,10 +369,10 @@
         {{-- start content --}}
         @yield('contentUs')
         {{-- end content --}}
-        <footer class="mt-4">
+        <footer class="mt-5">
             <div class="container">
                 <div class="row">
-                    <div class="col-3">
+                    <div class="col-3 mt-5">
                         <img class="img-fluid" src="{{ asset('assets\images\logo3.png') }}" alt="">
                         <span class="titleFooter">Tìm trọ nhanh,dễ tìm</span>
                     </div>

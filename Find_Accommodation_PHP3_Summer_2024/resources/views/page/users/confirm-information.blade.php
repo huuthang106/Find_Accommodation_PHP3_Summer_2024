@@ -6,19 +6,21 @@
         <div class="row d-flex justify-content-center ">
             <div class="col-10 bg-body  mt-2 rounded p-2">
                 <div class="card-header text-center">
-                    <h5 class="card-title bg">Đăng bài</h5>
+                    <h5 class="card-title bg">Xác nhận thông tin</h5>
                 </div>
-                <form action="{{ route('check-register-member') }}" id="ocr-form" method="POST" enctype="multipart/form-data">
+                <form action="{{ route('confirm', $memberregistration->id) }}" id="ocr-form" method="POST"
+                    enctype="multipart/form-data">
                     @csrf
+                    @method('PUT')
                     <div class="row">
-                        <div class="tab-pane col-lg-6">
+                        <div class="tab-pane col-lg-12">
                             <!-- Personal-Information -->
                             <div class="card">
-                                {{-- <div class="card-body">
+                                <div class="card-body">
                                     <div class="mb-3">
                                         <label for="fullname" class="form-label">Họ và tên</label>
                                         <input type="text" class="form-control" id="fullname" name="fullname"
-                                            value="{{ old('fullname') }}">
+                                            value="{{ $memberregistration->fullname ?? old('fullname') }}">
                                         @error('fullname')
                                             <div class="alert alert-danger mt-1">{{ $message }}</div>
                                         @enderror
@@ -26,7 +28,7 @@
                                     <div class="mb-3">
                                         <label for="description" class="form-label">Mô tả</label>
                                         <textarea class="form-control" id="description" name="description" style="height: 125px;"
-                                            placeholder="Nhập mô tả bản thân (Nếu có).">{{ old('description') }}</textarea>
+                                            placeholder="Nhập mô tả bản thân (Nếu có).">{{ $memberregistration->description ?? old('description') }}</textarea>
                                         @error('description')
                                             <div class="alert alert-danger mt-1">{{ $message }}</div>
                                         @enderror
@@ -35,7 +37,7 @@
                                         <label for="idenerregistra_number" class="form-label">Số căn cước</label>
                                         <input type="text" class="form-control" id="idenerregistra_number"
                                             name="idenerregistra_number" placeholder="Nhập giá"
-                                            value="{{ old('idenerregistra_number') }}">
+                                            value="{{ $memberregistration->idenerregistra_number ?? old('idenerregistra_number') }}">
                                         @error('idenerregistra_number')
                                             <div class="alert alert-danger mt-1">{{ $message }}</div>
                                         @enderror
@@ -43,7 +45,8 @@
                                     <div class="mb-3">
                                         <label for="phone" class="form-label">Số điện thoại</label>
                                         <input type="text" class="form-control" id="phone" name="phone"
-                                            placeholder="6 - 15 Ký tự" value="{{ old('phone') }}">
+                                            placeholder="Nhập số điện thoại"
+                                            value="{{ $memberregistration->phone ?? old('phone') }}">
                                         @error('phone')
                                             <div class="alert alert-danger mt-1">{{ $message }}</div>
                                         @enderror
@@ -51,19 +54,22 @@
                                     <div class="mb-3">
                                         <label for="gender" class="form-label">Giới tính</label>
                                         <select name="gender" class="form-control" id="gender">
-                                            <option value="1">Nam</option>
-                                            <option value="2">Nữ</option>
-                                            <option value="3">Khác</option>
+                                            <option value="1" {{ $memberregistration->gender == 1 ? 'selected' : '' }}>
+                                                Nam</option>
+                                            <option value="2"
+                                                {{ $memberregistration->gender == 2 ? 'selected' : '' }}>Nữ</option>
+
                                         </select>
                                         @error('gender')
                                             <div class="alert alert-danger mt-1">{{ $message }}</div>
                                         @enderror
                                     </div>
-                                </div> --}}
+
+                                </div>
                             </div>
                             <!-- Personal-Information -->
                         </div>
-                        <div class="tab-pane col-lg-12">
+                        {{-- <div class="tab-pane col-lg-12">
                             <!-- Personal-Information -->
                             <div class="card">
                                 <div class="card-body">
@@ -109,16 +115,72 @@
                                                 <div id="preview-img-3" class="preview-image card-img"></div>
                                             </div>
                                         </div>
+
                                         @error('images')
                                             <div class="alert alert-danger mt-1">{{ $message }}</div>
                                         @enderror
                                     </div>
+                                    <div class="mb-3">
+                                        <label for="phone" class="form-label">Số điện thoại</label>
+                                        <input type="text" class="form-control" id="phone" name="phone"
+                                            placeholder="Số điện thoại" value="{{ old('phone') }}">
+                                        @error('phone')
+                                            <div class="alert alert-danger mt-1">{{ $message }}</div>
+                                        @enderror
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="description" class="form-label">Mô tả</label>
+                                        <textarea class="form-control" id="description" name="description" style="height: 125px;"
+                                            placeholder="Nhập mô tả bản thân (Nếu có).">{{ old('description') }}</textarea>
+                                        @error('description')
+                                            <div class="alert alert-danger mt-1">{{ $message }}</div>
+                                        @enderror
+                                    </div>
+
                                 </div>
                             </div>
                             <!-- Personal-Information -->
-                        </div>
+                        </div> --}}
                     </div>
                     <button type="submit" class="btn form-control btn-primary">Lưu</button>
+                    {{-- @if (session('success'))
+                        <div class="alert alert-success">
+                            {{ session('success') }}
+                        </div>
+                    @endif
+
+                    @if (session('error'))
+                        <div class="alert alert-danger">
+                            {{ session('error') }}
+                        </div>
+                    @endif --}}
+
+                    {{-- @if (session('response'))
+                        @php
+                            $response = session('response');
+                        @endphp
+                        <div class="alert alert-info">
+                            <strong>Response Data:</strong>
+                            <table class="table table-bordered mt-3">
+                                <thead>
+                                    <tr>
+                                        <th>Key</th>
+                                        <th>Value</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Mức Độ Giống (%)</td>
+                                        <td>{{ $response['data']['similarity'] ?? 'N/A' }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Hai Ảnh Giống Nhau</td>
+                                        <td>{{ $response['data']['isMatch'] ? 'Giống Nhau' : 'Không Giống' }}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    @endif --}}
                 </form>
                 {{-- @if (session('showAlert'))
                     <script>
