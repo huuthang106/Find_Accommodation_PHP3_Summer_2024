@@ -24,8 +24,7 @@
                             style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                             <thead>
                                 <tr>
-
-                                    <th>Tất cả <input type="checkbox"></th>
+                                    {{-- <th>Tất cả <input type="checkbox"></th> --}}
                                     <th>STT</th>
                                     <th>Loại gói</th>
                                     <th>Giá</th>
@@ -38,8 +37,7 @@
                             <tbody>
                                 @foreach ($price as $item)
                                     <tr>
-
-                                        <th><input type="checkbox"></th>
+                                        {{-- <th><input type="checkbox"></th> --}}
                                         <th>{{ $item->id }}</th>
                                         <td>
                                             @if ($item->status == 1)

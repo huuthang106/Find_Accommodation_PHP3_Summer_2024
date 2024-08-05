@@ -21,10 +21,11 @@
             <div class="row mt-3">
                 <div class="col-12">
                     <div class='table-responsive'>
-                        <table id="datatable" class="table table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+                        <table id="datatable" class="table table-bordered dt-responsive nowrap"
+                            style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                             <thead>
                                 <tr>
-                                    <th>Tất cả <input type="checkbox"></th>
+                                    {{-- <th>Tất cả <input type="checkbox"></th> --}}
                                     {{-- <th>STT</th> --}}
                                     <th>Tiêu đề</th>
                                     <th>Giá</th>
@@ -36,19 +37,22 @@
                             <tbody>
                                 @foreach ($rooms as $item)
                                     <tr>
-                                        <th><input type="checkbox"></th>
+                                        {{-- <th><input type="checkbox"></th> --}}
                                         {{-- <th>{{ $item->id }}</th> --}}
                                         <td>{{ Str::limit($item->title, 20) }}</td>
                                         <td>{{ $item->price }}</td>
                                         <td>{{ $item->user_id }}</td>
-                                        <td><a href="{{route('admin.pages-room-detail',$item->id)}}" class="btn btn-primary">Xem chi
+                                        <td><a href="{{ route('admin.pages-room-detail', $item->id) }}"
+                                                class="btn btn-primary">Xem chi
                                                 tiết</a></td>
-                                     
+
                                         <td>
-                                            <form action="{{ route('admin.rooms.destroy', $item->id) }}" method="POST" style="display: inline;">
+                                            <form action="{{ route('admin.rooms.destroy', $item->id) }}" method="POST"
+                                                style="display: inline;">
                                                 @csrf
                                                 @method('PUT')
-                                                <button type="submit" class="btn btn-danger" onclick="return confirm('Bạn có chắc chắn muốn ẩn phòng này không?');">Xóa</button>
+                                                <button type="submit" class="btn btn-danger"
+                                                    onclick="return confirm('Bạn có chắc chắn muốn ẩn phòng này không?');">Xóa</button>
                                             </form>
                                         </td>
                                     </tr>
@@ -59,8 +63,8 @@
                     <!-- end -->
                 </div>
             </div>
-            
-            
+
+
             <!-- end row -->
 
 
@@ -99,8 +103,7 @@
     <link href="{{ asset('assets/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css" id="bootstrap-stylesheet">
     <link href="{{ asset('assets/css/icons.min.css') }}" rel="stylesheet" type="text/css">
     <link href="{{ asset('assets/css/app.min.css') }}" rel="stylesheet" type="text/css" id="app-stylesheet">
-    <link rel="stylesheet" href="{{asset('assets/css/admin-nht.css')}}">
-
+    <link rel="stylesheet" href="{{ asset('assets/css/admin-nht.css') }}">
 @endpush
 
 @push('scripts')
