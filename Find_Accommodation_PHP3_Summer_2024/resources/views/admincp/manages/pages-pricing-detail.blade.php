@@ -27,11 +27,9 @@
                                     {{-- <th>Tất cả <input type="checkbox"></th> --}}
                                     <th>STT</th>
                                     <th>Loại gói</th>
-                                    <th>Giá</th>
+                                   
                                     <th>Hỗ trợ</th>
-                                    <th>Video</th>
-                                    <th>Bài đăng</th>
-                                    <th>Nội dung</th>
+                                    
                                     <th>Thao tác</th>
 
                             <tbody>
@@ -47,16 +45,11 @@
                                             @elseif($item->status == 3)
                                                 Gói Cao Cấp
                                             @endif
+                                        <br> <small>{{ number_format($item->price, 0, ',', '.') }} VNĐ</small>
                                         </td>
-                                        <td>
-                                            {{ number_format($item->price, 0, ',') }}đ
-                                        </td>
-                                        <td>{{ Str::limit($item->Support, 20) }}</td>
-                                        <td>{{ $item->Video_Posting }}</td>
-                                        <td>{{ Str::limit($item->Post_Posting, 15) }}</td>
-                                        <td>
-                                            {{ Str::limit($item->description, 10) }}
-                                        </td>
+                                       
+                                        <td>{{ $item->Support }}</td>
+                                       
                                         <td>
                                             <a href="{{ route('admin.post-pricelist', $item->id) }}"
                                                 class="btn btn-primary">Chỉnh sửa</a>

@@ -29,9 +29,9 @@
                                     </th> --}}
                                     <th>Thông báo</th>
                                     <th>Trạng thái</th>
-                                    <th>Tên khách hàng</th>
+                                    <th>Người bị báo cáo</th>
                                     <th>Tên phòng</th>
-                                    <th>Tên người báo cáo</th>
+                                    
                                     <th>Thao tác</th>
                                 </tr>
                             </thead>
@@ -39,18 +39,18 @@
                                 @foreach ($reports as $item)
                                     <tr>
                                         {{-- <td>
-                                            <div class="checkbox checkbox-primary mr-2 float-left">
+   <small>người đăng: {{ $comment->user->username }}</small>                                         <div class="checkbox checkbox-primary mr-2 float-left">
                                                 <input id="checkbox{{ $item->id }}" type="checkbox">
                                                 <label for="checkbox{{ $item->id }}"></label>
                                             </div>
                                         </td> --}}
                                         {{-- <td>{{ Str::limit($item->message, 20) }}</td> --}}
-                                        <td>{{ $item->message }}</td>
+                                        <td>{{ $item->message }} <br><small>Người báo cáo: {{ $item->report->username }}</small></td>
                                         <td>{{ $item->status == 1 ? 'Chưa xem' : 'Đã xem' }}</td>
                                         <td>{{ $item->user->username }}</td>
                                         {{-- <td>{{ Str::limit($item->room->title, 20) }}</td> --}}
                                         <td>{{ $item->room_title }}</td>
-                                        <td>{{ $item->report->username }}</td>
+                                        
                                         <td>
 
                                             {{-- <a href="{{ route('admin.pages-report-detail', ['id' => $item->id]) }}" type="button"

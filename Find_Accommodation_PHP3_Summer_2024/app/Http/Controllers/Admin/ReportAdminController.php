@@ -21,8 +21,8 @@ class ReportAdminController extends Controller
         $reports = Report::where('status', '!=', Self::status_soft_delete)->orderByDesc('id')->get();
         // Duyệt qua mỗi report để giới hạn ký tự của title
         foreach ($reports as $item) {
-            $item->room_title = Str::limit($item->room->title, 10);
-            $item->message = Str::limit($item->message, 10);
+            $item->room_title = Str::limit($item->room->title, 30);
+            $item->message = Str::limit($item->message, 50);
         }
         return view('admincp.manages.pages-report', compact('reports'));
     }
