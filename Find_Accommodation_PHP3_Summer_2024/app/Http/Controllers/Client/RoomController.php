@@ -38,6 +38,7 @@ class RoomController extends Controller
      }
      
 
+
     public function reportRoom($roomId)
     {
         $room = Room::findOrFail($roomId);
@@ -275,19 +276,16 @@ class RoomController extends Controller
         $room->save();
         return redirect()->route('profileus')->with('success', 'Xóa thành công');
     }
-    
+
     public function search(Request $request)
     {
+
         $query = Room::query();
 
-       
-    if ($request->filled('diadiem')) {
-        $query->where('area_id', $request->diadiem);
-    }
 
-    if ($request->filled('gia')) {
-        $query->where('price', '<=', $request->gia);
-    }
+        if ($request->filled('diadiem')) {
+            $query->where('area_id', $request->diadiem);
+        }
 
     if ($request->filled('dientich')) {
     }
@@ -296,17 +294,15 @@ class RoomController extends Controller
         $totalRooms = $query->where('status', 1)->count();
 
         $rooms = $rooms->map(function ($room) {
-            $room->title = Str::limit($room->title, 20);
-            $room->address = Str::limit($room->address, 20);
+
             $room->price = number_format($room->price, 0, ',', '.');
             $room->randomImage = $room->images->isNotEmpty() ? $room->images->random()->image : null;
             return $room;
         });
-
+      
         $categories = Category::all();
-        $areas = Areas::all();
-
-        return view('page.rooms.search-room', compact('rooms', 'categories', 'areas', 'totalRooms'));
+        $areas = Areas::find($request->diadiem);
+        // dd($areas);
+        return view('page.rooms.search-room', compact('rooms', 'categories', 'areas', 'totalRooms', 'request'));
     }
-
 }

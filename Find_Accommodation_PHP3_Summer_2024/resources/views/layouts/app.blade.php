@@ -144,8 +144,15 @@
                 <li class="dropdown notification-list">
                     <a class="nav-link dropdown-toggle nav-user mr-0" data-toggle="dropdown" href="#"
                         role="button" aria-haspopup="false" aria-expanded="false">
-                        <img src="{{ asset('assets\images\users\avatar-1.jpg') }}" alt="user-image"
-                            class="rounded-circle">
+                        @if ($admin->avatar)
+                                    {{-- Nếu có avatar sẽ hiển thị avatar --}}
+                                    <img src="{{ asset('assets/images/users/' . $admin->avatar) }}"
+                                         class="rounded-circle img-thumbnail avatar-img" alt="profile-image" width="150" height="auto">
+                                @else
+                                    {{-- còn chưa có sẽ hiển thị 1 avatar cứng --}}
+                                    <img src="{{ asset('assets/images/users/avatar-user.png') }}"
+                                         class="rounded-circle img-thumbnail avatar-img" alt="profile-image" width="150" height="auto">
+                                @endif
                         <span class="pro-user-name ml-1">
                             {{-- Maxine K <i class="mdi mdi-chevron-down"></i> --}}
                             @if (Auth::check())
@@ -253,8 +260,15 @@
 
             <div class="user-box">
                 <div class="float-left">
-                    <img src="{{ asset('assets\images\users\avatar-1.jpg') }}" alt=""
-                        class="avatar-md rounded-circle">
+                    @if ($admin->avatar)
+                    {{-- Nếu có avatar sẽ hiển thị avatar --}}
+                    <img src="{{ asset('assets/images/users/' . $admin->avatar) }}"
+                         class="rounded-circle img-thumbnail avatar-img" alt="profile-image" width="150" height="auto">
+                @else
+                    {{-- còn chưa có sẽ hiển thị 1 avatar cứng --}}
+                    <img src="{{ asset('assets/images/users/avatar-user.png') }}"
+                         class="rounded-circle img-thumbnail avatar-img" alt="profile-image" width="150" height="auto">
+                @endif
                 </div>
                 {{-- Kiểm tra nếu người dùng đã đăng nhập --}}
                 @if (Auth::check())
@@ -280,12 +294,18 @@
 
                 <ul class="metismenu" id="side-menu">
 
-                    <li class="menu-title">Navigation</li>
+                    <li class="menu-title">Bảng điều khiển</li>
 
                     <li>
                         <a href="{{ route('admin.trang-quan-ly') }}">
                             <i class="ti-home"></i>
                             <span> Bảng điều khiển </span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ route('admin.duyet-don') }}">
+                            <i class="fas fa-money-check"></i>
+                            <span> Duyệt đơn </span>
                         </a>
                     </li>
                     <li>
@@ -301,13 +321,13 @@
                             <span class="menu-arrow"></span>
                         </a>
                         <ul class="nav-second-level" aria-expanded="false">
-                            <li>
+                            <li class="{{ request()->is('admin/thung-rac') ? 'mm-active' : '' }}">
                                 <a href="{{ route('admin.pages-commet') }}">
                                     <i class="fas fa-comment"></i>
                                     <span>Quản lý bình luận</span>
                                 </a>
                             </li>
-                            <li>
+                            <li class="{{ request()->is('admin/bai-viet*') ? 'mm-active' : '' }}">
                                 <a href="{{ route('admin.pages-room') }}">
                                     <i class="fas fa-newspaper"></i>
                                     <span>Quản lý tin đăng</span>
@@ -331,7 +351,8 @@
                                     <span>Quản lý chi tiết gói</span>
                                 </a>
                             </li>
-                            <li>
+
+                            <li class="{{ request()->is('admin/blogs*') ? 'mm-active' : '' }}">
                                 <a href="{{ route('admin.quan-li-blog') }}">
                                     <i class="fas fa-money-check"></i>
                                     <span>Quản lý blog</span>

@@ -17,7 +17,7 @@
                                 <p class="text-muted w-75 mx-auto"> Nhập địa chỉ email của bạn và chúng tôi sẽ gửi cho bạn
                                     một email kèm theo hướng dẫn để đặt lại mật khẩu của bạn. </p>
                             </div>
-                            <form action="{{ route('check-forget-password') }}" method="POST" class="p-2">
+                            <form action="{{ route('admin.check-forget-password') }}" method="POST" class="p-2">
                                 @csrf
                                 <div class="form-group">
                                     <label for="emailaddress">Email</label>

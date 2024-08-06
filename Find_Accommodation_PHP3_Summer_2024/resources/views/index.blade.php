@@ -134,7 +134,7 @@
                             aria-selected="true">Tất cả</a>
                     </li>
                     @foreach ($categories->sortByDesc('rooms_count')->take(3) as $category)
-                        <li class="nav-item" role="presentation">
+                        <li class="nav-item hover-nav-item" role="presentation">
                             <a href="{{ route('category-motel-id', $category->id) }}" class="nav-link">
                                 {{ $category->name }}
                             </a>
@@ -229,7 +229,6 @@
                                             <span>{{ $room->address }}</span>
                                         </p>
                                     </div>
-
                                 </div>
                             </a>
                         </div>

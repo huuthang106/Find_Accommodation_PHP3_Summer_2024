@@ -90,7 +90,7 @@ $(document).ready(function () {
 
     $('#commentForm').submit(function (e) {
         e.preventDefault(); // Ngăn chặn hành vi mặc định của form gửi đi
-
+    
         var form = $(this);
         var content = form.find('textarea[name="content"]').val();
     
@@ -144,6 +144,7 @@ $(document).ready(function () {
             }
         });
     });
+    
 
     $(document).on('click', '#showAllCommentsBtn', function(e) {
         e.preventDefault();

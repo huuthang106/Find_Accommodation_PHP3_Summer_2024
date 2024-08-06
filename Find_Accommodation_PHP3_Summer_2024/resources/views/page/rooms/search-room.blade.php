@@ -6,8 +6,8 @@
 <div class="container">
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="{{ route('home') }}">Trang chủ</a></li>
-            <li class="breadcrumb-item active" aria-current="page">Tìm kiếm</li>
+            <li class="breadcrumb-item "><a href="{{ route('home') }}" class="item-link text-decoration-none text-secondary">Trang chủ</a></li>
+            <li class="breadcrumb-item active item-link text-decoration-none text-dark" aria-current="page">Tìm kiếm</li>
         </ol>
     </nav>
     <h2 class="fw-bold">Tìm kiếm phòng trọ</h2>
@@ -16,7 +16,7 @@
             <div class="col-lg-9 p-0 rounded-5">
                 <div class="p-3 mb-2 bg-light text-dark">
                     <div class="d-flex justify-content-between">
-                        <p class="pt-2 text-bold fs-5 fw-bold">Tổng {{ $totalRooms }} kết quả</p>
+                        <p class="pt-2 text-bold fs-5 fw-bold">Tổng {{ $totalRooms }} kết quả cho {{$areas->name ?? 'Tất cả'}} </p>
                         <div class="p-0 d-flex justify-content-evenly">
                             <p class="pt-3 pe-3 fw-bold text-center">Sắp xếp theo</p>
                             <select class="p-0 form-select-sm border-0 bg-light text-dark" aria-label="">
@@ -51,7 +51,7 @@
                                                             <div class="col-md-8">
                                                                 <div class="card-body">
                                                                     <p class="card-title fs-6 fw-bold">{{ $room->title }}</p>
-                                                                    <p class="card-text fw-bold" style="color: #ff5c00">Liên hệ lấy giá</p>
+                                                                    <p class="card-text fw-bold" style="color: #ff5c00">{{ $room->price }}</p>
                                                                     <div class="container p-0">
                                                                         <button type="button" class="p-1 btn btn-secondary btn-sm">
                                                                             {{ $room->category->name }}

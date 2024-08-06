@@ -41,7 +41,7 @@
                                     <div class="mb-3">
                                         <label for="Phone" class="form-label">Số điện thoại</label>
                                         <input type="text" class="form-control" id="Phone" name="Phone"
-                                            placeholder="6 - 15 Ký tự" value="{{ old('Phone') }}">
+                                            placeholder="Số điện thoại" value="{{ old('Phone') }}">
                                         @error('Phone')
                                             <div class="alert alert-danger">{{ $message }}</div>
                                         @enderror
@@ -114,7 +114,7 @@
                             <!-- Personal-Information -->
                         </div>
                     </div>
-                    <button type="submit" class="btn btn-primary">Lưu</button>
+                    <button type="submit" class="btn btn-primary form-control">Lưu</button>
                 </form>
             </div>
         </div>

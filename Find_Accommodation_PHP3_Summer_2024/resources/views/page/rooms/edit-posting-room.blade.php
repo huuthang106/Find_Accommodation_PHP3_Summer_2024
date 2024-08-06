@@ -2,7 +2,7 @@
 @section('titleUs', 'Trang chủ trọ nhanh')
 @section('contentUs')
 
-    <div class="">
+    <div class="background-content ">
         <div class="row d-flex justify-content-center ">
             <div class="col-10 bg-body  mt-2 rounded p-2">
                 <div class="card-header text-center">
@@ -43,7 +43,7 @@
                                     <div class="mb-3">
                                         <label for="Phone" class="form-label">Số điện thoại</label>
                                         <input type="text" class="form-control" id="Phone" name="Phone"
-                                            placeholder="6 - 15 Ký tự" value="{{ $room->phone }}">
+                                            placeholder="Số điện thoại" value="{{ $room->phone }}">
                                         @error('Phone')
                                             <div class="alert alert-danger">{{ $message }}</div>
                                         @enderror
@@ -109,7 +109,7 @@
                             <!-- Personal-Information -->
                         </div>
                     </div>
-                    <button type="submit" class="btn btn-primary">Lưu</button>
+                    <button type="submit" class="btn btn-primary form-control">Lưu</button>
                 </form>
             </div>
         </div>

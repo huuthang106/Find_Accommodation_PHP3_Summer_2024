@@ -18,4 +18,10 @@ class Memberregistration extends Model
         'user_id'
         // Các trường khác nếu có
     ];
+    public function user(){
+        return $this->belongsTo(User::class);
+    }
+    public function imgmember(){
+        return $this->hasMany(Imagesmember::class);
+    }
 }
