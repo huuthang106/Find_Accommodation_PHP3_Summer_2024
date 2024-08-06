@@ -79,9 +79,6 @@
             <!-- end row -->
         </div>
         <!-- end container-fluid -->
-
-
-
         <!-- Footer Start -->
         <footer class="footer">
             <div class="container-fluid">
@@ -93,7 +90,6 @@
             </div>
         </footer>
         <!-- end Footer -->
-
     </div>
 @endsection
 @push('styles')
