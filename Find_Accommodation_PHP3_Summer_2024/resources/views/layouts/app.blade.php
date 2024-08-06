@@ -345,7 +345,7 @@
                                     <span>Quản lý gói đăng tin</span>
                                 </a>
                             </li> --}}
-                            <li>
+                            <li class="{{ request()->is('admin/chi-tiet-goi-tin*') ? 'mm-active' : '' }}">
                                 <a href="{{ route('admin.get-pricelist') }}">
                                     <i class="fas fa-money-check"></i>
                                     <span>Quản lý chi tiết gói</span>
