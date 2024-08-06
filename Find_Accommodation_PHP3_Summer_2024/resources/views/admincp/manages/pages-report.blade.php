@@ -20,13 +20,13 @@
                         <table id="datatable" class="table table-bordered dt-responsive nowrap">
                             <thead>
                                 <tr>
-                                    <th style="min-width: 95px;">
+                                    {{-- <th style="min-width: 95px;">
                                         <div class="checkbox checkbox-single checkbox-primary">
                                             Tất cả
                                             <input type="checkbox" class="custom-control-input" id="action-checkbox">
                                             <label class="custom-control-label" for="action-checkbox">&nbsp;</label>
                                         </div>
-                                    </th>
+                                    </th> --}}
                                     <th>Thông báo</th>
                                     <th>Trạng thái</th>
                                     <th>Tên khách hàng</th>
@@ -38,12 +38,12 @@
                             <tbody>
                                 @foreach ($reports as $item)
                                     <tr>
-                                        <td>
+                                        {{-- <td>
                                             <div class="checkbox checkbox-primary mr-2 float-left">
                                                 <input id="checkbox{{ $item->id }}" type="checkbox">
                                                 <label for="checkbox{{ $item->id }}"></label>
                                             </div>
-                                        </td>
+                                        </td> --}}
                                         {{-- <td>{{ Str::limit($item->message, 20) }}</td> --}}
                                         <td>{{ $item->message }}</td>
                                         <td>{{ $item->status == 1 ? 'Chưa xem' : 'Đã xem' }}</td>

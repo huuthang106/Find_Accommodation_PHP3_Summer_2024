@@ -119,14 +119,6 @@
                                 class="table table-hover mails m-0 table table-actions-bar table-centered">
                                 <thead>
                                     <tr>
-                                        <th style="min-width: 95px;">
-
-                                            <div class="checkbox checkbox-single checkbox-primary">
-                                                <input type="checkbox" class="custom-control-input" id="action-checkbox">
-                                                <label class="custom-control-label" for="action-checkbox">&nbsp;</label>
-                                            </div>
-                                        </th>
-
                                         <th>Tên</th>
                                         <th>Email</th>
                                         <th>Số điện thoại</th>
@@ -139,15 +131,6 @@
                                 <tbody>
                                     @foreach ($users as $item)
                                         <tr>
-                                            <td>
-                                                <div class="checkbox checkbox-primary mr-2 float-left">
-                                                    <input id="checkbox2" type="checkbox">
-                                                    <label for="checkbox2"></label>
-                                                </div>
-                                                {{-- <img src="assets/images/users/avatar-2.jpg" alt="contact-img"
-                                                     title="contact-img" class="rounded-circle avatar-sm">
-                                            </td> --}}
-
                                             <td>{{ $item->username }}</td>
                                             <td><a href="#" class="text-muted">{{ $item->email }}</a></td>
                                             <td>{{ $item->phone }}</td>
@@ -192,7 +175,7 @@
     <link href="{{ asset('assets/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css" id="bootstrap-stylesheet">
     <link href="{{ asset('assets/css/icons.min.css') }}" rel="stylesheet" type="text/css">
     <link href="{{ asset('assets/css/app.min.css') }}" rel="stylesheet" type="text/css" id="app-stylesheet">
-    <link rel="stylesheet" href="{{asset('assets/css/admin-nht.css')}}">
+    <link rel="stylesheet" href="{{ asset('assets/css/admin-nht.css') }}">
 @endpush
 
 @push('scripts')
