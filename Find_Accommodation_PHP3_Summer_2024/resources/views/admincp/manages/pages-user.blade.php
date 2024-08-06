@@ -28,7 +28,7 @@
                                     {{-- <th>STT</th> --}}
                                     <th>Tên người đăng</th>
                                     <th>Ngày đăng ký</th>
-                                    <th>Xem chi tiết</th>
+                                    
                                     <th>Chức Năng</th>
                                 </tr>
                             </thead>
@@ -41,8 +41,7 @@
                                         <td>{{ $item->created_at->format('d/m/Y') }}</td>
                                         <td><a href="{{ route('profile-other', $item->id) }}" class="btn btn-primary">Xem
                                                 chi
-                                                tiết</a></td>
-                                        <td>
+                                                tiết</a>
                                             <form action="{{ route('admin.rooms.destroy', $item->id) }}" method="POST"
                                                 style="display: inline;">
                                                 @csrf

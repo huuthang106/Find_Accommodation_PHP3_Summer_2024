@@ -45,8 +45,8 @@
                                     <tr>
                                         {{-- <th><input type="checkbox"></th> --}}
                                         <th width="4%">{{ $item->id }}</th>
-                                        <td>{{ Str::limit($item->title, 15) }}</td>
-                                        <td>{{ Str::limit($item->description, 25) }}</td>
+                                        <td>{{$item->title}}</td>
+                                        <td>{{ Str::limit($item->description, 30) }}</td>
                                         <td>
                                             <form action="{{ route('admin.delete-blog', $item->id) }}" method="POST"
                                                 style="display: inline;"> @csrf
