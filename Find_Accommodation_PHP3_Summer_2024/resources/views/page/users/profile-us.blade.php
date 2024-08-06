@@ -55,10 +55,10 @@
                     </a>
                 </li>
             </ul>
-            <div class="tab-content bg-body">
+            <div class="tab-content bg-body  ">
                 <div class="tab-pane fade show active" id="home-b1">
                     <div class="row">
-                        <div class="col-lg-4">
+                        <div class="col-lg-4 p-0 border rounded">
                             <!-- Personal-Information -->
                             <div class="card">
                                 <div class="card-header">
@@ -121,38 +121,12 @@
                                     </ul>
                                 </div>
                             </div>
-                            <!-- Personal-Information -->
-                            <!-- Social -->
-                            {{-- <div class="card">
-                                <div class="card-header">
-                                    <h5 class="card-title">Mạng xã hội</h5>
-                                </div>
-                                <div class="card-body">
-                                    <ul class="list-inline mb-0">
-                                        <li class="list-inline-item me-3">
-                                            <a title="Facebook" data-bs-toggle="tooltip" href="#">
-                                                <i class="fab fa-facebook-f"></i>
-                                            </a>
-                                        </li>
-                                        <li class="list-inline-item me-3">
-                                            <a title="Twitter" data-bs-toggle="tooltip" href="#">
-                                                <i class="fab fa-twitter"></i>
-                                            </a>
-                                        </li>
-                                        <li class="list-inline-item">
-                                            <a title="Skype" data-bs-toggle="tooltip" href="#">
-                                                <i class="fab fa-skype"></i>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div> --}}
-                            <!-- Social -->
+                          
                         </div>
-                        <div class="col-lg-8">
+                        <div class="col-lg-8 ">
                             <!-- Personal-Information -->
 
-                            <div class="card">
+                            <div class="card border">
                                 <div class="card-header">
                                     <h5 class="card-title">Bài viết đã đăng</h5>
                                 </div>
@@ -231,7 +205,7 @@
                                     @error('avatar')
                                         <small class="text-danger text-bold">{{ $message }}</small>
                                     @enderror
-                                    <div id="avatar-preview" class="mt-2">
+                                    <div id="avatar-preview" class="mt-2 avatar-preview">
                                         @if ($user->avatar)
                                             <img src="{{ asset('assets/images/users/' . $user->avatar) }}"
                                                 alt="Current Avatar" class="img-thumbnail" style="max-width: 100px;">

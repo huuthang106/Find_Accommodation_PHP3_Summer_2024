@@ -15,7 +15,7 @@
 
 <body>
 
-    <div class="page-home">
+    <div class="container-fluid page-home p-0">
         <div class="container">
             <div class="row headerTop">
                 <div class="col-3">
@@ -357,10 +357,12 @@
                                 </form>
                                 <div class="row mt-3">
                                     <div class="col-sm-12 text-center">
-                                        <p class="text-muted mb-0">Bạn đã có tài khoản? <a href="#"
-                                                id="showLoginModal" class="text-decoration-none"
-                                                data-bs-toggle="modal" data-bs-target="#loginModal"><b>ĐĂNG
-                                                    NHẬP</b></a></p>
+                                        <p class="text-muted mb-0">Bạn đã có tài khoản?
+                                            <a href="#" id="showLoginModal" class="text-decoration-none"
+                                                data-bs-toggle="modal" data-bs-target="#loginModal">
+                                                <b>ĐĂNG NHẬP</b>
+                                            </a>
+                                        </p>
                                     </div>
                                 </div>
                             </div>
@@ -405,9 +407,8 @@
             </div>
         </footer>
     </div>
+
+
     @stack('scripts')
 </body>
-
-
-
 </html>

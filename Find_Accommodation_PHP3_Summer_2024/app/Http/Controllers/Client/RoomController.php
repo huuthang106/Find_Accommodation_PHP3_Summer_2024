@@ -19,24 +19,24 @@ class RoomController extends Controller
      */
 
 
-     public function index()
-     {
-         $rooms = Room::where('status', 1)
-             ->orderBy('created_at', 'desc')
-             ->take(20)
-             ->get()
-             ->map(function ($room) {
-                 $room->price = number_format($room->price, 0, ',', '.');
-                 $room->randomImage = $room->images->isNotEmpty() ? $room->images->random()->image : null;
-                 return $room;
-             });
-     
-         $categories = Category::all();
-         $areas = Areas::all(); // Lấy danh sách các khu vực
-     
-         return view('index', compact('rooms', 'categories', 'areas'));
-     }
-     
+    public function index()
+    {
+        $rooms = Room::where('status', 1)
+            ->orderBy('created_at', 'desc')
+            ->take(20)
+            ->get()
+            ->map(function ($room) {
+                $room->price = number_format($room->price, 0, ',', '.');
+                $room->randomImage = $room->images->isNotEmpty() ? $room->images->random()->image : null;
+                return $room;
+            });
+
+        $categories = Category::all();
+        $areas = Areas::all(); // Lấy danh sách các khu vực
+
+        return view('index', compact('rooms', 'categories', 'areas'));
+    }
+
 
     public function reportRoom($roomId)
     {
@@ -275,38 +275,37 @@ class RoomController extends Controller
         $room->save();
         return redirect()->route('profileus')->with('success', 'Xóa thành công');
     }
-    
+
     public function search(Request $request)
     {
+
         $query = Room::query();
 
-       
-    if ($request->filled('diadiem')) {
-        $query->where('area_id', $request->diadiem);
-    }
 
-    if ($request->filled('gia')) {
-        $query->where('price', '<=', $request->gia);
-    }
+        if ($request->filled('diadiem')) {
+            $query->where('area_id', $request->diadiem);
+        }
 
-    if ($request->filled('dientich')) {
-    }
+        if ($request->filled('gia')) {
+            $query->where('price', '<=', $request->gia);
+        }
+
+        if ($request->filled('dientich')) {
+        }
 
         $rooms = $query->where('status', 1)->orderBy('created_at', 'desc')->take(20)->get();
         $totalRooms = $query->where('status', 1)->count();
 
         $rooms = $rooms->map(function ($room) {
-            $room->title = Str::limit($room->title, 20);
-            $room->address = Str::limit($room->address, 20);
+
             $room->price = number_format($room->price, 0, ',', '.');
             $room->randomImage = $room->images->isNotEmpty() ? $room->images->random()->image : null;
             return $room;
         });
-
+      
         $categories = Category::all();
-        $areas = Areas::all();
-
-        return view('page.rooms.search-room', compact('rooms', 'categories', 'areas', 'totalRooms'));
+        $areas = Areas::find($request->diadiem);
+        // dd($areas);
+        return view('page.rooms.search-room', compact('rooms', 'categories', 'areas', 'totalRooms', 'request'));
     }
-
 }
