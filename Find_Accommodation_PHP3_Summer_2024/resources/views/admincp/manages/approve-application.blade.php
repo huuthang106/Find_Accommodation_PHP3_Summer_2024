@@ -31,7 +31,7 @@
                             style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                             <thead>
                                 <tr>
-                                    <th>Tất cả <input type="checkbox"></th>
+                                 
                                     <th>STT</th>
                                     <th>Nội dung</th>
                                     <th>Ngày gửi</th>
@@ -41,7 +41,7 @@
                             <tbody>
                                 @foreach ($list as $item)
                                     <tr>
-                                        <td><input type="checkbox"></td>
+                             
                                         <td>{{ $index++ }}</td>
                                         <td>{{ $item->description }}<br><small>người gửi:
                                                 {{ $item->user->username }}</small>
