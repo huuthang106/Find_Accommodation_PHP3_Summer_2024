@@ -49,7 +49,7 @@
                                             @endif
                                         </td>
                                         <td>
-                                            {{ number_format($item->price, 0, ',', '.') }}đ
+                                            {{ number_format($item->price, 0, ',') }}đ
                                         </td>
                                         <td>{{ Str::limit($item->Support, 20) }}</td>
                                         <td>{{ $item->Video_Posting }}</td>
