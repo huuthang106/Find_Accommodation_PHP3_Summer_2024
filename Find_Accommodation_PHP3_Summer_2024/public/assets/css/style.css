@@ -372,5 +372,6 @@
 /* NguyenThaiToan CSS */
 .mapCustom {
     background: #f4f4f4;
-    height: 2120px;
+    height: auto;
+    padding-bottom: 3%;
 }

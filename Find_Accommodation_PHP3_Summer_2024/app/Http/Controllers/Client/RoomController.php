@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Client;
 
+use DOMDocument;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
@@ -154,6 +155,12 @@ class RoomController extends Controller
             'images.*.max' => 'Kích thước hình ảnh không được vượt quá 2048 kilobytes (2MB).',
         ]);
 
+        $description = $request->Description;
+
+        $dom = new DOMDocument();
+        @$dom->loadHTML($description, LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD);
+
+        $description = $dom->saveHTML();
         $data = $request->only('Title', 'Description', 'Price', 'Phone', 'Address', 'Category_id', 'quantity', 'area_id', 'user_id');
 
         // Tạo phòng nguyen huu thang xử lý hình ảnh
@@ -217,7 +224,12 @@ class RoomController extends Controller
             'images.*.max' => 'Kích thước hình ảnh không được vượt quá 2048 kilobytes (2MB).',
         ]);
         // dd($request);
+        $description = $request->Description;
 
+        $dom = new DOMDocument();
+        @$dom->loadHTML($description, LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD);
+
+        $description = $dom->saveHTML();
         // Lấy phòng cần cập nhật
         $room = Room::findOrFail($roomId);
 
@@ -302,7 +314,7 @@ class RoomController extends Controller
             $room->randomImage = $room->images->isNotEmpty() ? $room->images->random()->image : null;
             return $room;
         });
-      
+
         $categories = Category::all();
         $areas = Areas::find($request->diadiem);
         // dd($areas);

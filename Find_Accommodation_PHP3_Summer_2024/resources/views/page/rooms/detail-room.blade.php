@@ -6,7 +6,8 @@
             <div class="col-6 p-0 mt-2">
                 <span class="item">
                     <a href="{{ route('home') }}" class="item-link text-decoration-none text-secondary">Trang chủ</a> /
-                    <a href="{{ route('get-room', $room->id) }}" class="item-link text-decoration-none text-dark">{{ $room->title }}</a>
+                    <a href="{{ route('get-room', $room->id) }}"
+                        class="item-link text-decoration-none text-dark">{{ $room->title }}</a>
                 </span>
                 <div class="hostel__detail">
                     <h1 class="box-title">{{ $room->title }}</h1>
@@ -31,7 +32,7 @@
                                 class='bx bx-file'></i>
                             Xem hồ sơ</a>
                         <a href="#" class="btn btn-orange p-3 text-light"><i class="fa-solid fa-phone"
-                                style="color: #ffffff;"></i> {{$room->user->phone}}</a>
+                                style="color: #ffffff;"></i> {{ $room->user->phone }}</a>
                     </div>
                 </div>
                 {{-- <div class="d-flex justify-content-end p-0 mt-2">
@@ -150,8 +151,12 @@
             <div class="row justify-content-center p-0 mt-4 ">
                 <div class="col-9 bg-body rounded p-4">
                     <h3>Giới thiệu</h3>
-                    <p>
+                    {{-- <p>
                         {{ $room->description }}
+                    </p> --}}
+                    {{-- Hiển thị Summernote --}}
+                    <p>
+                        {!! $room->description !!}
                     </p>
                 </div>
             </div>
