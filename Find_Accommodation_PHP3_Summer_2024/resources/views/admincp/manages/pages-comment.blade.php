@@ -34,7 +34,7 @@
                                     <th>STT</th>
                                     <th>Nội dung</th>
                                     <th>Tên bài viết</th>
-                                    <th>Ngày bình luận</th>
+                                
                                     <th>Chức năng</th>
                                 </tr>
                             </thead>
@@ -44,13 +44,13 @@
 
                                         <td>{{ $comment->id }}</td>
                                         <td>{{ $comment->content }}<br><small>người đăng:
-                                                {{ $comment->user->username }}</small>
+                                                {{ $comment->user->username }}</small><br>
+                                                <small>{{ $comment->created_at }}</small>
                                         </td>
                                         <td>
                                             {{ $comment->room->title }}
                                         </td>
-                                        <td>{{ $comment->created_at }}</td>
-                                        <td>
+                                         <td>
                                             <form action="{{ route('admin.comment.destroy', $comment->id) }}" method="POST"
                                                 style="display: inline;">
                                                 @csrf
