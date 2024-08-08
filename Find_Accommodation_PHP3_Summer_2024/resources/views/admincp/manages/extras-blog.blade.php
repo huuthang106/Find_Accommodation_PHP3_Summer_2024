@@ -32,7 +32,7 @@
                                     {{-- <th>Tất cả <input type="checkbox"></th> --}}
                                     <th>STT</th>
                                     <th>Tiêu Đề</th>
-                                    <th>Mô Tả</th>
+                                   
                                     {{-- <th>Giá</th>
                                     <th>Hỗ trợ</th>
                                     <th>Video</th>
@@ -41,13 +41,15 @@
                                     <th>Thao tác</th>
 
                             <tbody>
+                                 @php
+                                $index = 1;     
+                                @endphp
                                 @foreach ($blog as $item)
                                     <tr>
                                         {{-- <th><input type="checkbox"></th> --}}
-                                        <th width="4%">{{ $item->id }}</th>
+                                        <th width="4%">{{$index++}}</th>
                                         <td style="word-wrap: break-word; white-space: normal;">{{ $item->title }}</td>
-                                        <td style="word-wrap: break-word; white-space: normal;">
-                                            {!! $item->description !!}</td>
+                                       
                                         <td>
                                             <form action="{{ route('admin.delete-blog', $item->id) }}" method="POST"
                                                 style="display: inline;"> @csrf

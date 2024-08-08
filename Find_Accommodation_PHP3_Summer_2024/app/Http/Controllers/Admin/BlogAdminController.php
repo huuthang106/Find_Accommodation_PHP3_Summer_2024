@@ -21,7 +21,7 @@ class BlogAdminController extends Controller
     // app/Http/Controllers/BlogController.php
     public function Showblog()
     {
-        $blog = Blogs::where('status', '!=', 5)->get();
+        $blog = Blogs::where('status', '!=', 5)->orderByDesc('created_at')->get();
         return view('admincp.manages.extras-blog', compact('blog'));
     }
 
