@@ -51,7 +51,7 @@
                                                 @csrf
                                                 @method('PUT')
                                                 <button type="submit" class="btn btn-danger"
-                                                    onclick="return confirm('Bạn có chắc chắn muốn ẩn phòng này không?');">Xóa</button>
+                                                    >Xóa</button>
                                             </form>
                                         </td>
                                     </tr>
@@ -146,4 +146,5 @@
     <!-- Required datatable js -->
     <script src="{{ asset('assets\libs\datatables\jquery.dataTables.min.js') }}"></script>
     <script src="{{ asset('assets\libs\datatables\dataTables.bootstrap4.min.js') }}"></script>
+    <script src="{{ asset('assets\js\room.js') }}"></script>
 @endpush

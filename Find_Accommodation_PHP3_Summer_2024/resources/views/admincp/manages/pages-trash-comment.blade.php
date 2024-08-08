@@ -48,22 +48,17 @@
                                         <td>{{ $comment->user->username }}</td>
                                         <td>{{ $comment->created_at }}</td>
                                         <td>
-                                            <form action="{{ route('admin.comment.restore', $comment->id) }}" method="POST"
-                                                style="display: inline;">
+                                            <form action="{{ route('admin.comment.restore', $comment->id) }}" method="POST" style="display: inline;">
                                                 @csrf
                                                 @method('PUT')
-                                                <button type="submit" class="btn btn-success"
-                                                    >Khôi
-                                                    phục</button>
+                                                <button type="submit" class="btn btn-success">Khôi phục</button>
                                             </form>
-                                            <form action="{{ route('admin.comment.deletePermanent', $comment->id) }}"
-                                                method="POST" style="display: inline;">
+                                            <form action="{{ route('admin.comment.deletePermanent', $comment->id) }}" method="POST" style="display: inline;">
                                                 @csrf
                                                 @method('DELETE')
-                                                <button type="submit" class="btn btn-danger"
-                                                    >Xóa
-                                                    vĩnh viễn</button>
+                                                <button type="submit" class="btn btn-danger">Xóa vĩnh viễn</button>
                                             </form>
+                                            
                                         </td>
                                     </tr>
                                 @endforeach
@@ -160,6 +155,6 @@
     <!-- Required datatable js -->
     <script src="{{ asset('assets\libs\datatables\jquery.dataTables.min.js') }}"></script>
     <script src="{{ asset('assets\libs\datatables\dataTables.bootstrap4.min.js') }}"></script>
-   <script src="{{ asset('assets\js\comment.js') }}"></script>
+   <script src="{{ asset('assets\js\comment-admin.js') }}"></script>
         
 @endpush

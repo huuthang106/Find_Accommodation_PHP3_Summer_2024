@@ -32,7 +32,7 @@
                                     {{-- <th>Tất cả <input type="checkbox"></th> --}}
                                     <th>STT</th>
                                     <th>Tiêu Đề</th>
-                                   
+
                                     {{-- <th>Giá</th>
                                     <th>Hỗ trợ</th>
                                     <th>Video</th>
@@ -41,21 +41,21 @@
                                     <th>Thao tác</th>
 
                             <tbody>
-                                 @php
-                                $index = 1;     
+                                @php
+                                    $index = 1;
                                 @endphp
                                 @foreach ($blog as $item)
                                     <tr>
                                         {{-- <th><input type="checkbox"></th> --}}
                                         <th width="4%">{{ $item->id }}</th>
-                                        <td>{{$item->title}}</td>
+                                        <td>{{ $item->title }}</td>
                                         <td>{{ Str::limit($item->description, 30) }}</td>
                                         <td>
                                             <form action="{{ route('admin.delete-blog', $item->id) }}" method="POST"
                                                 style="display: inline;"> @csrf
                                                 @method('DELETE') <!-- Đổi thành DELETE -->
                                                 <button type="submit" class="btn btn-danger"
-                                                    onclick="return confirm('Bạn có chắc chắn muốn ẩn gói tin này không?');">Xóa</button>
+                                                    >Xóa</button>
                                             </form>
                                         </td>
 
@@ -151,4 +151,5 @@
     <!-- Required datatable js -->
     <script src="{{ asset('assets\libs\datatables\jquery.dataTables.min.js') }}"></script>
     <script src="{{ asset('assets\libs\datatables\dataTables.bootstrap4.min.js') }}"></script>
+    <script src="{{ asset('assets\js\room.js') }}"></script>
 @endpush

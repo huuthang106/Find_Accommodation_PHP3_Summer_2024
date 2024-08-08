@@ -59,13 +59,12 @@
 
                                     <td>{{ $item->created_at->format('d/m/Y') }}</td>
                                     <td>
-
-                                        <form action="{{ route('admin.registration-form', $item->id) }}" method="POST"
-                                            style="display: inline;">
+                                        <form action="{{ route('admin.registration-form', $item->id) }}" method="POST" style="display: inline;">
                                             @csrf
                                             @method('PUT')
-                                            <button type="submit" class="btn btn-danger">Xóa</button>
+                                            <button type="submit" class="btn btn-danger" data-action="soft-delete">Xóa</button>
                                         </form>
+                                        
                                     </td>
                                 </tr>
                             </tbody>

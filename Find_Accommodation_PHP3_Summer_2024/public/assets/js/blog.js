@@ -1,39 +1,15 @@
 document.addEventListener('DOMContentLoaded', function () {
     document.querySelectorAll('form').forEach(function (form) {
         form.addEventListener('submit', function (event) {
-            event.preventDefault();
+            event.preventDefault(); // Ngăn chặn hành vi submit mặc định của form
 
             const url = this.action;
             const method = this.method;
             const formData = new FormData(this);
 
-            const action = this.querySelector('button').innerText.trim();
-            let confirmationText = '';
-            let successText = '';
-            let errorText = '';
-
-            if (action === 'Khôi phục') {
-                confirmationText = 'Bạn có chắc chắn muốn khôi phục đơn này không?';
-                successText = 'Đơn đã được khôi phục thành công.';
-                errorText = 'Không tìm thấy đơn.';
-            } else if (action === 'Xóa vĩnh viễn') {
-                confirmationText = 'Bạn có chắc chắn muốn xóa vĩnh viễn đơn này không?';
-                successText = 'Đơn đã được xóa vĩnh viễn.';
-                errorText = 'Không tìm thấy đơn.';
-            } else if (action === 'Xóa') {
-                confirmationText = 'Bạn có chắc chắn muốn xóa đơn này không?';
-                successText = 'Đơn đã được xóa mềm thành công.';
-                errorText = 'Không tìm thấy đơn.';
-            }  else if (action === 'Duyệt') {
-                confirmationText = 'Bạn có chắc chắn muốn duyệt đơn này không?';
-                successText = 'Đơn đã được duyệt thành công.';
-                errorText = 'Không tìm thấy đơn.';
-            }
-
-
             Swal.fire({
                 title: 'Xác nhận',
-                text: confirmationText,
+                text: 'Bạn có chắc chắn muốn ẩn blog này không?',
                 icon: 'warning',
                 showCancelButton: true,
                 confirmButtonColor: '#3085d6',
@@ -53,15 +29,15 @@ document.addEventListener('DOMContentLoaded', function () {
                             if (data.success) {
                                 Swal.fire(
                                     'Thành công!',
-                                    successText,
+                                    'Blog đã được ẩn thành công.',
                                     'success'
                                 ).then(() => {
-                                    window.location.reload();
+                                    window.location.reload(); // Tải lại trang sau khi thông báo
                                 });
                             } else {
                                 Swal.fire(
                                     'Lỗi!',
-                                    errorText,
+                                    'Không tìm thấy blog.',
                                     'error'
                                 );
                             }

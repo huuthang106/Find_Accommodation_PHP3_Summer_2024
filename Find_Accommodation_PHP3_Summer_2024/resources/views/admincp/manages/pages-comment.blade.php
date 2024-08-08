@@ -51,12 +51,12 @@
                                             {{ $comment->room->title }}
                                         </td>
                                          <td>
-                                            <form action="{{ route('admin.comment.destroy', $comment->id) }}" method="POST"
-                                                style="display: inline;">
+                                            <form action="{{ route('admin.comment.destroy', $comment->id) }}" method="POST" style="display: inline;">
                                                 @csrf
                                                 @method('PUT')
                                                 <button type="submit" class="btn btn-danger">Xóa</button>
                                             </form>
+                                            
                                         </td>
                                     </tr>
                                 @endforeach
@@ -154,5 +154,5 @@
     <!-- Required datatable js -->
     <script src="{{ asset('assets\libs\datatables\jquery.dataTables.min.js') }}"></script>
     <script src="{{ asset('assets\libs\datatables\dataTables.bootstrap4.min.js') }}"></script>
-    <script src="{{ asset('assets\js\comment.js') }}"></script>
+    <script src="{{ asset('assets\js\comment-admin.js') }}"></script>
 @endpush

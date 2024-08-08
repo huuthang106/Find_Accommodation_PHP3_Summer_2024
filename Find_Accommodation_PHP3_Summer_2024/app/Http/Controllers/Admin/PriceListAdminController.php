@@ -39,10 +39,11 @@ class PriceListAdminController extends Controller
         if ($price) {
             $price->status = 5;
             $price->save();
-            return redirect()->back()->with('success', 'Gói tin đã được ẩn thành công.');
+            return response()->json(['success' => true, 'message' => 'Gói tin đã được ẩn thành công.']);
         }
-        return redirect()->back()->with('error', 'Không tìm thấy gói tin.');
+        return response()->json(['success' => false, 'message' => 'Không tìm thấy gói tin.']);
     }
+
 
 
     public function getPriceListDetail()
