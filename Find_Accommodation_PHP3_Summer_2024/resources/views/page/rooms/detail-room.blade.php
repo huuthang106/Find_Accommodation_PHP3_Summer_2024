@@ -30,7 +30,7 @@
                                 class='bx bx-file'></i>
                             Xem hồ sơ</a>
                         <a href="#" class="btn btn-orange p-3 text-light"><i class="fa-solid fa-phone"
-                                style="color: #ffffff;"></i> {{$room->user->phone}}</a>
+                                style="color: #ffffff;"></i> {{ $room->user->phone }}</a>
                     </div>
                 </div>
                 {{-- <div class="d-flex justify-content-end p-0 mt-2">
@@ -149,8 +149,12 @@
             <div class="row justify-content-center p-0 mt-4 ">
                 <div class="col-9 bg-body rounded p-4">
                     <h3>Giới thiệu</h3>
-                    <p>
+                    {{-- <p>
                         {{ $room->description }}
+                    </p> --}}
+                    {{-- Hiển thị Summernote --}}
+                    <p>
+                        {!! $room->description !!}
                     </p>
                 </div>
             </div>

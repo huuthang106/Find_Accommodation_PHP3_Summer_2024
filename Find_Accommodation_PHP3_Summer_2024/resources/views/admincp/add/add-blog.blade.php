@@ -1,23 +1,33 @@
 <!-- resources/views/admincp/manages/create.blade.php -->
 @extends('layouts.app')
-
 @section('content')
-<div class="container">
-    <h2>Thêm Blog Mới</h2>
-    <form action="{{ route('admin.blogs.store') }}" method="POST">
-        @csrf
-        <div class="mb-3">
-            <label for="title" class="form-label">Tiêu đề</label>
-            <input type="text" class="form-control" id="title" name="title" required>
-        </div>
-        <div class="mb-3">
-            <label for="description" class="form-label">Mô tả</label>
-            <textarea class="form-control" id="description" name="description" rows="4" required></textarea>
-        </div>
-      
-        <button type="submit" class="btn btn-primary">Lưu</button>
-    </form>
-</div>
+    <!-- include libraries(jQuery, bootstrap) -->
+    <script type="text/javascript" src="//code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <!-- include summernote css/js -->
+    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
+    {{-- Ngôn ngữ tiếng việt Summernote --}}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.18/lang/summernote-vi-VN.min.js"></script>
+
+    <div class="container">
+        <h2>Thêm Blog Mới</h2>
+        <form action="{{ route('admin.blogs.store') }}" method="POST">
+            @csrf
+            <div class="mb-3">
+                <label for="title" class="form-label">Tiêu đề</label>
+                <input type="text" class="form-control" id="title" name="title" required>
+            </div>
+            <div class="mb-3">
+                <label for="description" class="form-label">Mô tả</label>
+                <textarea class="form-control" id="description" name="description" rows="4" required></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Lưu</button>
+        </form>
+    </div>
+    {{-- Summernote --}}
+    <script src="{{ asset('assets/js/summernote.js') }}"></script>
 @endsection
 @push('styles')
     <!-- App favicon -->
@@ -32,8 +42,7 @@
     <link href="{{ asset('assets/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css" id="bootstrap-stylesheet">
     <link href="{{ asset('assets/css/icons.min.css') }}" rel="stylesheet" type="text/css">
     <link href="{{ asset('assets/css/app.min.css') }}" rel="stylesheet" type="text/css" id="app-stylesheet">
-    <link rel="stylesheet" href="{{asset('assets/css/admin-nht.css')}}">
-
+    <link rel="stylesheet" href="{{ asset('assets/css/admin-nht.css') }}">
 @endpush
 
 @push('scripts')
@@ -78,4 +87,3 @@
     <script src="{{ asset('assets\libs\datatables\jquery.dataTables.min.js') }}"></script>
     <script src="{{ asset('assets\libs\datatables\dataTables.bootstrap4.min.js') }}"></script>
 @endpush
-

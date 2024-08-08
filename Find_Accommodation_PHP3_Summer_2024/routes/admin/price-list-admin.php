@@ -22,7 +22,7 @@ use App\Http\Controllers\Admin\RegisterAdminController;
 use App\Http\Controllers\Admin\ReportAdminController;
 use App\Http\Controllers\Admin\UserController as AdminUserController;
 
-Route::middleware('auth')->group(function () {
+Route::middleware('admin_login')->group(function () {
     Route::get('/quan-ly-goi-dang-tin', [PriceListAdminController::class, 'ShowPriceList'])->name('goi-dang-tin');
     Route::put('/price/{id}', [PriceListAdminController::class, 'destroy'])->name('tin.destroy'); //xóa gói tin
     Route::get('/chi-tiet-goi-tin', [PriceListAdminController::class, 'getPriceListDetail'])->name('get-pricelist'); // showw gói tin ra

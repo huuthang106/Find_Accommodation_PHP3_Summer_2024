@@ -29,7 +29,10 @@ class MemberregistrationAdminController extends Controller
     public function delete($id)
     {
         $updated = Memberregistration::where('id', $id)->update(['status' => 5]);
-        return redirect()->route('admin.duyet-don')->with('success', 'Đã xóa');
+        if ($updated) {
+            return response()->json(['success' => true]);
+        }
+        return response()->json(['success' => false]);
     }
     public function trash()
     {

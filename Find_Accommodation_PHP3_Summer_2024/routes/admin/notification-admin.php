@@ -22,7 +22,7 @@ use App\Http\Controllers\Admin\RegisterAdminController;
 use App\Http\Controllers\Admin\ReportAdminController;
 use App\Http\Controllers\Admin\UserController as AdminUserController;
 
-Route::middleware('auth')->group(function () {
+Route::middleware('admin_login')->group(function () {
     Route::get('/tables-advanced', [NotificationAdminController::class, 'tables_advanced'])->name('tables-advanced');
     Route::get('/lien-he', [HomeAdminController::class, 'extras_contacts'])->name('extras-contacts');
     // Xóa mềm thông báo admin ở cái chuông

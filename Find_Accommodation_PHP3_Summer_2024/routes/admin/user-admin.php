@@ -43,7 +43,7 @@ Route::post('/logout', [IndexController::class, 'logout'])->name('logout');
 Route::get('/', [IndexAdminController::class, 'admin'])->name('admin');
 
 
-Route::middleware('auth')->group(function () {
+Route::middleware('admin_login')->group(function () {
     // [VoTanLuon] Router hiển thị chỉnh sửa tài khoản Admin
     Route::get('/quan-li-ho-so', [UserController::class, 'index'])->name('quan-li-ho-so');
     // Route::get('/quan-li-ho-so-admin', [UserController::class, 'showpfadmin'])->name('quan-li-ho-so-admin');

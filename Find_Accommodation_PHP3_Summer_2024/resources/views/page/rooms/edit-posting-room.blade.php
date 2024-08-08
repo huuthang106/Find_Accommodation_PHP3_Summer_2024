@@ -2,6 +2,16 @@
 @section('titleUs', 'Trang chủ trọ nhanh')
 @section('contentUs')
 
+    <!-- include libraries(jQuery, bootstrap) -->
+    <script type="text/javascript" src="//code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" />
+    <script type="text/javascript" src="cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- include summernote css/js -->
+    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
+    {{-- Ngôn ngữ tiếng việt Summernote --}}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.18/lang/summernote-vi-VN.min.js"></script>
+
     <div class="background-content ">
         <div class="row d-flex justify-content-center ">
             <div class="col-10 bg-body  mt-2 rounded p-2">
@@ -26,7 +36,7 @@
                                     </div>
                                     <div class="mb-3">
                                         <label for="Description" class="form-label">Mô tả</label>
-                                        <textarea class="form-control" id="Description" name="Description" style="height: 125px;"
+                                        <textarea class="form-control" id="description" name="Description" style="height: 125px;"
                                             placeholder="Nhập mô tả bản thân (Nếu có).">{{ $room->description }}</textarea>
                                         @error('Description')
                                             <div class="alert alert-danger">{{ $message }}</div>
@@ -96,8 +106,9 @@
 
                                     <div class="row" id="old-images-container">
                                         @foreach ($room->images as $item)
-                                            <div  class="col-3 image-wrapper">
-                                                <img src="{{ asset('assets/images/'.$item->image) }}" class="card-img-top  old-image" alt="Old Image">
+                                            <div class="col-3 image-wrapper">
+                                                <img src="{{ asset('assets/images/' . $item->image) }}"
+                                                    class="card-img-top  old-image" alt="Old Image">
                                                 {{-- <button type="button" class="delete-btn" data-image-id="{{ $item->id }}">×</button> --}}
                                             </div>
                                         @endforeach
@@ -114,8 +125,8 @@
             </div>
         </div>
     </div>
-
-
+    {{-- Summernote --}}
+    <script src="{{ asset('assets/js/summernote.js') }}"></script>
 @endsection
 
 @push('styles')
@@ -163,6 +174,15 @@
         });
     </script>
 
+    <!-- include libraries(jQuery, bootstrap) -->
+    <script type="text/javascript" src="//code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" />
+    <script type="text/javascript" src="cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- include summernote css/js -->
+    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
+    {{-- Ngôn ngữ tiếng việt Summernote --}}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.18/lang/summernote-vi-VN.min.js"></script>
 
     {{-- <script>
         document.addEventListener('DOMContentLoaded', function() {

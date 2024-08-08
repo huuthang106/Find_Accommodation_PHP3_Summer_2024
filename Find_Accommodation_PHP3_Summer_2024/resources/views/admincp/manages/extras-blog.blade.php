@@ -32,7 +32,7 @@
                                     {{-- <th>Tất cả <input type="checkbox"></th> --}}
                                     <th>STT</th>
                                     <th>Tiêu Đề</th>
-                                    <th>Mô Tả</th>
+                                   
                                     {{-- <th>Giá</th>
                                     <th>Hỗ trợ</th>
                                     <th>Video</th>
@@ -41,6 +41,9 @@
                                     <th>Thao tác</th>
 
                             <tbody>
+                                 @php
+                                $index = 1;     
+                                @endphp
                                 @foreach ($blog as $item)
                                     <tr>
                                         {{-- <th><input type="checkbox"></th> --}}

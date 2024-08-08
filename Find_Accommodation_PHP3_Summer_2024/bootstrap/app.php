@@ -60,7 +60,8 @@ return Application::configure(basePath: dirname(__DIR__))
     ->withMiddleware(function (Middleware $middleware) {
         //
         $middleware->alias([
-            'user_check_login' => '\App\Http\Middleware\RedirectIfNotAuthenticated'
+            'user_check_login' => '\App\Http\Middleware\RedirectIfNotAuthenticated',
+             'admin_login' => '\App\Http\Middleware\LoginAdmin'
         ]);
     })
     ->withExceptions(function (Exceptions $exceptions) {

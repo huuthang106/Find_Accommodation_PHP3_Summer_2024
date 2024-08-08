@@ -22,7 +22,7 @@ use App\Http\Controllers\Admin\RegisterAdminController;
 use App\Http\Controllers\Admin\ReportAdminController;
 use App\Http\Controllers\Admin\UserController as AdminUserController;
 
-Route::middleware('auth')->group(function () {
+Route::middleware('admin_login')->group(function () {
     // [VoTanLuon] Router hiển thị chi tiết báo cáo
     Route::get('/bang-bao-cao', [ReportAdminController::class, 'index'])->name('pages-report');
     Route::get('/bang-bao-cao/{id}', [ReportAdminController::class, 'showReport'])->name('pages-report-detail');

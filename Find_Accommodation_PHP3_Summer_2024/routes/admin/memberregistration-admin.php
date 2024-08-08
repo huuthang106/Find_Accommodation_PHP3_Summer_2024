@@ -23,7 +23,7 @@ use App\Http\Controllers\Admin\MemberregistrationAdminController;
 use App\Http\Controllers\Admin\UserController as AdminUserController;
 use App\Models\Memberregistration;
 
-Route::middleware('auth')->group(function () {
+Route::middleware('admin_login')->group(function () {
     Route::get('danh-sach-don', [MemberregistrationAdminController::class, 'index'])->name('duyet-don');
     Route::get('chi-tiet-don/{id}', [MemberregistrationAdminController::class, 'show'])->name('pages-member-resigter');
     Route::PUT('xoa-don/{id}', [MemberregistrationAdminController::class, 'delete'])->name( 'registration-form');
