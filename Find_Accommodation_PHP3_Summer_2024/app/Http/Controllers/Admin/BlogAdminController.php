@@ -61,13 +61,16 @@ class BlogAdminController extends Controller
 
     // Xóa blog
     public function deleteBlog($id)
-    {
-        $blog = Blogs::findOrFail($id);
+{
+    $blog = Blogs::findOrFail($id);
+    if ($blog) {
         $blog->status = 5;
         $blog->save();
-
-        return redirect()->route('admin.quan-li-blog')->with('success', 'Blog đã được ẩn.');
+        return response()->json(['success' => true]);
     }
+    return response()->json(['success' => false, 'message' => 'Không tìm thấy blog.']);
+}
+
 
     /**
      * Show the form for creating a new resource.

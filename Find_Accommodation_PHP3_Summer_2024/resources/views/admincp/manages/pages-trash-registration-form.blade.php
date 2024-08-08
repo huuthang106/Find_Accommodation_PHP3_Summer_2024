@@ -9,7 +9,7 @@
             <div class="row">
                 <div class="col-12">
                     <div class="d-flex justify-content-between align-items-center header-title">
-                        <h4 class="mb-3">Thùng rác bình luận</h4>
+                        <h4 class="mb-3">Thùng rác đơn</h4>
                         <div>
                             <button type="button" class="btn btn-danger">Xóa tất cả</button>
                             <a href="{{ route('admin.duyet-don') }}" class="btn btn-primary text-white me-2">

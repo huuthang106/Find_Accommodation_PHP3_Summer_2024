@@ -51,12 +51,12 @@
                                             {{ $comment->room->title }}
                                         </td>
                                          <td>
-                                            <form action="{{ route('admin.comment.destroy', $comment->id) }}" method="POST"
-                                                style="display: inline;">
+                                            <form action="{{ route('admin.comment.destroy', $comment->id) }}" method="POST" style="display: inline;">
                                                 @csrf
                                                 @method('PUT')
                                                 <button type="submit" class="btn btn-danger">Xóa</button>
                                             </form>
+                                            
                                         </td>
                                     </tr>
                                 @endforeach
