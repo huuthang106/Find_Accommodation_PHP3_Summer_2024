@@ -1,6 +1,17 @@
 @extends('layouts.layout-user')
 @section('titleUs', 'Trang chủ trọ nhanh')
 @section('contentUs')
+
+    <!-- include libraries(jQuery, bootstrap) -->
+    <script type="text/javascript" src="//code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" />
+    <script type="text/javascript" src="cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- include summernote css/js -->
+    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
+    {{-- Ngôn ngữ tiếng việt Summernote --}}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.18/lang/summernote-vi-VN.min.js"></script>
+
     <!-- start  -->
     <div class="col-md-12">
         <div class="p-0 ">
@@ -9,7 +20,8 @@
                     @if ($user->avatar)
                         {{-- Nếu có avatar sẽ hiển thị avatar --}}
                         <img src="{{ asset('assets/images/users/' . $user->avatar) }}"
-                            class="rounded-circle img-thumbnail avatar-img" alt="profile-image" width="150" height="auto">
+                            class="rounded-circle img-thumbnail avatar-img" alt="profile-image" width="150"
+                            height="auto">
                     @else
                         {{-- còn chưa có sẽ hiển thị 1 avatar cứng --}}
                         <img src="{{ asset('assets/images/users/avatar-user.png') }}"
@@ -121,7 +133,7 @@
                                     </ul>
                                 </div>
                             </div>
-                          
+
                         </div>
                         <div class="col-lg-8 ">
                             <!-- Personal-Information -->
@@ -259,7 +271,7 @@
                                     </div> --}}
                                 <div class="mb-3">
                                     <label for="AboutMe" class="form-label">Mô tả</label>
-                                    <textarea class="form-control" name="about_me" id="AboutMe" style="height: 125px;"
+                                    <textarea class="form-control" name="about_me" id="description" style="height: 125px;"
                                         placeholder="Nhập mô tả bản thân (Nếu có)."></textarea>
                                 </div>
                                 <button type="submit" class="btn btn-primary">Lưu</button>
@@ -280,6 +292,8 @@
             </div>
         </div>
     </div>
+    {{-- Summernote --}}
+    <script src="{{ asset('assets/js/summernote.js') }}"></script>
 @endsection
 {{-- Preview trước avatar nếu chưa có avatar --}}
 
