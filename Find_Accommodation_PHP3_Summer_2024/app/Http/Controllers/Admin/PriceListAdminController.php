@@ -134,16 +134,4 @@ class PriceListAdminController extends Controller
         return redirect()->route('admin.get-pricelist')
             ->with('success', 'Cập nhật thành công');
     }
-    public function hi(Request $request,$id){
-       $request->validate([
-        'name' =>'required',
-        'phone' =>'required|min:1',
-       ],
-       [
-        'name.required'=>'no',
-       ]
-    );
-       
-        return redirect()->route('admin.get-pricelist');
-    }
 }
