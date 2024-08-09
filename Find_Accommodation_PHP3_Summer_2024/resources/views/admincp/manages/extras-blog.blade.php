@@ -55,7 +55,7 @@
                                                 style="display: inline;"> @csrf
                                                 @method('DELETE') <!-- Đổi thành DELETE -->
                                                 <button type="submit" class="btn btn-danger"
-                                                    >Xóa</button>
+                                                     >Xóa</button>
                                             </form>
                                         </td>
 

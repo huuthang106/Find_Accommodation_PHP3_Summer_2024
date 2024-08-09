@@ -33,10 +33,13 @@
                                     <th>Thao tác</th>
 
                             <tbody>
+                                @php
+                                    $index=1;   
+                                @endphp
                                 @foreach ($price as $item)
                                     <tr>
                                         {{-- <th><input type="checkbox"></th> --}}
-                                        <th>{{ $item->id }}</th>
+                                        <th>{{ $index++}}</th>
                                         <td>
                                             @if ($item->status == 1)
                                                 Gói Tiết Kiệm

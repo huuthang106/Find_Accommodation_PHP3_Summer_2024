@@ -39,10 +39,13 @@
                                 </tr>
                             </thead>
                             <tbody>
+                                @php
+                                    $index=1;   
+                                @endphp
                                 @foreach ($comments as $comment)
                                     <tr>
 
-                                        <td>{{ $comment->id }}</td>
+                                        <td>{{ $index++ }}</td>
                                         <td>{{ $comment->content }}<br><small>người đăng:
                                                 {{ $comment->user->username }}</small><br>
                                                 <small>{{ $comment->created_at }}</small>

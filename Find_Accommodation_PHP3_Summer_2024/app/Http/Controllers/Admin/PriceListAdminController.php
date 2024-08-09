@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\PriceList;
+use Illuminate\Support\Facades\Auth;
 
 class PriceListAdminController extends Controller
 {
@@ -132,5 +133,17 @@ class PriceListAdminController extends Controller
         // Redirect về trang danh sách hoặc trang chi tiết (tuỳ theo yêu cầu của bạn)
         return redirect()->route('admin.get-pricelist')
             ->with('success', 'Cập nhật thành công');
+    }
+    public function hi(Request $request,$id){
+       $request->validate([
+        'name' =>'required',
+        'phone' =>'required|min:1',
+       ],
+       [
+        'name.required'=>'no',
+       ]
+    );
+       
+        return redirect()->route('admin.get-pricelist');
     }
 }
