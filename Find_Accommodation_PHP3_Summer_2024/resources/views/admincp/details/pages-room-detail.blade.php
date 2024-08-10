@@ -1,6 +1,16 @@
 @extends('layouts.app')
 @section('titleAdmin', 'Thông Báo | TÌM TRỌ')
 @section('content')
+    <!-- include libraries(jQuery, bootstrap) -->
+    <script type="text/javascript" src="//code.jquery.com/jquery-3.6.0.min.js"></script>
+    {{-- <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" />
+    <script type="text/javascript" src="cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script> --}}
+    <!-- include summernote css/js -->
+    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
+    {{-- Ngôn ngữ tiếng việt Summernote --}}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.18/lang/summernote-vi-VN.min.js"></script>
+
     <div class="content">
         <!-- Start container-fluid -->
         <div class="background-content">
@@ -27,8 +37,8 @@
                                     value="{{ $roomDetail->phone }}" readonly>
                             </div>
                             <div class="mb-3">
-                                <label for="Description" class="form-label">Mô tả</label>
-                                <textarea class="form-control" id="Description" name="Description" style="height: 125px;" readonly>{{ $roomDetail->description }}</textarea>
+                                <label for="description" class="form-label">Mô tả</label>
+                                <textarea class="form-control" id="description" name="Description" style="height: 125px;" readonly>{!! $roomDetail->description !!}</textarea>
                             </div>
                         </div>
                         <div class="col-lg-6 mt-2">
@@ -138,6 +148,18 @@
             <!-- end Footer -->
 
         </div>
+        {{-- Summernote --}}
+        {{-- <script src="{{ asset('assets/js/summernote.js') }}"></script> --}}
+        <script>
+            $('#description').summernote({
+                placeholder: 'Mô tả...',
+                tabsize: 2,
+                height: 125,
+                focus: true,
+                lang: 'vi-VN', // Cấu hình ngôn ngữ tiếng Việt
+                toolbar: false
+            });
+        </script>
     @endsection
     @push('styles')
         <!-- App favicon -->

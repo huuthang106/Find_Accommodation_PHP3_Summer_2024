@@ -1,6 +1,17 @@
 @extends('layouts.layout-user')
 @section('titleUs', 'Trang chủ trọ nhanh')
 @section('contentUs')
+
+    <!-- include libraries(jQuery, bootstrap) -->
+    <script type="text/javascript" src="//code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" />
+    <script type="text/javascript" src="cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- include summernote css/js -->
+    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
+    {{-- Ngôn ngữ tiếng việt Summernote --}}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.18/lang/summernote-vi-VN.min.js"></script>
+
     <!-- start  -->
     <div class="col-md-12">
         <div class="p-0 ">
@@ -9,7 +20,8 @@
                     @if ($user->avatar)
                         {{-- Nếu có avatar sẽ hiển thị avatar --}}
                         <img src="{{ asset('assets/images/users/' . $user->avatar) }}"
-                            class="rounded-circle img-thumbnail avatar-img" alt="profile-image" width="150" height="auto">
+                            class="rounded-circle img-thumbnail avatar-img" alt="profile-image" width="150"
+                            height="auto">
                     @else
                         {{-- còn chưa có sẽ hiển thị 1 avatar cứng --}}
                         <img src="{{ asset('assets/images/users/avatar-user.png') }}"
@@ -55,10 +67,10 @@
                     </a>
                 </li>
             </ul>
-            <div class="tab-content bg-body">
+            <div class="tab-content bg-body  ">
                 <div class="tab-pane fade show active" id="home-b1">
                     <div class="row">
-                        <div class="col-lg-4">
+                        <div class="col-lg-4 p-0 border rounded">
                             <!-- Personal-Information -->
                             <div class="card">
                                 <div class="card-header">
@@ -121,38 +133,12 @@
                                     </ul>
                                 </div>
                             </div>
-                            <!-- Personal-Information -->
-                            <!-- Social -->
-                            {{-- <div class="card">
-                                <div class="card-header">
-                                    <h5 class="card-title">Mạng xã hội</h5>
-                                </div>
-                                <div class="card-body">
-                                    <ul class="list-inline mb-0">
-                                        <li class="list-inline-item me-3">
-                                            <a title="Facebook" data-bs-toggle="tooltip" href="#">
-                                                <i class="fab fa-facebook-f"></i>
-                                            </a>
-                                        </li>
-                                        <li class="list-inline-item me-3">
-                                            <a title="Twitter" data-bs-toggle="tooltip" href="#">
-                                                <i class="fab fa-twitter"></i>
-                                            </a>
-                                        </li>
-                                        <li class="list-inline-item">
-                                            <a title="Skype" data-bs-toggle="tooltip" href="#">
-                                                <i class="fab fa-skype"></i>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div> --}}
-                            <!-- Social -->
+
                         </div>
-                        <div class="col-lg-8">
+                        <div class="col-lg-8 ">
                             <!-- Personal-Information -->
 
-                            <div class="card">
+                            <div class="card border">
                                 <div class="card-header">
                                     <h5 class="card-title">Bài viết đã đăng</h5>
                                 </div>
@@ -231,7 +217,7 @@
                                     @error('avatar')
                                         <small class="text-danger text-bold">{{ $message }}</small>
                                     @enderror
-                                    <div id="avatar-preview" class="mt-2">
+                                    <div id="avatar-preview" class="mt-2 avatar-preview">
                                         @if ($user->avatar)
                                             <img src="{{ asset('assets/images/users/' . $user->avatar) }}"
                                                 alt="Current Avatar" class="img-thumbnail" style="max-width: 100px;">
@@ -285,11 +271,20 @@
                                     </div> --}}
                                 <div class="mb-3">
                                     <label for="AboutMe" class="form-label">Mô tả</label>
-                                    <textarea class="form-control" name="about_me" id="AboutMe" style="height: 125px;"
+                                    <textarea class="form-control" name="about_me" id="description" style="height: 125px;"
                                         placeholder="Nhập mô tả bản thân (Nếu có)."></textarea>
                                 </div>
                                 <button type="submit" class="btn btn-primary">Lưu</button>
                             </form>
+                            @if (session('showAlert'))
+                                <script>
+                                    var showAlert = @json(session('showAlert'));
+                                    // Kiểm tra các thông báo
+                                    if (typeof showAlert !== 'undefined') {
+                                        console.log(showAlert); // Kiểm tra giá trị showAlert
+                                    }
+                                </script>
+                            @endif
                         </div>
                     </div>
                     <!-- Personal-Information -->
@@ -297,6 +292,8 @@
             </div>
         </div>
     </div>
+    {{-- Summernote --}}
+    <script src="{{ asset('assets/js/summernote.js') }}"></script>
 @endsection
 {{-- Preview trước avatar nếu chưa có avatar --}}
 
@@ -349,13 +346,13 @@
     <script src="https://cdn.datatables.net/plug-ins/1.11.4/i18n/Vietnamese.json"></script>
     <script src="{{ asset('assets\js\app-nht.js') }}"></script>
     {{-- dropdow nut profile --}}
-    
+
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
     <script src="{{ asset('assets\js\app-nht.js') }}"></script>
     {{-- dropdow nut profile --}}
-    
+
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     {{-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"> --}}
@@ -407,4 +404,7 @@
             });
         });
     </script>
+    <!-- Show Alert -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="{{ asset('assets\js\show-alert.js') }}" text="text/javascript"></script>
 @endpush

@@ -13,12 +13,12 @@
                         <div class="btn-group">
                             <a href="{{ route('admin.blogs.create') }}" class="btn btn-primary mx-2">Thêm Blog</a>
                             <button type="button" class="btn btn-danger me-2">Xóa tất cả</button>
-                        
+
                         </div>
                     </div>
                 </div>
             </div>
-            
+
 
             <!-- end row -->
 
@@ -29,39 +29,40 @@
                             style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                             <thead>
                                 <tr>
-                                
-                                    <th>Tất cả <input type="checkbox"></th>
+                                    {{-- <th>Tất cả <input type="checkbox"></th> --}}
                                     <th>STT</th>
                                     <th>Tiêu Đề</th>
-                                    <th>Mô Tả</th>
+
                                     {{-- <th>Giá</th>
                                     <th>Hỗ trợ</th>
                                     <th>Video</th>
                                     <th>Bài đăng</th>
-                                    <th>Nội dung</th>--}}
-                                    <th>Thao tác</th> 
+                                    <th>Nội dung</th> --}}
+                                    <th>Thao tác</th>
 
-                                    <tbody>
-                                        @foreach ($blog as $item)
-                                            <tr>
-                                               
-                                                <th><input type="checkbox"></th>
-                                                <th>{{ $item->id }}</th>
-                                               
-                                           
-                                                <td>{{ Str::limit($item->title, 15) }}</td>
-                                                <td>{{ Str::limit($item->description, 25)}}</td>           
-                                                <td>
-                                                    <form action="{{ route('admin.delete-blog', $item->id) }}" method="POST" style="display: inline;">                                                        @csrf
-                                                        @method('DELETE') <!-- Đổi thành DELETE -->
-                                                        <button type="submit" class="btn btn-danger" onclick="return confirm('Bạn có chắc chắn muốn ẩn gói tin này không?');">Xóa</button>
-                                                    </form>
-                                                </td>
-                                                
-                                            </tr>
-                                        @endforeach
-                                    </tbody>
-                                    
+                            <tbody>
+                                @php
+                                    $index = 1;
+                                @endphp
+                                @foreach ($blog as $item)
+                                    <tr>
+                                        {{-- <th><input type="checkbox"></th> --}}
+                                        <th width="4%">{{$index++}}</th>
+                                        <td style="word-wrap: break-word; white-space: normal;">{{ $item->title }}</td>
+                                       
+                                        <td>
+                                            <form action="{{ route('admin.delete-blog', $item->id) }}" method="POST"
+                                                style="display: inline;"> @csrf
+                                                @method('DELETE') <!-- Đổi thành DELETE -->
+                                                <button type="submit" class="btn btn-danger"
+                                                     >Xóa</button>
+                                            </form>
+                                        </td>
+
+                                    </tr>
+                                @endforeach
+                            </tbody>
+
                         </table>
 
                     </div>
@@ -106,8 +107,7 @@
     <link href="{{ asset('assets/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css" id="bootstrap-stylesheet">
     <link href="{{ asset('assets/css/icons.min.css') }}" rel="stylesheet" type="text/css">
     <link href="{{ asset('assets/css/app.min.css') }}" rel="stylesheet" type="text/css" id="app-stylesheet">
-    <link rel="stylesheet" href="{{asset('assets/css/admin-nht.css')}}">
-
+    <link rel="stylesheet" href="{{ asset('assets/css/admin-nht.css') }}">
 @endpush
 
 @push('scripts')
@@ -151,4 +151,5 @@
     <!-- Required datatable js -->
     <script src="{{ asset('assets\libs\datatables\jquery.dataTables.min.js') }}"></script>
     <script src="{{ asset('assets\libs\datatables\dataTables.bootstrap4.min.js') }}"></script>
+    <script src="{{ asset('assets\js\room.js') }}"></script>
 @endpush

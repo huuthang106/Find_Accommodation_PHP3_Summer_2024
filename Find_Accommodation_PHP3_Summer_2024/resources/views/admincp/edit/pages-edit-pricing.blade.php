@@ -1,16 +1,23 @@
-@extends('layouts.error')
-@section('titleAdmin', 'Đăng Ký | TÌM TRỌ')
+@extends('layouts.app')
+@section('titleAdmin', 'Thông Báo | TRỌ NHANH')
 @section('content')
-    <div class="account-pages my-5 pt-5">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-md-8 col-lg-6">
+    <div class="content">
+        <!-- Start container-fluid -->
+        <div class="container-fluid">
+            <!-- start  -->
+            <div class="row">
+                <div class="col-12">
+                    <div>
+                        <h4 class="header-title mb-3 text-center">CHỈNH SỬA GÓI TIN</h4>
+                    </div>
+                </div>
+            </div>
+            <!-- end row -->
+
+            <div class="row">
+                <div class="col-12">
                     <div class="card">
                         <div class="card-body">
-
-                            <div class="col-12">
-                                <h4 class="text-center text-primary">CHỈNH SỬA GÓI TIN</h4>
-                            </div>
                             <form action="{{ route('admin.put-pricing-detail', $priceList->id) }}" method="POST"
                                 id="yourFormId" class="p-2">
                                 @csrf
@@ -18,45 +25,65 @@
 
                                 <div class="form-group">
                                     <label for="package-type">Loại gói</label>
-                                    <select class="form-control" id="package-type" name="status" required>
-                                        <option value="1" {{ $priceList->status == 1 ? 'selected' : '' }}>Gói Tiết Kiệm
+                                    <select class="form-control" id="package-type" name="status">
+                                        <option value="1" {{ $priceList->status == 1 ? 'selected' : '' }}>
+                                            Gói
+                                            Tiết Kiệm
                                         </option>
-                                        <option value="2" {{ $priceList->status == 2 ? 'selected' : '' }}>Gói Nâng Cao
+                                        <option value="2" {{ $priceList->status == 2 ? 'selected' : '' }}>
+                                            Gói
+                                            Nâng Cao
                                         </option>
-                                        <option value="3" {{ $priceList->status == 3 ? 'selected' : '' }}>Gói Cao Cấp
+                                        <option value="3" {{ $priceList->status == 3 ? 'selected' : '' }}>
+                                            Gói
+                                            Cao Cấp
                                         </option>
                                     </select>
                                 </div>
 
                                 <div class="form-group">
                                     <label for="price">Giá</label>
-                                    <input class="form-control" type="text" id="price" name="price" required
-                                        placeholder="Giá"
-                                        value="{{ optional($priceList)->price ? number_format($priceList->price, 0, ',', '.') : '' }}">
+                                    <input class="form-control" type="text" id="price" name="price"
+                                        placeholder="Giá" value="{{ optional($priceList)->price ?? '' }}">
+                                    @error('price')
+                                        <div class="alert alert-danger mt-1">{{ $message }}</div>
+                                    @enderror
                                 </div>
 
                                 <div class="form-group">
                                     <label for="support">Hỗ trợ</label>
-                                    <input class="form-control" type="text" id="support" name="support" required
+                                    <input class="form-control" type="text" id="support" name="support"
                                         placeholder="Hỗ trợ" value="{{ $priceList->Support ?? '' }}">
+                                    @error('support')
+                                        <div class="alert alert-danger mt-1">{{ $message }}</div>
+                                    @enderror
                                 </div>
 
                                 <div class="form-group">
                                     <label for="video">Video</label>
-                                    <input class="form-control" type="text" id="video" name="videoPosting" required
+                                    <input class="form-control" type="text" id="video" name="videoPosting"
                                         placeholder="Video" value="{{ $priceList->Video_Posting ?? '' }}">
+                                    @error('videoPosting')
+                                        <div class="alert alert-danger mt-1">{{ $message }}</div>
+                                    @enderror
                                 </div>
 
                                 <div class="form-group">
                                     <label for="posts">Bài đăng</label>
-                                    <input class="form-control" type="text" id="posts" name="postPosting" required
+                                    <input class="form-control" type="text" id="posts" name="postPosting"
                                         placeholder="Bài đăng" value="{{ $priceList->Post_Posting ?? '' }}">
+                                    @error('postPosting')
+                                        <div class="alert alert-danger mt-1">{{ $message }}</div>
+                                    @enderror
                                 </div>
 
                                 <div class="form-group">
                                     <label for="content">Nội dung</label>
-                                    <input class="form-control" type="text" id="content" name="description" required
+                                    <input class="form-control" type="text" id="content" name="description"
                                         placeholder="Nội dung" value="{{ $priceList->description ?? '' }}">
+                                    @error('description')
+                                        <div class="alert alert-danger mt-1">{{ $message }}</div>
+                                    @enderror
                                 </div>
 
                                 <div class="mb-3 text-center">
@@ -67,21 +94,24 @@
                         <!-- end card-body -->
                     </div>
                     <!-- end card -->
-
-                    <div class="row mt-4">
-                        <div class="col-sm-12 text-center">
-                            <a href="{{ route('admin.get-pricelist') }}" class="btn btn-secondary"><b>Quay về</b></a>
-                        </div>
-                    </div>
-
                 </div>
                 <!-- end col -->
             </div>
             <!-- end row -->
         </div>
-        <!-- end container -->
+        <!-- end container-fluid -->
+        <!-- Footer Start -->
+        <footer class="footer">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-12">
+                        2024 &copy; Copyright by <a href="">TRỌ NHANH</a>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <!-- end Footer -->
     </div>
-    <!-- end page -->
 @endsection
 @push('styles')
     <!-- App favicon -->
@@ -140,4 +170,30 @@
     <!-- Required datatable js -->
     <script src="{{ asset('assets\libs\datatables\jquery.dataTables.min.js') }}"></script>
     <script src="{{ asset('assets\libs\datatables\dataTables.bootstrap4.min.js') }}"></script>
+    {{-- <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var priceInput = document.getElementById('price');
+
+            priceInput.addEventListener('input', function() {
+                var value = priceInput.value.replace(/\./g, ''); // Loại bỏ dấu chấm để xử lý
+                value = value.replace(/\D/g, ''); // Loại bỏ các ký tự không phải số
+                var formattedValue = new Intl.NumberFormat('de-DE').format(value);
+                priceInput.value = formattedValue;
+            });
+
+            // priceInput.addEventListener('focus', function() {
+            //     var value = priceInput.value.replace(/\./g, ''); // Loại bỏ dấu chấm khi focus
+            //     priceInput.value = value;
+            // });
+
+            priceInput.addEventListener('blur', function() {
+                var value = priceInput.value;
+                if (value) {
+                    // Định dạng lại giá trị khi mất tiêu điểm
+                    var formattedValue = new Intl.NumberFormat('de-DE').format(value);
+                    priceInput.value = formattedValue;
+                }
+            });
+        });
+    </script> --}}
 @endpush

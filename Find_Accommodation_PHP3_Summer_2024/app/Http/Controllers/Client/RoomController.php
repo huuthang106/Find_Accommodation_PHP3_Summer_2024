@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Client;
 
+use DOMDocument;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
@@ -21,22 +22,22 @@ class RoomController extends Controller
 
     public function index()
     {
-        //
-        $rooms = Room::where('status', 1)->orderBy('created_at', 'desc')->take(20)->get();
+        $rooms = Room::where('status', 1)
+            ->orderBy('created_at', 'desc')
+            ->take(20)
+            ->get()
+            ->map(function ($room) {
+                $room->price = number_format($room->price, 0, ',', '.');
+                $room->randomImage = $room->images->isNotEmpty() ? $room->images->random()->image : null;
+                return $room;
+            });
 
-        // Giới hạn tiêu đề chỉ lấy 10 ký tự đầu tiên
-        $rooms = $rooms->map(function ($room) {
-            $room->title = Str::limit($room->title, 20);
-            $room->address = Str::limit($room->address, 20);
-            $room->price = number_format($room->price, 0, ',', '.');
-            // Sử dụng toán tử Elvis để lấy hình ảnh ngẫu nhiên nếu có
-            // isNotEmpty()một phương thức của Collection giúp kiểm tra tính đầy đủ của tập hợp một cách nhanh chóng và rõ ràng
-            $room->randomImage = $room->images->isNotEmpty() ? $room->images->random()->image : null;
-            return $room;
-        });
+        $categories = Category::all();
+        $areas = Areas::all(); // Lấy danh sách các khu vực
 
-        return view('index', compact('rooms'));
+        return view('index', compact('rooms', 'categories', 'areas'));
     }
+
 
     public function reportRoom($roomId)
     {
@@ -154,6 +155,12 @@ class RoomController extends Controller
             'images.*.max' => 'Kích thước hình ảnh không được vượt quá 2048 kilobytes (2MB).',
         ]);
 
+        $description = $request->Description;
+
+        $dom = new DOMDocument();
+        @$dom->loadHTML($description, LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD);
+
+        $description = $dom->saveHTML();
         $data = $request->only('Title', 'Description', 'Price', 'Phone', 'Address', 'Category_id', 'quantity', 'area_id', 'user_id');
 
         // Tạo phòng nguyen huu thang xử lý hình ảnh
@@ -217,7 +224,12 @@ class RoomController extends Controller
             'images.*.max' => 'Kích thước hình ảnh không được vượt quá 2048 kilobytes (2MB).',
         ]);
         // dd($request);
+        $description = $request->Description;
 
+        $dom = new DOMDocument();
+        @$dom->loadHTML($description, LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD);
+
+        $description = $dom->saveHTML();
         // Lấy phòng cần cập nhật
         $room = Room::findOrFail($roomId);
 
@@ -274,5 +286,38 @@ class RoomController extends Controller
         $room->status = 7;
         $room->save();
         return redirect()->route('profileus')->with('success', 'Xóa thành công');
+    }
+
+    public function search(Request $request)
+    {
+
+        $query = Room::query();
+
+
+        if ($request->filled('diadiem')) {
+            $query->where('area_id', $request->diadiem);
+        }
+
+        if ($request->filled('gia')) {
+            $query->where('price', '<=', $request->gia);
+        }
+
+        if ($request->filled('dientich')) {
+        }
+
+        $rooms = $query->where('status', 1)->orderBy('created_at', 'desc')->take(20)->get();
+        $totalRooms = $query->where('status', 1)->count();
+
+        $rooms = $rooms->map(function ($room) {
+
+            $room->price = number_format($room->price, 0, ',', '.');
+            $room->randomImage = $room->images->isNotEmpty() ? $room->images->random()->image : null;
+            return $room;
+        });
+
+        $categories = Category::all();
+        $areas = Areas::find($request->diadiem);
+        // dd($areas);
+        return view('page.rooms.search-room', compact('rooms', 'categories', 'areas', 'totalRooms', 'request'));
     }
 }

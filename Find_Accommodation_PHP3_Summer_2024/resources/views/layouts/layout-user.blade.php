@@ -15,7 +15,7 @@
 
 <body>
 
-    <div class="page-home">
+    <div class="container-fluid page-home p-0">
         <div class="container">
             <div class="row headerTop">
                 <div class="col-3">
@@ -357,10 +357,12 @@
                                 </form>
                                 <div class="row mt-3">
                                     <div class="col-sm-12 text-center">
-                                        <p class="text-muted mb-0">Bạn đã có tài khoản? <a href="#"
-                                                id="showLoginModal" class="text-decoration-none"
-                                                data-bs-toggle="modal" data-bs-target="#loginModal"><b>ĐĂNG
-                                                    NHẬP</b></a></p>
+                                        <p class="text-muted mb-0">Bạn đã có tài khoản?
+                                            <a href="#" id="showLoginModal" class="text-decoration-none"
+                                                data-bs-toggle="modal" data-bs-target="#loginModal">
+                                                <b>ĐĂNG NHẬP</b>
+                                            </a>
+                                        </p>
                                     </div>
                                 </div>
                             </div>
@@ -375,7 +377,7 @@
         <footer class="mt-5">
             <div class="container">
                 <div class="row">
-                    <div class="col-3">
+                    <div class="col-3 mt-5">
                         <img class="img-fluid" src="{{ asset('assets\images\logo3.png') }}" alt="">
                         <span class="titleFooter">Tìm trọ nhanh,dễ tìm</span>
                     </div>
@@ -405,9 +407,78 @@
             </div>
         </footer>
     </div>
+
+    <script>
+        // Configs
+        let liveChatBaseUrl = document.location.protocol + '//' + 'livechat.fpt.ai/v36/src'
+        let LiveChatSocketUrl = 'livechat.fpt.ai:443'
+        let FptAppCode = '0ef59efeff9ae59af7e723a6c3e8cf80'
+        let FptAppName = 'Hỗ Trợ Trực Tuyến'
+        // Define custom styles
+        let CustomStyles = {
+            // header
+            headerBackground: 'linear-gradient(86.7deg, #3353a2ff 0.85%, #4949DCFF 98.94%)',
+            headerTextColor: '#FFFFFFFF',
+            headerLogoEnable: false,
+            headerLogoLink: 'https://chatbot-tools.fpt.ai/livechat-builder/img/Icon-fpt-ai.png',
+            headerText: 'Hỗ Trợ Trực Tuyến',
+            // main
+            primaryColor: '#4949DCFF',
+            secondaryColor: '#ecececff',
+            primaryTextColor: '#ffffffff',
+            secondaryTextColor: '#000000DE',
+            buttonColor: '#b4b4b4ff',
+            buttonTextColor: '#ffffffff',
+            bodyBackgroundEnable: false,
+            bodyBackgroundLink: '',
+            avatarBot: 'https://cdn.pixabay.com/photo/2016/06/13/17/30/mail-1454732_960_720.png',
+            sendMessagePlaceholder: 'Tin nhắn...',
+            // float button
+            floatButtonLogo: 'https://cdn.pixabay.com/photo/2016/06/13/17/30/mail-1454732_960_720.png',
+            floatButtonTooltip: 'Can I help you?',
+            floatButtonTooltipEnable: false,
+            // start screen
+            customerLogo: 'https://cdn.pixabay.com/photo/2016/06/13/17/30/mail-1454732_960_720.png',
+            customerWelcomeText: 'Vui lòng nhập tên',
+            customerButtonText: 'Bắt đầu',
+            prefixEnable: false,
+            prefixType: 'radio',
+            prefixOptions: ["Anh", "Chị"],
+            prefixPlaceholder: 'Danh xưng',
+            // custom css
+            css: ''
+        }
+        // Get bot code from url if FptAppCode is empty
+        if (!FptAppCode) {
+            let appCodeFromHash = window.location.hash.substr(1)
+            if (appCodeFromHash.length === 32) {
+                FptAppCode = appCodeFromHash
+            }
+        }
+        // Set Configs
+        let FptLiveChatConfigs = {
+            appName: FptAppName,
+            appCode: FptAppCode,
+            themes: '',
+            styles: CustomStyles
+        }
+        // Append Script
+        let FptLiveChatScript = document.createElement('script')
+        FptLiveChatScript.id = 'fpt_ai_livechat_script'
+        FptLiveChatScript.src = liveChatBaseUrl + '/static/fptai-livechat.js'
+        document.body.appendChild(FptLiveChatScript)
+        // Append Stylesheet
+        let FptLiveChatStyles = document.createElement('link')
+        FptLiveChatStyles.id = 'fpt_ai_livechat_script'
+        FptLiveChatStyles.rel = 'stylesheet'
+        FptLiveChatStyles.href = liveChatBaseUrl + '/static/fptai-livechat.css'
+        document.body.appendChild(FptLiveChatStyles)
+        // Init
+        FptLiveChatScript.onload = function() {
+            fpt_ai_render_chatbox(FptLiveChatConfigs, liveChatBaseUrl, LiveChatSocketUrl)
+        }
+    </script>
     @stack('scripts')
 </body>
-
-
 
 </html>

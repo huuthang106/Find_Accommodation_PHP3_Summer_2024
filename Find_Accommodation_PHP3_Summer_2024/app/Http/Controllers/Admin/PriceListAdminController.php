@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\PriceList;
+use Illuminate\Support\Facades\Auth;
 
 class PriceListAdminController extends Controller
 {
@@ -39,10 +40,11 @@ class PriceListAdminController extends Controller
         if ($price) {
             $price->status = 5;
             $price->save();
-            return redirect()->back()->with('success', 'Gói tin đã được ẩn thành công.');
+            return response()->json(['success' => true, 'message' => 'Gói tin đã được ẩn thành công.']);
         }
-        return redirect()->back()->with('error', 'Không tìm thấy gói tin.');
+        return response()->json(['success' => false, 'message' => 'Không tìm thấy gói tin.']);
     }
+
 
 
     public function getPriceListDetail()
@@ -95,18 +97,28 @@ class PriceListAdminController extends Controller
      */
     public function update(Request $request, $id)
     {
+
         // Validate dữ liệu từ request
         $request->validate([
             'status' => 'required|in:1,2,3', // Đảm bảo status chỉ nhận các giá trị 1, 2 hoặc 3
-            'price' => 'required|numeric',
+            'price' => 'required|regex:/^\d+(\.\d{3})*$/',
             'support' => 'required',
             'videoPosting' => 'required',
             'postPosting' => 'required',
             'description' => 'required',
+        ], [
+            'price.regex' => 'Vui lòng không nhập chữ',
+            'support.required' => 'Vui lòng nhập hỗ trợ',
+            'videoPosting.required' => 'Vui lòng nhập video',
+            'postPosting.required' => 'Vui lòng nhập bài đăng',
+            'description.required' => 'Vui lòng nhập nội dung',
+            'price.required' => 'Vui lòng nhập giá',
         ]);
-
+        // dd($request);
         // Tìm đối tượng PriceList theo $id
         $priceList = PriceList::findOrFail($id);
+        // Loai bo dau cham 
+        // $cleanPrice = str_replace('.', '', $request->input('price'));
 
         // Cập nhật các trường dữ liệu từ request vào đối tượng PriceList
         $priceList->status = $request->input('status');
@@ -118,7 +130,6 @@ class PriceListAdminController extends Controller
 
         // Lưu lại vào cơ sở dữ liệu
         $priceList->save();
-
         // Redirect về trang danh sách hoặc trang chi tiết (tuỳ theo yêu cầu của bạn)
         return redirect()->route('admin.get-pricelist')
             ->with('success', 'Cập nhật thành công');

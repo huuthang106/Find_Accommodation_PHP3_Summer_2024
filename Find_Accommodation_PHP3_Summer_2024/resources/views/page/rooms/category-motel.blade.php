@@ -5,8 +5,8 @@
     <div class="container">
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="{{ route('home') }}">Trang chủ</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Phòng trọ</li>
+                <li class="breadcrumb-item"><a href="{{ route('home') }}" class="text-decoration-none text-secondary">Trang chủ</a></li>
+                <li class="breadcrumb-item active" aria-current="page"><a href="{{ route('category-motel-id', $category->id) }}" class="text-decoration-none text-dark">{{$category->name}}</a></li>
             </ol>
         </nav>
         <h2 class="fw-bold">{{$category->name}}</h2>
@@ -15,7 +15,7 @@
                 <div class="col-lg-9 p-0 rounded-5">
                     <div class="p-3 mb-2 bg-light text-dark">
                         <div class="d-flex justify-content-between">
-                            <p class="pt-2 text-bold fs-5 fw-bold">Tổng {{$totalRooms}} kết quả</p>
+                            <p class="pt-2 text-bold fs-5 fw-bold">Tổng {{$totalRooms}} kết quả cho {{$category->name}}</p>
                             <div class="p-0 d-flex justify-content-evenly">
                                 <p class="pt-3 pe-3 fw-bold text-center">Sắp xếp theo</p>
                                 <select class="p-0 form-select-sm border-0 bg-light text-dark" aria-label="">

@@ -30,35 +30,36 @@
                             style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                             <thead>
                                 <tr>
-                                    <th>Tất cả <input type="checkbox"></th>
+
                                     <th>STT</th>
                                     <th>Nội dung</th>
                                     <th>Tên bài viết</th>
-                                    <th>Tên người dùng</th>
-                                    <th>Ngày bình luận</th>
+                                
                                     <th>Chức năng</th>
                                 </tr>
                             </thead>
                             <tbody>
+                                @php
+                                    $index=1;   
+                                @endphp
                                 @foreach ($comments as $comment)
                                     <tr>
-                                        <td><input type="checkbox"></td>
-                                        <td>{{ $comment->id }}</td>
-                                        <td>{{ $comment->content }}</td>
-                                        <td>{{ $comment->room->title }}</td>
-                                        <td>{{ $comment->user->username }}</td>
-                                        {{-- <td>{{ $comment->created_at }}</td> --}}
-                                        <td>
-                                            {{ \Carbon\Carbon::parse($comment->created_at)->timezone('Asia/Ho_Chi_Minh')->format('d/m/Y H:i') }}
+
+                                        <td>{{ $index++ }}</td>
+                                        <td>{{ $comment->content }}<br><small>người đăng:
+                                                {{ $comment->user->username }}</small><br>
+                                                <small>{{ $comment->created_at }}</small>
                                         </td>
                                         <td>
-                                            <form action="{{ route('admin.comment.destroy', $comment->id) }}" method="POST"
-                                                style="display: inline;">
+                                            {{ $comment->room->title }}
+                                        </td>
+                                         <td>
+                                            <form action="{{ route('admin.comment.destroy', $comment->id) }}" method="POST" style="display: inline;">
                                                 @csrf
                                                 @method('PUT')
-                                                <button type="submit" class="btn btn-danger"
-                                                    onclick="return confirm('Bạn có chắc chắn muốn ẩn bình luận này không?');">Xóa</button>
+                                                <button type="submit" class="btn btn-danger">Xóa</button>
                                             </form>
+                                            
                                         </td>
                                     </tr>
                                 @endforeach
@@ -67,6 +68,7 @@
                     </div>
                 </div>
             </div>
+
 
 
         </div>
@@ -113,6 +115,9 @@
 
 @push('scripts')
     <!-- Vendor js -->
+    <!-- SweetAlert2 CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
     <script src="{{ asset('assets/js/vendor.min.js') }}"></script>
 
     <script src="{{ asset('assets/libs/morris-js/morris.min.js') }}"></script>
@@ -152,4 +157,5 @@
     <!-- Required datatable js -->
     <script src="{{ asset('assets\libs\datatables\jquery.dataTables.min.js') }}"></script>
     <script src="{{ asset('assets\libs\datatables\dataTables.bootstrap4.min.js') }}"></script>
+    <script src="{{ asset('assets\js\comment-admin.js') }}"></script>
 @endpush

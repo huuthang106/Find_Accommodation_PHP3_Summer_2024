@@ -24,25 +24,24 @@
                             style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                             <thead>
                                 <tr>
-                                    <th>Tất cả <input type="checkbox"></th>
+                                    {{-- <th>Tất cả <input type="checkbox"></th> --}}
                                     {{-- <th>STT</th> --}}
                                     <th>Tên người đăng</th>
                                     <th>Ngày đăng ký</th>
-                                    <th>Xem chi tiết</th>
+                                    
                                     <th>Chức Năng</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @foreach ($users as $item)
                                     <tr>
-                                        <th><input type="checkbox"></th>
+                                        {{-- <th><input type="checkbox"></th> --}}
                                         {{-- <th>{{ $item->id }}</th> --}}
                                         <td>{{ $item->username }}</td>
                                         <td>{{ $item->created_at->format('d/m/Y') }}</td>
                                         <td><a href="{{ route('profile-other', $item->id) }}" class="btn btn-primary">Xem
                                                 chi
-                                                tiết</a></td>
-                                        <td>
+                                                tiết</a>
                                             <form action="{{ route('admin.rooms.destroy', $item->id) }}" method="POST"
                                                 style="display: inline;">
                                                 @csrf

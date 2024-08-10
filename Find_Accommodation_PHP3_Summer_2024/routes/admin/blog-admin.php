@@ -21,13 +21,14 @@ use App\Http\Controllers\Admin\RegisterAdminController;
 use App\Http\Controllers\Admin\ReportAdminController;
 use App\Http\Controllers\Admin\UserController as AdminUserController;
 
-Route::middleware('auth')->group(function () {
-    
-Route::get('/blog', [BlogAdminController::class, 'Showblog'])->name('quan-li-blog'); // Hiển thị blog 
+Route::middleware('admin_login')->group(function () {
 
-Route::delete('/delete-blog/{id}', [BlogAdminController::class, 'deleteBlog'])->name('delete-blog'); // Xóa blog
+    Route::get('/blog', [BlogAdminController::class, 'Showblog'])->name('quan-li-blog'); // Hiển thị blog 
 
-Route::get('/blogs/create', [BlogAdminController::class, 'create'])->name('blogs.create'); // Tạo blog
+    Route::delete('/delete-blog/{id}', [BlogAdminController::class, 'deleteBlog'])->name('delete-blog'); // Xóa blog
 
-Route::post('/blogs', [BlogAdminController::class, 'store'])->name('blogs.store'); // tạo blog
+    Route::get('/blogs/create', [BlogAdminController::class, 'create'])->name('blogs.create'); // Tạo blog
+
+    Route::post('/blogs', [BlogAdminController::class, 'store'])->name('blogs.store'); // tạo blog
 });
+

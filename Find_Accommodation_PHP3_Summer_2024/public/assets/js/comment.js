@@ -90,9 +90,10 @@ $(document).ready(function () {
 
     $('#commentForm').submit(function (e) {
         e.preventDefault(); // Ngăn chặn hành vi mặc định của form gửi đi
-
+    
         var form = $(this);
-
+        var content = form.find('textarea[name="content"]').val();
+    
         if (!userIsLoggedIn) { // Kiểm tra nếu người dùng chưa đăng nhập
             Swal.fire({
                 title: 'Bạn chưa đăng nhập',
@@ -105,7 +106,17 @@ $(document).ready(function () {
             });
             return;
         }
-
+    
+        if (!content) {
+            Swal.fire({
+                title: 'Nội dung không được để trống',
+                text: 'Vui lòng nhập nội dung bình luận.',
+                icon: 'warning',
+                confirmButtonText: 'OK'
+            });
+            return;
+        }
+    
         $.ajax({
             type: 'POST',
             url: form.attr('action'),
@@ -133,6 +144,7 @@ $(document).ready(function () {
             }
         });
     });
+    
 
     $(document).on('click', '#showAllCommentsBtn', function(e) {
         e.preventDefault();
@@ -159,5 +171,10 @@ $(document).ready(function () {
             localStorage.removeItem('scrollPosition'); // Xóa vị trí cuộn sau khi đã cuộn đến
         }
     });
+    
 });
+
+
+
+
 

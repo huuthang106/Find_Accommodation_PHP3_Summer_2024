@@ -7,8 +7,13 @@
         <div class="p-0 text-center">
             <div class="member-card">
                 <div class="avatar-xxl member-thumb mb-2 center-page mx-auto">
+                    @if(isset($users->avatar))
+                    <img src="{{ asset('assets/images/users/'.$users->avatar) }}" class="rounded-circle img-thumbnail avatar-img" alt="profile-image" width="150" height="auto">
+                    @else
                     <img src="{{ asset('assets/images/users/avatar-3.jpg') }}" class="rounded-circle img-thumbnail"
-                        alt="profile-image">
+                    alt="profile-image">
+                    @endif
+                   
                     <i class="mdi mdi-star-circle member-star text-success" title="verified user"></i>
                 </div>
                 <div class="">
@@ -50,46 +55,47 @@
         <div class="tab-content bg-body">
             <div class="tab-pane fade show active" id="home-b1">
                 <div class="row">
-                    <div class="col-lg-3">
+                    <div class="col-lg-4 p-0 border rounded">
                         <!-- Personal-Information -->
                         <div class="card">
                             <div class="card-header">
                                 <h5 class="card-title">Thông Tin Cá Nhân</h5>
                             </div>
                             <div class="card-body">
-                                {{-- <div class="mb-4">
-                                    <strong>Số dư</strong>
-                                    <br>
-                                    <p class="text-muted mb-0">{{ number_format($users->balance, 0, ',', '.') }}đ
-                                    </p>
-                                </div> --}}
-                                <div class="mb-4">
-                                    <strong>Họ và Tên</strong>
-                                    <br>
-                                    <p class="text-muted">{{ $users->username }}</p>
-                                </div>
-                                <div class="mb-4">
-                                    <strong>Số điện thoại</strong>
-                                    <br>
-                                    <p class="text-muted">{{ $users->phone }}</p>
-                                </div>
-                                <div class="mb-4">
-                                    <strong>Email</strong>
-                                    <br>
-                                    <p class="text-muted">{{ $users->email }}</p>
-                                </div>
-                                <div class="mb-0">
-                                    <strong>Địa chỉ</strong>
-                                    <br>
-                                    <p class="text-muted mb-0">{{ $users->address }}</p>
+
+                                <div class="card-body">
+                                    <div class="mb-4">
+                                        <strong>Số dư</strong>
+                                        <br>
+                                        <p id="balance" class="text-muted mb-0 balance">
+                                            {{ number_format($users->balance, 0, ',', '.') }}đ
+                                        </p>
+
+                                    </div>
+
+                                    <div class="mb-4">
+                                        <strong>Họ và Tên</strong>
+                                        <br>
+                                        <p class="text-muted">{{ $users->username }}</p>
+                                    </div>
+                                    <div class="mb-4">
+                                        <strong>Số điện thoại</strong>
+                                        <br>
+                                        <p class="text-muted">{{ $users->phone }}</p>
+                                    </div>
+                                    <div class="mb-4">
+                                        <strong>Email</strong>
+                                        <br>
+                                        <p class="text-muted">{{ $users->email }}</p>
+                                    </div>
+                                    <div class="mb-0">
+                                        <strong>Địa chỉ</strong>
+                                        <br>
+                                        <p class="text-muted mb-0">{{ $users->address }}</p>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <!-- Personal-Information -->
-
-                        <!-- Social -->
-                        <div class="card mt-3">
-                            <div class="card-header">
+                            <div class="card-header mt-3">
                                 <h5 class="card-title">Mạng xã hội</h5>
                             </div>
                             <div class="card-body">
@@ -112,16 +118,16 @@
                                 </ul>
                             </div>
                         </div>
-                        <!-- Social -->
+                      
                     </div>
-                    <div class="col-lg-9">
+                    <div class="col-lg-8">
                         <!-- Personal-Information -->
 
-                        <div class="card">
+                        <div class="card border rounded">
                             <div class="card-header">
                                 <h5 class="card-title">Bài viết đã đăng</h5>
                             </div>
-                            <div class="card-body">
+                            <div class="card-body  ">
                                 <!-- Nội dung tiểu sử -->
                                 <div class="table-responsive">
                                     <table id="myTable" class="table table-bordered dt-responsive nowrap"
@@ -168,7 +174,7 @@
                 </div>
             </div>
         </div>
-
+    </div>
     @endsection
 
     @push('styles')

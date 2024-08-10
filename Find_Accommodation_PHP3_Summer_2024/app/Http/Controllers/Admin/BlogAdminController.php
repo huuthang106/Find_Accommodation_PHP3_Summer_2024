@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use DOMDocument;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\blogs;
@@ -20,7 +21,7 @@ class BlogAdminController extends Controller
     // app/Http/Controllers/BlogController.php
     public function Showblog()
     {
-        $blog = Blogs::where('status', '!=', 5)->get();
+        $blog = Blogs::where('status', '!=', 5)->orderByDesc('created_at')->get();
         return view('admincp.manages.extras-blog', compact('blog'));
     }
 
@@ -39,7 +40,13 @@ class BlogAdminController extends Controller
             'description' => 'required|string',
 
         ]);
+        $description = $request->description;
+        // dd($description);
+        $dom = new DOMDocument();
+        // dd($dom);
+        @$dom->loadHTML($description, LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD);
 
+        $description = $dom->saveHTML();
         Blogs::create([
             'title' => $validatedData['title'],
             'description' => $validatedData['description'],
@@ -54,13 +61,16 @@ class BlogAdminController extends Controller
 
     // Xóa blog
     public function deleteBlog($id)
-    {
-        $blog = Blogs::findOrFail($id);
+{
+    $blog = Blogs::findOrFail($id);
+    if ($blog) {
         $blog->status = 5;
         $blog->save();
-
-        return redirect()->route('admin.quan-li-blog')->with('success', 'Blog đã được ẩn.');
+        return response()->json(['success' => true]);
     }
+    return response()->json(['success' => false, 'message' => 'Không tìm thấy blog.']);
+}
+
 
     /**
      * Show the form for creating a new resource.

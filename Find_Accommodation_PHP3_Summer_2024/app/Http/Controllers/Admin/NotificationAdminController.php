@@ -22,11 +22,7 @@ class NotificationAdminController extends Controller
         // Lấy tất cả thông báo từ cơ sở dữ liệu và phân trang, loại trừ các thông báo có status = 5
         $notification = Notification::where('status', '!=', Self::status_soft_delete)->orderByDesc('id')->get();
         // Duyệt qua mỗi report để giới hạn ký tự của title
-        foreach ($notification as $item) {
-            $item->type_limit = Str::limit($item->type, 15);
-            $item->data_limit = Str::limit($item->data, 15);
-            $item->message_limit = Str::limit($item->message, 15);
-        }
+     
         // Truyền dữ liệu tới view
         return view('admincp.manages.pages-notification', compact('notification'));
     }

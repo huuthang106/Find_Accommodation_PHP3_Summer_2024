@@ -48,20 +48,17 @@
                                         <td>{{ $comment->user->username }}</td>
                                         <td>{{ $comment->created_at }}</td>
                                         <td>
-                                            <form action="{{ route('admin.comment.restore', $comment->id) }}" method="POST"
-                                                style="display: inline;">
+                                            <form action="{{ route('admin.comment.restore', $comment->id) }}" method="POST" style="display: inline;">
                                                 @csrf
                                                 @method('PUT')
-                                                <button type="submit" class="btn btn-success"
-                                                    onclick="return confirm('Bạn có chắc chắn muốn khôi phục bình luận này không?');">Khôi phục</button>
+                                                <button type="submit" class="btn btn-success">Khôi phục</button>
                                             </form>
-                                            <form action="{{ route('admin.comment.deletePermanent', $comment->id) }}" method="POST"
-                                                style="display: inline;">
+                                            <form action="{{ route('admin.comment.deletePermanent', $comment->id) }}" method="POST" style="display: inline;">
                                                 @csrf
                                                 @method('DELETE')
-                                                <button type="submit" class="btn btn-danger"
-                                                    onclick="return confirm('Bạn có chắc chắn muốn xóa vĩnh viễn bình luận này không?');">Xóa vĩnh viễn</button>
+                                                <button type="submit" class="btn btn-danger">Xóa vĩnh viễn</button>
                                             </form>
+                                            
                                         </td>
                                     </tr>
                                 @endforeach
@@ -111,11 +108,13 @@
     <link href="{{ asset('assets/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css" id="bootstrap-stylesheet">
     <link href="{{ asset('assets/css/icons.min.css') }}" rel="stylesheet" type="text/css">
     <link href="{{ asset('assets/css/app.min.css') }}" rel="stylesheet" type="text/css" id="app-stylesheet">
-    <link rel="stylesheet" href="{{asset('assets/css/admin-nht.css')}}">
-
+    <link rel="stylesheet" href="{{ asset('assets/css/admin-nht.css') }}">
 @endpush
 
 @push('scripts')
+    <!-- SweetAlert2 CDN --> 
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
     <!-- Vendor js -->
     <script src="{{ asset('assets/js/vendor.min.js') }}"></script>
 
@@ -156,4 +155,6 @@
     <!-- Required datatable js -->
     <script src="{{ asset('assets\libs\datatables\jquery.dataTables.min.js') }}"></script>
     <script src="{{ asset('assets\libs\datatables\dataTables.bootstrap4.min.js') }}"></script>
+   <script src="{{ asset('assets\js\comment-admin.js') }}"></script>
+        
 @endpush

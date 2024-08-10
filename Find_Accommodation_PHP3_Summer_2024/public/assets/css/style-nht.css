@@ -9,6 +9,7 @@
 
 .background-content {
     background: #f4f4f4;
+    
 }
 
 .box-title {
@@ -127,57 +128,93 @@
     /* Đảm bảo mỗi .col-3 chiếm 23% chiều rộng để có khoảng cách giữa các cột */
     box-sizing: border-box;
 }
+
 /* user */
 
 
 .fixed-button {
     position: fixed;
     width: 15%;
-    bottom: 20px; /* Khoảng cách từ đáy màn hình */
-    right: 20px; /* Khoảng cách từ bên phải màn hình */
-    z-index: 1000; /* Đảm bảo nút nằm trên các phần tử khác */
-    background-color: #007bff; /* Màu nền của nút */
-    border: none; /* Loại bỏ viền */
-    border-radius: 50px; /* Bo tròn các góc của nút */
-    padding: 10px 20px; /* Khoảng cách bên trong nút */
-    color: #fff; /* Màu chữ */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Hiệu ứng bóng đổ */
-    transition: background-color 0.3s ease; /* Hiệu ứng chuyển màu nền khi hover */
+    bottom: 20px;
+    /* Khoảng cách từ đáy màn hình */
+    right: 20px;
+    /* Khoảng cách từ bên phải màn hình */
+    z-index: 1000;
+    /* Đảm bảo nút nằm trên các phần tử khác */
+    background-color: #007bff;
+    /* Màu nền của nút */
+    border: none;
+    /* Loại bỏ viền */
+    border-radius: 50px;
+    /* Bo tròn các góc của nút */
+    padding: 10px 20px;
+    /* Khoảng cách bên trong nút */
+    color: #fff;
+    /* Màu chữ */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    /* Hiệu ứng bóng đổ */
+    transition: background-color 0.3s ease;
+    /* Hiệu ứng chuyển màu nền khi hover */
 }
 
 .fixed-button:hover {
-    background-color: #0056b3; /* Màu nền khi hover */
+    background-color: #0056b3;
+    /* Màu nền khi hover */
 }
+
 .logo-box img {
     max-width: 100%;
     max-height: 100%;
-    object-fit: contain; /* Đảm bảo giữ tỉ lệ hình ảnh */
+    object-fit: contain;
+    /* Đảm bảo giữ tỉ lệ hình ảnh */
 }
 
-.logo-lg img, .logo-sm img {
-    width: 100%; /* Đảm bảo hình ảnh chiếm toàn bộ chiều rộng của container */
-    height: auto; /* Chiều cao tự động theo tỉ lệ */
-}.carousel-inner img {
+.logo-lg img,
+.logo-sm img {
+    width: 100%;
+    /* Đảm bảo hình ảnh chiếm toàn bộ chiều rộng của container */
+    height: auto;
+    /* Chiều cao tự động theo tỉ lệ */
+}
+
+.carousel-inner img {
     width: 100%;
     height: auto;
     /* Điều chỉnh chiều cao tự động để không bị cắt */
     object-fit: cover;
     /* Đảm bảo ảnh không bị méo, nhưng có thể bị cắt */
 }
+
 .edit-modal {
-    background: rgba(0, 0, 0, 0); /* Nền trong suốt */
+    background: rgba(0, 0, 0, 0);
+    /* Nền trong suốt */
 }
+
 .edit-modal {
-    background: transparent; /* Nội dung modal không có nền */
+    background: transparent;
+    /* Nội dung modal không có nền */
     border: none;
 }
-.modal-edit{
+
+.modal-edit {
     width: 100%;
+
+}
+
+.carousel-item img {
+    height: 400px;
+    /* Thay đổi chiều cao theo nhu cầu */
+    object-fit: contain;
+    /* Đảm bảo hình ảnh không bị kéo giãn */
+    width: 100%;
+    /* Đảm bảo hình ảnh chiếm toàn bộ chiều rộng */
+}
+
+/* Tạo kiểu cho nút */
+.avatar-preview{
+    max-width: 10%;
  
 }
-.carousel-item img {
-    height: 400px; /* Thay đổi chiều cao theo nhu cầu */
-    object-fit: contain; /* Đảm bảo hình ảnh không bị kéo giãn */
-    width: 100%; /* Đảm bảo hình ảnh chiếm toàn bộ chiều rộng */
+.avatar-preview img{
+    object-fit: cover;
 }
-/* Tạo kiểu cho nút */

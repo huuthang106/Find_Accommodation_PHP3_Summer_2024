@@ -3,10 +3,8 @@
 @section('content')
 
     <div class="content">
-
         <!-- Start container-fluid -->
         <div class="container-fluid">
-
             <!-- start  -->
             <div class="row">
                 <div class="col-md-12">
@@ -36,25 +34,19 @@
                                     </div>
                                 @endif
                             </div>
-
                             <p class="text-muted mt-2">
                                 Xin chào tôi là {{ $admin->username }}.
                             </p>
-
                             <button type="button" class="btn btn-primary mt-2 mr-1">Theo dõi</button>
                             <button type="button" class="btn btn-teal mt-2">Nhắn tin</button>
-
                         </div>
-
                     </div>
                     <!-- end card-box -->
-
                 </div>
                 <!-- end col -->
             </div>
             <!-- end row -->
             <!-- end -->
-
             <div class="mt-5">
                 <ul class="nav nav-tabs tabs-bordered">
                     <li class="nav-item">
@@ -68,7 +60,6 @@
                         </a>
                     </li>
                 </ul>
-
                 <div class="tab-content">
                     <div class="tab-pane active" id="home-b1">
                         <div class="row">
@@ -105,13 +96,7 @@
                                             <p class="text-muted mb-0">{{ $admin->address }}</p>
                                         </div>
                                     </div>
-                                </div>
-
-                                <!-- Personal-Information -->
-
-                                <!-- Social -->
-                                <div class="panel card panel-fill">
-                                    <div class="card-header">
+                                    <div class="card-header mt-5">
                                         <h5 class="font-16 m-1">Mạng xã hội</h5>
                                     </div>
                                     <div class="card-body">
@@ -134,9 +119,8 @@
                                         </ul>
                                     </div>
                                 </div>
-                                <!-- Social -->
+                                <!-- Personal-Information -->
                             </div>
-
                             <div class="col-lg-8">
                                 <!-- Personal-Information -->
                                 <div class="panel card panel-fill">
@@ -147,10 +131,9 @@
 
                                     </div>
                                 </div>
+
                                 <!-- Personal-Information -->
-
                             </div>
-
                         </div>
                     </div>
                     <div class="tab-pane" id="profile-b1">
@@ -221,24 +204,21 @@
                     </div>
                 </div>
             </div>
-
         </div>
         <!-- end container-fluid -->
-
-
-
-        <!-- Footer Start -->
-        <footer class="footer">
+    </div>
+    <!-- Footer Start -->
+    <div class="col-lg-12">
+        <footer class="footer mt-5">
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-md-12">
-                        2024 &copy; by <a href="">Tìm Trọ</a>
+                        2024 &copy; by <a href="">Tìm Trọ hhhhhhhhhhhx</a>
                     </div>
                 </div>
             </div>
         </footer>
         <!-- end Footer -->
-
     </div>
 @endsection
 @push('styles')
