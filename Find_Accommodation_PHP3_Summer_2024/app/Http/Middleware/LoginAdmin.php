@@ -16,8 +16,12 @@ class LoginAdmin
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if ($request->user() && !in_array($request->user()->role, [0, 2])) {
-            // Nếu không phải là role 0 hoặc 2, chuyển hướng về trang khác, ví dụ trang đăng nhập
+        if (Auth::check()) {
+            if ($request->user() && !in_array($request->user()->role, [0, 2])) {
+                // Nếu không phải là role 0 hoặc 2, chuyển hướng về trang khác, ví dụ trang đăng nhập
+                return redirect('/home')->with('error', 'You are not authorized to access this page.');
+            }
+        }else{
             return redirect('/home')->with('error', 'You are not authorized to access this page.');
         }
         return $next($request);

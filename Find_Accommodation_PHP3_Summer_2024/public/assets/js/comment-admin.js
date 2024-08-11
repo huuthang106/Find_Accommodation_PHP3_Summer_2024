@@ -1,14 +1,13 @@
-document.addEventListener('DOMContentLoaded', function() {
-    // Lắng nghe sự kiện submit của các form
-    document.querySelectorAll('form').forEach(function(form) {
-        form.addEventListener('submit', function(event) {
-            event.preventDefault(); // Ngăn chặn hành vi submit mặc định của form
+document.addEventListener('DOMContentLoaded', function () {
+    document.querySelectorAll('form').forEach(function (form) {
+        form.addEventListener('submit', function (event) {
+            event.preventDefault();
 
             const url = this.action;
             const method = this.method;
             const formData = new FormData(this);
 
-            // Xác định loại hành động
+            // Xác định văn bản thông báo dựa trên văn bản của nút
             const action = this.querySelector('button').innerText.trim();
             let confirmationText = '';
             let successText = '';
@@ -20,7 +19,11 @@ document.addEventListener('DOMContentLoaded', function() {
                 errorText = 'Không tìm thấy bình luận.';
             } else if (action === 'Xóa vĩnh viễn') {
                 confirmationText = 'Bạn có chắc chắn muốn xóa vĩnh viễn bình luận này không?';
-                successText = 'Bình luận đã được xóa vĩnh viễn.';
+                successText = 'bình luận đã được xóa vĩnh viễn.';
+                errorText = 'Không tìm thấy bình luận.';
+            } else if (action === 'Xóa') {
+                confirmationText = 'Bạn có chắc chắn muốn xóa bình luận này không?';
+                successText = 'bình luận đã được xóa mềm thành công.';
                 errorText = 'Không tìm thấy bình luận.';
             }
 
@@ -38,91 +41,35 @@ document.addEventListener('DOMContentLoaded', function() {
                         method: method,
                         body: formData,
                         headers: {
-                            'X-Requested-With': 'XMLHttpRequest'
+                            'X-Requested-With': 'XMLHttpRequest',
+                            'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
                         }
                     })
-                    .then(response => response.json())
-                    .then(data => {
-                        if (data.success) {
-                            Swal.fire(
-                                'Thành công!',
-                                successText,
-                                'success'
-                            ).then(() => {
-                                window.location.reload(); // Tải lại trang sau khi thông báo
-                            });
-                        } else {
-                            Swal.fire(
-                                'Lỗi!',
-                                errorText,
-                                'error'
-                            );
-                        }
-                    })
-                    .catch(error => {
-                        Swal.fire(
-                            'Lỗi!',
-                            'Có lỗi xảy ra khi xử lý yêu cầu.',
-                            'error'
-                        );
-                    });
-                }
-            });
-        });
-    });
-});
-document.addEventListener('DOMContentLoaded', function() {
-    // Lắng nghe sự kiện submit của các form
-    document.querySelectorAll('form').forEach(function(form) {
-        form.addEventListener('submit', function(event) {
-            event.preventDefault(); // Ngăn chặn hành vi submit mặc định của form
-
-            const url = this.action;
-            const method = this.method;
-            const formData = new FormData(this);
-
-            Swal.fire({
-                title: 'Xác nhận',
-                text: 'Bạn có chắc chắn muốn xóa bình luận này không?',
-                icon: 'warning',
-                showCancelButton: true,
-                confirmButtonColor: '#3085d6',
-                cancelButtonColor: '#d33',
-                confirmButtonText: 'Có, xóa nó!'
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    fetch(url, {
-                        method: method,
-                        body: formData,
-                        headers: {
-                            'X-Requested-With': 'XMLHttpRequest'
-                        }
-                    })
-                    .then(response => response.json())
-                    .then(data => {
-                        if (data.success) {
-                            Swal.fire(
-                                'Đã xóa!',
-                                'Bình luận đã được xóa thành công.',
-                                'success'
-                            ).then(() => {
-                                window.location.reload(); // Tải lại trang sau khi thông báo
-                            });
-                        } else {
+                        .then(response => response.json())
+                        .then(data => {
+                            if (data.success) {
+                                Swal.fire(
+                                    'Thành công!',
+                                    successText,
+                                    'success'
+                                ).then(() => {
+                                    window.location.reload();
+                                });
+                            } else {
+                                Swal.fire(
+                                    'Lỗi!',
+                                    errorText,
+                                    'error'
+                                );
+                            }
+                        })
+                        .catch(error => {
                             Swal.fire(
                                 'Lỗi!',
-                                'Không tìm thấy bình luận.',
+                                'Có lỗi xảy ra khi xử lý yêu cầu.',
                                 'error'
                             );
-                        }
-                    })
-                    .catch(error => {
-                        Swal.fire(
-                            'Lỗi!',
-                            'Có lỗi xảy ra khi xử lý yêu cầu.',
-                            'error'
-                        );
-                    });
+                        });
                 }
             });
         });

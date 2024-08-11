@@ -39,10 +39,13 @@
                                 </tr>
                             </thead>
                             <tbody>
+                                @php
+                                    $index=1;   
+                                @endphp
                                 @foreach ($comments as $comment)
                                     <tr>
 
-                                        <td>{{ $comment->id }}</td>
+                                        <td>{{ $index++ }}</td>
                                         <td>{{ $comment->content }}<br><small>người đăng:
                                                 {{ $comment->user->username }}</small><br>
                                                 <small>{{ $comment->created_at }}</small>
@@ -51,12 +54,12 @@
                                             {{ $comment->room->title }}
                                         </td>
                                          <td>
-                                            <form action="{{ route('admin.comment.destroy', $comment->id) }}" method="POST"
-                                                style="display: inline;">
+                                            <form action="{{ route('admin.comment.destroy', $comment->id) }}" method="POST" style="display: inline;">
                                                 @csrf
                                                 @method('PUT')
                                                 <button type="submit" class="btn btn-danger">Xóa</button>
                                             </form>
+                                            
                                         </td>
                                     </tr>
                                 @endforeach
