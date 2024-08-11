@@ -60,6 +60,7 @@ class PricesAdminController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        // 
     }
+
 }

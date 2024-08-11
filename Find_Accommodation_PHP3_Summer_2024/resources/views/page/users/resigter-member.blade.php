@@ -69,20 +69,41 @@
                                 <div class="card-body">
                                     <div class="mb-3">
                                         <label for="img-1" class="form-label">Mặt trước căn cước</label>
-                                        <input type="file" class="form-control" name="images[]" id="img-1" multiple
-                                            onchange="previewImages(event, 'preview-img-1')">
+                                        <div class="row">
+                                            <div class="col-6">
+                                                <input type="file" class="form-control" name="images[]" id="img-1"
+                                                    multiple onchange="previewImages(event, 'preview-img-1')">
 
-                                        @if (session('response'))
-                                            @php
-                                                $response = session('response');
-                                            @endphp
-                                            @if ($response['data']['isMatch'] === false)
-                                                <div class="alert alert-danger mt-1">Sai thông tin</div>
-                                            @endif
-                                        @endif
-                                        @error('images')
-                                            <div class="alert alert-danger mt-1">{{ $message }}</div>
-                                        @enderror
+                                                @if (session('response'))
+                                                    @php
+                                                        $response = session('response');
+                                                    @endphp
+                                                    @if ($response['data']['isMatch'] === false)
+                                                        <div class="alert alert-danger mt-1">Sai thông tin</div>
+                                                    @endif
+                                                @endif
+                                                @error('images')
+                                                    <div class="alert alert-danger mt-1">{{ $message }}</div>
+                                                @enderror
+                                            </div>
+                                            <div class="col-6">
+                                                <button type="button" class="btn btn-primary" id="btnOpenCamera">Chụp
+                                                    ảnh</button>
+                                                <!-- The Modal -->
+                                                <div id="cameraModal" class="modal">
+                                                    <div class="modal-content">
+                                                        <span class="close">&times;</span>
+                                                        <video autoplay="" id="video"></video>
+                                                        <div>
+                                                            <button class="button" id="btnPause">Stop camera</button>
+                                                            <button class="button" id="btnScreenshot">Chụp hình</button>
+                                                            <button type="hidden" class="button" id="btnChangeCamera">Đổi
+                                                                camera</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
 
                                     <div class="mb-3">
