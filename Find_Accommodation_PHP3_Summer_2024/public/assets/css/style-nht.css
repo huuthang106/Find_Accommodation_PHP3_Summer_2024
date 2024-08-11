@@ -9,6 +9,7 @@
 
 .background-content {
     background: #f4f4f4;
+
 }
 
 .box-title {
@@ -210,3 +211,11 @@
 }
 
 /* Tạo kiểu cho nút */
+.avatar-preview {
+    max-width: 10%;
+
+}
+
+.avatar-preview img {
+    object-fit: cover;
+}

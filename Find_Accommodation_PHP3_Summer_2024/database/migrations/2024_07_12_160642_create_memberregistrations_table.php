@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('description')->nullable();;
             $table->string('idenerregistra_number');
             $table->string('fullname');
-            $table->string('phone');
+            $table->string('phone')->nullable();
             $table->boolean('gender')->default(1);
             $table->boolean('status')->default(1);
             $table->foreignId('user_id')->constrained('users')->onDelete('cascade');

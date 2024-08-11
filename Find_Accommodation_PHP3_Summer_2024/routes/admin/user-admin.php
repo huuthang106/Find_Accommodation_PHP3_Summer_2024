@@ -43,9 +43,10 @@ Route::post('/logout', [IndexController::class, 'logout'])->name('logout');
 Route::get('/', [IndexAdminController::class, 'admin'])->name('admin');
 
 
-Route::middleware('auth')->group(function () {
+Route::middleware('admin_login')->group(function () {
     // [VoTanLuon] Router hiển thị chỉnh sửa tài khoản Admin
     Route::get('/quan-li-ho-so', [UserController::class, 'index'])->name('quan-li-ho-so');
+    // Route::get('/quan-li-ho-so-admin', [UserController::class, 'showpfadmin'])->name('quan-li-ho-so-admin');
     route::put('/quan-li-ho-so/{id}', [UserController::class, 'update_profile_admin'])->name('chinh-sua-ho-so');
     Route::get('/doi-mat-khau', [UserController::class, 'change_password_admin'])->name('pages-change-password-admin');
     Route::put('/doi-mat-khau/admin', [UserController::class, 'check_change_passsword_admin'])->name('check-change-password-admin');

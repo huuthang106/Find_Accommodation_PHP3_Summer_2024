@@ -8,7 +8,8 @@
                 <div class="card-header text-center">
                     <h5 class="card-title bg">Xác nhận thông tin</h5>
                 </div>
-                <form action="{{ route('confirm',$memberregistration->id ) }}" id="ocr-form" method="POST" enctype="multipart/form-data">
+                <form action="{{ route('confirm', $memberregistration->id) }}" id="ocr-form" method="POST"
+                    enctype="multipart/form-data">
                     @csrf
                     @method('PUT')
                     <div class="row">
@@ -44,7 +45,7 @@
                                     <div class="mb-3">
                                         <label for="phone" class="form-label">Số điện thoại</label>
                                         <input type="text" class="form-control" id="phone" name="phone"
-                                            placeholder="6 - 15 Ký tự"
+                                            placeholder="Nhập số điện thoại"
                                             value="{{ $memberregistration->phone ?? old('phone') }}">
                                         @error('phone')
                                             <div class="alert alert-danger mt-1">{{ $message }}</div>
@@ -57,13 +58,13 @@
                                                 Nam</option>
                                             <option value="2"
                                                 {{ $memberregistration->gender == 2 ? 'selected' : '' }}>Nữ</option>
-                                           
+
                                         </select>
                                         @error('gender')
                                             <div class="alert alert-danger mt-1">{{ $message }}</div>
                                         @enderror
                                     </div>
-                                    
+
                                 </div>
                             </div>
                             <!-- Personal-Information -->
@@ -181,6 +182,15 @@
                         </div>
                     @endif --}}
                 </form>
+                {{-- @if (session('showAlert'))
+                    <script>
+                        var showAlert = @json(session('showAlert'));
+                        // Kiểm tra các thông báo
+                        if (typeof showAlert !== 'undefined') {
+                            console.log(showAlert); // Kiểm tra giá trị showAlert
+                        }
+                    </script>
+                @endif --}}
             </div>
         </div>
     </div>
@@ -248,4 +258,7 @@
     <!-- Tệp JavaScript tùy chỉnh của bạn -->
     <script src="{{ asset('assets/js/app-nht.js') }}"></script>
     <script src="{{ asset('assets/js/api-nht.js') }}"></script>
+    <!-- Show Alert -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="{{ asset('assets\js\show-alert.js') }}" text="text/javascript"></script>
 @endpush

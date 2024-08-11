@@ -28,9 +28,9 @@
                                     {{-- <th>Tất cả <input type="checkbox"></th> --}}
                                     {{-- <th>STT</th> --}}
                                     <th>Tiêu đề</th>
-                                    <th>Giá</th>
+
                                     <th>Tên người đăng</th>
-                                    <th>Xem chi tiết</th>
+
                                     <th>Chức Năng</th>
                                 </tr>
                             </thead>
@@ -39,20 +39,18 @@
                                     <tr>
                                         {{-- <th><input type="checkbox"></th> --}}
                                         {{-- <th>{{ $item->id }}</th> --}}
-                                        <td>{{ Str::limit($item->title, 20) }}</td>
-                                        <td>{{ $item->price }}</td>
-                                        <td>{{ $item->user_id }}</td>
+                                        <td>{{ $item->title }}<br><small>{{ number_format($item->price, 0, ',', '.') }}
+                                                VNĐ</small> </td>
+
+                                        <td>{{ $item->user->username }}</td>
                                         <td><a href="{{ route('admin.pages-room-detail', $item->id) }}"
                                                 class="btn btn-primary">Xem chi
-                                                tiết</a></td>
-
-                                        <td>
+                                                tiết</a>
                                             <form action="{{ route('admin.rooms.destroy', $item->id) }}" method="POST"
                                                 style="display: inline;">
                                                 @csrf
                                                 @method('PUT')
-                                                <button type="submit" class="btn btn-danger"
-                                                    onclick="return confirm('Bạn có chắc chắn muốn ẩn phòng này không?');">Xóa</button>
+                                                <button type="submit" class="btn btn-danger">Xóa</button>
                                             </form>
                                         </td>
                                     </tr>
@@ -147,4 +145,5 @@
     <!-- Required datatable js -->
     <script src="{{ asset('assets\libs\datatables\jquery.dataTables.min.js') }}"></script>
     <script src="{{ asset('assets\libs\datatables\dataTables.bootstrap4.min.js') }}"></script>
+    <script src="{{ asset('assets\js\room.js') }}"></script>
 @endpush

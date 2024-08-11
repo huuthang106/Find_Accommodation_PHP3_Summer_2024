@@ -6,7 +6,7 @@
         <div class="row d-flex justify-content-center ">
             <div class="col-10 bg-body  mt-2 rounded p-2">
                 <div class="card-header text-center">
-                    <h5 class="card-title bg">Đăng bài</h5>
+                    <h5 class="card-title bg">Đăng ký thành viên</h5>
                 </div>
                 <form action="{{ route('check-register-member') }}" id="ocr-form" method="POST" enctype="multipart/form-data">
                     @csrf
@@ -130,27 +130,10 @@
                                                 <div id="preview-img-3" class="preview-image card-img"></div>
                                             </div>
                                         </div>
-
                                         @error('images')
                                             <div class="alert alert-danger mt-1">{{ $message }}</div>
                                         @enderror
                                     </div>
-                                    {{-- <div class="mb-3">
-                                        <label for="phone" class="form-label">Số điện thoại</label>
-                                        <input type="text" class="form-control" id="phone" name="phone"
-                                            placeholder="Số điện thoại" value="{{ old('phone') }}">
-                                        @error('phone')
-                                            <div class="alert alert-danger mt-1">{{ $message }}</div>
-                                        @enderror
-                                    </div>
-                                    <div class="mb-3">
-                                        <label for="description" class="form-label">Mô tả</label>
-                                        <textarea class="form-control" id="description" name="description" style="height: 125px;"
-                                            placeholder="Nhập mô tả bản thân (Nếu có).">{{ old('description') }}</textarea>
-                                        @error('description')
-                                            <div class="alert alert-danger mt-1">{{ $message }}</div>
-                                        @enderror
-                                    </div> --}}
                                 </div>
                                 {{-- <div class="video-screenshot">
                                     <div id="screenshotsContainer" class="screenshots-container">
@@ -162,45 +145,16 @@
                         </div>
                     </div>
                     <button type="submit" class="btn form-control btn-primary">Lưu</button>
-                    {{-- @if (session('success'))
-                        <div class="alert alert-success">
-                            {{ session('success') }}
-                        </div>
-                    @endif
-
-                    @if (session('error'))
-                        <div class="alert alert-danger">
-                            {{ session('error') }}
-                        </div>
-                    @endif --}}
-
-                    {{-- @if (session('response'))
-                        @php
-                            $response = session('response');
-                        @endphp
-                        <div class="alert alert-info">
-                            <strong>Response Data:</strong>
-                            <table class="table table-bordered mt-3">
-                                <thead>
-                                    <tr>
-                                        <th>Key</th>
-                                        <th>Value</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>Mức Độ Giống (%)</td>
-                                        <td>{{ $response['data']['similarity'] ?? 'N/A' }}</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Hai Ảnh Giống Nhau</td>
-                                        <td>{{ $response['data']['isMatch'] ? 'Giống Nhau' : 'Không Giống' }}</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    @endif --}}
                 </form>
+                {{-- @if (session('showAlert'))
+                    <script>
+                        var showAlert = @json(session('showAlert'));
+                        // Kiểm tra các thông báo
+                        if (typeof showAlert !== 'undefined') {
+                            console.log(showAlert); // Kiểm tra giá trị showAlert
+                        }
+                    </script>
+                @endif --}}
             </div>
         </div>
     </div>
@@ -352,103 +306,7 @@
     <!-- Tệp JavaScript tùy chỉnh của bạn -->
     <script src="{{ asset('assets/js/app-nht.js') }}"></script>
     <script src="{{ asset('assets/js/api-nht.js') }}"></script>
-    <script>
-        window.onload = async function() {
-            if (!"mediaDevices" in navigator || !"getUserMedia" in navigator.mediaDevices) {
-                document.write('Not support API camera');
-                return;
-            }
-
-            const video = document.querySelector("#video");
-            const canvas = document.querySelector("#canvas");
-            const cameraModal = document.getElementById("cameraModal");
-            const btnOpenCamera = document.getElementById("btnOpenCamera");
-            const btnScreenshot = document.getElementById("btnScreenshot");
-            const btnPause = document.getElementById("btnPause");
-            const btnChangeCamera = document.getElementById("btnChangeCamera");
-            const spanClose = document.getElementsByClassName("close")[0];
-            let videoStream = null;
-            let useFrontCamera = true; // camera trước
-            const constraints = {
-                video: {
-                    width: {
-                        min: 1280,
-                        ideal: 1920,
-                        max: 2560,
-                    },
-                    height: {
-                        min: 720,
-                        ideal: 1080,
-                        max: 1440,
-                    }
-                },
-            };
-
-            btnOpenCamera.addEventListener("click", function() {
-                cameraModal.style.display = "block";
-                initCamera();
-            });
-
-            btnPause.addEventListener("click", function() {
-                video.pause();
-            });
-
-            spanClose.onclick = function() {
-                cameraModal.style.display = "none";
-                stopVideoStream();
-            }
-
-            window.onclick = function(event) {
-                if (event.target == cameraModal) {
-                    cameraModal.style.display = "none";
-                    stopVideoStream();
-                }
-            }
-
-            btnChangeCamera.addEventListener("click", function() {
-                useFrontCamera = !useFrontCamera;
-                initCamera();
-            });
-
-            function stopVideoStream() {
-                if (videoStream) {
-                    videoStream.getTracks().forEach((track) => {
-                        track.stop();
-                    });
-                }
-            }
-
-            btnScreenshot.addEventListener("click", function(event) {
-                event.preventDefault();
-                canvas.width = video.videoWidth;
-                canvas.height = video.videoHeight;
-                canvas.getContext("2d").drawImage(video, 0, 0);
-                const imageDataUrl = canvas.toDataURL("image/png");
-
-                // Add the image to the file input container
-                const fileInputsContainer = document.getElementById('file-inputs');
-                const numberOfFileInputs = fileInputsContainer.getElementsByTagName('input').length;
-
-                const newDiv = document.createElement('div');
-                newDiv.className = 'mb-3';
-                newDiv.innerHTML = `
-            <label for="img-room-${numberOfFileInputs + 1}" class="form-label">Hình ảnh</label>
-             <input type="file" class="form-control" id="img-room-${numberOfFileInputs + 1}" name="images[]">
-        `;
-
-                fileInputsContainer.appendChild(newDiv);
-            });
-
-            async function initCamera() {
-                stopVideoStream();
-                constraints.video.facingMode = useFrontCamera ? "user" : "environment";
-                try {
-                    videoStream = await navigator.mediaDevices.getUserMedia(constraints);
-                    video.srcObject = videoStream;
-                } catch (error) {
-                    console.log(error);
-                }
-            }
-        }
-    </script>
+    <!-- Show Alert -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="{{ asset('assets\js\show-alert.js') }}" text="text/javascript"></script>
 @endpush

@@ -13,7 +13,7 @@
                                             width="170"></span>
                                 </a>
                             </div>
-                            <form action="{{ route('check-reset-password', ['token' => $token]) }}" method="POST"
+                            <form action="{{ route('admin.check-reset-password', ['token' => $token]) }}" method="POST"
                                 role="form">
                                 @csrf
                                 <div class="form-group">

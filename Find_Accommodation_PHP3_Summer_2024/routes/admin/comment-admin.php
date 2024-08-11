@@ -20,7 +20,7 @@ use App\Http\Controllers\Admin\LoginAdminController;
 use App\Http\Controllers\Admin\RegisterAdminController;
 use App\Http\Controllers\Admin\ReportAdminController;
 use App\Http\Controllers\Admin\UserController as AdminUserController;
-Route::middleware('auth')->group(function () {
+Route::middleware('admin_login')->group(function () {
     Route::get('/binh-luan', [CommentAdminController::class, 'index'])->name('pages-commet'); // Route để xem danh sách bình luận       
     Route::put('/{id}', [CommentAdminController::class, 'destroy'])->name('comment.destroy'); // Route để xóa bình luận          
     Route::get('/thung-rac', [CommentAdminController::class, 'trash'])->name('pages-trash-comment'); // Route để xem bình luận đã xóa       

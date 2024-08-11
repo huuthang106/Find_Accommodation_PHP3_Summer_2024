@@ -27,18 +27,19 @@
                                     {{-- <th>Tất cả <input type="checkbox"></th> --}}
                                     <th>STT</th>
                                     <th>Loại gói</th>
-                                    <th>Giá</th>
+
                                     <th>Hỗ trợ</th>
-                                    <th>Video</th>
-                                    <th>Bài đăng</th>
-                                    <th>Nội dung</th>
+
                                     <th>Thao tác</th>
 
                             <tbody>
+                                @php
+                                    $index = 1;
+                                @endphp
                                 @foreach ($price as $item)
                                     <tr>
                                         {{-- <th><input type="checkbox"></th> --}}
-                                        <th>{{ $item->id }}</th>
+                                        <th>{{ $index++ }}</th>
                                         <td>
                                             @if ($item->status == 1)
                                                 Gói Tiết Kiệm
@@ -47,16 +48,11 @@
                                             @elseif($item->status == 3)
                                                 Gói Cao Cấp
                                             @endif
+                                            <br> <small>{{ number_format($item->price, 0, ',', '.') }} VNĐ</small>
                                         </td>
-                                        <td>
-                                            {{ number_format($item->price, 0, ',') }}đ
-                                        </td>
-                                        <td>{{ Str::limit($item->Support, 20) }}</td>
-                                        <td>{{ $item->Video_Posting }}</td>
-                                        <td>{{ Str::limit($item->Post_Posting, 15) }}</td>
-                                        <td>
-                                            {{ Str::limit($item->description, 10) }}
-                                        </td>
+
+                                        <td>{{ $item->Support }}</td>
+
                                         <td>
                                             <a href="{{ route('admin.post-pricelist', $item->id) }}"
                                                 class="btn btn-primary">Chỉnh sửa</a>
@@ -64,8 +60,7 @@
                                                 style="display: inline;">
                                                 @csrf
                                                 @method('PUT')
-                                                <button type="submit" class="btn btn-danger"
-                                                    onclick="return confirm('Bạn có chắc chắn muốn ẩn gói tin này không?');">Xóa</button>
+                                                <button type="submit" class="btn btn-danger">Xóa</button>
                                             </form>
                                         </td>
                                     </tr>
@@ -160,4 +155,5 @@
     <!-- Required datatable js -->
     <script src="{{ asset('assets\libs\datatables\jquery.dataTables.min.js') }}"></script>
     <script src="{{ asset('assets\libs\datatables\dataTables.bootstrap4.min.js') }}"></script>
+    <script src="{{ asset('assets\js\price-list.js') }}"></script>
 @endpush

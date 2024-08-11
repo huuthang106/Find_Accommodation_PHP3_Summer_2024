@@ -32,7 +32,7 @@
                                     {{-- <th>Tất cả <input type="checkbox"></th> --}}
                                     <th>STT</th>
                                     <th>Tiêu Đề</th>
-                                    <th>Mô Tả</th>
+
                                     {{-- <th>Giá</th>
                                     <th>Hỗ trợ</th>
                                     <th>Video</th>
@@ -41,18 +41,20 @@
                                     <th>Thao tác</th>
 
                             <tbody>
+                                @php
+                                    $index = 1;
+                                @endphp
                                 @foreach ($blog as $item)
                                     <tr>
                                         {{-- <th><input type="checkbox"></th> --}}
-                                        <th width="4%">{{ $item->id }}</th>
-                                        <td>{{ Str::limit($item->title, 15) }}</td>
-                                        <td>{{ Str::limit($item->description, 25) }}</td>
+                                        <th width="4%">{{ $index++ }}</th>
+                                        <td style="word-wrap: break-word; white-space: normal;">{{ $item->title }}</td>
+
                                         <td>
                                             <form action="{{ route('admin.delete-blog', $item->id) }}" method="POST"
                                                 style="display: inline;"> @csrf
                                                 @method('DELETE') <!-- Đổi thành DELETE -->
-                                                <button type="submit" class="btn btn-danger"
-                                                    onclick="return confirm('Bạn có chắc chắn muốn ẩn gói tin này không?');">Xóa</button>
+                                                <button type="submit" class="btn btn-danger">Xóa</button>
                                             </form>
                                         </td>
 
@@ -148,4 +150,5 @@
     <!-- Required datatable js -->
     <script src="{{ asset('assets\libs\datatables\jquery.dataTables.min.js') }}"></script>
     <script src="{{ asset('assets\libs\datatables\dataTables.bootstrap4.min.js') }}"></script>
+    <script src="{{ asset('assets\js\room.js') }}"></script>
 @endpush

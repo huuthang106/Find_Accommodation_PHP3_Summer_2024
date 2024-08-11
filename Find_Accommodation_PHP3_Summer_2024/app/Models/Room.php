@@ -39,4 +39,7 @@ class Room extends Model
     public function images(){
         return $this->hasMany(Image::class);
     }
+    public function area(){
+        return $this->belongsTo(Areas::class);
+    }
 }

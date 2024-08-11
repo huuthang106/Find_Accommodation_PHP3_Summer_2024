@@ -12,12 +12,7 @@ class RoomAdminController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
-    {
-        //
-        $rooms = Room::where('status', '!=', 5)->orderBy('created_at', 'desc')->get();
-        return view('admincp.manages.pages-room', compact('rooms'));
-    }
+    
 
     /**
      * Show the form for creating a new resource.
@@ -65,16 +60,23 @@ class RoomAdminController extends Controller
     /**
      * Remove the specified resource from storage.
      */
+    public function index()
+    {
+        //
+        $rooms = Room::where('status', '!=', 5)->orderBy('created_at', 'desc')->get();
+        return view('admincp.manages.pages-room', compact('rooms'));
+    }
     public function destroy(string $id)
     {
         $room = Room::find($id);
         if ($room) {
             $room->status = 5;
             $room->save();
-            return redirect()->back()->with('success', 'Phòng đã được ẩn thành công.');
+            return response()->json(['success' => true, 'message' => 'Phòng đã được ẩn thành công.']);
         }
-        return redirect()->back()->with('error', 'Không tìm thấy phòng.');
+        return response()->json(['success' => false, 'message' => 'Không tìm thấy phòng.']);
     }
+    
 
     public function getRoomID($id)
     {

@@ -1,6 +1,17 @@
 @extends('layouts.layout-user')
 @section('titleUs', 'Trang đăng trọ ')
 @section('contentUs')
+
+    <!-- include libraries(jQuery, bootstrap) -->
+    <script type="text/javascript" src="//code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" />
+    <script type="text/javascript" src="cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- include summernote css/js -->
+    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
+    {{-- Ngôn ngữ tiếng việt Summernote --}}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.18/lang/summernote-vi-VN.min.js"></script>
+
     <div class="container-fluid background-content">
         <div class="row d-flex justify-content-center ">
             <div class="col-10 bg-body  mt-2 rounded p-2">
@@ -23,8 +34,8 @@
                                         @enderror
                                     </div>
                                     <div class="mb-3">
-                                        <label for="Description" class="form-label">Mô tả</label>
-                                        <textarea class="form-control" id="Description" name="Description" style="height: 125px;"
+                                        <label for="description" class="form-label">Mô tả</label>
+                                        <textarea class="form-control" id="description" name="Description" style="height: 125px;"
                                             placeholder="Nhập mô tả bản thân (Nếu có).">{{ old('Description') }}</textarea>
                                         @error('Description')
                                             <div class="alert alert-danger">{{ $message }}</div>
@@ -41,7 +52,7 @@
                                     <div class="mb-3">
                                         <label for="Phone" class="form-label">Số điện thoại</label>
                                         <input type="text" class="form-control" id="Phone" name="Phone"
-                                            placeholder="6 - 15 Ký tự" value="{{ old('Phone') }}">
+                                            placeholder="Số điện thoại" value="{{ old('Phone') }}">
                                         @error('Phone')
                                             <div class="alert alert-danger">{{ $message }}</div>
                                         @enderror
@@ -103,26 +114,27 @@
                                             placeholder="6 - 15 Ký tự" value="{{ $user }}">
                                     </div> --}}
                                     @error('images')
-                                    <div class="alert alert-danger">{{ $message }}</div>
-                                @enderror
+                                        <div class="alert alert-danger">{{ $message }}</div>
+                                    @enderror
                                     @error('images.*')
-                                    <div class="alert alert-danger">{{ $message }}</div>
-                                @enderror
+                                        <div class="alert alert-danger">{{ $message }}</div>
+                                    @enderror
                                     <button type="button" id="add-file" class="btn btn-primary">+</button>
                                 </div>
                             </div>
                             <!-- Personal-Information -->
                         </div>
                     </div>
-                    <button type="submit" class="btn btn-primary">Lưu</button>
+                    <button type="submit" class="btn btn-primary form-control">Lưu</button>
                 </form>
             </div>
         </div>
     </div>
+    {{-- Summernote --}}
+    <script src="{{ asset('assets/js/summernote.js') }}"></script>
 @endsection
 
 @push('styles')
-
     <!-- DataTables CSS -->
     <link rel="stylesheet" href="https://cdn.datatables.net/1.11.4/css/dataTables.bootstrap5.min.css">
     <!-- Bootstrap CSS v5.2.1 -->
