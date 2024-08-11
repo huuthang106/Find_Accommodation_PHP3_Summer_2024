@@ -130,8 +130,12 @@
                                             <div class="alert alert-danger mt-1">{{ $message }}</div>
                                         @enderror
                                     </div> --}}
-
                                 </div>
+                                {{-- <div class="video-screenshot">
+                                    <div id="screenshotsContainer" class="screenshots-container">
+                                        <canvas id="canvas" class="is-hidden"></canvas>
+                                    </div>
+                                </div> --}}
                             </div>
                             <!-- Personal-Information -->
                         </div>
@@ -194,6 +198,90 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
         integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        #video {
+            width: 100%;
+        }
+
+        .is-hidden {
+            display: none;
+        }
+
+        .iconfont {
+            font-size: 24px;
+        }
+
+        .btns {
+            margin-bottom: 10px;
+        }
+
+        button {
+            font-size: 22px;
+            padding: 8px 10px;
+            border: 2px solid #ccc;
+            border-radius: 10px;
+        }
+
+        .video-screenshot {
+            display: flex;
+            justify-content: center;
+            margin-top: 10px;
+        }
+
+        .screenshots-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            /* Adjust gap as needed */
+            justify-content: center;
+            /* Center align images */
+        }
+
+        .screenshots-container img {
+            */ width: 9000px;
+            /* Adjust the width as needed */
+            height: auto;
+            border-radius: 5px;
+        }
+
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgb(0, 0, 0);
+            background-color: rgba(0, 0, 0, 0.4);
+            padding-top: 60px;
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: 5% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            max-width: 600px;
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+    </style>
 @endpush
 
 @push('scripts')
@@ -243,4 +331,103 @@
     <!-- Tệp JavaScript tùy chỉnh của bạn -->
     <script src="{{ asset('assets/js/app-nht.js') }}"></script>
     <script src="{{ asset('assets/js/api-nht.js') }}"></script>
+    <script>
+        window.onload = async function() {
+            if (!"mediaDevices" in navigator || !"getUserMedia" in navigator.mediaDevices) {
+                document.write('Not support API camera');
+                return;
+            }
+
+            const video = document.querySelector("#video");
+            const canvas = document.querySelector("#canvas");
+            const cameraModal = document.getElementById("cameraModal");
+            const btnOpenCamera = document.getElementById("btnOpenCamera");
+            const btnScreenshot = document.getElementById("btnScreenshot");
+            const btnPause = document.getElementById("btnPause");
+            const btnChangeCamera = document.getElementById("btnChangeCamera");
+            const spanClose = document.getElementsByClassName("close")[0];
+            let videoStream = null;
+            let useFrontCamera = true; // camera trước
+            const constraints = {
+                video: {
+                    width: {
+                        min: 1280,
+                        ideal: 1920,
+                        max: 2560,
+                    },
+                    height: {
+                        min: 720,
+                        ideal: 1080,
+                        max: 1440,
+                    }
+                },
+            };
+
+            btnOpenCamera.addEventListener("click", function() {
+                cameraModal.style.display = "block";
+                initCamera();
+            });
+
+            btnPause.addEventListener("click", function() {
+                video.pause();
+            });
+
+            spanClose.onclick = function() {
+                cameraModal.style.display = "none";
+                stopVideoStream();
+            }
+
+            window.onclick = function(event) {
+                if (event.target == cameraModal) {
+                    cameraModal.style.display = "none";
+                    stopVideoStream();
+                }
+            }
+
+            btnChangeCamera.addEventListener("click", function() {
+                useFrontCamera = !useFrontCamera;
+                initCamera();
+            });
+
+            function stopVideoStream() {
+                if (videoStream) {
+                    videoStream.getTracks().forEach((track) => {
+                        track.stop();
+                    });
+                }
+            }
+
+            btnScreenshot.addEventListener("click", function(event) {
+                event.preventDefault();
+                canvas.width = video.videoWidth;
+                canvas.height = video.videoHeight;
+                canvas.getContext("2d").drawImage(video, 0, 0);
+                const imageDataUrl = canvas.toDataURL("image/png");
+
+                // Add the image to the file input container
+                const fileInputsContainer = document.getElementById('file-inputs');
+                const numberOfFileInputs = fileInputsContainer.getElementsByTagName('input').length;
+
+                const newDiv = document.createElement('div');
+                newDiv.className = 'mb-3';
+                newDiv.innerHTML = `
+            <label for="img-room-${numberOfFileInputs + 1}" class="form-label">Hình ảnh</label>
+             <input type="file" class="form-control" id="img-room-${numberOfFileInputs + 1}" name="images[]">
+        `;
+
+                fileInputsContainer.appendChild(newDiv);
+            });
+
+            async function initCamera() {
+                stopVideoStream();
+                constraints.video.facingMode = useFrontCamera ? "user" : "environment";
+                try {
+                    videoStream = await navigator.mediaDevices.getUserMedia(constraints);
+                    video.srcObject = videoStream;
+                } catch (error) {
+                    console.log(error);
+                }
+            }
+        }
+    </script>
 @endpush
